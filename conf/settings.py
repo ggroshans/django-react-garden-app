@@ -25,7 +25,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fullstack-gardening-app.herokuapp.com/']
+ALLOWED_HOSTS = ['fullstack-gardening-app.herokuapp.com']
 
 
 # Application definition
