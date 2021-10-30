@@ -25,7 +25,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fullstack-gardening-app.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','fullstack-gardening-app.herokuapp.com']
 
 
 # Application definition
@@ -37,21 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
 
-    'rest_framework', 
+    #third party
+    'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount'
+    'allauth.socialaccount',
     'rest_auth.registration',
-    
-    'whitenoise.runserver_nostatic',
 
+    #local
     'accounts.apps.AccountsConfig',
-    'api.apps.ApiConfig',
-    'frontend.apps.FrontendConfig',
+    'frontend.apps.FrontendConfig'
 ]
 
 MIDDLEWARE = [
@@ -149,3 +148,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
