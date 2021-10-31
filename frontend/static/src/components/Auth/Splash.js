@@ -14,48 +14,39 @@ export default function Splash() {
             <h2 className="splash-sub-heading">
                 Plan, organize and improve your garden.
             </h2>
-            <p>
+            <p className="splash-description">
                 Bountiful, high-yielding gardens are products of thorough
                 preparation. Flourish is a tool to help you prepare your garden
                 for the upcoming season, while allowing you to cut down the time
                 it takes to lay the groundwork. The Flourish experience takes
                 you through a series of steps with each step focusing on
-                important gardening areas: Soil, Vegetables, Companion Planting
-                and Physical Layout.
+                important gardening areas: <span className="splash-soil">Soil</span>, <span className="splash-vegetables">Vegetables</span>, <span className="splash-companion">Companion Planting</span>,
+                and  <span className="splash-layout">Physical Layout</span>.
             </p>
             <ol className="splash-list">
-                <li>
+                <li className="splash-list-step">
                     {" "}
-                    1) <span className="splash-list-soil">SOIL:</span> Find your soil type based on your desired location.
-                    Using your specific soil type, you will recieve soil
+                    <span className="splash-soil splash-lobster-font">1) Soil:</span> Find your soil type based on your desired location.
+                    Using your specific soil type, we give your soil
                     characteristics and recommendtations for potential
                     improvements.
                 </li>
-                <li>
+                <li className="splash-list-step">
                     {" "}
-                    2) <span className="splash-list-vegetables">VEGETABLES:</span> Considering the varying conditions of your garden, we allow you to filter against plant characteristics so you can choose the most appropriate vegetables for your garden.
+                    <span className="splash-vegetables splash-lobster-font">2) Vegetables:</span> Considering the varying conditions of your garden, we allow you to filter against plant characteristics so you can choose the most appropriate vegetables specific areas of your garden.
                 </li>
-                <li>
+                <li className="splash-list-step">
                     {" "}
-                    3) <span className="splash-list-companion">COMPANION PLANTING:</span> Find your soil type based on your
-                    desired location. Using your specific soil type, you will
-                    recieve soil characteristics and recommendtations for
-                    potential improvements.
+                    <span className="splash-companion splash-lobster-font">3) Companion Planting:</span> Vegetables often do better if they are planted alongside other plants; however, there can also be plants you do not want to plant together. We help find the best companion plants for your chosen vegetables. 
                 </li>
-                <li>
+                <li className="splash-list-step">
                     {" "}
-                    4) <span className="splash-list-layout">PHYSICAL LAYOUT:</span> Find your soil type based on your
-                    desired location. Using your specific soil type, you will
-                    recieve soil characteristics and recommendtations for
-                    potential improvements.
+                    <span className="splash-layout splash-lobster-font"> 4) Physical Layout:</span> Drafting the visual layout of your garden can be highly beneficial for garden preparation. We allow you to sketch an outline of your garden beds, while providing an area for you to jot down important notes.
                 </li>
-                <li>
+                {/* <li className="splash-list-step">
                     {" "}
-                    5) <span className="splash-list-summary">Summary:</span> Find your soil type based on your
-                    desired location. Using your specific soil type, you will
-                    recieve soil characteristics and recommendtations for
-                    potential improvements.
-                </li>
+                    <span className="splash-list-summary">5) Summary:</span> After you have been given your soil characteristics and recommendtations, created your vegetable list, recruited additional vegetables for companion planting, and created a visual garden outline, you will recieve a summary of the garden plan you created.
+                </li> */}
             </ol>
             <div className="splash-btn-group">
                 <button
@@ -66,7 +57,7 @@ export default function Splash() {
                     Login
                 </button>
                 <button
-                    className="btn btn-success mt-3 flagship-btn"
+                    className="btn btn-success mt-2 flagship-btn"
                     value="register"
                     onClick={handleClickRegister}
                 >

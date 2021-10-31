@@ -15,7 +15,7 @@ function App() {
 
 
   let navBar
-  if (false) {
+  if (true) {
     navBar = <NavBar/>
   }
 
@@ -24,6 +24,7 @@ function App() {
   return (
     <div className='App'>
         <Header />
+
         {/* <Registration setIsAuth={setIsAuth}/> */}
         {/* <Login setIsAuth={setIsAuth}/> */}
         <Splash />
