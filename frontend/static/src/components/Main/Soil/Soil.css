@@ -1,0 +1,50 @@
+.soil-container {
+    height: 70vh;
+}
+
+.map-view {
+    width: 80%;
+    height: 350px;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+
+  .esri-icon-font-fallback-text {
+      display: inline-block;
+      font-weight: 900;
+      border: 2px solid darkgreen;
+      color: white;
+      background-color: var(--btn-color);
+      font-family: var(--body-font);
+      width: 100px;
+      margin: 0.15rem;
+
+  }
+
+  .esri-ui-corner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+  }
+
+.esri-attribution__sources, .esri-attribution__powered-by {
+    display: none;
+}
+
+.display-soil-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid darkgreen;
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    position: relative;
+    top: 100px;
+    font-weight: 900;
+}
+
+.display-soil-p {
+    margin-bottom: 0;
+}
