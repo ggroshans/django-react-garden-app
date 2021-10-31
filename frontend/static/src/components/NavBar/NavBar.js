@@ -1,8 +1,9 @@
-import "./NavBar.css"
-import React from 'react'
+import "./NavBar.css";
+import React from 'react';
 import { ButtonGroup, ToggleButton } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react'
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function NavBar(props) {
 
@@ -23,6 +24,7 @@ export default function NavBar(props) {
         <div className="nav-btn-group">
             <ButtonGroup>
                 {radios.map((radio, index) => (
+                    <NavLink to={`/${radio.value}`}>
                     <ToggleButton
                         className="nav-btn navbar-radio-btn"
                         key={uuidv4()}
@@ -37,6 +39,7 @@ export default function NavBar(props) {
                     >
                         {radio.name}
                     </ToggleButton>
+                    </NavLink>
                 ))}
             </ButtonGroup>
         </div>
