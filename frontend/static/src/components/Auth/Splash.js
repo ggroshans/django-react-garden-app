@@ -1,5 +1,6 @@
 import React from "react";
 import "./Splash.css";
+import { NavLink } from "react-router-dom";
 
 export default function Splash() {
     function handleClickRegister() {}
@@ -49,6 +50,7 @@ export default function Splash() {
                 </li> */}
             </ol>
             <div className="splash-btn-group">
+            <NavLink to="/login">
                 <button
                     className="btn btn-success mt-2 flagship-btn"
                     value="login"
@@ -56,6 +58,8 @@ export default function Splash() {
                 >
                     Login
                 </button>
+            </NavLink>
+            <NavLink to="/registration">
                 <button
                     className="btn btn-success mt-2 flagship-btn"
                     value="register"
@@ -63,6 +67,7 @@ export default function Splash() {
                 >
                     Register
                 </button>
+                </NavLink>
             </div>
         </div>
     );
