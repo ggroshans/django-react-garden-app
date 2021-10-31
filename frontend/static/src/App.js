@@ -14,7 +14,7 @@ function App() {
   const [isAuth, setIsAuth] = useState(false)
 
   let navBar
-  if (true) {
+  if (false) {
     navBar = <NavBar/>
   }
 
@@ -23,7 +23,8 @@ function App() {
   return (
     <div className='App'>
         <Header />
-        <Registration setIsAuth={setIsAuth}/>
+        {/* <Registration setIsAuth={setIsAuth}/> */}
+        <Login setIsAuth={setIsAuth}/>
         {navBar}
         <Footer />
     </div>
