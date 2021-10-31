@@ -1,5 +1,16 @@
-.header-logo {
+.header-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5rem;
+}
+
+.header-title {
     font-family: 'Lobster', cursive;
     font-size: 3rem;
     letter-spacing: 0.15rem;;
+}
+
+.header-leaf {
+
+    height: 50px;
 }
