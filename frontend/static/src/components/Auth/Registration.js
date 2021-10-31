@@ -58,7 +58,7 @@ export default function Registration(props) {
             <label htmlFor="password2" className="form-label mt-3 registration-label">Confirm Password:</label>
                 <input type="password" className="form-control" name="password2" id="password2" placeholder="Confirm Password.." value={data.password2} onChange={handleChange} />
             </div>
-            <button className="btn btn-success mt-3">Submit</button>
+            <button className="btn btn-success mt-3">Register</button>
             </form>
         </div>
     )
