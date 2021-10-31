@@ -5,6 +5,6 @@
 }
 
 .footer-container {
-    font-family: 'Cabin', sans-serif;
+    font-family: var(--body-font);
     letter-spacing: 0.05rem;
 }

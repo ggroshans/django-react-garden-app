@@ -1,6 +1,6 @@
 
 .registration-label {
-    font-family: 'Cabin', sans-serif;
+    font-family: var(--body-font);
     width: 100%;
     text-align: left;
     font-weight: 500;
