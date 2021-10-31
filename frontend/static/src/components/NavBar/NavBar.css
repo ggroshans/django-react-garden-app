@@ -1,0 +1,18 @@
+
+.navbar-radio-btn {
+    width: 200px;
+    color: var(--btn-color);
+    font-weight: 600;
+}
+
+.nav-btn:hover {
+    background-color: var(--btn-color);
+}
+
+.nav-btn:active {
+    background-color: var(--btn-color);
+}
+.btn-check:checked+.btn-outline-success {
+    background-color: var(--btn-color);
+    border-color: var(--btn-color);
+}
