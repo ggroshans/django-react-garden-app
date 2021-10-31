@@ -1,0 +1,71 @@
+
+.splash-container {
+    font-family: var(--body-font);
+    width: 750px;
+    margin: auto;
+    padding-top: 3rem;
+    height: 70vh;
+}
+
+.splash-main-heading {
+    font-size: 3.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.splash-sub-heading {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.flourish-span {
+    color: #1c917d;
+}
+
+.splash-list {
+    list-style: none;
+    text-align: left;
+    margin: auto;
+}
+
+
+.splash-list-soil {
+    color:#26aa95;
+    font-weight: 900;
+}
+.splash-list-vegetables {
+    color:#229986;
+    font-weight: 900;
+}
+.splash-list-companion {
+    color:#1E8877;
+    font-weight: 900;
+}
+.splash-list-layout {
+    color:#1A7768;
+    font-weight: 900;
+}
+.splash-list-summary {
+    color:#166659;
+    font-weight: 900;
+}
+
+
+
+
+
+
+.splash-btn-group {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin: auto;
+    padding-top: 2rem;
+}
+
+.flagship-btn {
+    background-color: #26AA95;
+    font-family: var(--body-font);
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+}
+
