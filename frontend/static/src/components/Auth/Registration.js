@@ -1,8 +1,9 @@
 import React from 'react';
+import Cookie from 'js-cookie';
 import { useState } from 'react';
 import './Registration.css';
 
-export default function Registration() {
+export default function Registration(props) {
 
     const [data, setData] = useState({
         username: "",
@@ -16,10 +17,27 @@ export default function Registration() {
         let {name, value} = e.target
         let updatedData = {...data, [name]: value}
         setData(updatedData)
-        console.log(data)
     }
 
-    function handleSubmit() {}
+   async function handleSubmit(e) {
+       e.preventDefault()
+
+        const options = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken' : Cookie.get('csrftoken')
+            },
+            body: JSON.stringify(data)
+        }
+        const response = await fetch('/rest-auth/registration/', options)
+        if (response.ok === false) {
+        } else {
+            const data = await response.json();
+            Cookie.set("Authorization", `Token ${data.key}`);
+            props.setIsAuth(true);
+        }
+    }
      
     return (
         <div className="registration-container">
