@@ -4,4 +4,4 @@ from .models import Garden
 class GardenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Garden
-        fields = ('name', 'user', 'date',)
+        fields = ('name', 'user', 'created_at',)
