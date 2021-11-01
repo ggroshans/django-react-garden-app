@@ -1,9 +1,10 @@
 import React from 'react';
 import Cookie from 'js-cookie';
 import { useState } from 'react';
-import './Login.css'
+import './Login.css';
+import { Redirect, withRouter } from 'react-router-dom';
 
-export default function Login(props) {
+function Login(props) {
 
     const [data, setData] = useState({
         username: "",
@@ -34,7 +35,12 @@ export default function Login(props) {
             const data = await response.json();
             Cookie.set('Authorization', `Token ${data.key}`)
             props.setIsAuth(true);
+
         }
+    }
+
+    if (props.isAuth === true) {
+       return <Redirect to="/soil" />
     }
 
     return (
@@ -54,3 +60,5 @@ export default function Login(props) {
         </div>
     )
 }
+
+export default withRouter(Login)

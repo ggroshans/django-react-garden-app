@@ -8,7 +8,7 @@ import Soil from './components/Main/Soil/Soil'
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 
 
 function App() {
@@ -26,10 +26,10 @@ function App() {
             <Switch>
 
                 <Route path="/login">
-                    <Login />
+                    <Login setIsAuth={setIsAuth} isAuth={isAuth}/>
                 </Route>
                 <Route path="/registration">
-                    <Registration />
+                    <Registration setIsAuth={setIsAuth} isAuth={isAuth}/>
                 </Route>
                 <Route path="/soil">
                     <Soil />
@@ -49,8 +49,6 @@ function App() {
                 <Route></Route>
                 <Route></Route>
                 <Route></Route>
-                {/* <Registration setIsAuth={setIsAuth}/> */}
-                {/* <Login setIsAuth={setIsAuth}/> */}
 
             </Switch>
             {navBar}
@@ -59,4 +57,4 @@ function App() {
     );
 }
 
-export default App;
+export default withRouter(App);

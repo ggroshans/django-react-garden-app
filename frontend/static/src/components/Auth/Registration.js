@@ -2,6 +2,7 @@ import React from 'react';
 import Cookie from 'js-cookie';
 import { useState } from 'react';
 import './Registration.css';
+import { Redirect } from 'react-router-dom';
 
 export default function Registration(props) {
 
@@ -38,6 +39,10 @@ export default function Registration(props) {
             props.setIsAuth(true);
         }
     }
+
+    if (props.isAuth === true) {
+        return <Redirect to="/soil" />
+     }
      
     return (
         <div className="registration-container">
