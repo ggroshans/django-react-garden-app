@@ -1,8 +1,9 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from rest_framework import generics
 
-from .models import Garden
-from .serializers import GardenSerializer
+from .models import Garden, Soil
+from .serializers import GardenSerializer, SoilSerializer
 
 
 # Create your views here.
@@ -13,4 +14,8 @@ class GardenListCreateAPIView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+class SoilListAPIView(generics.ListCreateAPIView):
+    queryset = Soil.objects.all()
+    serializer_class = SoilSerializer
     
