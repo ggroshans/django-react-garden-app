@@ -24,7 +24,7 @@ export default function NavBar(props) {
             <div className="nav-btn-group">
                 <ButtonGroup>
                     {radios.map((radio, index) => (
-                        <NavLink to={`/${radio.value}`}>
+                        <NavLink to={`/${radio.value}`} className="navbar-navlink">
                             <ToggleButton
                                 className="nav-btn navbar-radio-btn"
                                 key={uuidv4()}
