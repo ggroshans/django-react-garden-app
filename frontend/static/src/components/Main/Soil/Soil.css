@@ -1,5 +1,6 @@
 .soil-container {
-    height: 70vh;
+ overflow: scroll;
+ height: 70vh;
 }
 
 .map-view {
@@ -60,4 +61,11 @@
 
 .display-soil-p {
     margin-bottom: 0;
+}
+
+.display-results-container {
+    width: 750px;
+    margin: auto;
+    position: relative;
+    top: 125px;
 }

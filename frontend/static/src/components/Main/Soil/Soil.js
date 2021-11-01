@@ -1,38 +1,48 @@
 import "./Soil.css";
 import React from "react";
 import EsriLoaderReact from "esri-loader-react";
-import Cookie from 'js-cookie';
+import Cookie from "js-cookie";
 import { useState, useEffect, useRef } from "react";
 
 export default function Soil() {
-
+    const firstRender = useRef(true);
     const [soil, setSoil] = useState(null);
+    const [characteristics, setCharacteristics] = useState(null);
+    const [recommendations, setRecommendations] = useState(null);
 
     useEffect(() => {
-        getSoilDetails();
-     }, [soil] )
+        if (firstRender.current === true) {
+            firstRender.current = false;
+        } else {
+            getSoilDetails();
+        }
+
+    }, [soil]);
 
     const options = {
         url: "https://js.arcgis.com/4.21/",
     };
 
-    function handleClick(e) {
-    }
+    function handleClick(e) {}
 
     async function getSoilDetails() {
         const options = {
-            method: 'GET',
+            method: "GET",
             headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookie.get('csrftoken')
-            }
-        }
-        const response = await fetch (`/api/soils/?soil=${soil}`, options)
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookie.get("csrftoken"),
+            },
+        };
+        const response = await fetch(`/api/soils/?soil=${soil}`, options);
         if (response.ok === false) {
-            console.log('failed', response)
+            console.log("failed", response);
         } else {
-            const data = await response.json()
-            console.log("SUCCESS", data)
+            const data = await response.json();
+            console.log("SUCCESS", data);
+
+            setCharacteristics(data[0].characteristics);
+            setRecommendations(data[0].recommendations);
+
         }
     }
 
@@ -95,7 +105,7 @@ export default function Soil() {
                                 return view.goTo(options.target);
                             },
                         });
-                        let soilOrder
+                        let soilOrder;
                         view.on("immediate-click", (event) => {
                             const latitude = event.mapPoint.latitude;
                             const longitude = event.mapPoint.longitude;
@@ -106,8 +116,7 @@ export default function Soil() {
                                 soilOrder =
                                     hitTestResult.results[0].graphic.attributes
                                         .esrisymbology;
-                                setSoil(soilOrder)
-   
+                                setSoil(soilOrder);
                             });
                         });
 
@@ -117,6 +126,16 @@ export default function Soil() {
             </div>
             <div className="display-soil-container">
                 <p className="display-soil-p">{soil}</p>
+            </div>
+            <div className="display-results-container">
+                <div>
+                    <h2>Characteristics:</h2>
+                    <p>{characteristics}</p>
+                </div>
+                <div>
+                    <h2>Recommendations:</h2>
+                    <p>{recommendations}</p>
+                </div>
             </div>
         </div>
     );
