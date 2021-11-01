@@ -50,7 +50,8 @@ INSTALLED_APPS = [
 
     #local
     'accounts.apps.AccountsConfig',
-    'frontend.apps.FrontendConfig'
+    'frontend.apps.FrontendConfig',
+    'gardens.apps.GardensConfig'
 ]
 
 MIDDLEWARE = [
