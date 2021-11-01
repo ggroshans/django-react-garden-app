@@ -15,7 +15,6 @@ class GardenListCreateAPIView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-class SoilListAPIView(generics.ListCreateAPIView):
+class SoilListCreateAPIView(generics.ListCreateAPIView):
     queryset = Soil.objects.all()
     serializer_class = SoilSerializer
-    

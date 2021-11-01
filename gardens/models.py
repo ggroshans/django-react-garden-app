@@ -10,5 +10,5 @@ class Garden(models.Model):
 
 class Soil(models.Model):
     soil_order = models.CharField(max_length=25, null=True)
-    characteristics = models.CharField(max_length=500)
-    recommendations = models.CharField(max_length=500)
+    characteristics = models.CharField(max_length=1000)
+    recommendations = models.CharField(max_length=1000)
