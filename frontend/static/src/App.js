@@ -7,6 +7,7 @@ import Splash from "./components/Auth/Splash";
 import Soil from './components/Main/Soil/Soil'
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import Cookie from 'js-cookie';
 import { useState, useEffect } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 
@@ -14,10 +15,26 @@ import { Switch, Route, withRouter } from "react-router-dom";
 function App() {
     const [isAuth, setIsAuth] = useState(false);
 
+
+    useEffect( () => {
+        const checkAuth  = () => {
+            let cookie = Cookie.get('Authorization');
+            if (cookie) {
+                setIsAuth(true);
+            } else {
+                setIsAuth(false);
+            }
+        }
+        checkAuth()
+    }, [])
+
     let navBar;
-    if (true) {
+    if (isAuth) {
         navBar = <NavBar />;
+    } else {
+        navBar = ""
     }
+
 
     return (
         <div className="App">
