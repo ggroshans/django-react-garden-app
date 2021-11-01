@@ -6,15 +6,17 @@ import { useState, useEffect, useRef } from "react";
 
 export default function Soil() {
 
-    const [soil, setSoil] = useState("Mollisols");
+    const [soil, setSoil] = useState(null);
 
+    useEffect(() => {
+        getSoilDetails();
+     }, [soil] )
 
     const options = {
         url: "https://js.arcgis.com/4.21/",
     };
 
     function handleClick(e) {
-        console.log("SOILSOIL", soil)
     }
 
     async function getSoilDetails() {
@@ -25,7 +27,7 @@ export default function Soil() {
                 'X-CSRFToken': Cookie.get('csrftoken')
             }
         }
-        const response = await fetch ('/api/soils/', options)
+        const response = await fetch (`/api/soils/?soil=${soil}`, options)
         if (response.ok === false) {
             console.log('failed', response)
         } else {
@@ -33,8 +35,6 @@ export default function Soil() {
             console.log("SUCCESS", data)
         }
     }
-
-    getSoilDetails()
 
     return (
         <div className="soil-container">
@@ -103,12 +103,10 @@ export default function Soil() {
                                 new Point({ latitude, longitude })
                             );
                             view.hitTest(screenPoint).then((hitTestResult) => {
-                                console.log(hitTestResult);
                                 soilOrder =
                                     hitTestResult.results[0].graphic.attributes
                                         .esrisymbology;
                                 setSoil(soilOrder)
-                                console.log(soilOrder);
    
                             });
                         });
