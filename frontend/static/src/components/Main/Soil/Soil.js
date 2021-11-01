@@ -1,6 +1,7 @@
 import "./Soil.css";
 import React from "react";
 import EsriLoaderReact from "esri-loader-react";
+import Cookie from 'js-cookie';
 import { useState, useEffect, useRef } from "react";
 
 export default function Soil() {
@@ -14,8 +15,26 @@ export default function Soil() {
 
     function handleClick(e) {
         console.log("SOILSOIL", soil)
-
     }
+
+    async function getSoilDetails() {
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookie.get('csrftoken')
+            }
+        }
+        const response = await fetch ('/api/soils/', options)
+        if (response.ok === false) {
+            console.log('failed', response)
+        } else {
+            const data = await response.json()
+            console.log("SUCCESS", data)
+        }
+    }
+
+    getSoilDetails()
 
     return (
         <div className="soil-container">
