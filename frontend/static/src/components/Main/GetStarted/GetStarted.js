@@ -1,11 +1,14 @@
 import Cookie from 'js-cookie';
 import React from 'react';
 import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 export default function GetStarted() {
 
+    const [successfulPost, setSuccessfulPost] = useState(false)
+
     const [data, setData] = useState({
-        'garden-name': ""
+        'name': ""
     })
 
     function handleChange(e) {
@@ -15,7 +18,9 @@ export default function GetStarted() {
         console.log(data)
     }
 
-    async function handleSubmit() {
+    async function handleSubmit(e) {
+        e.preventDefault()
+
         const options = {
             method: 'POST',
             headers: {
@@ -24,15 +29,25 @@ export default function GetStarted() {
             },
             body: JSON.stringify(data)
         }
-        const response = await fetch('/')
+        const response = await fetch('/api/gardens/', options)
+        if (response.ok === false) {
+            console.log("FAILED", response)
+        } else {
+            const data = await response.json()
+            setSuccessfulPost(true);
+        }
+    }
+
+    if (successfulPost) {
+        return <Redirect to="/soil" /> 
     }
 
     return (
         <div className='get-started-container'>
             <form className='form-control' onSubmit={handleSubmit}>
                 <div className='form-group'>
-                    <label htmlFor="garden-name">Garden Name:</label>
-                    <input type="text" id="garden-name" name="garden-name" value={data['garden-name']} onChange={handleChange}/>
+                    <label htmlFor="name">Garden Name:</label>
+                    <input type="text" id="name" name="name" value={data['name']} onChange={handleChange}/>
                 </div>
                 <button className="btn btn-success flagship-btn">Get Started!</button>
             </form>

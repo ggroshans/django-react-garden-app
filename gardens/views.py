@@ -10,4 +10,7 @@ from .serializers import GardenSerializer
 class GardenListCreateAPIView(generics.ListCreateAPIView):
     queryset = Garden.objects.all()
     serializer_class = GardenSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
     
