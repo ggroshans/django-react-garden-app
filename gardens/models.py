@@ -9,6 +9,6 @@ class Garden(models.Model):
     created_at = models.DateField(auto_now_add=True, null=True, blank=True)
 
 class Soil(models.Model):
-    name = models.CharField(max_length=25)
+    soil_order = models.CharField(max_length=25, null=True)
     characteristics = models.CharField(max_length=500)
     recommendations = models.CharField(max_length=500)
