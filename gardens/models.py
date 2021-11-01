@@ -7,3 +7,8 @@ class Garden(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=25)
     created_at = models.DateField(auto_now_add=True, null=True, blank=True)
+
+class Soil(models.Model):
+    name = models.CharField(max_length=25)
+    characteristics = models.CharField(max_length=500)
+    recommendations = models.CharField(max_length=500)
