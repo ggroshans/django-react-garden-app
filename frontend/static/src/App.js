@@ -4,6 +4,7 @@ import Main from "./components/Main/Main";
 import Registration from "./components/Auth/Registration";
 import Login from "./components/Auth/Login";
 import Splash from "./components/Auth/Splash";
+import GetStarted from "./components/Main/GetStarted/GetStarted";
 import Soil from './components/Main/Soil/Soil'
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
@@ -47,6 +48,9 @@ function App() {
                 </Route>
                 <Route path="/registration">
                     <Registration setIsAuth={setIsAuth} isAuth={isAuth}/>
+                </Route>
+                <Route path="/getstarted">
+                    <GetStarted />
                 </Route>
                 <Route path="/soil">
                     <Soil />
