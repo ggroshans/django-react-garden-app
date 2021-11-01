@@ -7,7 +7,7 @@ from .serializers import GardenSerializer
 
 # Create your views here.
 
-class GardenListView(generics.ListAPIView):
+class GardenListCreateAPIView(generics.ListCreateAPIView):
     queryset = Garden.objects.all()
     serializer_class = GardenSerializer
     
