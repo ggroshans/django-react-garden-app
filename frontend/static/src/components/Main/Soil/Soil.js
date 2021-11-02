@@ -4,25 +4,26 @@ import EsriLoaderReact from "esri-loader-react";
 import Cookie from "js-cookie";
 import { useState, useEffect, useRef } from "react";
 
-export default function Soil() {
+export default function Soil(props) {
     const firstRender = useRef(true);
-    const [soil, setSoil] = useState(null);
-    const [characteristics, setCharacteristics] = useState(null);
-    const [recommendations, setRecommendations] = useState(null);
+    const [soil, setSoil] = useState({
+        id: null,
+        characteristics: "",
+        recommendations: "",
+        soil_order: "",
+    });
 
     useEffect(() => {
         if (firstRender.current === true) {
             firstRender.current = false;
         } else {
-            getSoilDetails();
+            getSoilDetails()
         }
-    }, [soil]);
+    }, [soil.soil_order]);
 
     const options = {
         url: "https://js.arcgis.com/4.21/",
     };
-
-    function handleClick(e) {}
 
     async function getSoilDetails() {
         const options = {
@@ -32,33 +33,46 @@ export default function Soil() {
                 "X-CSRFToken": Cookie.get("csrftoken"),
             },
         };
-        const response = await fetch(`/api/soils/?soil=${soil}`, options);
+        const response = await fetch(`/api/soils/?soil=${soil.soil_order}`, options);
         if (response.ok === false) {
             console.log("failed", response);
         } else {
             const data = await response.json();
             console.log("SUCCESS", data);
-            setCharacteristics(data[0].characteristics);
-            setRecommendations(data[0].recommendations);
+            setSoil({
+                ...soil,
+                id: data[0].id,
+                characteristics: data[0].characteristics,
+                recommendations: data[0].recommendations,
+            })
         }
     }
 
-    async function handleClick() {
+    console.log(soil, soil.characteristics, soil.recommendations)
+
+    async function handleSaveSoilClick() {
 
         const options  = {
             method: 'PUT', 
             headers: {
                 "Content-Type": 'application/json',
-                "X-CSRFToken": 'csrftoken'
+                "X-CSRFToken": Cookie.get('csrftoken')
             },
-            body: JSON.stringify()
+            body: JSON.stringify({...props.currentGarden,
+                            soil: soil.id})
         }
-
+        const response = await fetch(`/api/gardens/${props.currentGarden.id}/`, options)
+        if (response.ok === false) {
+            console.log("SOIL PUT FAILED", response);
+        } else {
+            const data = await response.json();
+            console.log("SOIL PUT SUCCESS", data)
+        }
     }
 
     return (
         <div className="soil-container">
-            <div className="map-view" onClick={handleClick} value={soil}>
+            <div className="map-view" value={soil}>
                 <EsriLoaderReact
                     options={options}
                     modulesToLoad={[
@@ -126,8 +140,14 @@ export default function Soil() {
                                 soilOrder =
                                     hitTestResult.results[0].graphic.attributes
                                         .esrisymbology;
-                                setSoil(soilOrder);
+                                setSoil({
+                                    id: null,
+                                    soil_order: soilOrder,
+                                    characteristics: "",
+                                    recommendations: "",
+                                });
                             });
+
                         });
 
                         view.ui.add(locate, "top-left");
@@ -135,19 +155,19 @@ export default function Soil() {
                 />
             </div>
             <div className="display-soil-container">
-                <p className="display-soil-p">{soil}</p>
+                <p className="display-soil-p">{soil.soil_order}</p>
             </div>
             <div className="display-results-container">
                 <div>
                     <h2>Characteristics:</h2>
-                    <p>{characteristics}</p>
+                    <p>{soil.characteristics}</p>
                 </div>
                 <div>
                     <h2>Recommendations:</h2>
-                    <p>{recommendations}</p>
+                    <p>{soil.recommendations}</p>
                 </div>
             </div>
-            <button id="soil-save-btn" className="btn btn-success flagship-btn" onClick={handleClick}>Save Soil Type</button>
+            <button id="soil-save-btn" className="btn btn-success flagship-btn" onClick={handleSaveSoilClick}>Save Soil Type</button>
         </div>
     );
 }

@@ -48,9 +48,7 @@ function App() {
     return (
         <div className="App">
             <Header />
-
             <Switch>
-
                 <Route path="/login">
                     <Login setIsAuth={setIsAuth} isAuth={isAuth}/>
                 </Route>
@@ -61,7 +59,7 @@ function App() {
                     <GetStarted setCurrentGarden={setCurrentGarden}/>
                 </Route>
                 <Route path="/soil">
-                    <Soil />
+                    <Soil currentGarden={currentGarden}/>
                 </Route>
                 <Route path="/vegetables">
                     <Soil />
@@ -78,7 +76,6 @@ function App() {
                 <Route></Route>
                 <Route></Route>
                 <Route></Route>
-
             </Switch>
             {navBar}
             <Footer />
