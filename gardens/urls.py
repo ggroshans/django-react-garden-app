@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import GardenListCreateAPIView, SoilListCreateAPIView
+from . import views
 
 urlpatterns = [
-    path("gardens/", GardenListCreateAPIView.as_view()),
-    path("soils/", SoilListCreateAPIView.as_view())
+    path("gardens/", views.GardenListCreateAPIView.as_view()),
+    path("gardens/<int:pk>/", views.GardenDetailAPIView.as_view()),
+    path("soils/", views.SoilListCreateAPIView.as_view()),
     ]

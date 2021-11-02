@@ -15,6 +15,11 @@ class GardenListCreateAPIView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+
+class GardenDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Garden.objects.all()
+    serializer_class = GardenSerializer
+
 class SoilListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = SoilSerializer
 
@@ -25,3 +30,4 @@ class SoilListCreateAPIView(generics.ListCreateAPIView):
         if soil_order is not None:
             queryset = queryset.filter(soil_order=soil_order)
         return queryset
+
