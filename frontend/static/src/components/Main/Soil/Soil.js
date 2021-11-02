@@ -3,6 +3,7 @@ import React from "react";
 import EsriLoaderReact from "esri-loader-react";
 import Cookie from "js-cookie";
 import { useState, useEffect, useRef } from "react";
+import { Redirect } from 'react-router-dom'
 
 export default function Soil(props) {
     const firstRender = useRef(true);
@@ -12,6 +13,7 @@ export default function Soil(props) {
         recommendations: "",
         soil_order: "",
     });
+    const [soilSaved, setSoilSaved] = useState(false)
 
     useEffect(() => {
         if (firstRender.current === true) {
@@ -67,12 +69,18 @@ export default function Soil(props) {
         } else {
             const data = await response.json();
             console.log("SOIL PUT SUCCESS", data)
+            setSoilSaved(true);
         }
     }
 
+    if (soilSaved)
+ {
+     return <Redirect to="/vegetables" />
+ }
     return (
         <div className="soil-container">
             <div className="map-view" value={soil}>
+
                 <EsriLoaderReact
                     options={options}
                     modulesToLoad={[
