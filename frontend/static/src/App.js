@@ -15,7 +15,14 @@ import { Switch, Route, withRouter } from "react-router-dom";
 
 function App() {
     const [isAuth, setIsAuth] = useState(false);
+    const [currentGarden, setCurrentGarden] = useState({
+        created_at: "",
+        id: null,
+        name: "",
+        username: ""
+    })
 
+    console.log("currentGarden", currentGarden);
 
     useEffect( () => {
         const checkAuth  = () => {
@@ -50,7 +57,7 @@ function App() {
                     <Registration setIsAuth={setIsAuth} isAuth={isAuth}/>
                 </Route>
                 <Route path="/getstarted">
-                    <GetStarted />
+                    <GetStarted setCurrentGarden={setCurrentGarden}/>
                 </Route>
                 <Route path="/soil">
                     <Soil />

@@ -16,7 +16,6 @@ export default function Soil() {
         } else {
             getSoilDetails();
         }
-
     }, [soil]);
 
     const options = {
@@ -39,11 +38,22 @@ export default function Soil() {
         } else {
             const data = await response.json();
             console.log("SUCCESS", data);
-
             setCharacteristics(data[0].characteristics);
             setRecommendations(data[0].recommendations);
-
         }
+    }
+
+    async function handleClick() {
+
+        const options  = {
+            method: 'PUT', 
+            headers: {
+                "Content-Type": 'application/json',
+                "X-CSRFToken": 'csrftoken'
+            },
+            body: JSON.stringify()
+        }
+
     }
 
     return (

@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-export default function GetStarted() {
+export default function GetStarted(props) {
 
     const [successfulPost, setSuccessfulPost] = useState(false)
 
@@ -15,7 +15,6 @@ export default function GetStarted() {
         let {name, value} = e.target;
         let updatedData = {...data, [name]: value };
         setData(updatedData);
-        console.log(data)
     }
 
     async function handleSubmit(e) {
@@ -31,10 +30,16 @@ export default function GetStarted() {
         }
         const response = await fetch('/api/gardens/', options)
         if (response.ok === false) {
-            console.log("FAILED", response)
+            console.log("GARDEN NAME FAILED", response)
         } else {
             const data = await response.json()
             setSuccessfulPost(true);
+            props.setCurrentGarden({
+                created_at: data.created_at,
+                id: data.id,
+                name: data.name,
+                username: data.username
+            })
         }
     }
 
