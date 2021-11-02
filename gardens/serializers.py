@@ -6,7 +6,7 @@ class GardenSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Garden
-        fields = ('id', 'name', 'username', 'created_at',)
+        fields = '__all__'
 
 class SoilSerializer(serializers.ModelSerializer):
     class Meta:

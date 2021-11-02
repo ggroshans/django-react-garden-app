@@ -19,7 +19,8 @@ function App() {
         created_at: "",
         id: null,
         name: "",
-        username: ""
+        username: "",
+        soil: null,
     })
 
     console.log("currentGarden", currentGarden);

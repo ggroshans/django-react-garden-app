@@ -33,6 +33,7 @@ export default function GetStarted(props) {
             console.log("GARDEN NAME FAILED", response)
         } else {
             const data = await response.json()
+            console.log("GARDEN NAME SUCCESS", data);
             setSuccessfulPost(true);
             props.setCurrentGarden({
                 created_at: data.created_at,
