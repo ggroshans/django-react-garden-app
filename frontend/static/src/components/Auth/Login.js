@@ -40,7 +40,7 @@ function Login(props) {
     }
 
     if (props.isAuth === true) {
-       return <Redirect to="/soil" />
+       return <Redirect to="/getstarted" />
     }
 
     return (

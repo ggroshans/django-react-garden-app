@@ -3,9 +3,9 @@ import React from "react";
 import EsriLoaderReact from "esri-loader-react";
 import Cookie from "js-cookie";
 import { useState, useEffect, useRef } from "react";
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
-export default function Soil(props) {
+function Soil(props) {
     const firstRender = useRef(true);
     const [loaded, setLoaded] = useState(false)
     const [soil, setSoil] = useState({
@@ -14,7 +14,6 @@ export default function Soil(props) {
         recommendations: "",
         soil_order: "",
     });
-    const [soilSaved, setSoilSaved] = useState(false)
 
     useEffect(() => {
         if (firstRender.current === true) {
@@ -51,33 +50,30 @@ export default function Soil(props) {
         }
     }
 
-    console.log(soil, soil.characteristics, soil.recommendations)
 
     async function handleSaveSoilClick() {
 
         const options  = {
-            method: 'PUT', 
+            method: 'PATCH', 
             headers: {
                 "Content-Type": 'application/json',
                 "X-CSRFToken": Cookie.get('csrftoken')
             },
-            body: JSON.stringify({...props.currentGarden,
-                            soil: soil.id})
+            body: JSON.stringify({soil: soil.id})
         }
-        const response = await fetch(`/api/gardens/${props.currentGarden.id}/`, options)
-        if (response.ok === false) {
-            console.log("SOIL PUT FAILED", response);
+        const response = await fetch(`/api/gardens/${props.match.params.garden}/`, options)
+        if (!response.ok) {
+            console.log("SOIL PATCH FAILED", response);
         } else {
             const data = await response.json();
-            console.log("SOIL PUT SUCCESS", data)
-            setSoilSaved(true);
+            console.log("SOIL PATCH SUCCESS", data)
+            props.history.push(`/${data.id}/vegetables/`)
         }
     }
 
-    if (soilSaved)
- {
-     return <Redirect to="/vegetables" />
- }
+    console.log(props.match.params.garden)
+
+
 
  setTimeout(() => {
      setLoaded(true);
@@ -192,3 +188,5 @@ if (loaded) {
         </div>
     );
 }
+
+export default withRouter(Soil);
