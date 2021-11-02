@@ -1,16 +1,16 @@
 import React from "react";
-import "./FilteredVegetables.css";
+import "./FilteredVegetableList.css";
 
-export default function FilteredVegetables(props) {
+export default function FilteredVegetableList(props) {
     return (
         <div className="filtered-vegetables-container">
-            {props.userVegetables === undefined
+            {props.filteredVegetables === undefined
                 ? ""
-                : props.userVegetables.map((vegetable) => {
+                : props.filteredVegetables.map((vegetable) => {
                       return (
                           <div className="filtered-vegetable">
                               <p className="filtered-vegetable-name">{vegetable.name}</p>
-                              <button className="filtered-add-vegetable">Add</button>
+                              <button className="filtered-add-vegetable" onClick={() => props.addToUserList(vegetable.id)}>Add</button>
                           </div>
                       );
                   })}

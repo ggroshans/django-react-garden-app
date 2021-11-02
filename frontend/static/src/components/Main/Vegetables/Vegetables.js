@@ -2,7 +2,7 @@ import React from "react";
 import "./Vegetables.css";
 import Cookie from "js-cookie";
 import { useState, useEffect } from "react";
-import FilteredVegetables from "./FilteredVegetables";
+import FilteredVegetableList from "./FilteredVegetableList";
 
 export default function Vegetables() {
     let queryString = "";
@@ -16,7 +16,8 @@ export default function Vegetables() {
         seasonality: "",
     });
 
-    const [userVegetables, setUserVegetables] = useState();
+    const [filteredVegetables, setFilteredVegetables] = useState();
+    const [userVegetables, setUserVegetables] = useState([])
 
     async function getVegetableDetails() {
         const options = {
@@ -32,7 +33,7 @@ export default function Vegetables() {
         } else {
             const data = await response.json();
             console.log("SUCCESS", data);
-            setUserVegetables(data);
+            setFilteredVegetables(data);
         }
     }
 
@@ -94,6 +95,15 @@ export default function Vegetables() {
 
         getVegetableDetails();
         queryString = "";
+    }
+
+    function addToUserList(id) {
+        let index = filteredVegetables.findIndex(element => element.id = id);
+        let updatedFilteredVegetables = [...filteredVegetables];
+        updatedFilteredVegetables.splice(index, 1);
+        let userVeggie = updatedFilteredVegetables.splice(index, 1);
+        setFilteredVegetables(updatedFilteredVegetables);
+        setUserVegetables([...userVegetables, userVeggie]);
     }
 
     return (
@@ -172,7 +182,9 @@ export default function Vegetables() {
                     </button>
                 </form>
             </div>
-            <FilteredVegetables userVegetables={userVegetables} />
+            {/* <UserVegetables /> */}
+            {/* <UserVegetablesList/> */}
+            <FilteredVegetableList filteredVegetables={filteredVegetables} addToUserList={addToUserList}/>
         </div>
     );
 }
