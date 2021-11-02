@@ -1,0 +1,13 @@
+
+.filtered-vegetables-container {
+    background-color: beige;
+    width: 25%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.filtered-vegetable {
+    border: 1px solid green;
+    margin: 0.25rem;
+    padding: 0.5rem 0rem;
+}

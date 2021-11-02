@@ -1,3 +1,9 @@
+.vegetables-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+
 .vegetables-form {
     display: flex;
     flex-direction: column;

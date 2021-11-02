@@ -12,6 +12,7 @@ import Footer from "./components/Footer/Footer";
 import Cookie from 'js-cookie';
 import { useState, useEffect } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
+import FilteredVegetables from "./components/Main/Vegetables/FilteredVegetables";
 
 
 function App() {

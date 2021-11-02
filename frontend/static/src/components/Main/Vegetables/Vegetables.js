@@ -1,21 +1,22 @@
 import React from "react";
 import "./Vegetables.css";
-import Cookie from 'js-cookie';
-import { useState } from 'react';
+import Cookie from "js-cookie";
+import { useState, useEffect } from "react";
+import FilteredVegetables from "./FilteredVegetables";
 
 export default function Vegetables() {
-
     let queryString = "";
 
     const [filterData, setFilterData] = useState({
-        "name": "",
-        "exposure": "",
-        "heat_tolerant": "",
-        "drought_tolerant": "",
-        "life_cycle": "",
-        "seasonality": "",
-    })
+        name: "",
+        exposure: "",
+        heat_tolerant: "",
+        drought_tolerant: "",
+        life_cycle: "",
+        seasonality: "",
+    });
 
+    const [userVegetables, setUserVegetables] = useState();
 
     async function getVegetableDetails() {
         const options = {
@@ -31,123 +32,147 @@ export default function Vegetables() {
         } else {
             const data = await response.json();
             console.log("SUCCESS", data);
-
+            setUserVegetables(data);
         }
     }
-    
-    function handleChange(e) {
 
-        if (e.target.type === 'checkbox' && !e.target.checked) {
-            let updatedFilterData = {...filterData, [e.target.name] : ""}
+    function handleChange(e) {
+        if (e.target.type === "checkbox" && !e.target.checked) {
+            let updatedFilterData = { ...filterData, [e.target.name]: "" };
             setFilterData(updatedFilterData);
-        } else if (e.target.type === 'checkbox' && e.target.checked) {
-            let updatedFilterData = {...filterData, [e.target.name] : "True"}
+        } else if (e.target.type === "checkbox" && e.target.checked) {
+            let updatedFilterData = { ...filterData, [e.target.name]: "True" };
             setFilterData(updatedFilterData);
         } else {
-            let { name, value } = e.target
-            let updatedFilterData = {...filterData, [name] : value}
+            let { name, value } = e.target;
+            let updatedFilterData = { ...filterData, [name]: value };
             setFilterData(updatedFilterData);
         }
-
- 
-        console.log(filterData)
     }
 
     function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
 
         if (filterData.name.length > 0) {
             if (queryString.length > 0) {
-                queryString += "&"
+                queryString += "&";
             }
-            queryString = queryString + `name=${filterData.name}`
+            queryString = queryString + `name=${filterData.name}`;
         }
         if (filterData.exposure.length > 0) {
             if (queryString.length > 0) {
-                queryString += "&"
+                queryString += "&";
             }
-            queryString = queryString + `exposure=${filterData.exposure}`
+            queryString = queryString + `exposure=${filterData.exposure}`;
         }
         if (filterData.heat_tolerant.length > 0) {
             if (queryString.length > 0) {
-                queryString += "&"
+                queryString += "&";
             }
-            queryString = queryString + `heat_tolerant=${filterData.heat_tolerant}`
+            queryString =
+                queryString + `heat_tolerant=${filterData.heat_tolerant}`;
         }
         if (filterData.drought_tolerant.length > 0) {
             if (queryString.length > 0) {
-                queryString += "&"
+                queryString += "&";
             }
-            queryString = queryString + `drought_tolerant=${filterData.drought_tolerant}`
+            queryString =
+                queryString + `drought_tolerant=${filterData.drought_tolerant}`;
         }
         if (filterData.life_cycle.length > 0) {
             if (queryString.length > 0) {
-                queryString += "&"
+                queryString += "&";
             }
-            queryString = queryString + `life_cycle=${filterData.life_cycle}`
+            queryString = queryString + `life_cycle=${filterData.life_cycle}`;
         }
         if (filterData.seasonality.length > 0) {
             if (queryString.length > 0) {
-                queryString += "&"
+                queryString += "&";
             }
-            queryString = queryString + `seasonality=${filterData.seasonality}`
+            queryString = queryString + `seasonality=${filterData.seasonality}`;
         }
-    
+
         getVegetableDetails();
         queryString = "";
     }
 
-
     return (
         <div className="vegetables-container">
-            <h2>Pick Vegetables by Filtering:</h2>
-            <form action="" className="form-control vegetables-form" onSubmit={handleSubmit}>
-
-                <label htmlFor="name">Name (Optional):</label>
-                <input type="text" id="name" name="name" onChange={handleChange}/>
-
-                <label htmlFor="exposure">Sun Exposure</label>
-                <select name="exposure" id="exposure" onChange={handleChange}>
-                    <option value="">Both</option>
-                    <option value="FS">Full Sun</option>
-                    <option value="PS">Partial Sun</option>
-                </select>
-
-                <div className="vegetables-checkboxes-container">
+            <div className="vegetables-form-container">
+                <h2>Pick Vegetables by Filtering:</h2>
+                <form
+                    action=""
+                    className="form-control vegetables-form"
+                    onSubmit={handleSubmit}
+                >
+                    <label htmlFor="name">Name (Optional):</label>
                     <input
-                        type="checkbox"
-                        id="heat_tolerant"
-                        name="heat_tolerant"
-                        value='TRUE'
+                        type="text"
+                        id="name"
+                        name="name"
                         onChange={handleChange}
                     />
-                    <label htmlFor="heat_tolerant">Heat Tolerant</label>
-                    <input
-                        type="checkbox"
-                        id="drought_tolerant"
-                        name="drought_tolerant"
-                        value='TRUE'
+
+                    <label htmlFor="exposure">Sun Exposure</label>
+                    <select
+                        name="exposure"
+                        id="exposure"
                         onChange={handleChange}
-                    />
-                    <label htmlFor="drought_tolerant">Drought Tolerant</label>
-                </div>
+                    >
+                        <option value="">Both</option>
+                        <option value="FS">Full Sun</option>
+                        <option value="PS">Partial Sun</option>
+                    </select>
 
-                <label htmlFor="life_cycle">Life Cycle</label>
-                <select name="life_cycle" id="life_cycle" onChange={handleChange}>
-                    <option value="">All</option>
-                    <option value="AN">Annual</option>
-                    <option value="BI">Biennial</option>
-                    <option value="PE">Perennial</option>
-                </select>
+                    <div className="vegetables-checkboxes-container">
+                        <input
+                            type="checkbox"
+                            id="heat_tolerant"
+                            name="heat_tolerant"
+                            value="TRUE"
+                            onChange={handleChange}
+                        />
+                        <label htmlFor="heat_tolerant">Heat Tolerant</label>
+                        <input
+                            type="checkbox"
+                            id="drought_tolerant"
+                            name="drought_tolerant"
+                            value="TRUE"
+                            onChange={handleChange}
+                        />
+                        <label htmlFor="drought_tolerant">
+                            Drought Tolerant
+                        </label>
+                    </div>
 
-                <label htmlFor="seasonality">Seasonality</label>
-                <select name="seasonality" id="seasonality" onChange={handleChange}>
-                    <option value="">All</option>
-                    <option value="CS">Cool Season</option>
-                    <option value="WS">Warm Season</option>
-                </select>
-                <button className="btn btn-success flagship-btn">Search</button>
-            </form>
+                    <label htmlFor="life_cycle">Life Cycle</label>
+                    <select
+                        name="life_cycle"
+                        id="life_cycle"
+                        onChange={handleChange}
+                    >
+                        <option value="">All</option>
+                        <option value="AN">Annual</option>
+                        <option value="BI">Biennial</option>
+                        <option value="PE">Perennial</option>
+                    </select>
+
+                    <label htmlFor="seasonality">Seasonality</label>
+                    <select
+                        name="seasonality"
+                        id="seasonality"
+                        onChange={handleChange}
+                    >
+                        <option value="">All</option>
+                        <option value="CS">Cool Season</option>
+                        <option value="WS">Warm Season</option>
+                    </select>
+                    <button className="btn btn-success flagship-btn">
+                        Search
+                    </button>
+                </form>
+            </div>
+            <FilteredVegetables userVegetables={userVegetables} />
         </div>
     );
 }
