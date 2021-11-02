@@ -137,6 +137,7 @@ export default function Soil() {
                     <p>{recommendations}</p>
                 </div>
             </div>
+            <button id="soil-save-btn" className="btn btn-success flagship-btn" onClick={handleClick}>Save Soil Type</button>
         </div>
     );
 }
