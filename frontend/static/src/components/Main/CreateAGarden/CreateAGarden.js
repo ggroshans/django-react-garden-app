@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 
-function GetStarted(props) {
+function CreateAGarden(props) {
 
    
 
@@ -55,4 +55,4 @@ function GetStarted(props) {
     )
 }
 
-export default withRouter(GetStarted);
+export default withRouter(CreateAGarden);

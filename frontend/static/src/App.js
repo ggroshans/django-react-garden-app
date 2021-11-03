@@ -4,7 +4,7 @@ import Main from "./components/Main/Main";
 import Registration from "./components/Auth/Registration";
 import Login from "./components/Auth/Login";
 import Splash from "./components/Auth/Splash";
-import GetStarted from "./components/Main/GetStarted/GetStarted";
+import CreateAGarden from "./components/Main/CreateAGarden/CreateAGarden";
 import Soil from './components/Main/Soil/Soil'
 import Vegetables from './components/Main/Vegetables/Vegetables'
 import Layout from "./components/Main/Layout/Layout";
@@ -51,8 +51,8 @@ function App() {
                 <Route path="/registration">
                     <Registration setIsAuth={setIsAuth} isAuth={isAuth}/>
                 </Route>
-                <Route path="/getstarted">
-                    <GetStarted />
+                <Route path="/creategarden">
+                    <CreateAGarden/>
                 </Route>
                 <Route path="/:garden/soil">
                     <Soil />

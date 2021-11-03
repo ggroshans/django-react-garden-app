@@ -1,7 +1,12 @@
 
-.canvas-container {
+.layout-container {
     display: flex;
     justify-content: space-around;
+}
+
+.canvas-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .layout-canvas {
