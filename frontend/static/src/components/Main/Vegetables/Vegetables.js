@@ -99,21 +99,20 @@ export default function Vegetables() {
     }
 
     function addToUserList(id) {
-        let index = filteredVegetables.findIndex(element => element.id = id);
+        let index = filteredVegetables.findIndex(element => element.id == id);
+        console.log("INDEX", index)
         let updatedFilteredVegetables = [...filteredVegetables];
-        updatedFilteredVegetables.splice(index, 1);
         let userVeggieToAdd = updatedFilteredVegetables.splice(index, 1);
+        updatedFilteredVegetables.splice(index, 1);
         setFilteredVegetables(updatedFilteredVegetables);
         setUserVegetables([...userVegetables, userVeggieToAdd[0]]);
     }
 
     function removeFromUserList(id){
-        let index = userVegetables.findIndex(element => element.id = id);
+        let index = userVegetables.findIndex(element => element.id === id);
         let updatedUserVegetables =[...userVegetables];
         updatedUserVegetables.splice(index, 1);
-        // let userVeggieToRemove = updatedUserVegetables.splice(index, 1);
         setUserVegetables(updatedUserVegetables);
-
     }
 
     console.log("user-veg-list",userVegetables)

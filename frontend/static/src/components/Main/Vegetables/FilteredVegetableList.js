@@ -1,5 +1,6 @@
 import React from "react";
 import "./FilteredVegetableList.css";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function FilteredVegetableList(props) {
     return (
@@ -12,7 +13,7 @@ export default function FilteredVegetableList(props) {
                         if (props.userVegetables.some((element) => element.name === vegetable.name)){
                             console.log("true")
                             return (
-                              <div className="filtered-vegetable already-added">
+                              <div className="filtered-vegetable already-added" key={uuidv4()}>
                                   <p className="filtered-vegetable-name">
                                       {vegetable.name}
                                   </p>
@@ -22,7 +23,7 @@ export default function FilteredVegetableList(props) {
                         } else {
                             console.log("false")
                             return (
-                              <div className="filtered-vegetable">
+                              <div className="filtered-vegetable" key={uuidv4()}>
                                   <p className="filtered-vegetable-name">
                                       {vegetable.name}
                                   </p>
