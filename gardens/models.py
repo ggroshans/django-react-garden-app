@@ -12,14 +12,6 @@ class Soil(models.Model):
     def __str__(self):
         return self.soil_order
 
-class Garden(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=25)
-    created_at = models.DateField(auto_now_add=True, null=True, blank=True)
-    soil = models.ForeignKey(Soil, on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return self.name
 
 class Vegetable (models.Model):
 
@@ -55,10 +47,20 @@ class Vegetable (models.Model):
         (WARM_SEASON, 'WS'),
     ]
     seasonality = models.CharField(max_length=4, choices=SEASONALITY_CHOICES)
-
+    companions = models.JSONField(null=True, blank=True)
+    adversaries = models.JSONField(null=True, blank=True)
 
     def __str__(self):
         return self.name
 
 
 
+class Garden(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=25)
+    created_at = models.DateField(auto_now_add=True, null=True, blank=True)
+    soil = models.ForeignKey(Soil, on_delete=models.CASCADE, null=True)
+    vegetables = models.ManyToManyField(Vegetable)
+
+    def __str__(self):
+        return self.name
