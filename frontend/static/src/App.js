@@ -7,7 +7,7 @@ import Splash from "./components/Auth/Splash";
 import GetStarted from "./components/Main/GetStarted/GetStarted";
 import Soil from './components/Main/Soil/Soil'
 import Vegetables from './components/Main/Vegetables/Vegetables'
-import Companions from "./components/Main/Companions/Companions";
+import Layout from "./components/Main/Layout/Layout";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Cookie from 'js-cookie';
@@ -60,11 +60,8 @@ function App() {
                 <Route path="/:garden/vegetables">
                     <Vegetables />
                 </Route>
-                <Route path="/:garden/companions">
-                    <Companions />
-                </Route>
-                <Route path="/layout">
-                    <Soil />
+                <Route path="/:garden/layout">
+                    <Layout />
                 </Route>
                 <Route path="/">
                     <Splash />

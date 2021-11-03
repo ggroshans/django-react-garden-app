@@ -8,6 +8,7 @@ import { withRouter } from "react-router";
 
 function Vegetables(props) {
     let queryString = "";
+    let pkValues=[];
 
     const [filterData, setFilterData] = useState({
         name: "",
@@ -116,20 +117,38 @@ function Vegetables(props) {
         setUserVegetables(updatedUserVegetables);
     }
 
+    function grabPKvalues(vegetables) {
+
+        for (let i = 0; i < vegetables.length; i++) {
+            pkValues.push(vegetables[i].id)
+        }
+    }
+
+    console.log("HEYOOO", grabPKvalues(userVegetables))
+
     async function handleSaveVegClick() {
 
-        // const options = {
-        //     method: "POST",
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'X-CSRFToken': Cookie.get('csrftoken')
-        //     },
-        //     body: JSON.stringify(userVegetables)
-        // }
-        // const response = await fetch()
+        const options = {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookie.get('csrftoken')
+            },
+            body: JSON.stringify({'vegetables': pkValues })
+        }
+        const response = await fetch(`/api/gardens/${props.match.params.garden}/`, options)
+        if (response.ok === false) {
+            console.log('VEG PATCH FAILED', response);
+        } else {
+            const data = await response.json()
+            console.log("VEG PATCH SUCCESS", data);
+            props.history.push(`/${data.id}/companions/`)
+        }
 
-        // props.history.push(`/${data.id}/companions/`)
+
     }
+
+    console.log(props)
 
 
     return (
