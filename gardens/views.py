@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db.models import query
 from django.db.models.query import QuerySet
 from django.shortcuts import render
@@ -12,6 +13,10 @@ from .serializers import GardenSerializer, SoilSerializer, VegetableSerializer
 class GardenListCreateAPIView(generics.ListCreateAPIView):
     queryset = Garden.objects.all()
     serializer_class = GardenSerializer
+
+    def get_queryset(self):
+        current_user = settings.request.user
+        return Garden.objects.all(user=current_user)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
