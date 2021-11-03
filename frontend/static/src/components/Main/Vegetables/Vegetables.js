@@ -115,7 +115,18 @@ export default function Vegetables() {
         setUserVegetables(updatedUserVegetables);
     }
 
-    console.log("user-veg-list",userVegetables)
+    async function handleSaveVegClick() {
+
+        const options = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookie.get('csrftoken')
+            },
+            body: JSON.stringify(userVegetables)
+        }
+        const response = await fetch()
+    }
 
 
     return (
@@ -193,6 +204,8 @@ export default function Vegetables() {
                         Search
                     </button>
                 </form>
+                <h2>Save your vegetable list / Continue:</h2>
+                <button className="btn btn-success flagship-btn" onClick={handleSaveVegClick}>Finalize Vegetable Picks</button>
             </div>
 
             <FilteredVegetableList filteredVegetables={filteredVegetables} userVegetables={userVegetables} addToUserList={addToUserList}/>
