@@ -60,7 +60,7 @@ class Garden(models.Model):
     name = models.CharField(max_length=25)
     created_at = models.DateField(auto_now_add=True, null=True, blank=True)
     soil = models.ForeignKey(Soil, on_delete=models.CASCADE, null=True)
-    vegetables = models.ManyToManyField(Vegetable)
+    vegetables = models.ManyToManyField(Vegetable, related_name="vegetables")
 
     def __str__(self):
         return self.name
