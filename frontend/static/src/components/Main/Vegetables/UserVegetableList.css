@@ -1,24 +1,19 @@
 
 
-.filtered-vegetables-list-container{
+.user-vegetables-list-container{
     width: 30%;
 }
 
-.filtered-vegetables-grid-container {
+.user-vegetables-grid-container {
     background-color: beige;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
-.filtered-vegetable {
+.user-vegetable {
     border: 1px solid green;
     margin: 0.25rem;
     padding: 0.5rem 0rem;
     width:100px;
-    height: 100px;
-}
-
-.already-added {
-    background-color:lightgreen;
 }

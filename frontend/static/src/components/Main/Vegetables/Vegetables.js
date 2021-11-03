@@ -3,6 +3,7 @@ import "./Vegetables.css";
 import Cookie from "js-cookie";
 import { useState, useEffect } from "react";
 import FilteredVegetableList from "./FilteredVegetableList";
+import UserVegetableList from "./UserVegetableList";
 
 export default function Vegetables() {
     let queryString = "";
@@ -102,9 +103,13 @@ export default function Vegetables() {
         let updatedFilteredVegetables = [...filteredVegetables];
         updatedFilteredVegetables.splice(index, 1);
         let userVeggie = updatedFilteredVegetables.splice(index, 1);
+        console.log("USERVEG", userVeggie)
         setFilteredVegetables(updatedFilteredVegetables);
-        setUserVegetables([...userVegetables, userVeggie]);
+        setUserVegetables([...userVegetables, userVeggie[0]]);
     }
+
+    console.log("user-veg-list",userVegetables)
+
 
     return (
         <div className="vegetables-container">
@@ -182,9 +187,9 @@ export default function Vegetables() {
                     </button>
                 </form>
             </div>
-            {/* <UserVegetables /> */}
-            {/* <UserVegetablesList/> */}
-            <FilteredVegetableList filteredVegetables={filteredVegetables} addToUserList={addToUserList}/>
+
+            <FilteredVegetableList filteredVegetables={filteredVegetables} userVegetables={userVegetables} addToUserList={addToUserList}/>
+            <UserVegetableList userVegetables={userVegetables}/>
         </div>
     );
 }
