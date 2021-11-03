@@ -3,6 +3,7 @@ from .models import Garden, Soil, Vegetable
 
 class GardenSerializer(serializers.ModelSerializer):
     username = serializers.ReadOnlyField(source="user.username")
+    vegetables = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Garden
