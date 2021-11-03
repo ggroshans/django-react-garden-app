@@ -4,8 +4,9 @@ import Cookie from "js-cookie";
 import { useState, useEffect } from "react";
 import FilteredVegetableList from "./FilteredVegetableList";
 import UserVegetableList from "./UserVegetableList";
+import { withRouter } from "react-router";
 
-export default function Vegetables() {
+function Vegetables(props) {
     let queryString = "";
 
     const [filterData, setFilterData] = useState({
@@ -117,15 +118,17 @@ export default function Vegetables() {
 
     async function handleSaveVegClick() {
 
-        const options = {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookie.get('csrftoken')
-            },
-            body: JSON.stringify(userVegetables)
-        }
-        const response = await fetch()
+        // const options = {
+        //     method: "POST",
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'X-CSRFToken': Cookie.get('csrftoken')
+        //     },
+        //     body: JSON.stringify(userVegetables)
+        // }
+        // const response = await fetch()
+
+        // props.history.push(`/${data.id}/companions/`)
     }
 
 
@@ -213,3 +216,6 @@ export default function Vegetables() {
         </div>
     );
 }
+
+
+export default withRouter(Vegetables)
