@@ -13,7 +13,7 @@ export default function UserVegetableList(props) {
                           {console.log("VEGGIE",vegetable)}
                           <div className="user-vegetable">
                               <p className="user-vegetable-name">{vegetable.name}</p>
-                              <button className="user-add-vegetable" onClick={() => props.addToUserList(vegetable.id)}>Add</button>
+                              <button className="user-add-vegetable" onClick={() => props.removeFromUserList(vegetable.id)}>Remove</button>
                           </div></>
                       );
                   })}

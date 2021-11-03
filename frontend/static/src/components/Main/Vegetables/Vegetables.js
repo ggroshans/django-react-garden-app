@@ -102,10 +102,18 @@ export default function Vegetables() {
         let index = filteredVegetables.findIndex(element => element.id = id);
         let updatedFilteredVegetables = [...filteredVegetables];
         updatedFilteredVegetables.splice(index, 1);
-        let userVeggie = updatedFilteredVegetables.splice(index, 1);
-        console.log("USERVEG", userVeggie)
+        let userVeggieToAdd = updatedFilteredVegetables.splice(index, 1);
         setFilteredVegetables(updatedFilteredVegetables);
-        setUserVegetables([...userVegetables, userVeggie[0]]);
+        setUserVegetables([...userVegetables, userVeggieToAdd[0]]);
+    }
+
+    function removeFromUserList(id){
+        let index = userVegetables.findIndex(element => element.id = id);
+        let updatedUserVegetables =[...userVegetables];
+        updatedUserVegetables.splice(index, 1);
+        // let userVeggieToRemove = updatedUserVegetables.splice(index, 1);
+        setUserVegetables(updatedUserVegetables);
+
     }
 
     console.log("user-veg-list",userVegetables)
@@ -189,7 +197,7 @@ export default function Vegetables() {
             </div>
 
             <FilteredVegetableList filteredVegetables={filteredVegetables} userVegetables={userVegetables} addToUserList={addToUserList}/>
-            <UserVegetableList userVegetables={userVegetables}/>
+            <UserVegetableList userVegetables={userVegetables} removeFromUserList={removeFromUserList}/>
         </div>
     );
 }
