@@ -1,14 +1,6 @@
 from rest_framework import serializers
 from .models import Garden, Soil, Vegetable
 
-class GardenSerializer(serializers.ModelSerializer):
-    username = serializers.ReadOnlyField(source="user.username")
-    vegetables = serializers.StringRelatedField(many=True)
-
-    class Meta:
-        model = Garden
-        fields = '__all__'
-
 class SoilSerializer(serializers.ModelSerializer):
     class Meta:
         model = Soil
@@ -17,4 +9,12 @@ class SoilSerializer(serializers.ModelSerializer):
 class VegetableSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vegetable
+        fields = '__all__'
+
+class GardenSerializer(serializers.ModelSerializer):
+    username = serializers.ReadOnlyField(source="user.username")
+    vegetables = VegetableSerializer(many=True)
+
+    class Meta:
+        model = Garden
         fields = '__all__'

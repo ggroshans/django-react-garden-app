@@ -1,8 +1,32 @@
-import React from 'react'
-import { useRef, useEffect, useState } from 'react'
-import './Layout.css'
+import React from 'react';
+import { useRef, useEffect, useState} from 'react';
+import { withRouter } from 'react-router-dom';
+import './Layout.css';
+import Cookie from 'js-cookie';
 
-export default function Companions() {
+function Layout(props) {
+
+    useEffect( () => {
+        getGardenDetails();
+    }, [])
+
+    async function getGardenDetails() {
+
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": 'application/json',
+                "X-CSRFToken": Cookie.get('csrftoken')
+            }
+        }
+        const response = await fetch (`/api/gardens/${props.match.params.garden}/`, options)
+        if (response.ok === false) {
+            console.log("GET DETAILS FAILED", response)
+        } else {
+            const data = await response.json()
+            console.log("GET DETAILS SUCCESS", data)
+        }
+    }
 
     const canvasRef = useRef(null)
     const contextRef = useRef(null)
@@ -43,7 +67,7 @@ export default function Companions() {
     }
 
 
-    
+
 
     return (
         <div>
@@ -62,3 +86,5 @@ export default function Companions() {
         </div>
     )
 }
+
+export default withRouter(Layout);
