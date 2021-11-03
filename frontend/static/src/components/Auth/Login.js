@@ -40,7 +40,7 @@ function Login(props) {
     }
 
     if (props.isAuth === true) {
-       return <Redirect to="/getstarted" />
+       return <Redirect to="/gardenlist" />
     }
 
     return (

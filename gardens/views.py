@@ -15,8 +15,8 @@ class GardenListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = GardenSerializer
 
     def get_queryset(self):
-        current_user = settings.request.user
-        return Garden.objects.all(user=current_user)
+        current_user = self.request.user
+        return Garden.objects.filter(user=current_user)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

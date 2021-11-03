@@ -41,7 +41,7 @@ export default function Registration(props) {
     }
 
     if (props.isAuth === true) {
-        return <Redirect to="/getstarted" />
+        return <Redirect to="/gardenlist" />
      }
      
     return (
