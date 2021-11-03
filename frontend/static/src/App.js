@@ -4,7 +4,7 @@ import Main from "./components/Main/Main";
 import Registration from "./components/Auth/Registration";
 import Login from "./components/Auth/Login";
 import Splash from "./components/Auth/Splash";
-import CreateAGarden from "./components/Main/CreateAGarden/CreateAGarden";
+import CreateAGarden from "./components/Main/Profile/CreateAGarden";
 import Soil from './components/Main/Soil/Soil'
 import Vegetables from './components/Main/Vegetables/Vegetables'
 import Layout from "./components/Main/Layout/Layout";
