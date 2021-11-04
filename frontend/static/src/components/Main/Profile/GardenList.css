@@ -1,0 +1,10 @@
+
+.garden-list-container {
+    width: 100%;
+}
+
+.garden-list-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    margin: auto;
+}

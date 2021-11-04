@@ -2,7 +2,7 @@ import React from 'react';
 import GardenItem from './GardenItem';
 import Cookie from 'js-cookie';
 import { useEffect, useState } from 'react';
-
+import "./GardenList.css"
 
 
 export default function GardenList() {
@@ -35,9 +35,12 @@ export default function GardenList() {
     return (
         <div className="garden-list-container">
              <h2>Your Gardens:</h2>
-            {userGardens.map(element => {
+             <div className="garden-list-grid-container">
+             {userGardens.map(element => {
                 return <GardenItem {...element} />
             })}
+             </div>
+
         </div>
     )
 }

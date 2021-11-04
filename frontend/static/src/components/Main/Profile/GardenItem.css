@@ -1,0 +1,12 @@
+
+.garden-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--btn-color);
+    width: 250px;
+    height: 175px;
+    margin: auto;
+    margin-top: 1rem;
+}
