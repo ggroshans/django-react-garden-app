@@ -3,9 +3,10 @@ import GardenItem from './GardenItem';
 import Cookie from 'js-cookie';
 import { useEffect, useState } from 'react';
 import "./GardenList.css"
+import { withRouter } from 'react-router';
 
 
-export default function GardenList() {
+function GardenList(props) {
 
     const [userGardenList, setUserGardenList] = useState([])
 
@@ -31,9 +32,15 @@ export default function GardenList() {
         }
     }
 
+    function handleAddGardenBtn() {
+        props.history.push('/creategarden')
+    }
+
 
     return (
         <div className="garden-list-container">
+
+            <button className="btn btn-success flagship-btn garden-list-add-btn" onClick={handleAddGardenBtn}>Create New Garden</button>
              <h2>Your Gardens:</h2>
              <div className="garden-list-grid-container">
              {userGardenList.map(element => {
@@ -43,3 +50,5 @@ export default function GardenList() {
         </div>
     )
 }
+
+export default withRouter(GardenList)
