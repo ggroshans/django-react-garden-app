@@ -61,7 +61,7 @@ class Garden(models.Model):
     name = models.CharField(max_length=25)
     created_at = models.DateField(auto_now_add=True, null=True, blank=True)
     soil = models.ForeignKey(Soil, on_delete=models.CASCADE, null=True)
-    vegetables = models.ManyToManyField(Vegetable, related_name="vegetables")
+    vegetables = models.ManyToManyField(Vegetable, related_name="vegetables", blank=True)
     layout = models.ImageField(upload_to="layouts/", null=True)
 
     def __str__(self):

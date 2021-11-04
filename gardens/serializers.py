@@ -13,7 +13,7 @@ class VegetableSerializer(serializers.ModelSerializer):
 
 class GardenSerializer(serializers.ModelSerializer):
     username = serializers.ReadOnlyField(source="user.username")
-    vegetables = VegetableSerializer(many=True)
+    vegetables = VegetableSerializer(many=True, read_only=True)
 
     class Meta:
         model = Garden

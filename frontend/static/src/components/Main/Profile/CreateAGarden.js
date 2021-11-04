@@ -8,7 +8,7 @@ function CreateAGarden(props) {
    
 
     const [data, setData] = useState({
-        'name': ""
+        'name': "",
     })
 
     function handleChange(e) {
