@@ -3,9 +3,9 @@ import React from "react";
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
-export default function NavBar(props) {
+function NavBar(props) {
     const [radioValue, setRadioValue] = useState("");
 
     const radios = [
@@ -15,16 +15,23 @@ export default function NavBar(props) {
         { name: "Physical Layout", value: "layout" },
     ];
 
+    let paramValue;
+    paramValue = props.location.pathname.split("/")[1]
+    console.log(paramValue)
+
     function handleChange(e) {
+ 
         setRadioValue(e.currentTarget.value);
     }
+
+    console.log("nav props", props)
 
     return (
         <div className="navbar-container">
             <div className="nav-btn-group">
                 <ButtonGroup>
                     {radios.map((radio, index) => (
-                        <NavLink to={`/${radio.value}`} className="navbar-navlink">
+                        <NavLink to={`/${paramValue}/${radio.value}/`} className="navbar-navlink">
                             <ToggleButton
                                 className="nav-btn navbar-radio-btn"
                                 key={uuidv4()}
@@ -45,3 +52,5 @@ export default function NavBar(props) {
         </div>
     );
 }
+
+export default withRouter(NavBar);
