@@ -3,15 +3,18 @@ import { withRouter } from "react-router";
 import { useEffect, useState } from "react";
 import Cookie from "js-cookie";
 import "./GardenDetail.css";
+import { Spinner, Button, Collapse } from "react-bootstrap";
 
 function GardenDetail(props) {
-    const [userGarden, setUserGarden] = useState([]);
+    const [userGarden, setUserGarden] = useState();
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         grabUserGarden();
     }, []);
 
     async function grabUserGarden() {
+        console.log("here", props.match.params.garden);
         const options = {
             method: "GET",
             headers: {
@@ -20,7 +23,7 @@ function GardenDetail(props) {
             },
         };
         const response = await fetch(
-            `/api/gardens/${props.match.params.garden}`,
+            `/api/gardens/${props.match.params.garden}/`,
             options
         );
         if (response.ok === false) {
@@ -28,8 +31,19 @@ function GardenDetail(props) {
         } else {
             const data = await response.json();
             console.log("GARDEN LIST SUCCESS", data);
+            console.log("DATA", data);
             setUserGarden(data);
         }
+    }
+
+    if (!userGarden) {
+        return (
+            <Spinner
+                animation="border"
+                variant="success"
+                className="garden-detail-spinner"
+            />
+        );
     }
 
     return (
@@ -39,23 +53,61 @@ function GardenDetail(props) {
                 <p>Created: {userGarden.created_at}</p>
                 <p>Soil Type: {userGarden.soil}</p>
                 <p>Layout: {userGarden.layout} </p>
-                <h4>Vegetables:</h4>
-                {userGarden.vegetables.map((vegetable) => {
-                    return (
-                        <div>
-                            <h5>{vegetable.name}</h5>
-                            <p>Plant with: {vegetable.companions}</p>
-                            <p>Do NOT plant with: {vegetable.adversaries}</p>
-                            <p>Sun Exposure: {vegetable.exposure === "BO" ? "Full Sun And/Or Partial Sun" : vegetable.exposure === "FS" ? "Full Sun" : "Partial Sun"
-                            }</p>
-                            <p>Heat Tolerant: {vegetable.heat_tolerant ? "Yes" : "No"}</p>
-                            <p>Drought Tolerant: {vegetable.drought_tolerant ? "Yes" : "No"}</p>
-                            <p>Life Cycle: {vegetable.life_cycle === "AN" ? "Annual" : vegetable.life_cycle === "BI" ? "Biennial" : "Perennial"}</p>
-                            <p>Seasonality: {vegetable.seasonality === "CS" ? "Cool-Season" : "Warm-Season"}</p>
-                            
-                        </div>
-                    );
-                })}
+                <Button
+                    onClick={() => setOpen(!open)}
+                    aria-controls="example-collapse-text"
+                    aria-expanded={open}
+                >
+                    Vegetables
+                </Button>
+                <Collapse in={open}>
+                    <div className="garden-detail-vegetable-grid-container">
+                        {userGarden.vegetables.map((vegetable) => {
+                            return (
+                                <div className="garden-detail-vegetable">
+                                    <h5>{vegetable.name}</h5>
+                                    <p>Plant with: {vegetable.companions}</p>
+                                    <p>
+                                        Do NOT plant with:{" "}
+                                        {vegetable.adversaries}
+                                    </p>
+                                    <p>
+                                        Sun Exposure:{" "}
+                                        {vegetable.exposure === "BO"
+                                            ? "Full Sun And/Or Partial Sun"
+                                            : vegetable.exposure === "FS"
+                                            ? "Full Sun"
+                                            : "Partial Sun"}
+                                    </p>
+                                    <p>
+                                        Heat Tolerant:{" "}
+                                        {vegetable.heat_tolerant ? "Yes" : "No"}
+                                    </p>
+                                    <p>
+                                        Drought Tolerant:{" "}
+                                        {vegetable.drought_tolerant
+                                            ? "Yes"
+                                            : "No"}
+                                    </p>
+                                    <p>
+                                        Life Cycle:{" "}
+                                        {vegetable.life_cycle === "AN"
+                                            ? "Annual"
+                                            : vegetable.life_cycle === "BI"
+                                            ? "Biennial"
+                                            : "Perennial"}
+                                    </p>
+                                    <p>
+                                        Seasonality:{" "}
+                                        {vegetable.seasonality === "CS"
+                                            ? "Cool-Season"
+                                            : "Warm-Season"}
+                                    </p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </Collapse>
             </div>
         </div>
     );
