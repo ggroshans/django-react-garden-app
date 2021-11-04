@@ -43,7 +43,7 @@ function App() {
 
     return (
         <div className="App">
-            <Header />
+            <Header isAuth={isAuth}/>
             <Switch>
                 <Route path="/login">
                     <Login setIsAuth={setIsAuth} isAuth={isAuth}/>
