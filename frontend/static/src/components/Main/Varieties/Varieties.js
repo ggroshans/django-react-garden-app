@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Main() {
+export default function Varieties() {
     return (
         <div>
-            This is main
+            
         </div>
     )
 }

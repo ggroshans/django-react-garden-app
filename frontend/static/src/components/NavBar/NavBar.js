@@ -11,7 +11,7 @@ export default function NavBar(props) {
     const radios = [
         { name: "Soil", value: "soil" },
         { name: "Vegetables", value: "vegetables" },
-        { name: "Companion Plants", value: "companion" },
+        { name: "Plant Varieties", value: "varieties" },
         { name: "Physical Layout", value: "layout" },
     ];
 
