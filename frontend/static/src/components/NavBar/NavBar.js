@@ -17,14 +17,11 @@ function NavBar(props) {
 
     let paramValue;
     paramValue = props.location.pathname.split("/")[1]
-    console.log(paramValue)
 
     function handleChange(e) {
- 
         setRadioValue(e.currentTarget.value);
     }
 
-    console.log("nav props", props)
 
     return (
         <div className="navbar-container">

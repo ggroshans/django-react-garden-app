@@ -22,6 +22,28 @@ function Vegetables(props) {
     const [filteredVegetables, setFilteredVegetables] = useState();
     const [userVegetables, setUserVegetables] = useState([])
 
+    useEffect( ()=> {
+        getUsersVegetableList()
+    }, [])
+
+    async function getUsersVegetableList() {
+        const options = {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookie.get('csrftoken')
+            }
+        }
+        const response = await fetch(`/api/gardens/${props.match.params.garden}/`, options)
+        if (response.ok === false) {
+            console.log("GETTING USER VEGETABLES FAILED", response)
+        } else {
+            const data = await response.json()
+            setUserVegetables(data.vegetables_details)
+        }
+    }
+
+
     async function getVegetableDetails() {
         const options = {
             method: "GET",
@@ -142,11 +164,7 @@ function Vegetables(props) {
             console.log("VEG PATCH SUCCESS", data);
             props.history.push(`/${data.id}/varieties/`)
         }
-
-
     }
-
-    console.log(props)
 
 
     return (
