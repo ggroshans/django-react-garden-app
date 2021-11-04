@@ -14,6 +14,7 @@ import Footer from "./components/Footer/Footer";
 import Cookie from 'js-cookie';
 import { useState, useEffect } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
+import Varieties from "./components/Main/Varieties/Varieties";
 
 
 function App() {
@@ -66,6 +67,9 @@ function App() {
                 </Route>
                 <Route path="/:garden/vegetables">
                     <Vegetables />
+                </Route>
+                <Route path="/:garden/varieties">
+                    <Varieties />
                 </Route>
                 <Route path="/:garden/layout">
                     <Layout />

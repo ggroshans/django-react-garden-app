@@ -1,8 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
+import Cookie from 'js-cookie';
+import { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
+import { withRouter } from 'react-router';
 
-export default function Varieties() {
+function Varieties(props) {
 
     const [userGarden, setUserGarden] = useState();
 
@@ -47,3 +49,5 @@ export default function Varieties() {
         </div>
     )
 }
+
+export default withRouter(Varieties)

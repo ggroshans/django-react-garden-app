@@ -11,9 +11,10 @@ class VegetableSerializer(serializers.ModelSerializer):
         model = Vegetable
         fields = '__all__'
 
+
 class GardenSerializer(serializers.ModelSerializer):
     username = serializers.ReadOnlyField(source="user.username")
-    vegetables = VegetableSerializer(many=True, read_only=True)
+    vegetables_details = VegetableSerializer(many=True, read_only=True, source="vegetables")
 
     class Meta:
         model = Garden

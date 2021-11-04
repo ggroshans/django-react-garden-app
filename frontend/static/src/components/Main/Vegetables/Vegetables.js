@@ -124,9 +124,9 @@ function Vegetables(props) {
         }
     }
 
-    console.log("HEYOOO", grabPKvalues(userVegetables))
-
     async function handleSaveVegClick() {
+
+        grabPKvalues(userVegetables)
 
         const options = {
             method: "PATCH",
@@ -142,7 +142,7 @@ function Vegetables(props) {
         } else {
             const data = await response.json()
             console.log("VEG PATCH SUCCESS", data);
-            props.history.push(`/${data.id}/companions/`)
+            props.history.push(`/${data.id}/varieties/`)
         }
 
 
