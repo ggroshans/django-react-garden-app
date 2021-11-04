@@ -7,13 +7,13 @@ import "./GardenList.css"
 
 export default function GardenList() {
 
-    const [userGardens, setUserGardens] = useState([])
+    const [userGardenList, setUserGardenList] = useState([])
 
     useEffect( () => {
-        grabUsersGardens()
+        grabUserGardenList()
     }, [])
 
-    async function grabUsersGardens() {
+    async function grabUserGardenList() {
         const options = {
             method: 'GET',
             headers: {
@@ -27,7 +27,7 @@ export default function GardenList() {
         } else {
             const data = await response.json()
             console.log("GARDEN LIST SUCCESS", data)
-            setUserGardens(data)
+            setUserGardenList(data)
         }
     }
 
@@ -36,11 +36,10 @@ export default function GardenList() {
         <div className="garden-list-container">
              <h2>Your Gardens:</h2>
              <div className="garden-list-grid-container">
-             {userGardens.map(element => {
+             {userGardenList.map(element => {
                 return <GardenItem {...element} />
             })}
              </div>
-
         </div>
     )
 }

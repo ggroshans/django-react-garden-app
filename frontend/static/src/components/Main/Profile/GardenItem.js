@@ -1,10 +1,11 @@
 import React from "react";
+import { withRouter } from "react-router";
 import "./GardenItem.css"
 
-export default function GardenItem(props) {
+ function GardenItem(props) {
 
-    function handleGardenItemClick() {
-        
+    function handleGardenItemClick(e) {
+        props.history.push(`/gardenlist/${props.id}`);
     }
 
     console.log("g-item props", props)
@@ -12,11 +13,13 @@ export default function GardenItem(props) {
     return (
         <div className='garden-item-container'>
        
-            <div className="garden-item" onClick={handleGardenItemClick}>
+            <button className="garden-item" value={props.id} onClick={handleGardenItemClick}>
                 <h3>{props.name}</h3>
                 <p>Created: {props.created_at}</p>
                 <p>Click for more details</p>
-            </div>
+            </button>
         </div>
     );
 }
+
+export default withRouter(GardenItem)
