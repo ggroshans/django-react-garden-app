@@ -1,8 +1,15 @@
 import React from "react";
 import "./Splash.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
-export default function Splash() {
+export default function Splash(props) {
+
+    console.log("ISAUTH??" , props.isAuth)
+
+    if (props.isAuth) {
+       return <Redirect to="/gardenlist" />
+    }
+
     function handleClickRegister() {}
 
     function handleClickLogin() {}

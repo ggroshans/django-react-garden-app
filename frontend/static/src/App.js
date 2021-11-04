@@ -74,7 +74,7 @@ function App() {
                 </Route>
 
                 <Route path="/">
-                    <Splash />
+                    <Splash isAuth={isAuth}/>
                 </Route>
                 <Route></Route>
                 <Route></Route>
