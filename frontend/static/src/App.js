@@ -21,8 +21,6 @@ function App() {
     const [isAuth, setIsAuth] = useState(false);
     const [currentGarden, setCurrentGarden] = useState();
 
-    console.log("currentGarden", currentGarden);
-
     useEffect( () => {
         const checkAuth  = () => {
             let cookie = Cookie.get('Authorization');
