@@ -105,8 +105,6 @@ function Vegetables(props) {
         console.log("INDEX", index)
         let updatedFilteredVegetables = [...filteredVegetables];
         let userVeggieToAdd = updatedFilteredVegetables.splice(index, 1);
-        updatedFilteredVegetables.splice(index, 1);
-        setFilteredVegetables(updatedFilteredVegetables);
         setUserVegetables([...userVegetables, userVeggieToAdd[0]]);
     }
 
