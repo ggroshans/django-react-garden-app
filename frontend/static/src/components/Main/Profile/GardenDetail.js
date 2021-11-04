@@ -30,8 +30,6 @@ function GardenDetail(props) {
             console.log("GARDEN LIST FAIL", response);
         } else {
             const data = await response.json();
-            console.log("GARDEN LIST SUCCESS", data);
-            console.log("DATA", data);
             setUserGarden(data);
         }
     }
