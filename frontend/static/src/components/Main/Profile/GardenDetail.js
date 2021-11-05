@@ -32,6 +32,7 @@ function GardenDetail(props) {
             setUserGarden(data);
         }
     }
+    console.log(userGarden)
     
     function handleEditVegetablesClick() {
         props.history.push(`/${props.match.params.garden}/vegetables/`)
