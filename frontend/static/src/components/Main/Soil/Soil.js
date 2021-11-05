@@ -104,7 +104,7 @@ if (loaded) {
             containerNode,
         }) => {
             esriConfig.apiKey =
-                "AAPKe38b2bd343f04b5193e206b9ba79736dnppkQdQ1hschBAm1A2YPnEoOKzokq3zT2dGou2OnPIINpYr9LR7gfHPGHNy6Lcjy";
+                'AAPK6b9ac47a7781479997be4a3c4f55379anHD405J2ju5NAgpM61QOKL_3OuxNpXIuC0e9p5uaVHSyQ7UQMwWHIuxYbSixZnev';
 
             const map = new Map({
                 basemap: "arcgis-topographic",

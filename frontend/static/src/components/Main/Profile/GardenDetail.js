@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import Cookie from "js-cookie";
 import "./GardenDetail.css";
 import { Spinner, Button, Collapse } from "react-bootstrap";
+import { FiEdit } from 'react-icons/fi';
 
 function GardenDetail(props) {
     const [userGarden, setUserGarden] = useState();
     const [open, setOpen] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    const [rename, setRename] = useState("");
 
     useEffect(() => {
         grabUserGarden();
@@ -32,11 +35,46 @@ function GardenDetail(props) {
             setUserGarden(data);
         }
     }
-    console.log(userGarden)
-    
+    console.log(userGarden);
+
     function handleEditVegetablesClick() {
-        props.history.push(`/${props.match.params.garden}/vegetables/`)
+        props.history.push(`/${props.match.params.garden}/vegetables/`);
     }
+
+    function handleEditSoilClick() {
+        props.history.push(`/${props.match.params.garden}/soil/`);
+    }
+
+    function handleEditNameClick() {
+        setIsEditing(true)
+    }
+
+    function handleChange(e) {
+        setRename(e.target.value);
+        console.log(rename);
+    }
+
+    async function handleRenameClick() {
+
+        const options = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": 'application/json',
+                "X-CSRFToken": Cookie.get('csrftoken')
+            },
+            body: JSON.stringify({name: rename})
+        }
+        const response = await fetch (`/api/gardens/${props.match.params.garden}/`, options)
+        if (response.ok === false) {
+            console.log("RENAME FAILED", response)
+        } else {
+            const data = await response.json();
+            console.log("RENAME SUCCESS", data);
+            setIsEditing(false);
+            setUserGarden({...userGarden, ['name']: rename})
+        }
+    }
+
 
     if (!userGarden) {
         return (
@@ -51,10 +89,13 @@ function GardenDetail(props) {
     return (
         <div className="garden-detail-container">
             <div className="garden-detail">
-                <h3>{userGarden.name}</h3>
+                {isEditing ? <div><h4>Update Garden Name:</h4><input type='text' value={rename} onChange={handleChange}/><button onClick={handleRenameClick} className="btn btn-success">Rename</button></div>: <h3>{userGarden.name}<FiEdit className="garden-detail-edit-btn" onClick={handleEditNameClick}/></h3> }
                 <p>Created: {userGarden.created_at}</p>
-                <p>Soil Type: {userGarden.soil}</p>
-                <p>Layout: {userGarden.layout} </p>
+                <h4>Soil <FiEdit className="garden-detail-edit-btn" onClick={handleEditSoilClick}/></h4>
+                <p><strong>Characteristics:</strong>{userGarden.soil_details.characteristics}</p>
+                <p><strong>Recommendations:</strong>{userGarden.soil_details.recommendations}</p>
+                <h4>Layout <FiEdit className="garden-detail-edit-btn"/></h4>
+                <p>{userGarden.layout}</p>
                 <Button
                     onClick={() => setOpen(!open)}
                     aria-controls="example-collapse-text"
@@ -63,11 +104,16 @@ function GardenDetail(props) {
                 >
                     Vegetables
                 </Button>
-                <Collapse in={open}>
+            </div>
+            <Collapse in={open}>
                 <div className="garden-detail-collapse-container">
-                <button className="btn btn-success flagship-btn garden-detail-edit-vegetables" onClick={handleEditVegetablesClick}>Edit Vegetables</button>
+                    <button
+                        className="btn btn-success flagship-btn garden-detail-edit-vegetables"
+                        onClick={handleEditVegetablesClick}
+                    >
+                        Edit Vegetables
+                    </button>
                     <div className="garden-detail-vegetable-grid-container">
-                        
                         {userGarden.vegetables_details.map((vegetable) => {
                             return (
                                 <div className="garden-detail-vegetable">
@@ -114,9 +160,7 @@ function GardenDetail(props) {
                         })}
                     </div>
                 </div>
-                
-                </Collapse>
-            </div>
+            </Collapse>
         </div>
     );
 }

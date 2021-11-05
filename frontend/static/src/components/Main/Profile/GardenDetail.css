@@ -3,6 +3,16 @@
     flex-direction: column;
     text-align: center; */
     /* border: 3px solid var(--btn-color); */
+    width: 500px;
+    margin: auto;
+}
+
+.garden-detail-edit-btn {
+    font-size: 0.75rem;
+}
+
+.garden-detail-edit-btn:hover {
+    color: var(--btn-color);
 }
 
 .garden-detail-spinner {
