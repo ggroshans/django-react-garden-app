@@ -94,6 +94,10 @@ function GardenDetail(props) {
                 <h4>Soil <FiEdit className="garden-detail-edit-btn" onClick={handleEditSoilClick}/></h4>
                 <p><strong>Characteristics:</strong>{userGarden.soil_details.characteristics}</p>
                 <p><strong>Recommendations:</strong>{userGarden.soil_details.recommendations}</p>
+                <h4>Seed Varieties<FiEdit className="garden-detail-edit-btn"/></h4>
+                {/* <p>{userGarden.varieties.map(variety => {
+                    return <p> </p>
+                })}</p> */}
                 <h4>Layout <FiEdit className="garden-detail-edit-btn"/></h4>
                 <p>{userGarden.layout}</p>
                 <Button

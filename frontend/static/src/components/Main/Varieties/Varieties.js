@@ -34,6 +34,37 @@ function Varieties(props) {
         }
     }
 
+    async function updateVarieties(variety) {
+        console.log('variety', variety);
+
+        const varieties = {...userGarden.varieties};
+        const key = Object.keys(variety)[0];
+        varieties[key] = variety[key];
+        
+        const options = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookie.get("csrftoken"),
+            },
+            body: JSON.stringify({ varieties }),
+        };
+        const response = await fetch(
+            `/api/gardens/${props.match.params.garden}/`,
+            options
+        );
+        if (response.ok === false) {
+            console.log("VARIETY PATCH FAILED", response);
+        } else {
+            const data = await response.json();
+            setUserGarden(prevState => ({
+                ...prevState,
+                varieties: varieties
+            }));
+            console.log("VARIETY PATCH SUCCESS", data);
+        }
+
+    } 
 
 
     if (!userGarden) {
@@ -51,7 +82,7 @@ function Varieties(props) {
         <div>
             <form action="" className="form-control">
                 {userGarden.vegetables_details.map(vegetable => {
-                    return <VarietiesDetail {...vegetable} varieties={userGarden.varieties}/>
+                    return <VarietiesDetail {...vegetable} updateVarieties={updateVarieties} />
                 })}
             </form>
         </div>
