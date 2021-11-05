@@ -9,7 +9,6 @@ function Varieties(props) {
 
     const [userGarden, setUserGarden] = useState();
 
-
     useEffect(() => {
         grabUserGarden();
     }, []);
@@ -39,7 +38,11 @@ function Varieties(props) {
 
         const varieties = {...userGarden.varieties};
         const key = Object.keys(variety)[0];
-        varieties[key] = variety[key];
+        
+        if (varieties[key] === null || varieties[key] === undefined) {
+            varieties[key] = [];
+    }        
+        varieties[key].push({[variety[key]]: ""});
         
         const options = {
             method: "PATCH",
