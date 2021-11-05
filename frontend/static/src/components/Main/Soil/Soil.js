@@ -80,8 +80,13 @@ function Soil(props) {
  })
 
 let esri;
-if (loaded) {
-    esri =             <div className="map-view">
+
+
+
+
+    return (
+        <div className="soil-container">
+            <div className="map-view">
     <EsriLoaderReact
         options={options}
         modulesToLoad={[
@@ -117,16 +122,10 @@ if (loaded) {
                 zoom: 13,
             });
 
-            // const popupSoils = {
-            //     title: "Soil Order",
-            //     content: "<b>{esrisymbology}</b>"
-            // };
-
-            // Parks and open spaces (polygons)
             const soilsLayer = new FeatureLayer({
                 url: "https://landscape11.arcgis.com/arcgis/rest/services/USA_Soils_Map_Units/featureserver/0",
                 outFields: ["taxorder"],
-                // popupTemplate: popupSoils
+
             });
             map.add(soilsLayer, 0);
 
@@ -163,14 +162,6 @@ if (loaded) {
         }}
     />
 </div>
-} else {
-    esri = ""
-}
-
-
-    return (
-        <div className="soil-container">
-            {esri}
             <div className="display-soil-container">
                 <p className="display-soil-p">{soil.soil_order}</p>
             </div>

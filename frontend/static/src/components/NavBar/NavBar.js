@@ -47,7 +47,7 @@ function NavBar(props) {
                 </ButtonGroup>
             </div>
         </div>
-    );
+    )
 }
 
 export default withRouter(NavBar);

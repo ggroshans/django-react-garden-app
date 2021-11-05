@@ -62,7 +62,7 @@ function Varieties(props) {
                         <div className="form-group variety-form-group">   
                             <p className="varieties-vegetable-name">Vegetable: {vegetable.name}</p>
                             <label className="varieties-variety-label label-form" htmlFor="variety"></label>
-                            {/* <input id="variety" name={vegetable.name} value={formData.vegetable.name} className="form-control" type="text" placeholder="Seed Variety" onChange={handleChange} /> */}
+                            <input id="variety" name={vegetable.name} className="form-control" type="text" placeholder="Seed Variety" onChange={handleChange} />
                         </div>
                         </>
                     )
