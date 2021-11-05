@@ -49,7 +49,7 @@ class Vegetable (models.Model):
     seasonality = models.CharField(max_length=4, choices=SEASONALITY_CHOICES)
     companions = models.JSONField(null=True, blank=True)
     adversaries = models.JSONField(null=True, blank=True)
-    variety = models.CharField(max_length=75, null=True, blank=True)
+    
 
     def __str__(self):
         return self.name
@@ -63,6 +63,7 @@ class Garden(models.Model):
     soil = models.ForeignKey(Soil, on_delete=models.CASCADE, null=True)
     vegetables = models.ManyToManyField(Vegetable, related_name="vegetables", blank=True)
     layout = models.ImageField(upload_to="layouts/", null=True)
+    varieties = models.JSONField(null=True, blank=True)
 
     def __str__(self):
         return self.name
