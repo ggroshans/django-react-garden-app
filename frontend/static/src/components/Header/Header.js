@@ -7,6 +7,8 @@ function Header(props) {
     function handleClick() {
         if (props.isAuth) {
             props.history.push(`/gardenlist/`);
+        } else {
+            props.history.push(`/`)
         }
     }
 

@@ -14,7 +14,6 @@ function GardenDetail(props) {
     }, []);
 
     async function grabUserGarden() {
-        console.log("here", props.match.params.garden);
         const options = {
             method: "GET",
             headers: {
@@ -32,6 +31,10 @@ function GardenDetail(props) {
             const data = await response.json();
             setUserGarden(data);
         }
+    }
+    
+    function handleEditVegetablesClick() {
+        props.history.push(`/${props.match.params.garden}/vegetables/`)
     }
 
     if (!userGarden) {
@@ -55,12 +58,16 @@ function GardenDetail(props) {
                     onClick={() => setOpen(!open)}
                     aria-controls="example-collapse-text"
                     aria-expanded={open}
+                    className="btn btn-success flagship-btn"
                 >
                     Vegetables
                 </Button>
                 <Collapse in={open}>
+                <div className="garden-detail-collapse-container">
+                <button className="btn btn-success flagship-btn garden-detail-edit-vegetables" onClick={handleEditVegetablesClick}>Edit Vegetables</button>
                     <div className="garden-detail-vegetable-grid-container">
-                        {userGarden.vegetables.map((vegetable) => {
+                        
+                        {userGarden.vegetables_details.map((vegetable) => {
                             return (
                                 <div className="garden-detail-vegetable">
                                     <h5>{vegetable.name}</h5>
@@ -105,6 +112,8 @@ function GardenDetail(props) {
                             );
                         })}
                     </div>
+                </div>
+                
                 </Collapse>
             </div>
         </div>

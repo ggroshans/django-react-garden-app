@@ -1,5 +1,8 @@
 .garden-detail {
-    text-align: left;
+    /* display: flex;
+    flex-direction: column;
+    text-align: center; */
+    /* border: 3px solid var(--btn-color); */
 }
 
 .garden-detail-spinner {
@@ -9,10 +12,25 @@
 
 .garden-detail-vegetable-grid-container {
     display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
 }
 
 .garden-detail-vegetable {
-    border: 1px solid green;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 3px solid var(--btn-color);
     width: 450px;
+    height: 420px;
+    margin: 2rem 0rem;
+    padding: 1.5rem 1rem;
 }
+
+.garden-detail-edit-vegetables {
+    margin-top: 1rem;
+}
+

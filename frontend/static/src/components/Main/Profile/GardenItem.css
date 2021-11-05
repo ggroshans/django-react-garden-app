@@ -10,3 +10,18 @@
     margin: auto;
     margin-top: 1rem;
 }
+
+.garden-item-btn-container {
+    position: relative;
+    left: 100px;
+    bottom: 5px;
+    font-size: 1.25rem;
+}
+
+.garden-item-btn-container:hover {
+    color: var(--btn-color);
+}
+
+.garden-item-more-details:hover {
+    color: var(--btn-color);
+}
