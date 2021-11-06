@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import "./Layout.css";
 import Cookie from "js-cookie";
 
@@ -134,6 +134,7 @@ function Layout(props) {
                     className="layout-canvas"
                 />
                 <button className="btn btn-success flagship-btn" onClick={handleSaveCanvas}>Save Sketch to Profile</button>
+                <NavLink to={`/${props.match.params.garden}/summary`}><button className="btn btn-success flagship-btn">Continue</button></NavLink>
             </div>
         </div>
     );

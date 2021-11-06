@@ -243,7 +243,7 @@ function Vegetables(props) {
                     </button>
                 </form>
                 <h2>Save your vegetable list / Continue:</h2>
-                <button className="btn btn-success flagship-btn" onClick={handleSaveVegClick}>Finalize Vegetable Picks</button>
+                <button className="btn btn-success flagship-btn" onClick={handleSaveVegClick}>Continue</button>
             </div>
 
             <FilteredVegetableList filteredVegetables={filteredVegetables} userVegetables={userVegetables} addToUserList={addToUserList}/>

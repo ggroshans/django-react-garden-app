@@ -1,11 +1,42 @@
 import React from "react";
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
+import Cookie from 'js-cookie';
+import { withRouter } from "react-router";
 
-export default function GardenNotes() {
+function GardenNotes(props) {
+
+
 
     const [notes, setNotes] = useState([
-        "Note 1", "Note2", "Note3"
+        " "
     ])
+
+    useEffect( ()=> {
+        fetchNotes();
+    }, [])
+
+    async function fetchNotes() {
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookie.get("csrftoken"),
+            }
+        }
+        const response = await fetch(
+            `/api/gardens/${props.userGardenID}/`,
+            options
+        );
+        if (response.ok === false) {
+            console.log("VARIETY PATCH FAILED", response);
+        } else {
+            const data = await response.json();
+            if(data.notes !== null) {
+                setNotes(data.notes)
+            }
+            console.log("VARIETY PATCH SUCCESS", data);
+        }
+    }
 
     function handleAddNote() {
         let updatedNotes = [...notes]
@@ -20,8 +51,26 @@ export default function GardenNotes() {
         console.log(notes)
     }
 
-    function handleBlur() {
-        
+    async function handleBlur() {
+        const options = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookie.get("csrftoken"),
+            },
+            body: JSON.stringify({notes: notes}),
+        };
+        const response = await fetch(
+            `/api/gardens/${props.userGardenID}/`,
+            options
+        );
+        if (response.ok === false) {
+            console.log("VARIETY PATCH FAILED", response);
+        } else {
+            const data = await response.json();
+            setNotes(data.notes)
+            console.log("VARIETY PATCH SUCCESS", data);
+        }
     }
 
     return (
@@ -37,3 +86,5 @@ export default function GardenNotes() {
         </div>
     );
 }
+
+export default withRouter(GardenNotes);

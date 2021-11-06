@@ -152,7 +152,7 @@ function GardenDetail(props) {
                 </div>
                 <div className="garden-detail-upper-right">   
                         <h2>General Notes:</h2>
-                        <RichTextEditor/>
+                        <RichTextEditor userGardenID={userGarden.id}/>
                 </div>
             </div>
 

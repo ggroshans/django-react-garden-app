@@ -175,7 +175,7 @@ let esri;
                     <p>{soil.recommendations}</p>
                 </div>
             </div>
-            <button id="soil-save-btn" className="btn btn-success flagship-btn" onClick={handleSaveSoilClick}>Save Soil Type</button>
+            <button id="soil-save-btn" className="btn btn-success flagship-btn" onClick={handleSaveSoilClick}>Continue</button>
         </div>
     );
 }

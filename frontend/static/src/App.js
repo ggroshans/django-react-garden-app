@@ -9,6 +9,7 @@ import CreateAGarden from "./components/Main/Profile/CreateAGarden";
 import Soil from './components/Main/Soil/Soil'
 import Vegetables from './components/Main/Vegetables/Vegetables'
 import Layout from "./components/Main/Layout/Layout";
+import Summary from "./components/Main/Summary/Summary";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Cookie from 'js-cookie';
@@ -71,6 +72,9 @@ function App() {
                 </Route>
                 <Route path="/:garden/layout">
                     <Layout />
+                </Route>
+                <Route path="/:garden/summary">
+                    <Summary />
                 </Route>
 
                 <Route path="/">

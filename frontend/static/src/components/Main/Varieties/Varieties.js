@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { withRouter } from 'react-router';
 import VarietiesDetail from './VarietiesDetail';
+import { NavLink } from 'react-router-dom';
 
 function Varieties(props) {
 
@@ -88,6 +89,7 @@ function Varieties(props) {
                     return <VarietiesDetail {...vegetable} updateVarieties={updateVarieties} />
                 })}
             </form>
+            <NavLink to={`/${props.match.params.garden}/layout`}><button className="btn btn-success flagship-btn">Continue</button></NavLink>
         </div>
     )
 }
