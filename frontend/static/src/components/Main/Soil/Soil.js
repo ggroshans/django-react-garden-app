@@ -123,14 +123,14 @@ let esri;
             const view = new MapView({
                 container: containerNode,
                 map: map,
-                center: [-118.80543, 34.027],
+                center: [-82.40, 34.8518],
                 zoom: 13,
             });
 
             const soilsLayer = new FeatureLayer({
                 url: "https://landscape11.arcgis.com/arcgis/rest/services/USA_Soils_Map_Units/featureserver/0",
                 outFields: ["taxorder"],
-
+                opacity: 0.7
             });
             map.add(soilsLayer, 0);
 
