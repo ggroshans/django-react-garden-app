@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Cookie from "js-cookie";
 import "./GardenDetail.css";
 import { Spinner, Button, Collapse } from "react-bootstrap";
-import { FiEdit } from 'react-icons/fi';
+import { FiEdit } from "react-icons/fi";
 
 function GardenDetail(props) {
     const [userGarden, setUserGarden] = useState();
@@ -46,7 +46,7 @@ function GardenDetail(props) {
     }
 
     function handleEditNameClick() {
-        setIsEditing(true)
+        setIsEditing(true);
     }
 
     function handleChange(e) {
@@ -55,26 +55,27 @@ function GardenDetail(props) {
     }
 
     async function handleRenameClick() {
-
         const options = {
             method: "PATCH",
             headers: {
-                "Content-Type": 'application/json',
-                "X-CSRFToken": Cookie.get('csrftoken')
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookie.get("csrftoken"),
             },
-            body: JSON.stringify({name: rename})
-        }
-        const response = await fetch (`/api/gardens/${props.match.params.garden}/`, options)
+            body: JSON.stringify({ name: rename }),
+        };
+        const response = await fetch(
+            `/api/gardens/${props.match.params.garden}/`,
+            options
+        );
         if (response.ok === false) {
-            console.log("RENAME FAILED", response)
+            console.log("RENAME FAILED", response);
         } else {
             const data = await response.json();
             console.log("RENAME SUCCESS", data);
             setIsEditing(false);
-            setUserGarden({...userGarden, ['name']: rename})
+            setUserGarden({ ...userGarden, ["name"]: rename });
         }
     }
-
 
     if (!userGarden) {
         return (
@@ -89,16 +90,54 @@ function GardenDetail(props) {
     return (
         <div className="garden-detail-container">
             <div className="garden-detail">
-                {isEditing ? <div><h4>Update Garden Name:</h4><input type='text' value={rename} onChange={handleChange}/><button onClick={handleRenameClick} className="btn btn-success">Rename</button></div>: <h3>{userGarden.name}<FiEdit className="garden-detail-edit-btn" onClick={handleEditNameClick}/></h3> }
+                {isEditing ? (
+                    <div>
+                        <h4>Update Garden Name:</h4>
+                        <input
+                            type="text"
+                            value={rename}
+                            onChange={handleChange}
+                        />
+                        <button
+                            onClick={handleRenameClick}
+                            className="btn btn-success"
+                        >
+                            Rename
+                        </button>
+                    </div>
+                ) : (
+                    <h3>
+                        {userGarden.name}
+                        <FiEdit
+                            className="garden-detail-edit-btn"
+                            onClick={handleEditNameClick}
+                        />
+                    </h3>
+                )}
                 <p>Created: {userGarden.created_at}</p>
-                <h4>Soil <FiEdit className="garden-detail-edit-btn" onClick={handleEditSoilClick}/></h4>
-                <p><strong>Characteristics:</strong>{userGarden.soil_details.characteristics}</p>
-                <p><strong>Recommendations:</strong>{userGarden.soil_details.recommendations}</p>
-                <h4>Seed Varieties<FiEdit className="garden-detail-edit-btn"/></h4>
-                {/* <p>{userGarden.varieties.map(variety => {
-                    return <p> </p>
-                })}</p> */}
-                <h4>Layout <FiEdit className="garden-detail-edit-btn"/></h4>
+                <h4>
+                    Soil{" "}
+                    <FiEdit
+                        className="garden-detail-edit-btn"
+                        onClick={handleEditSoilClick}
+                    />
+                </h4>
+                <p>
+                    <strong>Characteristics:</strong>
+                    {userGarden.soil_details.characteristics}
+                </p>
+                <p>
+                    <strong>Recommendations:</strong>
+                    {userGarden.soil_details.recommendations}
+                </p>
+                <h4>
+                    Seed Varieties
+                    <FiEdit className="garden-detail-edit-btn" />
+                </h4>
+                {console.log("VARIETY", userGarden.varieties)}
+                <h4>
+                    Layout <FiEdit className="garden-detail-edit-btn" />
+                </h4>
                 <p>{userGarden.layout}</p>
                 <Button
                     onClick={() => setOpen(!open)}
@@ -158,6 +197,28 @@ function GardenDetail(props) {
                                         {vegetable.seasonality === "CS"
                                             ? "Cool-Season"
                                             : "Warm-Season"}
+                                    </p>
+                                    <p>
+                                        Varieties:{" "}
+                                        {userGarden.varieties[
+                                            vegetable.name
+                                        ].map((element) => {
+                                            let varietiesPerVegetable = [];
+                                            for (const prop in element) {
+                                                varietiesPerVegetable.push(
+                                                    prop
+                                                );
+                                            }
+                                            return varietiesPerVegetable.map(
+                                                (variety) => {
+                                                    return (
+                                                        <div>
+                                                            <p>{variety}</p>
+                                                        </div>
+                                                    );
+                                                }
+                                            );
+                                        })}
                                     </p>
                                 </div>
                             );
