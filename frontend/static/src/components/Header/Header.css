@@ -1,3 +1,7 @@
+.header-container {
+    position: relative;
+}
+
 .logo-container {
     display: flex;
     justify-content: center;
@@ -5,6 +9,7 @@
     height: 15vh;
     position: relative;
     left: 20px;
+
     cursor: pointer;
     width: fit-content;
     margin: auto;
@@ -22,4 +27,39 @@
 
 .header-leaf {
     height: 65px;
+}
+
+.header-user-container {
+    display: flex;
+    position: absolute;
+    right: 40px;
+    top: 20px;
+}
+
+.header-user-container:hover {
+    color: darkgreen;
+    cursor:pointer;
+}
+
+.header-username {
+    margin-right: 0.5rem;
+    position: relative;
+    top: 5px;
+    font-weight: 500;
+}
+
+
+.header-user-icon {
+    width: 25px;
+    position: relative;
+    top: 4px;
+}
+
+
+
+.header-user-icon-container {
+    height: 35px;
+    width: 35px;
+    border: 2px solid green;
+    border-radius: 100%;
 }
