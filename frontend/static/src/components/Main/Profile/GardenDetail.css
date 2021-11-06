@@ -1,10 +1,17 @@
-.garden-detail {
-    /* display: flex;
-    flex-direction: column;
-    text-align: center; */
-    /* border: 3px solid var(--btn-color); */
-    width: 500px;
+.garden-detail-upper-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.garden-detail-upper-left {
+
+    width: 40%;
     margin: auto;
+}
+
+.garden-detail-upper-right {
+    width: 40%;
 }
 
 .garden-detail-edit-btn {
