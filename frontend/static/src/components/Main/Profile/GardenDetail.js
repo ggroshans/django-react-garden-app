@@ -125,18 +125,13 @@ function GardenDetail(props) {
                         />
                     </h4>
                     <p>
-                        <strong>Characteristics:</strong>
-                        {userGarden.soil_details.characteristics}
+                        <strong>Characteristics:</strong> 
+                        {userGarden.soil_details === null ? "  Soil Type not selected" : userGarden.soil_details.characteristics}
                     </p>
                     <p>
                         <strong>Recommendations:</strong>
-                        {userGarden.soil_details.recommendations}
+                        {userGarden.soil_details === null ? "  Soil Type not selected" : userGarden.soil_details.recommendations}
                     </p>
-                    <h4>
-                        Seed Varieties
-                        <FiEdit className="garden-detail-edit-btn" />
-                    </h4>
-                    {console.log("VARIETY", userGarden.varieties)}
                     <h4>
                         Layout <FiEdit className="garden-detail-edit-btn" />
                     </h4>
