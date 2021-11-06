@@ -5,9 +5,11 @@ import { Redirect, withRouter } from "react-router-dom";
 import Cookie from "js-cookie";
 import { useEffect, useState } from "react";
 import Farmer from "../../images/farmer.png";
+import {Button, Collapse} from 'react-bootstrap';
 
 function Header(props) {
     const [username, setUsername] = useState("");
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         grabUserName();
@@ -40,17 +42,44 @@ function Header(props) {
     }
 
     function handleUserIconClick() {
-        props.history.push('/gardenlist/')
+        props.history.push("/gardenlist/");
     }
+
+  async function handleLogout() {
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": Cookie.get("csrftoken"),
+        },
+    };
+    const response = await fetch("/rest-auth/logout/", options);
+    if (response.ok === false) {
+        console.log("LOGOUT FAILED", response);
+    } else {
+        const data = await response.json();
+        Cookie.remove("Authorization")
+        console.log("LOGOUT SUCCESSFUL", data)
+        props.history.push("/");
+        props.setIsAuth(false);
+    }
+}
 
     return (
         <div className="header-container">
             <div className="logo-container" onClick={handleClick}>
                 <h1 className="header-title">Flourish</h1>
                 <img src={Leaf} alt="green leaf" className="header-leaf" />
-
             </div>
-            <div className="header-user-container" onClick={handleUserIconClick}>
+            <div
+                onClick={() => setOpen(!open)}
+                aria-controls="example-collapse-text"
+                aria-expanded={open}
+            >
+                <div
+                    className="header-user-container"
+                    onClick={handleUserIconClick}
+                >
                     <p className="header-username">{username}</p>
                     <div className="header-user-icon-container">
                         {" "}
@@ -61,6 +90,13 @@ function Header(props) {
                         />{" "}
                     </div>
                 </div>
+            </div>
+            <Collapse in={open}>
+                <div className="header-user-collapse">
+                    <button className="header-user-profile-btn">Profile</button>
+                    <button className="header-user-logout-btn" onClick={handleLogout}>Logout</button>
+                </div>
+            </Collapse>
         </div>
     );
 }

@@ -44,7 +44,7 @@ function App() {
 
     return (
         <div className="App">
-            <Header isAuth={isAuth}/>
+            <Header isAuth={isAuth} setIsAuth={setIsAuth}/>
             <Switch>
                 <Route path="/login">
                     <Login setIsAuth={setIsAuth} isAuth={isAuth}/>
@@ -56,7 +56,7 @@ function App() {
                     <GardenDetail />
                 </Route>
                 <Route path="/gardenlist">
-                    <GardenList />
+                    <GardenList isAuth={isAuth}/>
                 </Route>
                 <Route path="/creategarden">
                     <CreateAGarden/>

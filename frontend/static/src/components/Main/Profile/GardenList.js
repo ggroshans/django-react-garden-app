@@ -61,6 +61,11 @@ function GardenList(props) {
             console.log("GARDEN LIST SUCCESS", data);
         }
     }
+    console.log(props.isAuth);
+
+    if (!props.isAuth) {
+        props.history.push("/");
+    }
 
     return (
         <div className="garden-list-container">
