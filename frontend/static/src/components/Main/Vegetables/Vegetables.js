@@ -5,10 +5,11 @@ import { useState, useEffect } from "react";
 import FilteredVegetableList from "./FilteredVegetableList";
 import UserVegetableList from "./UserVegetableList";
 import { withRouter } from "react-router";
+import { Button, Collapse} from 'react-bootstrap';
 
 function Vegetables(props) {
     let queryString = "";
-    let pkValues=[];
+    let pkValues = [];
 
     const [filterData, setFilterData] = useState({
         name: "",
@@ -20,29 +21,32 @@ function Vegetables(props) {
     });
 
     const [filteredVegetables, setFilteredVegetables] = useState();
-    const [userVegetables, setUserVegetables] = useState([])
+    const [userVegetables, setUserVegetables] = useState([]);
+    const [open, setOpen] = useState(false);
 
-    useEffect( ()=> {
-        getUsersVegetableList()
-    }, [])
+    useEffect(() => {
+        getUsersVegetableList();
+    }, []);
 
     async function getUsersVegetableList() {
         const options = {
             method: "GET",
             headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookie.get('csrftoken')
-            }
-        }
-        const response = await fetch(`/api/gardens/${props.match.params.garden}/`, options)
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookie.get("csrftoken"),
+            },
+        };
+        const response = await fetch(
+            `/api/gardens/${props.match.params.garden}/`,
+            options
+        );
         if (response.ok === false) {
-            console.log("GETTING USER VEGETABLES FAILED", response)
+            console.log("GETTING USER VEGETABLES FAILED", response);
         } else {
-            const data = await response.json()
-            setUserVegetables(data.vegetables_details)
+            const data = await response.json();
+            setUserVegetables(data.vegetables_details);
         }
     }
-
 
     async function getVegetableDetails() {
         const options = {
@@ -123,54 +127,64 @@ function Vegetables(props) {
     }
 
     function addToUserList(id) {
-        let index = filteredVegetables.findIndex(element => element.id == id);
-        console.log("INDEX", index)
+        let index = filteredVegetables.findIndex((element) => element.id == id);
+        console.log("INDEX", index);
         let updatedFilteredVegetables = [...filteredVegetables];
         let userVeggieToAdd = updatedFilteredVegetables.splice(index, 1);
         setUserVegetables([...userVegetables, userVeggieToAdd[0]]);
     }
 
-    function removeFromUserList(id){
-        let index = userVegetables.findIndex(element => element.id === id);
-        let updatedUserVegetables =[...userVegetables];
+    function removeFromUserList(id) {
+        let index = userVegetables.findIndex((element) => element.id === id);
+        let updatedUserVegetables = [...userVegetables];
         updatedUserVegetables.splice(index, 1);
         setUserVegetables(updatedUserVegetables);
     }
 
     function grabPKvalues(vegetables) {
-
         for (let i = 0; i < vegetables.length; i++) {
-            pkValues.push(vegetables[i].id)
+            pkValues.push(vegetables[i].id);
         }
     }
 
     async function handleSaveVegClick() {
-
-        grabPKvalues(userVegetables)
+        grabPKvalues(userVegetables);
 
         const options = {
             method: "PATCH",
             headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookie.get('csrftoken')
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookie.get("csrftoken"),
             },
-            body: JSON.stringify({'vegetables': pkValues })
-        }
-        const response = await fetch(`/api/gardens/${props.match.params.garden}/`, options)
+            body: JSON.stringify({ vegetables: pkValues }),
+        };
+        const response = await fetch(
+            `/api/gardens/${props.match.params.garden}/`,
+            options
+        );
         if (response.ok === false) {
-            console.log('VEG PATCH FAILED', response);
+            console.log("VEG PATCH FAILED", response);
         } else {
-            const data = await response.json()
+            const data = await response.json();
             console.log("VEG PATCH SUCCESS", data);
-            props.history.push(`/${data.id}/varieties/`)
+            props.history.push(`/${data.id}/varieties/`);
         }
     }
 
-
     return (
-        <div className="vegetables-container">
-            <div className="vegetables-form-container">
+        <div className="vegetables-container row">
+            <div className="vegetables-form-container col">
                 <h2>Pick Vegetables by Filtering:</h2>
+
+                <Button
+                    onClick={() => setOpen(!open)}
+                    aria-controls="example-collapse-text"
+                    aria-expanded={open}
+                    className="btn-success"
+                >
+                    Click to find Veggies!
+                </Button>
+                <Collapse in={open}>
                 <form
                     action=""
                     className="form-control vegetables-form"
@@ -242,15 +256,29 @@ function Vegetables(props) {
                         Search
                     </button>
                 </form>
-                <h2>Save your vegetable list / Continue:</h2>
-                <button className="btn btn-success flagship-btn" onClick={handleSaveVegClick}>Continue</button>
+                </Collapse>
+
+               
             </div>
 
-            <FilteredVegetableList filteredVegetables={filteredVegetables} userVegetables={userVegetables} addToUserList={addToUserList}/>
-            <UserVegetableList userVegetables={userVegetables} removeFromUserList={removeFromUserList}/>
+            <FilteredVegetableList
+                filteredVegetables={filteredVegetables}
+                userVegetables={userVegetables}
+                addToUserList={addToUserList}
+            />
+            <UserVegetableList
+                userVegetables={userVegetables}
+                removeFromUserList={removeFromUserList}
+            />
+            <h2>Save your vegetable list / Continue:</h2>
+            <button
+                className="btn btn-success flagship-btn"
+                onClick={handleSaveVegClick}
+            >
+                Continue
+            </button>
         </div>
     );
 }
 
-
-export default withRouter(Vegetables)
+export default withRouter(Vegetables);
