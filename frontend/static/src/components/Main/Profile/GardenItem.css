@@ -1,21 +1,32 @@
 
-.garden-item {
+.garden-item-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 3px solid var(--btn-color);
-    width: 250px;
-    height: 175px;
-    margin: auto;
-    margin-top: 1rem;
+    width: 90%;
+    height: 225px;
+    margin: 2rem;
+    color: white;
+    background-image: url(https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80);
+    background-blend-mode: ha;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 1
+}
+
+.garden-item-container:hover {
+    opacity: 0.85;
+    cursor: pointer;
 }
 
 .garden-item-btn-container {
-    position: relative;
-    left: 100px;
-    bottom: 5px;
+    position: absolute;
     font-size: 1.25rem;
+    right: 10px;
+    top: 2px;
 }
 
 .garden-item-btn-container:hover {
@@ -24,4 +35,16 @@
 
 .garden-item-more-details:hover {
     color: var(--btn-color);
+}
+
+
+.garden-item-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(0, 65, 0);
+    width: 100%;
+    height: 150px;
+
 }

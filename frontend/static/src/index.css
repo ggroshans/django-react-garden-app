@@ -7,11 +7,11 @@
   --body-font: 'Cabin', sans-serif;
   --subheading-font: 'Lobster Two', cursive;
   --heading-font: 'Lobster', cursive;
-  --btn-color: #26AA95;
+  --btn-color: forestgreen;
 }
 
 .flagship-btn {
-  background-color: #26AA95;
+  background-color: var(--btn-color);
   font-family: var(--body-font);
   font-weight: 700;
   width: 175px;
@@ -19,6 +19,7 @@
 }
 
 body {
+background-color:#ececec;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

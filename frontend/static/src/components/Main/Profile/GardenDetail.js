@@ -203,7 +203,7 @@ function GardenDetail(props) {
                                     </p>
                                     <p>
                                         Varieties:{" "}
-                                        {userGarden.varieties[
+                                        {userGarden.varieties === null ? "" : userGarden.varieties[vegetable.name] === undefined ? " " : userGarden.varieties[
                                             vegetable.name
                                         ].map((element) => {
                                             let varietiesPerVegetable = [];

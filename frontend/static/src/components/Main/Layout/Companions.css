@@ -1,0 +1,30 @@
+.companions-container {
+    width: 50%;
+    height: 800px;
+}
+
+.companion-list {
+    color: darkgreen;
+}
+
+.adversary-list {
+    color: tomato;
+}
+
+table {
+    text-align: left;
+    background-color: white;
+    padding: 1rem;
+    border: 2px solid darkgreen;
+}
+
+thead {
+    border-bottom: 2px solid black;
+}
+
+td {
+    border-bottom: 1px solid black;
+    padding: 1rem 0rem;
+    min-width: 200px;
+}
+

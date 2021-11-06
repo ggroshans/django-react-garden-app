@@ -45,28 +45,31 @@ function Varieties(props) {
     }        
         varieties[key].push({[variety[key]]: ""});
         
-        const options = {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": Cookie.get("csrftoken"),
-            },
-            body: JSON.stringify({ varieties }),
-        };
-        const response = await fetch(
-            `/api/gardens/${props.match.params.garden}/`,
-            options
-        );
-        if (response.ok === false) {
-            console.log("VARIETY PATCH FAILED", response);
-        } else {
-            const data = await response.json();
-            setUserGarden(prevState => ({
-                ...prevState,
-                varieties: varieties
-            }));
-            console.log("VARIETY PATCH SUCCESS", data);
+        if (variety[key] !== "") {
+            const options = {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": Cookie.get("csrftoken"),
+                },
+                body: JSON.stringify({ varieties }),
+            };
+            const response = await fetch(
+                `/api/gardens/${props.match.params.garden}/`,
+                options
+            );
+            if (response.ok === false) {
+                console.log("VARIETY PATCH FAILED", response);
+            } else {
+                const data = await response.json();
+                setUserGarden(prevState => ({
+                    ...prevState,
+                    varieties: varieties
+                }));
+                console.log("VARIETY PATCH SUCCESS", data);
+            }
         }
+
 
     } 
 

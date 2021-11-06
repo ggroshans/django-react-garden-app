@@ -70,7 +70,7 @@ Create a Garden
             <Modal show={show} onHide={handleClose}>
                 <CreateAGarden handleClose={handleClose}/>
             </Modal>
-            {userGardenList.length === 0 ? "" : <h2>Your Gardens:</h2>}
+            {userGardenList.length === 0 ? "" : <h2 className="garden-list-past-gardens">Your Past Gardens:</h2>}
             <div className="garden-list-grid-container">
                 {userGardenList.map((element) => {
                     return (

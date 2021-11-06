@@ -1,33 +1,11 @@
 import React from "react";
+import Companions from "./Companions";
 import { useRef, useEffect, useState } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import "./Layout.css";
 import Cookie from "js-cookie";
 
 function Layout(props) {
-    useEffect(() => {
-        getGardenDetails();
-    }, []);
-
-    async function getGardenDetails() {
-        const options = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": Cookie.get("csrftoken"),
-            },
-        };
-        const response = await fetch(
-            `/api/gardens/${props.match.params.garden}/`,
-            options
-        );
-        if (response.ok === false) {
-            console.log("GET DETAILS FAILED", response);
-        } else {
-            const data = await response.json();
-            console.log("GET DETAILS SUCCESS", data);
-        }
-    }
 
     const canvasRef = useRef(null);
     const contextRef = useRef(null);
@@ -87,44 +65,17 @@ function Layout(props) {
 
     async function handleSaveCanvas() {
 
-        // canvasRef.current.toBlob((blob) => {
-            // formData.append('layout', blob);
-        //     postCanvasLayout(formData);
-        // }, 'image/png', 'image.pn');  
-
         let imageBlob = await new Promise(resolve => canvasRef.current.toBlob(resolve, 'image/png'));
         const formData = new FormData();
         formData.append('layout', imageBlob, 'image.png');
-        postCanvasLayout(formData)
-        // const image = canvasRef.current.toDataURL('image/png');  
-        // const blob = await (await fetch(image)).blob()
-        // const blobURL = URL.createObjectURL(blob);
-        // const link = document.createElement('a');
-        // link.href = blobURL;
-        // link.download = "image.png";
-        // link.click()
+        postCanvasLayout(formData);
     }
-
-    // async function handleSaveCanvas() {
-    //     canvasRef.current.toBlob(function(blob) {
-    //       var newImg = document.createElement('img'),
-    //           url = URL.createObjectURL(blob);
-        
-    //       newImg.onload = function() {
-    //         URL.revokeObjectURL(url);
-    //       };
-    //       newImg.src = url;
-    //       document.body.appendChild(newImg);
-    //     }, 'image/jpeg', 0.95);
-    // }
 
 
 
     return (
         <div className="layout-container">
-            <div className="layout-companions">
-                <h2>Companion Plants</h2>
-            </div>
+            <Companions/>
             <div className="canvas-container">
                 <canvas
                     onMouseDown={startDrawing}
