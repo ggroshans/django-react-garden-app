@@ -50,9 +50,10 @@
 
 
 .header-user-icon {
-    width: 25px;
+    width: 32.25px;
     position: relative;
-    top: 4.5px;
+    bottom: 0.8px;
+    right: 1.5px;
 }
 
 
@@ -60,6 +61,7 @@
 .header-user-icon-container {
     height: 35px;
     width: 35px;
-    border: 2px solid green;
+    border: 3px solid green;
     border-radius: 100%;
+    overflow: hidden;
 }

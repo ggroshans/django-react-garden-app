@@ -4,7 +4,7 @@ import Leaf from "../../images/leaf.png";
 import { Redirect, withRouter } from "react-router-dom";
 import Cookie from "js-cookie";
 import { useEffect, useState } from "react";
-import Plant from "../../images/plant.png";
+import Farmer from "../../images/farmer.png";
 
 function Header(props) {
     const [username, setUsername] = useState("");
@@ -55,7 +55,7 @@ function Header(props) {
                     <div className="header-user-icon-container">
                         {" "}
                         <img
-                            src={Plant}
+                            src={Farmer}
                             alt=""
                             className="header-user-icon"
                         />{" "}
