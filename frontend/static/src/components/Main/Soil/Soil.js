@@ -41,12 +41,17 @@ function Soil(props) {
         } else {
             const data = await response.json();
             console.log("SUCCESS", data);
-            setSoil({
-                ...soil,
-                id: data[0].id,
-                characteristics: data[0].characteristics,
-                recommendations: data[0].recommendations,
-            })
+            if (data.length === 0) {
+                console.log('soil selection failed')
+            } else {
+                setSoil({
+                    ...soil,
+                    id: data[0].id,
+                    characteristics: data[0].characteristics,
+                    recommendations: data[0].recommendations,
+                })
+            }
+
         }
     }
 
