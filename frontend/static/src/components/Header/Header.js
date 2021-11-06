@@ -33,19 +33,24 @@ function Header(props) {
         }
     }
 
-    function handleClick() {
-        if (props.isAuth) {
-            props.history.push(`/gardenlist/`);
-        } else {
-            props.history.push(`/`);
-        }
-    }
+    // function handleClick() {
+    //     if (props.isAuth) {
+    //         props.history.push(`/gardenlist/`);
+    //     } else {
+    //         props.history.push(`/`);
+    //     }
+    // }
 
-    function handleUserIconClick() {
+    // function handleUserIconClick() {
+    //     props.history.push("/gardenlist/");
+    // }
+
+    function handleProfileClick() {
         props.history.push("/gardenlist/");
+        setOpen(false);
     }
 
-  async function handleLogout() {
+  async function handleLogoutClick() {
     const options = {
         method: "POST",
         headers: {
@@ -62,12 +67,13 @@ function Header(props) {
         console.log("LOGOUT SUCCESSFUL", data)
         props.history.push("/");
         props.setIsAuth(false);
+        setOpen(false);
     }
 }
 
     return (
         <div className="header-container">
-            <div className="logo-container" onClick={handleClick}>
+            <div className="logo-container">
                 <h1 className="header-title">Flourish</h1>
                 <img src={Leaf} alt="green leaf" className="header-leaf" />
             </div>
@@ -78,7 +84,6 @@ function Header(props) {
             >
                 <div
                     className="header-user-container"
-                    onClick={handleUserIconClick}
                 >
                     <p className="header-username">{username}</p>
                     <div className="header-user-icon-container">
@@ -93,8 +98,8 @@ function Header(props) {
             </div>
             <Collapse in={open}>
                 <div className="header-user-collapse">
-                    <button className="header-user-profile-btn">Profile</button>
-                    <button className="header-user-logout-btn" onClick={handleLogout}>Logout</button>
+                    <button className="header-user-profile-btn" onClick={handleProfileClick}>Profile</button>
+                    <button className="header-user-logout-btn" onClick={handleLogoutClick}>Logout</button>
                 </div>
             </Collapse>
         </div>
