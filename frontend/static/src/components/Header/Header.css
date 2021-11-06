@@ -1,5 +1,7 @@
 .header-container {
     position: relative;
+    background-color: #e2e2e2;
+    border-bottom: 2px solid darkgreen;
 }
 
 .logo-container {
