@@ -64,6 +64,7 @@ class Garden(models.Model):
     vegetables = models.ManyToManyField(Vegetable, related_name="vegetables", blank=True)
     layout = models.ImageField(upload_to="layouts/", null=True)
     varieties = models.JSONField(null=True, blank=True)
+    notes = models.JSONField(null=True, blank=True)
 
     def __str__(self):
         return self.name
