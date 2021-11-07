@@ -11,15 +11,10 @@ function Header(props) {
     const [username, setUsername] = useState();
     const [open, setOpen] = useState(false);
 
-    console.log("ISAUTH??", props.isAuth, username);
-    useEffect(() => {
-        grabUserName();
-    }, [ ,username]);
 
     useEffect(() => {
-        console.log("Current username: ", username);
-        console.log("Current isAuth status: ", props.isAuth);
-      }, [username, props]);
+        grabUserName();
+    }, [username, props]);
 
     async function grabUserName() {
         console.log("1111fired")
