@@ -174,13 +174,13 @@ function Vegetables(props) {
     return (
         <div className="vegetables-container row">
             <div className="vegetables-form-container col">
-                <h2>Pick Vegetables by Filtering:</h2>
-                <p className="vegetables-description">In this step, you will pick out your potential vegetables by filtering out for the specifc needs of your garden. As you are using the filter, try to visualize the different parts of your garden. For example, one area might be shady, with poor accessibility to water, therefore, you would check the 'Drought Tolerant' box and, then check the 'Partial Sun' from the dropdown. As you visualize the differing needs of your garden landscape, come back to the form and find the most suitable veggies! </p>
+                <h2 className="vegetables-heading">Find the Most Suitable Vegetables</h2>
+                <p className="vegetables-description"><strong>In this step</strong>, you will pick out your potential vegetables by filtering out for the specifc needs of your garden. As you are using the filter, try to visualize the different parts of your garden. For example, one area might be shady, with poor accessibility to water, therefore, you would check the 'Drought Tolerant' box and, then check the 'Partial Sun' from the dropdown. As you visualize the differing needs of your garden landscape, come back to the form and find the most suitable veggies! </p>
                 <Button
                     onClick={() => setOpen(!open)}
                     aria-controls="example-collapse-text"
                     aria-expanded={open}
-                    className="btn-success"
+                    className="btn-success vegetables-expand-form-btn"
                 >
                     Click to find Veggies!
                 </Button>

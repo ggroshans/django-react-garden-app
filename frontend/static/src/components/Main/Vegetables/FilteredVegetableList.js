@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default function FilteredVegetableList(props) {
     return (
         <div className="filtered-vegetables-container">
-        <h2>Based on your search results:</h2>
+        <h2 className="filtered-vegetables-heading">Based on your search results:</h2>
             <div className="filtered-vegetables-grid-container">
                 {props.filteredVegetables === undefined
                     ? ""
@@ -28,7 +28,7 @@ export default function FilteredVegetableList(props) {
                                       {vegetable.name}
                                   </p>
                                   <button
-                                      className="filtered-add-vegetable"
+                                      className="btn btn-success filtered-add-btn"
                                       onClick={() =>
                                           props.addToUserList(vegetable.id)
                                       }
