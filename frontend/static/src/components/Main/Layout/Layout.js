@@ -74,29 +74,44 @@ function Layout(props) {
         postCanvasLayout(formData);
     }
 
+    function handleContinueClick() {
+        props.history.push("/summary");
+    }
+
     return (
         <div className="layout-container">
-            <Companions />
-            <div className="canvas-container">
-                <canvas
-                    onMouseDown={startDrawing}
-                    onMouseUp={finishDrawing}
-                    onMouseMove={draw}
-                    ref={canvasRef}
-                    className="layout-canvas"
-                />
-                <div className="layout-btn-container">
-                    <button
-                        className="btn btn-success flagship-btn"
-                        onClick={handleSaveCanvas}
-                    >
-                        Save Sketch to Profile
-                    </button>
-                    <NavLink to={`/${props.match.params.garden}/summary`}>
-                        <button className="btn btn-success flagship-btn">
-                            Continue
+            <div className="layout-heading-container">
+            <h2 className="layout-heading">
+                Time to Figure out your Layout!
+            </h2>
+            <p className="layout-description">
+                <strong>In this step</strong>, you will find the vegetables you have chosen in the table below along with the vegetables best pairings (companions) and worse pairings (adversaries). Use the companion chart to think about how you want to lay out your garden. Then, use the canvas to the right to sketch out the placement of your beds and vegetables.
+            </p>
+             </div>
+
+            <div className="layout-flex-container">
+                <Companions />
+                <div className="canvas-container">
+                    <canvas
+                        onMouseDown={startDrawing}
+                        onMouseUp={finishDrawing}
+                        onMouseMove={draw}
+                        ref={canvasRef}
+                        className="layout-canvas"
+                    />
+                    <div className="layout-btn-container">
+                        <button
+                            className="btn btn-success flagship-btn"
+                            onClick={handleSaveCanvas}
+                        >
+                            Save Sketch to Profile
                         </button>
-                    </NavLink>
+                        <NavLink to={`/${props.match.params.garden}/summary`}>
+                            <button className="btn btn-success flagship-btn" onClick={handleContinueClick}>
+                                Continue
+                            </button>
+                        </NavLink>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,8 +1,8 @@
 .companions-container {
     max-height: auto;
     width: 50%;
-    border: 3px solid darkgreen;
-    border-radius: 30px;
+    border: 1px solid darkgreen;
+    border-radius: 10px;
 }
 
 .companion-list {
@@ -14,7 +14,7 @@
 }
 
 table {
-    border-radius: 30px;
+    border-radius: 10px;
     text-align: left;
     background-color: white;
     padding: 1rem;
