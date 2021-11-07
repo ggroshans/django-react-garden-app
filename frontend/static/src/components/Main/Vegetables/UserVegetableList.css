@@ -5,16 +5,49 @@
 }
 
 .user-vegetables-grid-container {
-    background-color: beige;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    gap: 1rem;
+    padding: 0rem 1rem;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .user-vegetable {
-    border: 1px solid green;
-    margin: 0.25rem;
+    border: 2px solid white;
+    background-color: 	#2E8B57;
+    font-weight: 800;
+    border-radius: 10px;
     padding: 0.5rem 0rem;
-    width:100px;
-    height: 100px;
+    width:150px;
+    height: 150px;
+    position: relative;
+    transition: transform 1s;
+}
+
+.user-vegetable-name {
+    font-family: var(--subheading-font);
+    color: white;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-top: 0.75rem;
+}
+
+.user-add-vegetable-btn {
+    font-family: var(--body-font);
+    position: absolute;
+    bottom: 40px;
+    left: 32px;
+    background-color: white;
+    color: #2E8B57;
+}
+
+.user-vegetable-heading {
+    font-size: 1.75rem;
+    margin: 2rem 0rem 1rem 0rem;
 }
