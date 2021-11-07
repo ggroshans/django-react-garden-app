@@ -20,7 +20,7 @@ function Vegetables(props) {
         seasonality: "",
     });
 
-    const [filteredVegetables, setFilteredVegetables] = useState();
+    const [filteredVegetables, setFilteredVegetables] = useState([]);
     const [userVegetables, setUserVegetables] = useState([]);
     const [open, setOpen] = useState(false);
 
@@ -288,13 +288,12 @@ function Vegetables(props) {
                 userVegetables={userVegetables}
                 removeFromUserList={removeFromUserList}
             />
-            <h2>Save your vegetable list / Continue:</h2>
-            <button
+            {userVegetables.length === 0 ? "" : <button
                 className="btn btn-success flagship-btn"
                 onClick={handleSaveVegClick}
             >
                 Continue
-            </button>
+            </button>}
         </div>
     );
 }

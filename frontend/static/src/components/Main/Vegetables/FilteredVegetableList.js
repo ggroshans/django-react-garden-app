@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default function FilteredVegetableList(props) {
     return (
         <div className="filtered-vegetables-container">
-        <h2 className="filtered-vegetables-heading">Based on your search results:</h2>
+        {props.filteredVegetables.length === 0 ? "" : <h2 className="filtered-vegetables-heading">Based on your Search:</h2>}
             <div className="filtered-vegetables-grid-container">
                 {props.filteredVegetables === undefined
                     ? ""
