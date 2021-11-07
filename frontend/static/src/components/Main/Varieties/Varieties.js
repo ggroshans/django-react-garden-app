@@ -13,6 +13,7 @@ function Varieties(props) {
 
     useEffect(() => {
         grabUserGarden();
+        props.setShowNav(true);
     }, []);
 
     async function grabUserGarden() {

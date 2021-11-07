@@ -6,6 +6,11 @@ import "./Layout.css";
 import Cookie from "js-cookie";
 
 function Layout(props) {
+
+    useEffect(() => {
+        props.setShowNav(true);
+    }, []);
+
     const canvasRef = useRef(null);
     const contextRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);

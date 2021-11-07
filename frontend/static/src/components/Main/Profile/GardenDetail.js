@@ -15,6 +15,7 @@ function GardenDetail(props) {
 
     useEffect(() => {
         grabUserGarden();
+        props.setShowNav();
     }, []);
 
     async function grabUserGarden() {

@@ -16,6 +16,10 @@ function Soil(props) {
     });
 
     useEffect(() => {
+        props.setShowNav(true);
+    }, []);
+
+    useEffect(() => {
         if (firstRender.current === true) {
             firstRender.current = false;
         } else {

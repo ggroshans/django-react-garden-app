@@ -21,6 +21,7 @@ import Varieties from "./components/Main/Varieties/Varieties";
 function App() {
     const [isAuth, setIsAuth] = useState(false);
     const [currentGarden, setCurrentGarden] = useState();
+    const [showNav, setShowNav] = useState(false)
 
     useEffect( () => {
         const checkAuth  = () => {
@@ -35,7 +36,7 @@ function App() {
     }, []);
 
     let navBar;
-    if (isAuth) {
+    if (isAuth && showNav) {
         navBar = <NavBar />;
     } else {
         navBar = ""
@@ -53,28 +54,28 @@ function App() {
                     <Registration setIsAuth={setIsAuth} isAuth={isAuth}/>
                 </Route>
                 <Route path="/gardenlist/:garden">
-                    <GardenDetail />
+                    <GardenDetail setShowNav={setShowNav}/>
                 </Route>
                 <Route path="/gardenlist">
-                    <GardenList isAuth={isAuth}/>
+                    <GardenList isAuth={isAuth} setShowNav={setShowNav}/>
                 </Route>
                 <Route path="/creategarden">
                     <CreateAGarden/>
                 </Route>
                 <Route path="/:garden/soil">
-                    <Soil />
+                    <Soil setShowNav={setShowNav}/>
                 </Route>
                 <Route path="/:garden/vegetables">
-                    <Vegetables />
+                    <Vegetables setShowNav={setShowNav}/>
                 </Route>
                 <Route path="/:garden/varieties">
-                    <Varieties />
+                    <Varieties setShowNav={setShowNav}/>
                 </Route>
                 <Route path="/:garden/layout">
-                    <Layout />
+                    <Layout setShowNav={setShowNav}/>
                 </Route>
                 <Route path="/:garden/summary">
-                    <Summary />
+                    <Summary setShowNav={setShowNav}/>
                 </Route>
 
                 <Route path="/">

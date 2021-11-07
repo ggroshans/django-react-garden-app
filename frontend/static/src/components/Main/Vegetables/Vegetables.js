@@ -28,6 +28,10 @@ function Vegetables(props) {
         getUsersVegetableList();
     }, []);
 
+    useEffect(() => {
+        props.setShowNav(true);
+    }, []);
+
     async function getUsersVegetableList() {
         const options = {
             method: "GET",

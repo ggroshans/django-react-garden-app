@@ -1,9 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { useEffect, useState } from 'react';
+import './Summary.css';
 
-export default function Summary() {
+export default function Summary(props) {
+
+    useEffect(() => {
+        props.setShowNav(true);
+    }, []);
+
     return (
-        <div>
-            Summary
+        <div className="summary-container">
+            <div className="summary-report-container">
+
+            </div>
         </div>
     )
 }

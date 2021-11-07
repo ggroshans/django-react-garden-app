@@ -16,6 +16,7 @@ function GardenList(props) {
 
     useEffect(() => {
         grabUserGardenList();
+        props.setShowNav(false);
     }, []);
 
     async function grabUserGardenList() {
@@ -62,6 +63,8 @@ function GardenList(props) {
     if (!props.isAuth) {
         props.history.push("/");
     }
+
+
 
     return (
         <div className="garden-list-container">
