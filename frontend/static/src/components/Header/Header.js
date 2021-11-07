@@ -14,7 +14,7 @@ function Header(props) {
     console.log("ISAUTH??", props.isAuth, username);
     useEffect(() => {
         grabUserName();
-    }, [ ,props]);
+    }, [ ,username]);
 
     useEffect(() => {
         console.log("Current username: ", username);
@@ -36,8 +36,9 @@ function Header(props) {
         } else {
             const data = await response.json();
             Cookie.set("Authorization", `Token ${data.key}`);
-            console.log('111111grabUserName', data);
-            setUsername(data.username);
+
+            let username = data.username.charAt(0).toUpperCase() + data.username.slice(1).toLowerCase();
+            setUsername(username);
         }
     }
 
@@ -68,10 +69,14 @@ function Header(props) {
         }
     }
 
+    function handleBannerClick() {
+        props.history.push('/gardenlist');
+    }
+
 
     return (
         <div className="header-container">
-            <div className="logo-container">
+            <div className="logo-container" onClick={handleBannerClick}>
                 <h1 className="header-title">Flourish</h1>
                 <img src={Leaf} alt="green leaf" className="header-leaf" />
             </div>

@@ -59,8 +59,6 @@
     right: 1.5px;
 }
 
-
-
 .header-user-icon-container {
     height: 35px;
     width: 35px;
@@ -76,12 +74,16 @@
     right: 40px;
     top:60px;
     background-color: white;
-    border: 2px solid green;
+    border: 1px solid green;
+    padding: 0.5rem;
+    border-radius: 5px;
 }
     
 .header-user-profile-btn, .header-user-logout-btn {
     border: none;
     font-weight: 500;
+    background-color: white;
+    margin: 0.25rem;
     }
 
 
