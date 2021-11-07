@@ -36,10 +36,6 @@ function GardenList(props) {
         }
     }
 
-    // function handleAddGardenBtn() {
-    //     props.history.push("/creategarden");
-    // }
-
     async function removeGardenFromList(id) {
         let index = userGardenList.findIndex((garden) => garden.id === id);
         let updatedGardenList = [...userGardenList];

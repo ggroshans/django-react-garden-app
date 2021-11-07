@@ -8,14 +8,21 @@ import Farmer from "../../images/farmer.png";
 import { Button, Collapse, Spinner } from "react-bootstrap";
 
 function Header(props) {
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState();
     const [open, setOpen] = useState(false);
 
+    console.log("ISAUTH??", props.isAuth, username);
     useEffect(() => {
         grabUserName();
-    }, []);
+    }, [ ,props]);
+
+    useEffect(() => {
+        console.log("Current username: ", username);
+        console.log("Current isAuth status: ", props.isAuth);
+      }, [username, props]);
 
     async function grabUserName() {
+        console.log("1111fired")
         const options = {
             method: "GET",
             headers: {
@@ -29,6 +36,7 @@ function Header(props) {
         } else {
             const data = await response.json();
             Cookie.set("Authorization", `Token ${data.key}`);
+            console.log('111111grabUserName', data);
             setUsername(data.username);
         }
     }
@@ -60,51 +68,6 @@ function Header(props) {
         }
     }
 
-    let html;
-    if (props.isAuth && username) {
-        html = (
-            <>
-                {" "}
-                <div
-                    onClick={() => setOpen(!open)}
-                    aria-controls="example-collapse-text"
-                    aria-expanded={open}
-                >
-                    <div className="header-user-container">
-                        <p className="header-username">{username}</p>
-                        <div className="header-user-icon-container">
-                            {" "}
-                            <img
-                                src={Farmer}
-                                alt=""
-                                className="header-user-icon"
-                            />{" "}
-                        </div>
-                    </div>
-                </div>
-                <Collapse in={open}>
-                    <div className="header-user-collapse">
-                        <button
-                            className="header-user-profile-btn"
-                            onClick={handleProfileClick}
-                        >
-                            Profile
-                        </button>
-                        <button
-                            className="header-user-logout-btn"
-                            onClick={handleLogoutClick}
-                        >
-                            Logout
-                        </button>
-                    </div>
-                </Collapse>{" "}
-            </>
-        );
-    } else {
-        return (
-            ""
-        )
-    }
 
     return (
         <div className="header-container">
@@ -112,7 +75,45 @@ function Header(props) {
                 <h1 className="header-title">Flourish</h1>
                 <img src={Leaf} alt="green leaf" className="header-leaf" />
             </div>
-            {html}
+            {(props.isAuth && username) ?
+                <>
+                    <div
+                        onClick={() => setOpen(!open)}
+                        aria-controls="example-collapse-text"
+                        aria-expanded={open}
+                    >
+                        <div className="header-user-container">
+                            <p className="header-username">{username}</p>
+                            <div className="header-user-icon-container">
+                                {" "}
+                                <img
+                                    src={Farmer}
+                                    alt=""
+                                    className="header-user-icon"
+                                />{" "}
+                            </div>
+                        </div>
+                    </div>
+                    <Collapse in={open}>
+                        <div className="header-user-collapse">
+                            <button
+                                className="header-user-profile-btn"
+                                onClick={handleProfileClick}
+                            >
+                                Profile
+                            </button>
+                            <button
+                                className="header-user-logout-btn"
+                                onClick={handleLogoutClick}
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    </Collapse>
+                </>
+            :
+                " "
+            }
         </div>
     );
 }

@@ -6,8 +6,13 @@
 
 .garden-list-grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    gap: 25px;
+    margin: 0rem 1rem;
 }
 
 .garden-list-add-btn {

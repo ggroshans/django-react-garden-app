@@ -1,12 +1,10 @@
 
 .navbar-container {
-    height: 5vh;
-    position: absolute;
+    position: relative;
     bottom: 30px;
     margin: auto;
     left: 0;
     right: 0;
-    width: 1000px;
 }
 
 .navbar-radio-btn {
