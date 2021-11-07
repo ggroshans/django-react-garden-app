@@ -52,9 +52,10 @@ function GardenNotes(props) {
     }
 
     function handleNoteChange(e, index) {
-        console.log("textcontent", e.target.textContent)
         let updatedNotes = [...notes]
+        updatedNotes[index] = "";
         updatedNotes[index] = e.target.textContent;
+        console.log(e.target.textContent)
         setNotes(updatedNotes)
     }
 
@@ -107,15 +108,13 @@ function GardenNotes(props) {
     }
 
     return (
-        <div>
-            <section>
+        <div className="garden-notes-container">
             <button className="btn btn-success" onClick={handleAddNote}>Add New Note</button>
                 <ul>
                     {notes.map((note, idx) => {
                         return <li className="garden-notes-li"><span className="textarea garden-notes-bullet" role="textbox" type="text" onBlur={handleBlur} onInput={(e) => handleNoteChange(e, idx)} contentEditable ref={inputRef}>{note} </span><MdOutlineClose value={idx} className="garden-notes-delete-btn" onClick={(idx) => handleDeleteClick(idx)}/></li>
                     })}
                 </ul>
-            </section>
         </div>
     );
 }

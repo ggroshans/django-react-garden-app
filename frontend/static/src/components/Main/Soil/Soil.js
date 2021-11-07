@@ -130,7 +130,7 @@ let esri;
             const soilsLayer = new FeatureLayer({
                 url: "https://landscape11.arcgis.com/arcgis/rest/services/USA_Soils_Map_Units/featureserver/0",
                 outFields: ["taxorder"],
-                opacity: 0.7
+                opacity: 0.5
             });
             map.add(soilsLayer, 0);
 

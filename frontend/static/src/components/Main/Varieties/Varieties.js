@@ -84,6 +84,8 @@ function Varieties(props) {
         );
     }
 
+    console.log("USERGARDEN", userGarden)
+
 
     return (
         <div>

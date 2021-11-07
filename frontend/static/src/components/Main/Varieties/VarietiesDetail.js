@@ -2,6 +2,7 @@ import Cookie from "js-cookie";
 import React from "react";
 import { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
+import { MdAddCircleOutline} from 'react-icons/md';
 
 function VarietiesDetail(props) {
     const [variety, setVariety] = useState("")
@@ -14,10 +15,14 @@ function VarietiesDetail(props) {
         props.updateVarieties(updatedVariety);
     }
 
+    function addVarietyButton() {
+        
+    }
+
     return (
         <div className="varieties-detail-container">
             <div className="form-group varieties-form-group">
-                <p className="varieties-detail-name">Vegetable: {props.name}</p>
+                <p className="varieties-detail-name">Vegetable: {props.name} <MdAddCircleOutline onClick={addVarietyButton}/></p>
                 <label
                     className="varieties-detail-label label-form"
                     htmlFor="variety"

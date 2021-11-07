@@ -1,4 +1,8 @@
-
+.garden-notes-container {
+  position: relative;
+  margin-top: 2rem;
+  width: 90%;
+}
 
 .textarea[contenteditable]:empty::before {
     content: "";
@@ -14,11 +18,19 @@
     line-height: 20px;
     font-family: inherit;
     font-size: inherit;
-    padding: 1px 6px;
+    padding: 20px 6px 0px 6px;
+    border-bottom: 1px solid black;
   }
 
   .garden-notes-li {
-      display: flex;
+    position: relative;
+      list-style-type: lower-roman;
+  }
+
+  .garden-notes-delete-btn {
+    position: absolute;
+    right: 0px;
+    top: 5px;
   }
 
   .garden-notes-delete-btn:hover{
