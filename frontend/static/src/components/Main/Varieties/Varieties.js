@@ -95,7 +95,7 @@ function Varieties(props) {
                     return <VarietiesDetail {...vegetable} updateVarieties={updateVarieties} />
                 })}
             </form>
-            <NavLink to={`/${props.match.params.garden}/layout`}><button className="btn btn-success flagship-btn">Continue</button></NavLink>
+            <NavLink to={`/${props.match.params.garden}/layout`}><button className="btn btn-success flagship-btn varieties-continue-btn">Continue</button></NavLink>
         </div>
     )
 }

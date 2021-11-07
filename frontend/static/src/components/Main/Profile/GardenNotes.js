@@ -17,6 +17,7 @@ function GardenNotes(props) {
             inputRef.current.focus(); 
     }, [inputRef]);
 
+
     async function fetchNotes() {
         const options = {
             method: "GET",
@@ -49,7 +50,6 @@ function GardenNotes(props) {
     function handleNoteChange(e, index) {
         let updatedNotes = [...notes]
         updatedNotes[index] = e.target.textContent;
-        console.log(e.target.textContent)
         setNotes(updatedNotes)
     }
 

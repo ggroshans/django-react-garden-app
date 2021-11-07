@@ -6,7 +6,6 @@ import "./Layout.css";
 import Cookie from "js-cookie";
 
 function Layout(props) {
-
     const canvasRef = useRef(null);
     const contextRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
@@ -14,9 +13,9 @@ function Layout(props) {
     useEffect(() => {
         const canvas = canvasRef.current;
         canvas.width = 450 * 2;
-        canvas.height = 600 * 2;
+        canvas.height = 450 * 2;
         canvas.style.width = `${450}px`;
-        canvas.style.height = `${600}px`;
+        canvas.style.height = `${450}px`;
 
         const context = canvas.getContext("2d");
         context.scale(2, 2);
@@ -50,32 +49,34 @@ function Layout(props) {
         const options = {
             method: "PATCH",
             headers: {
-                "X-CSRFToken": Cookie.get('csrftoken')
+                "X-CSRFToken": Cookie.get("csrftoken"),
             },
             body: formData,
-        }
-        const response = await fetch(`/api/gardens/${props.match.params.garden}/`, options);
+        };
+        const response = await fetch(
+            `/api/gardens/${props.match.params.garden}/`,
+            options
+        );
         if (response.ok === false) {
-            console.log("LAYOUT UPLOAD FAILED", response)
+            console.log("LAYOUT UPLOAD FAILED", response);
         } else {
-            const data = await response.json()
-            console.log("LAYOUT UPLOAD SUCCESS", data)
+            const data = await response.json();
+            console.log("LAYOUT UPLOAD SUCCESS", data);
         }
     }
 
     async function handleSaveCanvas() {
-
-        let imageBlob = await new Promise(resolve => canvasRef.current.toBlob(resolve, 'image/png'));
+        let imageBlob = await new Promise((resolve) =>
+            canvasRef.current.toBlob(resolve, "image/png")
+        );
         const formData = new FormData();
-        formData.append('layout', imageBlob, 'image.png');
+        formData.append("layout", imageBlob, "image.png");
         postCanvasLayout(formData);
     }
 
-
-
     return (
         <div className="layout-container">
-            <Companions/>
+            <Companions />
             <div className="canvas-container">
                 <canvas
                     onMouseDown={startDrawing}
@@ -84,8 +85,19 @@ function Layout(props) {
                     ref={canvasRef}
                     className="layout-canvas"
                 />
-                <button className="btn btn-success flagship-btn" onClick={handleSaveCanvas}>Save Sketch to Profile</button>
-                <NavLink to={`/${props.match.params.garden}/summary`}><button className="btn btn-success flagship-btn">Continue</button></NavLink>
+                <div className="layout-btn-container">
+                    <button
+                        className="btn btn-success flagship-btn"
+                        onClick={handleSaveCanvas}
+                    >
+                        Save Sketch to Profile
+                    </button>
+                    <NavLink to={`/${props.match.params.garden}/summary`}>
+                        <button className="btn btn-success flagship-btn">
+                            Continue
+                        </button>
+                    </NavLink>
+                </div>
             </div>
         </div>
     );

@@ -62,16 +62,23 @@ function Companions(props) {
                                       <td>
                                           <strong>{vegetable.name}</strong>
                                       </td>
-                                      <td className="companion-list">
+                                      {vegetable.companions === null ? <td>
+                                          None
+                                      </td> : <td className="companion-list">
                                           {vegetable.companions}
-                                      </td>
-                                      <td className="adversary-list">
+                                      </td>}
+                                      {vegetable.adversaries === null ? <td>
+                                          None
+                                      </td> : <td className="adversary-list">
                                           {vegetable.adversaries}
-                                      </td>
+                                      </td>}
                                   </tr>
                               );
                           })}
                 </tbody>
+                <tfoot>
+
+                </tfoot>
             </table>
         </div>
     );

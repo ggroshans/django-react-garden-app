@@ -1,6 +1,8 @@
 .companions-container {
+    max-height: auto;
     width: 50%;
-    height: 800px;
+    border: 3px solid darkgreen;
+    border-radius: 30px;
 }
 
 .companion-list {
@@ -12,19 +14,27 @@
 }
 
 table {
+    border-radius: 30px;
     text-align: left;
     background-color: white;
     padding: 1rem;
-    border: 2px solid darkgreen;
+    width: 100%;
+    max-height: auto;
 }
 
 thead {
     border-bottom: 2px solid black;
+    text-align: center;
+}
+
+th {
+    padding: 1rem;
 }
 
 td {
-    border-bottom: 1px solid black;
+    border-top: 1px solid black;
     padding: 1rem 0rem;
     min-width: 200px;
+    text-align: center;
 }
 
