@@ -5,6 +5,7 @@ import { Spinner } from 'react-bootstrap';
 import { withRouter } from 'react-router';
 import VarietiesDetail from './VarietiesDetail';
 import { NavLink } from 'react-router-dom';
+import "./Varieties.css";
 
 function Varieties(props) {
 
@@ -88,8 +89,8 @@ function Varieties(props) {
 
 
     return (
-        <div>
-            <form action="" className="form-control">
+        <div className="varieties-container">
+            <form action="" className="form-control varieties-form">
                 {userGarden.vegetables_details.map(vegetable => {
                     return <VarietiesDetail {...vegetable} updateVarieties={updateVarieties} />
                 })}

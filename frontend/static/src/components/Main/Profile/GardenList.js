@@ -65,7 +65,7 @@ function GardenList(props) {
 
     return (
         <div className="garden-list-container">
-            <Button variant="btn btn-success flagship-btn" onClick={handleShow}>
+            <Button variant="btn btn-success flagship-btn create-garden-btn" onClick={handleShow}>
 Create a Garden
             </Button>
             <Modal show={show} onHide={handleClose}>
