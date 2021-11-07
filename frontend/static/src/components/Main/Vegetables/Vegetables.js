@@ -178,8 +178,24 @@ function Vegetables(props) {
     return (
         <div className="vegetables-container row">
             <div className="vegetables-form-container col">
-                <h2 className="vegetables-heading">Find the Most Suitable Vegetables</h2>
-                <p className="vegetables-description"><strong>In this step</strong>, you will pick out your potential vegetables by filtering out for the specifc needs of your garden. As you are using the filter, try to visualize the different parts of your garden. For example, one area might be shady, with poor accessibility to water, therefore, you would check the 'Drought Tolerant' box and, then check the 'Partial Sun' from the dropdown. As you visualize the differing needs of your garden landscape, come back to the form and find the most suitable veggies! </p>
+                <div className="vegetables-heading-container">
+                    <h2 className="vegetables-heading">
+                        Find the Most Suitable Vegetables
+                    </h2>
+                    <p className="vegetables-description">
+                        <strong>In this step</strong>, you will pick out your
+                        potential vegetables by filtering out for the specifc
+                        needs of your garden. As you are using the filter, try
+                        to visualize the different parts of your garden. For
+                        example, one area might be shady, with poor
+                        accessibility to water, therefore, you would check the
+                        'Drought Tolerant' box and, then check the 'Partial Sun'
+                        from the dropdown. As you visualize the differing needs
+                        of your garden landscape, come back to the form and find
+                        the most suitable veggies!{" "}
+                    </p>
+                </div>
+
                 <Button
                     onClick={() => setOpen(!open)}
                     aria-controls="example-collapse-text"
@@ -214,7 +230,9 @@ function Vegetables(props) {
                                 className="form-control"
                             >
                                 <option value="">ALL</option>
-                                <option value="BO">Thrive in Both Full & Partial Sun</option>
+                                <option value="BO">
+                                    Thrive in Both Full & Partial Sun
+                                </option>
                                 <option value="FS">Full Sun</option>
                                 <option value="PS">Partial Sun</option>
                             </select>
@@ -292,12 +310,16 @@ function Vegetables(props) {
                 userVegetables={userVegetables}
                 removeFromUserList={removeFromUserList}
             />
-            {userVegetables.length === 0 ? "" : <button
-                className="btn btn-success flagship-btn"
-                onClick={handleSaveVegClick}
-            >
-                Continue
-            </button>}
+            {userVegetables.length === 0 ? (
+                ""
+            ) : (
+                <button
+                    className="btn btn-success flagship-btn"
+                    onClick={handleSaveVegClick}
+                >
+                    Continue
+                </button>
+            )}
         </div>
     );
 }
