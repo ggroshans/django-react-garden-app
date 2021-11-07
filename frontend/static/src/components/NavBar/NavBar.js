@@ -11,7 +11,7 @@ function NavBar(props) {
     const radios = [
         { name: "Soil", value: "soil" },
         { name: "Vegetables", value: "vegetables" },
-        { name: "Plant Varieties", value: "varieties" },
+        { name: "Seed Varieties", value: "varieties" },
         { name: "Physical Layout", value: "layout" },
     ];
 
@@ -37,7 +37,7 @@ function NavBar(props) {
                                 variant="outline-success"
                                 name="radio"
                                 value={radio.value}
-                                checked={radio.value == radioValue}
+                                checked={radio.value === radioValue}
                                 onChange={(e) => handleChange(e)}
                             >
                                 {radio.name}

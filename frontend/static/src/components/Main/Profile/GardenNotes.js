@@ -6,12 +6,7 @@ import './GardenNotes.css';
 import {MdOutlineClose} from 'react-icons/md';
 
 function GardenNotes(props) {
-
-
-
-    const [notes, setNotes] = useState([
-        " "
-    ]);
+    const [notes, setNotes] = useState([" "]);
     const inputRef = useRef(null);
 
     useEffect( ()=> {
@@ -19,7 +14,7 @@ function GardenNotes(props) {
     }, []);
 
     useEffect(() => { 
-        inputRef.current.focus(); 
+            inputRef.current.focus(); 
     }, [inputRef]);
 
     async function fetchNotes() {
@@ -53,7 +48,6 @@ function GardenNotes(props) {
 
     function handleNoteChange(e, index) {
         let updatedNotes = [...notes]
-        updatedNotes[index] = "";
         updatedNotes[index] = e.target.textContent;
         console.log(e.target.textContent)
         setNotes(updatedNotes)
@@ -112,7 +106,7 @@ function GardenNotes(props) {
             <button className="btn btn-success" onClick={handleAddNote}>Add New Note</button>
                 <ul>
                     {notes.map((note, idx) => {
-                        return <li className="garden-notes-li"><span className="textarea garden-notes-bullet" role="textbox" type="text" onBlur={handleBlur} onInput={(e) => handleNoteChange(e, idx)} contentEditable ref={inputRef}>{note} </span><MdOutlineClose value={idx} className="garden-notes-delete-btn" onClick={(idx) => handleDeleteClick(idx)}/></li>
+                        return <li className="garden-notes-li"><span className="textarea garden-notes-bullet" role="textbox" type="text" onBlur={handleBlur} onInput={(e) => handleNoteChange(e, idx)} contentEditable ref={inputRef}>{note}</span><MdOutlineClose value={idx} className="garden-notes-delete-btn" onClick={(idx) => handleDeleteClick(idx)}/></li>
                     })}
                 </ul>
         </div>

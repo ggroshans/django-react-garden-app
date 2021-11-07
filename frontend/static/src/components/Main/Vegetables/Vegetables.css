@@ -3,9 +3,37 @@
     justify-content: space-around;
 }
 
+.vegetables-description {
+    max-width: 800px;
+    margin: auto;
+}
 
 .vegetables-form {
     display: flex;
     flex-direction: column;
+    background-color: #2E8B57;
+    color: white;
+    font-weight: 700;
     margin: 3rem auto;
+    max-width: 500px;
+    padding: 2rem 5rem;
+    text-align: left;
+    box-shadow: 0px 0px 15px 3px #1F941F;
+    border: none;
+}
+
+.vegetables-checkboxes-container {
+    margin: 0.5rem 0rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.vegetable-form-btn {
+    margin-top: 2rem;
+    border: 2px solid #2E8B57;
+    background-color: white;
+    color: #2E8B57;
+    width: 200px;
+    margin: 1.5rem auto 0rem auto;
 }

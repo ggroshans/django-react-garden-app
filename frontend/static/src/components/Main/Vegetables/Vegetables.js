@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import FilteredVegetableList from "./FilteredVegetableList";
 import UserVegetableList from "./UserVegetableList";
 import { withRouter } from "react-router";
-import { Button, Collapse} from 'react-bootstrap';
+import { Button, Collapse } from "react-bootstrap";
 
 function Vegetables(props) {
     let queryString = "";
@@ -175,7 +175,7 @@ function Vegetables(props) {
         <div className="vegetables-container row">
             <div className="vegetables-form-container col">
                 <h2>Pick Vegetables by Filtering:</h2>
-
+                <p className="vegetables-description">In this step, you will pick out your potential vegetables by filtering out for the specifc needs of your garden. As you are using the filter, try to visualize the different parts of your garden. For example, one area might be shady, with poor accessibility to water, therefore, you would check the 'Drought Tolerant' box and, then check the 'Partial Sun' from the dropdown. As you visualize the differing needs of your garden landscape, come back to the form and find the most suitable veggies! </p>
                 <Button
                     onClick={() => setOpen(!open)}
                     aria-controls="example-collapse-text"
@@ -185,80 +185,98 @@ function Vegetables(props) {
                     Click to find Veggies!
                 </Button>
                 <Collapse in={open}>
-                <form
-                    action=""
-                    className="form-control vegetables-form"
-                    onSubmit={handleSubmit}
-                >
-                    <label htmlFor="name">Name (Optional):</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        onChange={handleChange}
-                    />
-
-                    <label htmlFor="exposure">Sun Exposure</label>
-                    <select
-                        name="exposure"
-                        id="exposure"
-                        onChange={handleChange}
+                    <form
+                        action=""
+                        className="form-control vegetables-form"
+                        onSubmit={handleSubmit}
                     >
-                        <option value="">Both</option>
-                        <option value="FS">Full Sun</option>
-                        <option value="PS">Partial Sun</option>
-                    </select>
+                        <div className="form-group">
+                            <label htmlFor="name">Name (Optional):</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                onChange={handleChange}
+                                className="form-control"
+                            />
+                        </div>
 
-                    <div className="vegetables-checkboxes-container">
-                        <input
-                            type="checkbox"
-                            id="heat_tolerant"
-                            name="heat_tolerant"
-                            value="TRUE"
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="heat_tolerant">Heat Tolerant</label>
-                        <input
-                            type="checkbox"
-                            id="drought_tolerant"
-                            name="drought_tolerant"
-                            value="TRUE"
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="drought_tolerant">
-                            Drought Tolerant
-                        </label>
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="exposure">Sun Exposure</label>
+                            <select
+                                name="exposure"
+                                id="exposure"
+                                onChange={handleChange}
+                                className="form-control"
+                            >
+                                <option value="">ALL</option>
+                                <option value="BO">Thrive in Both Full & Partial Sun</option>
+                                <option value="FS">Full Sun</option>
+                                <option value="PS">Partial Sun</option>
+                            </select>
+                        </div>
 
-                    <label htmlFor="life_cycle">Life Cycle</label>
-                    <select
-                        name="life_cycle"
-                        id="life_cycle"
-                        onChange={handleChange}
-                    >
-                        <option value="">All</option>
-                        <option value="AN">Annual</option>
-                        <option value="BI">Biennial</option>
-                        <option value="PE">Perennial</option>
-                    </select>
+                        <div className="vegetables-checkboxes-container">
+                            <div className="form-group">
+                                <input
+                                    type="checkbox"
+                                    id="heat_tolerant"
+                                    name="heat_tolerant"
+                                    value="TRUE"
+                                    onChange={handleChange}
+                                />
+                                <label htmlFor="heat_tolerant">
+                                    Heat Tolerant
+                                </label>
+                            </div>
 
-                    <label htmlFor="seasonality">Seasonality</label>
-                    <select
-                        name="seasonality"
-                        id="seasonality"
-                        onChange={handleChange}
-                    >
-                        <option value="">All</option>
-                        <option value="CS">Cool Season</option>
-                        <option value="WS">Warm Season</option>
-                    </select>
-                    <button className="btn btn-success flagship-btn">
-                        Search
-                    </button>
-                </form>
+                            <div className="form-group">
+                                <input
+                                    type="checkbox"
+                                    id="drought_tolerant"
+                                    name="drought_tolerant"
+                                    value="TRUE"
+                                    onChange={handleChange}
+                                />
+                                <label htmlFor="drought_tolerant">
+                                    Drought Tolerant
+                                </label>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="life_cycle">Life Cycle</label>
+                            <select
+                                name="life_cycle"
+                                id="life_cycle"
+                                onChange={handleChange}
+                                className="form-control"
+                            >
+                                <option value="">All</option>
+                                <option value="AN">Annual</option>
+                                <option value="BI">Biennial</option>
+                                <option value="PE">Perennial</option>
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="seasonality">Seasonality</label>
+                            <select
+                                name="seasonality"
+                                id="seasonality"
+                                onChange={handleChange}
+                                className="form-control"
+                            >
+                                <option value="">All</option>
+                                <option value="CS">Cool Season</option>
+                                <option value="WS">Warm Season</option>
+                            </select>
+                        </div>
+
+                        <button className="btn btn-success vegetable-form-btn">
+                            Search
+                        </button>
+                    </form>
                 </Collapse>
-
-               
             </div>
 
             <FilteredVegetableList
