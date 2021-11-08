@@ -173,14 +173,14 @@ function GardenDetail(props) {
                         {userGarden.vegetables_details.map((vegetable) => {
                             return (
                                 <div className="garden-detail-vegetable">
-                                    <h5>{vegetable.name}</h5>
-                                    <p>Plant with: {vegetable.companions}</p>
+                                    <h5 className="garden-detail-vegetable-name">{vegetable.name}</h5>
+                                    <p><span className="garden-detail-category">Plant with:</span> {vegetable.companions}</p>
                                     <p>
-                                        Do NOT plant with:{" "}
+                                        <span className="garden-detail-category">Do NOT plant with:</span>{" "}
                                         {vegetable.adversaries}
                                     </p>
                                     <p>
-                                        Sun Exposure:{" "}
+                                        <span className="garden-detail-category">Sun Exposure:</span>{" "}
                                         {vegetable.exposure === "BO"
                                             ? "Full Sun And/Or Partial Sun"
                                             : vegetable.exposure === "FS"
@@ -188,17 +188,17 @@ function GardenDetail(props) {
                                             : "Partial Sun"}
                                     </p>
                                     <p>
-                                        Heat Tolerant:{" "}
+                                        <span className="garden-detail-category">Heat Tolerant:</span>{" "}
                                         {vegetable.heat_tolerant ? "Yes" : "No"}
                                     </p>
                                     <p>
-                                        Drought Tolerant:{" "}
+                                        <span className="garden-detail-category">Drought Tolerant:</span>{" "}
                                         {vegetable.drought_tolerant
                                             ? "Yes"
                                             : "No"}
                                     </p>
                                     <p>
-                                        Life Cycle:{" "}
+                                        <span className="garden-detail-category">Life Cycle:</span>{" "}
                                         {vegetable.life_cycle === "AN"
                                             ? "Annual"
                                             : vegetable.life_cycle === "BI"
@@ -206,13 +206,13 @@ function GardenDetail(props) {
                                             : "Perennial"}
                                     </p>
                                     <p>
-                                        Seasonality:{" "}
+                                        <span className="garden-detail-category">Seasonality:</span>{" "}
                                         {vegetable.seasonality === "CS"
                                             ? "Cool-Season"
                                             : "Warm-Season"}
                                     </p>
                                     <p>
-                                        Varieties:{" "}
+                                        <span className="garden-detail-category">Varieties:</span>{" "}
                                         {userGarden.varieties === null ? "" : userGarden.varieties[vegetable.name] === undefined ? " " : userGarden.varieties[
                                             vegetable.name
                                         ].map((element) => {

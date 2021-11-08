@@ -51,6 +51,7 @@ function Soil(props) {
             if (data.length === 0) {
                 console.log("soil selection failed");
             } else {
+                console.log('soil details success',data)
                 setSoil({
                     ...soil,
                     id: data[0].id,
@@ -83,13 +84,12 @@ function Soil(props) {
         }
     }
 
-    console.log(props.match.params.garden);
+    console.log("SOIL", soil)
+
 
     setTimeout(() => {
         setLoaded(true);
     });
-
-    let esri;
 
     return (
         <div className="soil-container">
@@ -153,7 +153,8 @@ function Soil(props) {
                                 return view.goTo(options.target);
                             },
                         });
-                        let soilOrder;
+                        let soilOrder1;
+                        let soilOrder2;
                         view.on("immediate-click", (event) => {
                             const latitude = event.mapPoint.latitude;
                             const longitude = event.mapPoint.longitude;
@@ -161,15 +162,21 @@ function Soil(props) {
                                 new Point({ latitude, longitude })
                             );
                             view.hitTest(screenPoint).then((hitTestResult) => {
-                                soilOrder =
+                                soilOrder1 =
                                     hitTestResult.results[0].graphic.attributes
                                         .esrisymbology;
-                                setSoil({
+                                if (soilOrder1 !== soilOrder2) {
+                                    setSoil({
                                     id: null,
-                                    soil_order: soilOrder,
+                                    soil_order: soilOrder1,
                                     characteristics: "",
                                     recommendations: "",
                                 });
+                                soilOrder2 = soilOrder1;
+                                } else {
+                                    soilOrder2 = soilOrder1;
+                                }
+
                             });
                         });
 
