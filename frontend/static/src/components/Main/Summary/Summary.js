@@ -3,15 +3,28 @@ import { useEffect, useState } from "react";
 import "./Summary.css";
 import Cookie from "js-cookie";
 import { withRouter } from "react-router";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Modal, Button } from "react-bootstrap";
 
 function Summary(props) {
     const [userGarden, setUserGarden] = useState();
+
+    const values = [true];
+    const [fullscreen, setFullscreen] = useState(true);
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         grabUserGarden();
         props.setShowNav(true);
     }, []);
+
+    function handleShow(breakpoint) {
+        setFullscreen(breakpoint);
+        setShow(true);
+    }
+
+    function print() {
+        window.print();
+    }
 
     async function grabUserGarden() {
         const options = {
@@ -45,6 +58,10 @@ function Summary(props) {
 
     console.log("SUMMARY PAGE GARDEN", userGarden);
 
+    function handlePrintClick() {
+        print();
+    }
+
     return (
         <div className="summary-container">
             <div className="summary-report-container">
@@ -62,9 +79,37 @@ function Summary(props) {
                         <strong>Recommendations:</strong>{" "}
                         {userGarden.soil_details.recommendations}
                     </p>
+                </div>{" "}
+                <div className="summary-layout-container">
+                    <h3>Layout</h3>
                 </div>
                 <div className="summary-vegetable-container">
-                    <h3>Vegetables</h3>
+                    {values.map((v, idx) => (
+                        <Button
+                            key={idx}
+                            className="me-2 btn btn-success"
+                            onClick={() => handleShow(v)}
+                        >
+                            Vegetables Table
+                            {typeof v === "string" &&
+                                `below ${v.split("-")[0]}`}
+                        </Button>
+                    ))}
+                    <Modal
+                        show={show}
+                        fullscreen={fullscreen}
+                        onHide={() => setShow(false)}
+                    >
+                        <Modal.Header closeButton>
+                            <Modal.Title>Your Vegetables</Modal.Title>
+                            <Button
+                                className="btn btn-success summary-print-vegetables"
+                                onClick={handlePrintClick}
+                            >
+                                Print Your Vegetables
+                            </Button>
+                        </Modal.Header>
+                        <Modal.Body>
                             <div className="summary-vegetable">
                                 <table className="summary-table">
                                     <thead>
@@ -88,14 +133,14 @@ function Summary(props) {
                                                   (vegetable) => {
                                                       return (
                                                           <tr>
-                                                              <td>
+                                                              <td className="summary-td">
                                                                   <strong>
                                                                       {
                                                                           vegetable.name
                                                                       }
                                                                   </strong>
                                                               </td>
-                                                              <td>
+                                                              <td className="summary-td">
                                                                   {vegetable.exposure ===
                                                                   "BO"
                                                                       ? "Full Sun And/Or Partial Sun"
@@ -104,24 +149,24 @@ function Summary(props) {
                                                                       ? "Full Sun"
                                                                       : "Partial Sun"}
                                                               </td>
-                                                              <td>
+                                                              <td className="summary-td">
                                                                   {" "}
                                                                   {vegetable.heat_tolerant
                                                                       ? "Yes"
                                                                       : "No"}
                                                               </td>
-                                                              <td>
+                                                              <td className="summary-td">
                                                                   {vegetable.drought_tolerant
                                                                       ? "Yes"
                                                                       : "No"}
                                                               </td>
-                                                              <td>
+                                                              <td className="summary-td">
                                                                   {vegetable.seasonality ===
                                                                   "CS"
                                                                       ? "Cool-Season"
                                                                       : "Warm-Season"}
                                                               </td>
-                                                              <td>
+                                                              <td className="summary-td">
                                                                   {vegetable.life_cycle ===
                                                                   "AN"
                                                                       ? "Annual"
@@ -130,9 +175,8 @@ function Summary(props) {
                                                                       ? "Biennial"
                                                                       : "Perennial"}
                                                               </td>
-                                                              <td>
-                                                                  <span className="summary-category">
-                                                                  </span>{" "}
+                                                              <td className="summary-td">
+                                                                  <span className="summary-category"></span>{" "}
                                                                   {userGarden.varieties ===
                                                                   null
                                                                       ? "None"
@@ -162,12 +206,11 @@ function Summary(props) {
                                                                                         variety
                                                                                     ) => {
                                                                                         return (
-                                                                                            
-                                                                                                <p>
-                                                                                                    {
-                                                                                                        variety
-                                                                                                    }
-                                                                                                </p>
+                                                                                            <p>
+                                                                                                {
+                                                                                                    variety
+                                                                                                }
+                                                                                            </p>
                                                                                         );
                                                                                     }
                                                                                 );
@@ -176,7 +219,9 @@ function Summary(props) {
                                                               </td>
                                                               {vegetable.companions ===
                                                               null ? (
-                                                                  <td>None</td>
+                                                                  <td className="summary-td summary-td summary-companions">
+                                                                      None
+                                                                  </td>
                                                               ) : (
                                                                   <td className="companion-list">
                                                                       {
@@ -186,9 +231,11 @@ function Summary(props) {
                                                               )}
                                                               {vegetable.adversaries ===
                                                               null ? (
-                                                                  <td>None</td>
+                                                                  <td className="summary-td">
+                                                                      None
+                                                                  </td>
                                                               ) : (
-                                                                  <td className="adversary-list">
+                                                                  <td className="adversary-list summary-td">
                                                                       {
                                                                           vegetable.adversaries
                                                                       }
@@ -202,9 +249,8 @@ function Summary(props) {
                                     <tfoot></tfoot>
                                 </table>
                             </div>
-                </div>
-                <div className="summary-layout-container">
-                    <h3>Layout</h3>
+                        </Modal.Body>
+                    </Modal>
                 </div>
             </div>
         </div>

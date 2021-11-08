@@ -4,7 +4,6 @@
     background-attachment: fixed;
     background-size: cover;
     min-height: 75vh;
-    overflow:auto;
     color: var(--brown)
 }
 
@@ -22,11 +21,64 @@
 
 }
 
-.summary-vegetable-container {
-    overflow: scroll;
+/* .modal-content {
+    width: 90vw;
+    max-width: 90vw;
+    margin: auto;
+} */
+
+.modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    overflow: visible!important;
+}
+
+.show {
+    padding: 0;
+}
+
+.fade {
+    padding: 0;
+}
+
+.modal-body {
+    width: auto;
+    height: auto;
+    overflow: visible !important;  
+}
+
+.summary-vegetable {
+    height: auto;
+    overflow: visible;
+}
+
+.summary-table {
+    text-align: left;
+}
+
+.summary-td {
+    width: 50px;
+    min-width: 100px;
+}
+
+.summary-companions {
+    max-width: 75px;
+    width: 75px;
 }
 
 .summary-category {
     font-weight: 500;
     color: var(--green)
+}
+
+div[role="dialog"] {
+    padding: 0 !important;
+}
+
+.summary-print-vegetables {
+    position: absolute;
+    right: 60px;
 }
