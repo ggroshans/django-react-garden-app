@@ -16,7 +16,8 @@
     align-content: center;
     align-items: center;
     gap: 25px;
-    margin: 0rem 1rem;
+    margin: 0rem auto;
+    max-width: 1200px;
 }
 
 .garden-list-add-btn {

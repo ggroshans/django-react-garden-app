@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 3px solid green;
+    border: 2px solid var(--green);
     width: 350px;
     height: 225px;
     color: white;
@@ -17,8 +17,9 @@
 
 .garden-item-container::after {
     content: "";
-    background-image: url('https://image.freepik.com/free-photo/top-view-soil_23-2148175893.jpg');
+    background-image: url('../../../images/soil.jpeg');
     background-size: 95%;
+    border-radius: 10px;
     opacity: 0.9;
     top: 0;
     left: 0;
@@ -48,8 +49,12 @@
     color: var(--btn-color);
 }
 
+.garden-item-more-details {
+    transition: letter-spacing 1s;
+}
 .garden-item-more-details:hover {
-    color: var(--btn-color);
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 
@@ -61,7 +66,6 @@
     background-size: cover;
     width: 85%;
     height: 175px;
-    border: 2px solid green;
     border-radius: 12px;
     background-color: rgba(98, 172, 98, 0.6);
 }

@@ -1,7 +1,7 @@
 .header-container {
     position: relative;
     background-color: #ffffff;
-    border-bottom: 2px solid var(--btn-color);
+    border-bottom: 1px solid var(--btn-color);
     height: 15vh;
 }
 

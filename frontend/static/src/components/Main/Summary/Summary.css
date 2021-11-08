@@ -4,4 +4,29 @@
     background-attachment: fixed;
     background-size: cover;
     min-height: 75vh;
+    overflow:auto;
+    color: var(--brown)
+}
+
+.summary-report-main-heading, .summary-report-date {
+    text-align: center;
+}
+
+.summary-report-container {
+    max-width: 900px;
+    background-color: white;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: left;
+
+}
+
+.summary-vegetable-container {
+    overflow: scroll;
+}
+
+.summary-category {
+    font-weight: 500;
+    color: var(--green)
 }

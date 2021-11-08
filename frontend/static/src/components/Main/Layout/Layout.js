@@ -113,7 +113,7 @@ function Layout(props) {
                         </button>
                         <NavLink to={`/${props.match.params.garden}/summary`}>
                             <button className="btn btn-success flagship-btn" onClick={handleContinueClick}>
-                                Continue
+                                Summary
                             </button>
                         </NavLink>
                     </div>
