@@ -1,22 +1,17 @@
 import React from "react";
-import { useState, useEffect, useRef } from 'react';
-import Cookie from 'js-cookie';
+import { useState, useEffect, useRef } from "react";
+import Cookie from "js-cookie";
 import { withRouter } from "react-router";
-import './GardenNotes.css';
-import {MdOutlineClose} from 'react-icons/md';
+import "./GardenNotes.css";
+import { GrSend, GrFormEdit, GrFormClose } from "react-icons/gr";
+import { IoIosAddCircle } from 'react-icons/io';
 
 function GardenNotes(props) {
-    const [notes, setNotes] = useState([" "]);
-    const inputRef = useRef(null);
+    const [notes, setNotes] = useState(["yo", "dude"]);
 
-    useEffect( ()=> {
+    useEffect(() => {
         fetchNotes();
     }, []);
-
-    useEffect(() => { 
-            inputRef.current.focus(); 
-    }, [inputRef]);
-
 
     async function fetchNotes() {
         const options = {
@@ -24,8 +19,8 @@ function GardenNotes(props) {
             headers: {
                 "Content-Type": "application/json",
                 "X-CSRFToken": Cookie.get("csrftoken"),
-            }
-        }
+            },
+        };
         const response = await fetch(
             `/api/gardens/${props.userGardenID}/`,
             options
@@ -34,23 +29,24 @@ function GardenNotes(props) {
             console.log("VARIETY PATCH FAILED", response);
         } else {
             const data = await response.json();
-            if(data.notes !== null) {
-                setNotes(data.notes)
+            if (data.notes !== null) {
+                setNotes(data.notes);
             }
             console.log("VARIETY PATCH SUCCESS", data);
         }
     }
 
     function handleAddNote() {
-        let updatedNotes = [...notes]
-        updatedNotes.push("");
-        setNotes(updatedNotes)
+        let updatedNotes = [...notes];
+        updatedNotes.push(" ");
+        setNotes(updatedNotes);
     }
 
-    function handleNoteChange(e, index) {
-        let updatedNotes = [...notes]
-        updatedNotes[index] = e.target.textContent;
-        setNotes(updatedNotes)
+    function handleChange(e, idx) {
+        let updatedNotes = [...notes];
+        updatedNotes[idx] = e.target.value;
+        setNotes(updatedNotes);
+        console.log(notes)
     }
 
     async function handleBlur() {
@@ -60,7 +56,7 @@ function GardenNotes(props) {
                 "Content-Type": "application/json",
                 "X-CSRFToken": Cookie.get("csrftoken"),
             },
-            body: JSON.stringify({notes: notes}),
+            body: JSON.stringify({ notes: notes }),
         };
         const response = await fetch(
             `/api/gardens/${props.userGardenID}/`,
@@ -70,15 +66,14 @@ function GardenNotes(props) {
             console.log("NOTES PATCH FAILED", response);
         } else {
             const data = await response.json();
-            setNotes(data.notes)
+            setNotes(data.notes);
             console.log("NOTES PATCH SUCCESS", data);
         }
     }
 
-   async function handleDeleteClick(idx) {
+    async function handleDeleteClick(idx) {
         let updatedNotes = [...notes];
         updatedNotes.splice(idx, 1);
-        
 
         const options = {
             method: "PATCH",
@@ -86,7 +81,7 @@ function GardenNotes(props) {
                 "Content-Type": "application/json",
                 "X-CSRFToken": Cookie.get("csrftoken"),
             },
-            body: JSON.stringify({notes: updatedNotes}),
+            body: JSON.stringify({ notes: updatedNotes }),
         };
         const response = await fetch(
             `/api/gardens/${props.userGardenID}/`,
@@ -96,19 +91,31 @@ function GardenNotes(props) {
             console.log("NOTES DELETE FAILED", response);
         } else {
             const data = await response.json();
-            setNotes(data.notes)
+            setNotes(data.notes);
             console.log("NOTES DELETE SUCCESS", data);
         }
     }
 
+
     return (
         <div className="garden-notes-container">
-            <button className="btn btn-success" onClick={handleAddNote}>Add New Note</button>
-                <ul>
-                    {notes.map((note, idx) => {
-                        return <li className="garden-notes-li"><span className="textarea garden-notes-bullet" role="textbox" type="text" onBlur={handleBlur} onInput={(e) => handleNoteChange(e, idx)} contentEditable ref={inputRef}>{note}</span><MdOutlineClose value={idx} className="garden-notes-delete-btn" onClick={(idx) => handleDeleteClick(idx)}/></li>
-                    })}
-                </ul>
+            <div className="garden-notes-add-note-container"><p></p><IoIosAddCircle className="garden-notes-add-note-btn" onClick={handleAddNote}/></div>     
+            <ul>
+                {notes.map((note, idx, arr) => {
+                    return (
+                        <li className="garden-notes-li">
+                            <textarea className="garden-notes-input"type="text" value={notes[idx]} onChange={(e) => handleChange(e,idx)} onBlur={handleBlur} />
+                            <div className="garden-notes-icon-container">
+                                <GrFormClose
+                                    value={idx}
+                                    className="garden-notes-delete-btn"
+                                    onClick={(idx) => handleDeleteClick(idx)}
+                                />
+                            </div>
+                        </li> 
+                    );
+                })}
+            </ul>
         </div>
     );
 }

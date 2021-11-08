@@ -4,27 +4,23 @@
   width: 90%;
 }
 
-.textarea[contenteditable]:empty::before {
-    content: "";
-    color: gray;
-  }
+.garden-notes-add-note-container {
+  display: flex;
+}
 
-  .textarea {
-    display: block;
-    width: 100%;
-    overflow: hidden;
-    resize: both;
-    min-height: 40px;
-    line-height: 20px;
-    font-family: inherit;
-    font-size: inherit;
-    padding: 20px 6px 0px 6px;
-    border-bottom: 1px solid black;
-  }
+.garden-notes-add-note-btn {
+  position: relative;
+  left: 15px;
+}
 
   .garden-notes-li {
     position: relative;
       list-style-type: lower-roman;
+  }
+
+  .garden-notes-input {
+    background-color: transparent;
+    border: none;
   }
 
   .garden-notes-delete-btn {
@@ -34,5 +30,6 @@
   }
 
   .garden-notes-delete-btn:hover{
-    color: tomato;
+    background-color: tomato;
+    border-radius: 20px;
   }

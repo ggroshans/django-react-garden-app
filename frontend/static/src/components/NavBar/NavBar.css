@@ -3,6 +3,8 @@
     margin: auto;
     left: 0;
     right: 0;
+    background-color: white;
+    height: 10vh;
 }
 
 .navbar-radio-btn {
