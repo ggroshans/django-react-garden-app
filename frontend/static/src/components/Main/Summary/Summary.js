@@ -74,7 +74,7 @@ function Summary(props) {
         })
     }
 
-    function handleEditVegetablesClick() {
+        function handleEditVegetablesClick() {
         props.history.push(`/${props.match.params.garden}/vegetables/`);
     }
 
