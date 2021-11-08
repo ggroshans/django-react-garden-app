@@ -4,7 +4,8 @@ import Cookie from "js-cookie";
 import { withRouter } from "react-router";
 import "./GardenNotes.css";
 import { GrSend, GrFormEdit, GrFormClose } from "react-icons/gr";
-import { IoIosAddCircle } from 'react-icons/io';
+import { IoIosAddCircle } from "react-icons/io";
+import { FiEdit } from "react-icons/fi";
 
 function GardenNotes(props) {
     const [notes, setNotes] = useState(["yo", "dude"]);
@@ -47,7 +48,7 @@ function GardenNotes(props) {
         let updatedNotes = [...notes];
         updatedNotes[idx] = e.target.value;
         setNotes(updatedNotes);
-        console.log(notes)
+        console.log(notes);
     }
 
     async function handleBlur() {
@@ -99,45 +100,82 @@ function GardenNotes(props) {
     }
 
     function handleClick() {
-        console.log('on click fired')
-        setIsEditing(true)
+        setIsEditing(true);
     }
 
+    function handleEditLayoutClick() {
+        props.history.push(`/${props.match.params.garden}/layout`);
+    }
+    
 
     return (
-        <div className="garden-notes-container">
-        <h2 className="garden-notes-heading">General Notes</h2>
-            <IoIosAddCircle className="garden-notes-add-note-btn" onClick={handleAddNote}/>
-            <ul>
-                {notes.map((note, idx, arr) => {
-                    return (
-                        <>
-                        {isEditing ? 
-                        <li className="garden-notes-li">
-                            <textarea className="garden-notes-textarea"type="text" value={notes[idx]} onChange={(e) => handleChange(e,idx)} onBlur={handleBlur} />
-                            <div className="garden-notes-icon-container">
-                                <GrFormClose
-                                    value={idx}
-                                    className="garden-notes-delete-btn"
-                                    onClick={(idx) => handleDeleteClick(idx)}
-                                />
-                            </div>
-                        </li> 
-                        :
-                        <li className="garden-notes-li" onClick={handleClick}>
-                            <p className="garden-notes-input" >{note}</p>
-                            <div className="garden-notes-icon-container">
-                                <GrFormClose
-                                    value={idx}
-                                    className="garden-notes-delete-btn"
-                                    onClick={(idx) => handleDeleteClick(idx)}
-                                />
-                            </div>
-                        </li> }
-                        </>
-                    );
-                })}
-            </ul>
+        <div className="garden-notes-outer-container">
+            <div className="garden-notes-container">
+                <h2 className="garden-notes-heading">General Notes</h2>
+                <IoIosAddCircle
+                    className="garden-notes-add-note-btn"
+                    onClick={handleAddNote}
+                />
+                <ul>
+                    {notes.map((note, idx, arr) => {
+                        return (
+                            <>
+                                {isEditing ? (
+                                    <li className="garden-notes-li">
+                                        <textarea
+                                            className="garden-notes-textarea"
+                                            type="text"
+                                            value={notes[idx]}
+                                            onChange={(e) =>
+                                                handleChange(e, idx)
+                                            }
+                                            onBlur={handleBlur}
+                                        />
+                                        <div className="garden-notes-icon-container">
+                                            <GrFormClose
+                                                value={idx}
+                                                className="garden-notes-delete-btn"
+                                                onClick={(idx) =>
+                                                    handleDeleteClick(idx)
+                                                }
+                                            />
+                                        </div>
+                                    </li>
+                                ) : (
+                                    <li
+                                        className="garden-notes-li"
+                                        onClick={handleClick}
+                                    >
+                                        <p className="garden-notes-input">
+                                            {note}
+                                        </p>
+                                        <div className="garden-notes-icon-container">
+                                            <GrFormClose
+                                                value={idx}
+                                                className="garden-notes-delete-btn"
+                                                onClick={(idx) =>
+                                                    handleDeleteClick(idx)
+                                                }
+                                            />
+                                        </div>
+                                    </li>
+                                )}
+                            </>
+                        );
+                    })}
+                </ul>
+            </div>
+
+            <h4>
+                Layout <FiEdit className="garden-detail-edit-btn" onClick={handleEditLayoutClick} />
+            </h4>
+            <div className="garden-detail-layout-container">
+                {" "}
+                <img
+                    src={props.layout}
+                    className="garden-detail-layout-image"
+                />
+            </div>
         </div>
     );
 }

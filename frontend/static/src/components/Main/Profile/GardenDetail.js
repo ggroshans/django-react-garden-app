@@ -175,10 +175,7 @@ function GardenDetail(props) {
                             ? "  Soil Type not selected"
                             : userGarden.soil_details.recommendations}
                     </p>
-                    <h4>
-                        Layout <FiEdit className="garden-detail-edit-btn" />
-                    </h4>
-                    <p>{userGarden.layout}</p>
+
 
                     <div className="summary-vegetable-container">
                         {values.map((v, idx) => (
@@ -361,7 +358,7 @@ function GardenDetail(props) {
                     </Button>
                 </div>
                 <div className="garden-detail-upper-right">
-                    <RichTextEditor userGardenID={userGarden.id} />
+                    <RichTextEditor userGardenID={userGarden.id} layout={userGarden.layout} />
                 </div>
             </div>
 

@@ -129,3 +129,15 @@
 .garden-detail-vegetable-edit:hover {
     color: goldenrod;
 }
+
+.garden-detail-layout-container {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.garden-detail-layout-image {
+    height: 100%;
+    max-width: 100%;
+}
