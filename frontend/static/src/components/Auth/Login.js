@@ -1,6 +1,6 @@
 import React from 'react';
 import Cookie from 'js-cookie';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Login.css';
 import { Redirect, withRouter } from 'react-router-dom';
 
@@ -10,6 +10,10 @@ function Login(props) {
         username: "",
         password: "",
     })
+
+    useEffect( ()=> {
+        props.setShowHeader(true);
+    }, [])
 
     function handleChange(e) {
         let {name, value} = e.target;

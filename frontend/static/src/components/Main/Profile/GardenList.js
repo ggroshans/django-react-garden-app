@@ -17,6 +17,7 @@ function GardenList(props) {
     useEffect(() => {
         grabUserGardenList();
         props.setShowNav(false);
+        props.setShowHeader(true);
     }, []);
 
     async function grabUserGardenList() {

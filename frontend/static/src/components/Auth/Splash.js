@@ -1,18 +1,17 @@
 import React from "react";
 import "./Splash.css";
 import { NavLink, Redirect } from "react-router-dom";
+import { useEffect } from 'react';
 
 export default function Splash(props) {
 
-    console.log("ISAUTH??" , props.isAuth)
+    useEffect( ()=> {
+        props.setShowHeader(false);
+    }, [])
 
     if (props.isAuth) {
        return <Redirect to="/gardenlist" />
     }
-
-    function handleClickRegister() {}
-
-    function handleClickLogin() {}
 
     return (
         <div className="splash-container">
@@ -31,7 +30,7 @@ export default function Splash(props) {
                 important gardening areas: <span className="splash-soil">Soil</span>, <span className="splash-vegetables">Vegetables</span>, <span className="splash-companion">Companion Planting</span>,
                 and  <span className="splash-layout">Physical Layout</span>.
             </p>
-            <ol className="splash-list">
+            {/* <ol className="splash-list">
                 <li className="splash-list-step">
                     {" "}
                     <span className="splash-soil splash-lobster-font">1) Soil:</span> Find your soil type based on your desired location.
@@ -51,17 +50,13 @@ export default function Splash(props) {
                     {" "}
                     <span className="splash-layout splash-lobster-font"> 4) Physical Layout:</span> Drafting the visual layout of your garden can be highly beneficial for garden preparation. We allow you to sketch an outline of your garden beds, while providing an area for you to jot down important notes.
                 </li>
-                {/* <li className="splash-list-step">
-                    {" "}
-                    <span className="splash-list-summary">5) Summary:</span> After you have been given your soil characteristics and recommendtations, created your vegetable list, recruited additional vegetables for companion planting, and created a visual garden outline, you will recieve a summary of the garden plan you created.
-                </li> */}
-            </ol>
+
+            </ol> */}
             <div className="splash-btn-group">
             <NavLink to="/login">
                 <button
                     className="btn btn-success mt-2 flagship-btn"
                     value="login"
-                    onClick={handleClickLogin}
                 >
                     Login
                 </button>
@@ -70,7 +65,6 @@ export default function Splash(props) {
                 <button
                     className="btn btn-success mt-2 flagship-btn"
                     value="register"
-                    onClick={handleClickRegister}
                 >
                     Register
                 </button>

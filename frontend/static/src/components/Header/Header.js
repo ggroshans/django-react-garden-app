@@ -16,6 +16,8 @@ function Header(props) {
         grabUserName();
     }, [username, props]);
 
+
+
     async function grabUserName() {
         console.log("1111fired")
         const options = {
@@ -66,6 +68,10 @@ function Header(props) {
 
     function handleBannerClick() {
         props.history.push('/gardenlist');
+    }
+
+    if (!props.showHeader) {
+        return "";
     }
 
 

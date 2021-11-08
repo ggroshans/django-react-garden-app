@@ -21,7 +21,8 @@ import Varieties from "./components/Main/Varieties/Varieties";
 function App() {
     const [isAuth, setIsAuth] = useState(false);
     const [currentGarden, setCurrentGarden] = useState();
-    const [showNav, setShowNav] = useState(false)
+    const [showNav, setShowNav] = useState(false);
+    const [showHeader, setShowHeader] = useState(true);
 
     useEffect( () => {
         const checkAuth  = () => {
@@ -45,19 +46,19 @@ function App() {
 
     return (
         <div className="App">
-            <Header isAuth={isAuth} setIsAuth={setIsAuth}/>
+            <Header isAuth={isAuth} setIsAuth={setIsAuth} showHeader={showHeader}/>
             <Switch>
                 <Route path="/login">
-                    <Login setIsAuth={setIsAuth} isAuth={isAuth}/>
+                    <Login setIsAuth={setIsAuth} isAuth={isAuth} setShowHeader={setShowHeader}/>
                 </Route>
                 <Route path="/registration">
-                    <Registration setIsAuth={setIsAuth} isAuth={isAuth}/>
+                    <Registration setIsAuth={setIsAuth} isAuth={isAuth} setShowHeader={setShowHeader}/>
                 </Route>
                 <Route path="/gardenlist/:garden">
                     <GardenDetail setShowNav={setShowNav}/>
                 </Route>
                 <Route path="/gardenlist">
-                    <GardenList isAuth={isAuth} setShowNav={setShowNav}/>
+                    <GardenList isAuth={isAuth} setShowNav={setShowNav} setShowHeader={setShowHeader}/>
                 </Route>
                 <Route path="/creategarden">
                     <CreateAGarden/>
@@ -79,7 +80,7 @@ function App() {
                 </Route>
 
                 <Route path="/">
-                    <Splash isAuth={isAuth}/>
+                    <Splash isAuth={isAuth} setShowHeader={setShowHeader}/>
                 </Route>
                 <Route></Route>
                 <Route></Route>

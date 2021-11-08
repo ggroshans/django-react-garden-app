@@ -1,6 +1,6 @@
 import React from 'react';
 import Cookie from 'js-cookie';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Registration.css';
 import { Redirect } from 'react-router-dom';
 
@@ -13,6 +13,9 @@ export default function Registration(props) {
         password2: "",
     })
 
+    useEffect( ()=> {
+        props.setShowHeader(true);
+    }, [])
 
     function handleChange(e) {
         let {name, value} = e.target
@@ -37,6 +40,7 @@ export default function Registration(props) {
             const data = await response.json();
             Cookie.set("Authorization", `Token ${data.key}`);
             props.setIsAuth(true);
+
         }
     }
 
