@@ -24,9 +24,7 @@ function Summary(props) {
         setScrollView(true);
     }
 
-    function print() {
-        window.print();
-    }
+
 
     async function grabUserGarden() {
         const options = {
@@ -60,6 +58,10 @@ function Summary(props) {
 
     console.log("SUMMARY PAGE GARDEN", userGarden);
 
+    function print() {
+        window.print();
+    }
+
     function handlePrintClick() {
         setScrollView(false);
         setTimeout( () => {
@@ -68,7 +70,6 @@ function Summary(props) {
         setTimeout( () => {
             setScrollView(true);
         })
-
     }
 
     return (
