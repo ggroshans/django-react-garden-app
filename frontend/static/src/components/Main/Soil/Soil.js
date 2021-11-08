@@ -181,12 +181,12 @@ function Soil(props) {
                 <p className="display-soil-p">{soil.soil_order}</p>
             </div>
             <div className="display-results-container">
-                <div>
-                    <h2>Characteristics:</h2>
+                <div className="display-characteristics-container">
+                    <h2 className="display-characteristics-heading">Soil Characteristics:</h2>
                     <p>{soil.characteristics}</p>
                 </div>
-                <div>
-                    <h2>Recommendations:</h2>
+                <div className="display-recommendations-container">
+                    <h2 className="display-recommendations-heading">Soil Recommendations:</h2>
                     <p>{soil.recommendations}</p>
                 </div>
             </div>

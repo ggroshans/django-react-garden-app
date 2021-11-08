@@ -81,11 +81,32 @@
 }
 
 .display-results-container {
+    display: flex;
+    justify-content: space-between;
     width: 750px;
     margin: auto;
     position: relative;
     top: 125px;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
 }
+
+.display-characteristics-container {
+    width: 45%;
+    border-right: 2px solid darkgreen;
+    padding: 1rem;
+}
+
+.display-characteristics-heading {
+    color: #6F4E37;
+}
+
+.display-recommendations-container {
+    width: 55%;
+    padding: 1rem;
+}
+
 
 #soil-save-btn {
     position: relative;

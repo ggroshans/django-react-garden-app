@@ -79,6 +79,10 @@ function GardenDetail(props) {
         }
     }
 
+    function handleCloseRename() {
+        setIsEditing(false);
+    }
+
     if (!userGarden) {
         return (
             <Spinner
@@ -96,17 +100,22 @@ function GardenDetail(props) {
                     {isEditing ? (
                         <div>
                             <h4>Update Garden Name:</h4>
+                            <div className="garden-detail-rename-container">
                             <input
                                 type="text"
                                 value={rename}
                                 onChange={handleChange}
+                                className="form-control garden-detail-rename-input"
                             />
                             <button
                                 onClick={handleRenameClick}
-                                className="btn btn-success"
+                                className="btn btn-success garden-detail-rename-btn"
                             >
                                 Rename
                             </button>
+                            <button className="btn btn-danger garden-detail-close-rename-btn" onClick={handleCloseRename}>X</button>
+                            </div>
+
                         </div>
                     ) : (
                         <h3>

@@ -3,6 +3,32 @@
     justify-content: space-around;
 }
 
+.garden-detail-rename-container {
+    display: flex;
+    justify-content: center;
+}
+
+.garden-detail-rename-input {
+    width: 200px;
+}
+
+.garden-detail-rename-btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.garden-detail-close-rename-btn {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 25px;
+}
+
+.garden-detail-close-rename-btn:hover{
+    color: white;
+}
 
 .garden-detail-upper-left {
 
