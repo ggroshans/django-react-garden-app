@@ -14,7 +14,6 @@ function GardenDetail(props) {
     const [rename, setRename] = useState("");
     const [scrollView, setScrollView] = useState(false);
 
-
     const values = [true];
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
@@ -24,7 +23,7 @@ function GardenDetail(props) {
         setShow(true);
         setScrollView(true);
     }
-    
+
     useEffect(() => {
         grabUserGarden();
         props.setShowNav();
@@ -74,12 +73,12 @@ function GardenDetail(props) {
 
     function handlePrintClick() {
         setScrollView(false);
-        setTimeout( () => {
+        setTimeout(() => {
             print();
-        })
-        setTimeout( () => {
+        });
+        setTimeout(() => {
             setScrollView(true);
-        })
+        });
     }
 
     async function handleRenameClick() {
@@ -188,7 +187,7 @@ function GardenDetail(props) {
                                 className="me-2 btn btn-success flagship-btn"
                                 onClick={() => handleShow(v)}
                             >
-                                Vegetables Table
+                                Vegetables Table View
                                 {typeof v === "string" &&
                                     `below ${v.split("-")[0]}`}
                             </Button>
@@ -358,7 +357,7 @@ function GardenDetail(props) {
                         aria-expanded={open}
                         className="btn btn-success flagship-btn"
                     >
-                        Vegetables
+                        Vegetables Card View
                     </Button>
                 </div>
                 <div className="garden-detail-upper-right">
@@ -372,7 +371,10 @@ function GardenDetail(props) {
                         {userGarden.vegetables_details.map((vegetable) => {
                             return (
                                 <div className="garden-detail-vegetable">
-                                    <FiEdit className="garden-detail-vegetable-edit" onClick={handleEditVegetablesClick}/>
+                                    <FiEdit
+                                        className="garden-detail-vegetable-edit"
+                                        onClick={handleEditVegetablesClick}
+                                    />
                                     <h5 className="garden-detail-vegetable-name">
                                         {vegetable.name}
                                     </h5>

@@ -67,7 +67,7 @@
     justify-content: center;
     justify-items: center;
     align-content: center;
-    align-items: center;
+    align-items: flex-start;
     grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
     gap: 1rem;
     padding: 0rem 1rem;
@@ -92,15 +92,15 @@
     border-radius: 10px;
     padding: 1.25rem;
     width:375px;
-    height: 470px;
+    height: auto;
     position: relative;
     transition: transform 1s;
     text-align: left;
 }
 
 .garden-detail-vegetable:hover {
-    opacity: .8;
-    transform: translateY(8px);
+    opacity: .9;
+    transform: translateY(6px);
 }
 
 .garden-detail-vegetable-name {
@@ -117,10 +117,6 @@
     font-weight: 800;
 }
 
-.filtered-vegetable:hover {
-    opacity: .75;
-    transform: translateY(8px);
-}
 
 .garden-detail-edit-vegetables {
     margin-top: 1rem;
@@ -129,4 +125,7 @@
 .garden-detail-vegetable-edit {
     position: absolute;
     right: 10px;
+}
+.garden-detail-vegetable-edit:hover {
+    color: goldenrod;
 }

@@ -16,7 +16,7 @@
   background-color: var(--btn-color);
   font-family: var(--body-font);
   font-weight: 700;
-  width: 175px;
+  min-width: 175px;
   height: 50px;
 }
 
