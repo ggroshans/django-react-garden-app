@@ -2,31 +2,41 @@
   position: relative;
   margin-top: 2rem;
   width: 90%;
+  background: #fdfd96;
+  padding: 2rem 3rem 2rem 2rem;
 }
 
 .garden-notes-add-note-container {
   display: flex;
 }
 
-.garden-notes-add-note-btn {
+.garden-notes-heading {
   position: relative;
-  left: 15px;
+  bottom: 10px;
+}
+
+.garden-notes-add-note-btn {
+  position: absolute;
+  right: 45px;
+  top: 33px;
 }
 
   .garden-notes-li {
     position: relative;
-      list-style-type: lower-roman;
+    list-style-type: lower-roman;
+    border-bottom: 1px solid black;
   }
 
-  .garden-notes-input {
+  .garden-notes-textarea {
     background-color: transparent;
     border: none;
+    width: 100%;
   }
 
   .garden-notes-delete-btn {
     position: absolute;
-    right: 0px;
-    top: 5px;
+    left: 210px;
+    top: 0px;
   }
 
   .garden-notes-delete-btn:hover{
