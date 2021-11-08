@@ -156,3 +156,6 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'accounts.serializers.UserDetailsSerializer',
 
 }
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'layouts')
+MEDIA_URL = "/layouts/"

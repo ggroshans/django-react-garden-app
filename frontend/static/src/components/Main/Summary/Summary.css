@@ -4,7 +4,8 @@
     background-attachment: fixed;
     background-size: cover;
     min-height: 75vh;
-    color: var(--brown)
+    color: var(--brown);
+    overflow: auto;
 }
 
 .summary-report-main-heading, .summary-report-date {
@@ -21,11 +22,9 @@
 
 }
 
-/* .modal-content {
-    width: 90vw;
-    max-width: 90vw;
-    margin: auto;
-} */
+.modal-content {
+    overflow:visible;
+}
 
 .modal {
     position: absolute;
@@ -36,18 +35,12 @@
     overflow: visible!important;
 }
 
-.show {
-    padding: 0;
-}
-
-.fade {
-    padding: 0;
-}
 
 .modal-body {
     width: auto;
-    height: auto;
-    overflow: visible !important;  
+    height: 100%;
+    overflow:visible !important;
+    padding: 0;
 }
 
 .summary-vegetable {
@@ -81,4 +74,14 @@ div[role="dialog"] {
 .summary-print-vegetables {
     position: absolute;
     right: 60px;
+}
+
+.modal-fullscreen {
+    min-height: 100vh;
+}
+
+#scroll {
+    overflow: scroll;
+    margin: 2rem auto;
+    max-width: 80vw;
 }

@@ -7,6 +7,7 @@ import { Spinner, Modal, Button } from "react-bootstrap";
 
 function Summary(props) {
     const [userGarden, setUserGarden] = useState();
+    const [scrollView, setScrollView] = useState(false);
 
     const values = [true];
     const [fullscreen, setFullscreen] = useState(true);
@@ -20,6 +21,7 @@ function Summary(props) {
     function handleShow(breakpoint) {
         setFullscreen(breakpoint);
         setShow(true);
+        setScrollView(true);
     }
 
     function print() {
@@ -59,7 +61,14 @@ function Summary(props) {
     console.log("SUMMARY PAGE GARDEN", userGarden);
 
     function handlePrintClick() {
-        print();
+        setScrollView(false);
+        setTimeout( () => {
+            print();
+        })
+        setTimeout( () => {
+            setScrollView(true);
+        })
+
     }
 
     return (
@@ -82,6 +91,7 @@ function Summary(props) {
                 </div>{" "}
                 <div className="summary-layout-container">
                     <h3>Layout</h3>
+                    <img src={userGarden.layout}/>
                 </div>
                 <div className="summary-vegetable-container">
                     {values.map((v, idx) => (
@@ -99,6 +109,7 @@ function Summary(props) {
                         show={show}
                         fullscreen={fullscreen}
                         onHide={() => setShow(false)}
+                        id = {scrollView ? "scroll" : ""}
                     >
                         <Modal.Header closeButton>
                             <Modal.Title>Your Vegetables</Modal.Title>
@@ -109,7 +120,7 @@ function Summary(props) {
                                 Print Your Vegetables
                             </Button>
                         </Modal.Header>
-                        <Modal.Body>
+                        <Modal.Body >
                             <div className="summary-vegetable">
                                 <table className="summary-table">
                                     <thead>
