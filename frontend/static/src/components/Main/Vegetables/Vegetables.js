@@ -1,11 +1,12 @@
 import React from "react";
 import "./Vegetables.css";
 import Cookie from "js-cookie";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import FilteredVegetableList from "./FilteredVegetableList";
 import UserVegetableList from "./UserVegetableList";
 import { withRouter } from "react-router";
 import { Button, Collapse } from "react-bootstrap";
+import { ImArrowUp } from "react-icons/im";
 
 function Vegetables(props) {
     let queryString = "";
@@ -23,6 +24,10 @@ function Vegetables(props) {
     const [filteredVegetables, setFilteredVegetables] = useState([]);
     const [userVegetables, setUserVegetables] = useState([]);
     const [open, setOpen] = useState(false);
+    const [showForm, setShowForm] = useState(false);
+    const [widthMax, setWidthMax] = useState(true);
+    const filteredVegScroll = useRef();
+    const filterFormScroll = useRef();
 
     useEffect(() => {
         getUsersVegetableList();
@@ -65,7 +70,6 @@ function Vegetables(props) {
             console.log("failed", response);
         } else {
             const data = await response.json();
-            console.log("SUCCESS", data);
             setFilteredVegetables(data);
         }
     }
@@ -127,7 +131,11 @@ function Vegetables(props) {
         }
 
         getVegetableDetails();
+
         queryString = "";
+        setTimeout(() => {
+            scrollToFiltered();
+        }, 300);
     }
 
     function addToUserList(id) {
@@ -151,6 +159,21 @@ function Vegetables(props) {
         }
     }
 
+    function scrollToFiltered() {
+        filteredVegScroll.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "start",
+        });
+    }
+    function scrollToForm() {
+        filterFormScroll.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "start",
+        });
+    }
+
     async function handleSaveVegClick() {
         grabPKvalues(userVegetables);
 
@@ -170,18 +193,27 @@ function Vegetables(props) {
             console.log("VEG PATCH FAILED", response);
         } else {
             const data = await response.json();
-            console.log("VEG PATCH SUCCESS", data);
             props.history.push(`/${data.id}/varieties/`);
         }
     }
 
+    function handleArrowClick() {
+        scrollToForm();
+    }
+
+    function handleOpenFormClick() {
+        setOpen(!open)
+        setShowForm(!showForm)
+        setWidthMax(!widthMax)
+    }
+
     return (
-        <div className="vegetables-container row">
-            <div className="vegetables-form-container col">
-                <div className="vegetables-heading-container">
-                    <h2 className="vegetables-heading">
+        <div className="vegetables-container">
+            <div className="vegetables-heading-form-flex-container ">
+                <div className="vegetables-heading-container" id={widthMax ? 'max-width' : ''}>
+                    {/* <h2 className="vegetables-heading">
                         Find the Most Suitable Vegetables
-                    </h2>
+                    </h2> */}
                     <p className="vegetables-description">
                         <strong>In this step</strong>, you will pick out your
                         potential vegetables by filtering out for the specifc
@@ -194,127 +226,139 @@ function Vegetables(props) {
                         of your garden landscape, come back to the form and find
                         the most suitable veggies!{" "}
                     </p>
+
+                    <Button
+                        onClick={handleOpenFormClick}
+                        aria-controls="example-collapse-text"
+                        aria-expanded={open}
+                        className="btn-success vegetables-expand-form-btn"
+                    >
+                        Click to find Veggies!
+                    </Button>
                 </div>
 
-                <Button
-                    onClick={() => setOpen(!open)}
-                    aria-controls="example-collapse-text"
-                    aria-expanded={open}
-                    className="btn-success vegetables-expand-form-btn"
-                >
-                    Click to find Veggies!
-                </Button>
-                <Collapse in={open}>
-                    <form
-                        action=""
-                        className="form-control vegetables-form"
-                        onSubmit={handleSubmit}
-                    >
-                        <div className="form-group">
-                            <label htmlFor="name">Name (Optional):</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                onChange={handleChange}
-                                className="form-control"
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="exposure">Sun Exposure</label>
-                            <select
-                                name="exposure"
-                                id="exposure"
-                                onChange={handleChange}
-                                className="form-control"
-                            >
-                                <option value="">ALL</option>
-                                <option value="BO">
-                                    Thrive in Both Full & Partial Sun
-                                </option>
-                                <option value="FS">Full Sun</option>
-                                <option value="PS">Partial Sun</option>
-                            </select>
-                        </div>
-
-                        <div className="vegetables-checkboxes-container">
+                <div className="vegetables-form-container" id={showForm ? "" : "hide"}>
+                    <Collapse in={open}>
+                        <form
+                            action=""
+                            className="form-control vegetables-form"
+                            onSubmit={handleSubmit}
+                            ref={filterFormScroll}
+                        >
                             <div className="form-group">
+                                <label htmlFor="name">Name (Optional):</label>
                                 <input
-                                    type="checkbox"
-                                    id="heat_tolerant"
-                                    name="heat_tolerant"
-                                    value="TRUE"
+                                    type="text"
+                                    id="name"
+                                    name="name"
                                     onChange={handleChange}
+                                    className="form-control"
                                 />
-                                <label htmlFor="heat_tolerant">
-                                    Heat Tolerant
-                                </label>
                             </div>
 
                             <div className="form-group">
-                                <input
-                                    type="checkbox"
-                                    id="drought_tolerant"
-                                    name="drought_tolerant"
-                                    value="TRUE"
+                                <label htmlFor="exposure">Sun Exposure</label>
+                                <select
+                                    name="exposure"
+                                    id="exposure"
                                     onChange={handleChange}
-                                />
-                                <label htmlFor="drought_tolerant">
-                                    Drought Tolerant
-                                </label>
+                                    className="form-control"
+                                >
+                                    <option value="">ALL</option>
+                                    <option value="BO">
+                                        Thrive in Both Full & Partial Sun
+                                    </option>
+                                    <option value="FS">Full Sun</option>
+                                    <option value="PS">Partial Sun</option>
+                                </select>
                             </div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="life_cycle">Life Cycle</label>
-                            <select
-                                name="life_cycle"
-                                id="life_cycle"
-                                onChange={handleChange}
-                                className="form-control"
-                            >
-                                <option value="">All</option>
-                                <option value="AN">Annual</option>
-                                <option value="BI">Biennial</option>
-                                <option value="PE">Perennial</option>
-                            </select>
-                        </div>
 
-                        <div className="form-group">
-                            <label htmlFor="seasonality">Seasonality</label>
-                            <select
-                                name="seasonality"
-                                id="seasonality"
-                                onChange={handleChange}
-                                className="form-control"
-                            >
-                                <option value="">All</option>
-                                <option value="CS">Cool Season</option>
-                                <option value="WS">Warm Season</option>
-                            </select>
-                        </div>
+                            <div className="vegetables-checkboxes-container">
+                                <div className="form-group">
+                                    <input
+                                        type="checkbox"
+                                        id="heat_tolerant"
+                                        name="heat_tolerant"
+                                        value="TRUE"
+                                        onChange={handleChange}
+                                    />
+                                    <label htmlFor="heat_tolerant">
+                                        Heat Tolerant
+                                    </label>
+                                </div>
 
-                        <button className="btn btn-success vegetable-form-btn">
-                            Search
-                        </button>
-                    </form>
-                </Collapse>
+                                <div className="form-group">
+                                    <input
+                                        type="checkbox"
+                                        id="drought_tolerant"
+                                        name="drought_tolerant"
+                                        value="TRUE"
+                                        onChange={handleChange}
+                                    />
+                                    <label htmlFor="drought_tolerant">
+                                        Drought Tolerant
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="life_cycle">Life Cycle</label>
+                                <select
+                                    name="life_cycle"
+                                    id="life_cycle"
+                                    onChange={handleChange}
+                                    className="form-control"
+                                >
+                                    <option value="">All</option>
+                                    <option value="AN">Annual</option>
+                                    <option value="BI">Biennial</option>
+                                    <option value="PE">Perennial</option>
+                                </select>
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="seasonality">Seasonality</label>
+                                <select
+                                    name="seasonality"
+                                    id="seasonality"
+                                    onChange={handleChange}
+                                    className="form-control"
+                                >
+                                    <option value="">All</option>
+                                    <option value="CS">Cool Season</option>
+                                    <option value="WS">Warm Season</option>
+                                </select>
+                            </div>
+
+                            <button className="btn btn-success vegetable-form-btn">
+                                Search
+                            </button>
+                        </form>
+                    </Collapse>{" "}
+                </div>
+            </div>
+            <div ref={filteredVegScroll}>
+                <FilteredVegetableList
+                    filteredVegetables={filteredVegetables}
+                    userVegetables={userVegetables}
+                    addToUserList={addToUserList}
+                />
+            </div>
+            <div className="vegetables-user-list-container">
+                <UserVegetableList
+                    userVegetables={userVegetables}
+                    removeFromUserList={removeFromUserList}
+                />
+                <ImArrowUp
+                    className="vegetables-arrow-scroll"
+                    onClick={handleArrowClick}
+                />
             </div>
 
-            <FilteredVegetableList
-                filteredVegetables={filteredVegetables}
-                userVegetables={userVegetables}
-                addToUserList={addToUserList}
-            />
-            <UserVegetableList
-                userVegetables={userVegetables}
-                removeFromUserList={removeFromUserList}
-            />
             {userVegetables.length === 0 ? (
                 ""
             ) : (
                 <button
-                    className="btn btn-success flagship-btn"
+                    className="btn flagship-btn vegetables-btn"
                     onClick={handleSaveVegClick}
                 >
                     Continue
