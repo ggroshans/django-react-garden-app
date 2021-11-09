@@ -23,15 +23,18 @@ function VarietiesDetail(props) {
 
     async function handleBlur(e) {
         e.preventDefault();
-        const updatedVariety = {
-            [props.name]: variety,
-        };
-        props.updateVarieties(updatedVariety);
-        setVariety("");
-        setPreviousVarietyList((prevState) => [...prevState, variety]);
-        props.setShowAlert(true)
-        setTimeout(() =>
-        props.setShowAlert(false), 1500)
+        if (variety.length > 0) {
+            const updatedVariety = {
+                [props.name]: variety,
+            };
+            props.updateVarieties(updatedVariety);
+            setVariety("");
+            setPreviousVarietyList((prevState) => [...prevState, variety]);
+            props.setShowAlert(true)
+            setTimeout(() =>
+            props.setShowAlert(false), 1500)
+        }
+
 
     }
 
@@ -76,6 +79,16 @@ function VarietiesDetail(props) {
         setPreviousVarietyList(prevState => updatedState)
     }
 
+    function handleKeyPress(e) {
+        console.log('fired')
+        console.log(e.key)
+        if (e.key=== 'Enter') {
+            console.log("blur fired")
+            handleBlur(e)
+        }
+        
+    }
+
 
     if (!props.userGarden) {
         return (
@@ -109,6 +122,7 @@ function VarietiesDetail(props) {
                     placeholder="Seed Variety"
                     onBlur={handleBlur}
                     onChange={(e) => setVariety(e.target.value)}
+                    onKeyPress={(e) => handleKeyPress(e)}
                 />
             </div>
         </div>
