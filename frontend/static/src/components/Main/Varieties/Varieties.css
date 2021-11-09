@@ -28,6 +28,15 @@
     top: 200px;
 }
 
-.alert {
+.varieties-save-alert{
     position: absolute;
+    width: 300px;
+    left: 40%;
+    top: 115px;
+}
+.varieties-delete-alert{
+    position: absolute;
+    width: 300px;
+    left: 40%;
+    top: 115px;
 }

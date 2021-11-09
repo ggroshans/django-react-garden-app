@@ -30,9 +30,9 @@ function VarietiesDetail(props) {
             props.updateVarieties(updatedVariety);
             setVariety("");
             setPreviousVarietyList((prevState) => [...prevState, variety]);
-            props.setShowAlert(true)
+            props.setShowSuccessAlert(true)
             setTimeout(() =>
-            props.setShowAlert(false), 1500)
+            props.setShowSuccessAlert(false), 1500)
         }
 
 
@@ -77,6 +77,10 @@ function VarietiesDetail(props) {
         updatedState.splice(idx, 1)
         console.log("UP", updatedState)
         setPreviousVarietyList(prevState => updatedState)
+
+        props.setShowDeleteAlert(true)
+            setTimeout(() =>
+            props.setShowDeleteAlert(false), 1500)
     }
 
     function handleKeyPress(e) {
