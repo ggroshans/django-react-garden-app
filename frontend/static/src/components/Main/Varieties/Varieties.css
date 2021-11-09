@@ -6,26 +6,26 @@
     background-size: cover;
 }
 
+.varieties-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
 
 .varieties-form {
-    display: flex;
-    flex-direction: column;
-    background-color: #2E8B57;
-    color: white;
+    background-color: transparent;
+    color: var(--brown);
     font-weight: 700;
     margin: auto;
-    max-width: 500px;
     padding: 2rem 5rem;
     text-align: left;
-    box-shadow: 0px 0px 15px 3px #1F941F;
     border: none;
     position: relative;
     top: 100px;
 }
 
 .varieties-continue-btn {
-    position: relative;
-    top: 200px;
+    margin: 5rem auto 3rem auto;
 }
 
 .varieties-save-alert{
@@ -39,4 +39,10 @@
     width: 300px;
     left: 40%;
     top: 115px;
+}
+
+.varieties-remove-btn {
+    font-size: 0.65rem;
+    position: relative;
+    bottom:5px;
 }

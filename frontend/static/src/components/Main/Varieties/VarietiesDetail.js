@@ -5,10 +5,13 @@ import { withRouter } from "react-router-dom";
 import { MdAddCircleOutline } from "react-icons/md";
 import { Spinner } from "react-bootstrap";
 import { AiOutlineClose } from "react-icons/ai";
+import { IoIosAddCircle } from "react-icons/io";
+import './VarietiesDetail.css'
 
 function VarietiesDetail(props) {
     const [variety, setVariety] = useState("");
     const [previousVarietyList, setPreviousVarietyList] = useState([]);
+    const [showInput, setShowInput] = useState(false);
 
     useEffect(() => {
         findPreviousSavedVarieties();
@@ -90,7 +93,10 @@ function VarietiesDetail(props) {
             console.log("blur fired")
             handleBlur(e)
         }
-        
+    }
+
+    function handleShowVarietyClick() {
+        setShowInput(true)
     }
 
 
@@ -105,29 +111,28 @@ function VarietiesDetail(props) {
     }
 
     return (
-        <div className="varieties-detail-container">
+        <div className={showInput || previousVarietyList.length > 0 ? 'varieties-detail-container increase-variety-size' : ''}>
             <div className="form-group varieties-form-group">
-                <p className="varieties-detail-name">Vegetable: {props.name}</p>
-                <label
-                    className="varieties-detail-label label-form"
-                    htmlFor="variety"
-                ></label>
-                <ol>
+                <p className="varieties-detail-name">{props.name} {showInput ? "" : <IoIosAddCircle
+                    className="varieties-detail-show-input-btn"
+                    onClick={handleShowVarietyClick}
+                />}</p>
+                <ul>
                     {previousVarietyList.map((prevVariety, idx) => (
-                        <li>{prevVariety} <AiOutlineClose onClick={() => handleDelete(idx)} value={idx}/></li>
+                        <li>{prevVariety} <AiOutlineClose onClick={() => handleDelete(idx)} value={idx} className="varieties-remove-btn" /></li>
                     ))}
-                </ol>
-                <input
+                </ul>
+                {showInput ? <input
                     id="variety"
                     value={variety}
                     name={props.name}
-                    className="form-control varieities-detail-input"
+                    className="form-control varieties-detail-input"
                     type="text"
                     placeholder="Seed Variety"
                     onBlur={handleBlur}
                     onChange={(e) => setVariety(e.target.value)}
                     onKeyPress={(e) => handleKeyPress(e)}
-                />
+                /> : ""}
             </div>
         </div>
     );
