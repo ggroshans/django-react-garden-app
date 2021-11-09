@@ -16,6 +16,10 @@
     color: var(--brown);
 }
 
+.soil-heading-map-flex-container {
+    display: flex;
+}
+
 .soil-heading {
     margin-bottom: 1.5rem;
 }
@@ -63,22 +67,6 @@
     display: none;
 }
 
-.display-soil-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 5px solid darkgreen;
-    width: 200px;
-    height: 50px;
-    margin: auto;
-    position: relative;
-    top: 100px;
-    font-weight: 900;
-}
-
-.display-soil-p {
-    margin-bottom: 0;
-}
 
 .display-results-container {
     display: flex;

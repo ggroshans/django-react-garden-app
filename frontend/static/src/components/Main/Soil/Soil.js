@@ -4,10 +4,12 @@ import EsriLoaderReact from "esri-loader-react";
 import Cookie from "js-cookie";
 import { useState, useEffect, useRef } from "react";
 import { Redirect, withRouter } from "react-router-dom";
+import { Button, Collapse } from 'react-bootstrap';
 
 function Soil(props) {
     const firstRender = useRef(true);
     const [loaded, setLoaded] = useState(false);
+    const [open, setOpen] = useState(false);
     const [soil, setSoil] = useState({
         id: null,
         characteristics: "",
@@ -93,15 +95,24 @@ function Soil(props) {
 
     return (
         <div className="soil-container">
-            <div className="soil-heading-container">
+        <div className="soil-heading-map-flex-container">
+
+        <div className="soil-heading-container">
                 <h2 className="soil-heading">
                     Find your Soil Type
                 </h2>
                 <p className="soil-description">
                     <strong>In this step</strong>, you will use the soil map below to find your soil type by clicking on your desired location. When you click on a location, the soil type at that precise location will be saved and the characateristics and recommendations for your soil will appear below the soil map.
                 </p>
+                <Button
+        onClick={() => setOpen(!open)}
+        aria-controls="example-collapse-text"
+        aria-expanded={open}
+      >
+        click
+      </Button>
             </div>
-
+            <Collapse in={open}>
             <div className="map-view">
                 <EsriLoaderReact
                     options={options}
@@ -184,9 +195,9 @@ function Soil(props) {
                     }}
                 />
             </div>
-            <div className="display-soil-container">
-                <p className="display-soil-p">{soil.soil_order}</p>
-            </div>
+            </Collapse>
+        </div>
+
             <div className="display-results-container">
                 <div className="display-characteristics-container">
                     <h2 className="display-characteristics-heading">Soil Characteristics:</h2>
