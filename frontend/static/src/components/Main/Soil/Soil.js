@@ -20,6 +20,8 @@ function Soil(props) {
     const [maxWidth, setMaxWidth] = useState(true);
     const [showDetails, setShowDetails] = useState(false);
 
+    const soilDiv = useRef()
+
     useEffect(() => {
         props.setShowNav(true);
     }, []);
@@ -29,6 +31,12 @@ function Soil(props) {
             firstRender.current = false;
         } else {
             getSoilDetails();
+            setShowDetails(true);
+
+            setTimeout(() => {
+                scrollToSoil();
+            }, 300);
+
         }
     }, [soil.soil_order]);
 
@@ -95,6 +103,14 @@ function Soil(props) {
         setMaxWidth(!maxWidth);
     }
 
+    function scrollToSoil() {
+        soilDiv.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "start",
+        });
+    }
+
     setTimeout(() => {
         setLoaded(true);
     });
@@ -102,7 +118,10 @@ function Soil(props) {
     return (
         <div className="soil-container">
             <div className="soil-heading-map-flex-container">
-                <div className="soil-heading-container" id={maxWidth ? "max-width" : ""}>
+                <div
+                    className="soil-heading-container"
+                    id={maxWidth ? "max-width" : ""}
+                >
                     <div className="soil-heading">
                         {/* <h2 className="soil-heading">Find your Soil Type</h2> */}
                         <p className="soil-description">
@@ -119,7 +138,7 @@ function Soil(props) {
                             aria-expanded={open}
                             className="btn btn-success"
                         >
-                            {open ? "Collapse Map" : 'Find Your Soil Type!'}
+                            {open ? "Collapse Map" : "Find Your Soil Type!"}
                         </Button>
                     </div>
                 </div>
@@ -215,28 +234,32 @@ function Soil(props) {
                     </Collapse>
                 </div>
             </div>
-
-            <div className="display-results-container">
-                <div className="display-characteristics-container">
-                    <h2 className="display-characteristics-heading">
-                        Soil Characteristics:
-                    </h2>
-                    <p>{soil.characteristics}</p>
+            <div className="soil-lower-half-container" id={showDetails ? "" : "hide"}>
+                <div
+                    className="display-results-container"
+                    
+                >
+                    <div className="display-characteristics-container" ref={soilDiv}>
+                        <h2 className="display-characteristics-heading">
+                            Soil Characteristics:
+                        </h2>
+                        <p>{soil.characteristics}</p>
+                    </div>
+                    <div className="display-recommendations-container">
+                        <h2 className="display-recommendations-heading">
+                            Soil Recommendations:
+                        </h2>
+                        <p>{soil.recommendations}</p>
+                    </div>
                 </div>
-                <div className="display-recommendations-container">
-                    <h2 className="display-recommendations-heading">
-                        Soil Recommendations:
-                    </h2>
-                    <p>{soil.recommendations}</p>
-                </div>
+                <button
+                    id="soil-save-btn"
+                    className="btn btn-success flagship-btn"
+                    onClick={handleSaveSoilClick}
+                >
+                    Continue
+                </button>
             </div>
-            <button
-                id="soil-save-btn"
-                className="btn btn-success flagship-btn"
-                onClick={handleSaveSoilClick}
-            >
-                Continue
-            </button>
         </div>
     );
 }
