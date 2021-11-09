@@ -1,15 +1,15 @@
-import React from 'react';
-import Cookie from 'js-cookie';
-import { useState, useEffect } from 'react';
-import { Spinner } from 'react-bootstrap';
-import { withRouter } from 'react-router';
-import VarietiesDetail from './VarietiesDetail';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import Cookie from "js-cookie";
+import { useState, useEffect } from "react";
+import { Spinner } from "react-bootstrap";
+import { withRouter } from "react-router";
+import VarietiesDetail from "./VarietiesDetail";
+import { NavLink } from "react-router-dom";
 import "./Varieties.css";
 
 function Varieties(props) {
-
     const [userGarden, setUserGarden] = useState();
+    const [showAlert, setShowAlert] = useState(false);
 
     useEffect(() => {
         grabUserGarden();
@@ -37,16 +37,16 @@ function Varieties(props) {
     }
 
     async function updateVarieties(variety) {
-        console.log('variety', variety);
+        console.log("variety", variety);
 
-        const varieties = {...userGarden.varieties};
+        const varieties = { ...userGarden.varieties };
         const key = Object.keys(variety)[0];
-        
+
         if (varieties[key] === null || varieties[key] === undefined) {
             varieties[key] = [];
-    }        
-        varieties[key].push({[variety[key]]: ""});
-        
+        }
+        varieties[key].push({ [variety[key]]: "" });
+
         if (variety[key] !== "") {
             const options = {
                 method: "PATCH",
@@ -64,17 +64,14 @@ function Varieties(props) {
                 console.log("VARIETY PATCH FAILED", response);
             } else {
                 const data = await response.json();
-                setUserGarden(prevState => ({
+                setUserGarden((prevState) => ({
                     ...prevState,
-                    varieties: varieties
+                    varieties: varieties,
                 }));
                 console.log("VARIETY PATCH SUCCESS", data);
             }
         }
-
-
-    } 
-
+    }
 
     if (!userGarden) {
         return (
@@ -86,19 +83,32 @@ function Varieties(props) {
         );
     }
 
-    console.log("USERGARDEN", userGarden)
-
+    console.log("USERGARDEN", userGarden);
 
     return (
         <div className="varieties-container">
+            {showAlert ? <div class="alert alert-success" role="alert">
+                Variety Saved!
+            </div> : <div></div>}
             <form action="" className="form-control varieties-form">
-                {userGarden.vegetables_details.map(vegetable => {
-                    return <VarietiesDetail {...vegetable} updateVarieties={updateVarieties} />
+                {userGarden.vegetables_details.map((vegetable) => {
+                    return (
+                        <VarietiesDetail
+                            {...vegetable}
+                            updateVarieties={updateVarieties}
+                            userGarden={userGarden}
+                            setShowAlert={setShowAlert}
+                        />
+                    );
                 })}
             </form>
-            <NavLink to={`/${props.match.params.garden}/layout`}><button className="btn btn-success flagship-btn varieties-continue-btn">Continue</button></NavLink>
+            <NavLink to={`/${props.match.params.garden}/layout`}>
+                <button className="btn btn-success flagship-btn varieties-continue-btn">
+                    Continue
+                </button>
+            </NavLink>
         </div>
-    )
+    );
 }
 
-export default withRouter(Varieties)
+export default withRouter(Varieties);
