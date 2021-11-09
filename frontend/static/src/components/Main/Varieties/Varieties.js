@@ -73,6 +73,41 @@ function Varieties(props) {
         }
     }
 
+    async function deleteVariety(name, idx) {
+
+        let varieties = { ...userGarden.varieties };
+        console.log("VARIETIES", varieties)
+
+        for (const property in varieties) {
+            if (property === name) {
+                varieties[property].splice(idx, 1)
+            }
+        }
+ 
+            const options = {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": Cookie.get("csrftoken"),
+                },
+                body: JSON.stringify({ varieties }),
+            };
+            const response = await fetch(
+                `/api/gardens/${props.match.params.garden}/`,
+                options
+            );
+            if (response.ok === false) {
+                console.log("VARIETY PATCH FAILED", response);
+            } else {
+                const data = await response.json();
+                setUserGarden((prevState) => ({
+                    ...prevState,
+                    varieties: varieties,
+                }));
+                console.log("VARIETY PATCH SUCCESS", data);
+            }
+    }
+
     if (!userGarden) {
         return (
             <Spinner
@@ -98,6 +133,7 @@ function Varieties(props) {
                             updateVarieties={updateVarieties}
                             userGarden={userGarden}
                             setShowAlert={setShowAlert}
+                            deleteVariety={deleteVariety}
                         />
                     );
                 })}

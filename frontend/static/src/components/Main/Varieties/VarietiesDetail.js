@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { MdAddCircleOutline } from "react-icons/md";
 import { Spinner } from "react-bootstrap";
+import { AiOutlineClose } from "react-icons/ai";
 
 function VarietiesDetail(props) {
     const [variety, setVariety] = useState("");
@@ -12,6 +13,13 @@ function VarietiesDetail(props) {
     useEffect(() => {
         findPreviousSavedVarieties();
     }, []);
+
+
+    useEffect( ()=> {
+        console.log('wassup')
+        console.log(previousVarietyList)
+    }, [previousVarietyList])
+
 
     async function handleBlur(e) {
         e.preventDefault();
@@ -60,6 +68,15 @@ function VarietiesDetail(props) {
         }
     }
 
+    function handleDelete(idx) {
+        props.deleteVariety(props.name, idx)
+        let updatedState = [...previousVarietyList]
+        updatedState.splice(idx, 1)
+        console.log("UP", updatedState)
+        setPreviousVarietyList(prevState => updatedState)
+    }
+
+
     if (!props.userGarden) {
         return (
             <Spinner
@@ -79,8 +96,8 @@ function VarietiesDetail(props) {
                     htmlFor="variety"
                 ></label>
                 <ol>
-                    {previousVarietyList.map((prevVariety) => (
-                        <li>{prevVariety}</li>
+                    {previousVarietyList.map((prevVariety, idx) => (
+                        <li>{prevVariety} <AiOutlineClose onClick={() => handleDelete(idx)} value={idx}/></li>
                     ))}
                 </ol>
                 <input
