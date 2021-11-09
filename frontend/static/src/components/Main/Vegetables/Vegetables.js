@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import FilteredVegetableList from "./FilteredVegetableList";
 import UserVegetableList from "./UserVegetableList";
 import { withRouter } from "react-router";
-import { Button, Collapse } from "react-bootstrap";
+import { Button, Collapse, Fade } from "react-bootstrap";
 import { ImArrowUp } from "react-icons/im";
 
 function Vegetables(props) {
@@ -238,7 +238,7 @@ function Vegetables(props) {
                 </div>
 
                 <div className="vegetables-form-container" id={showForm ? "" : "hide"}>
-                    <Collapse in={open}>
+                    <Fade in={open}>
                         <form
                             action=""
                             className="form-control vegetables-form"
@@ -333,7 +333,7 @@ function Vegetables(props) {
                                 Search
                             </button>
                         </form>
-                    </Collapse>{" "}
+                    </Fade>{" "}
                 </div>
             </div>
             <div ref={filteredVegScroll}>
