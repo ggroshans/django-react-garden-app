@@ -111,7 +111,7 @@ function GardenNotes(props) {
     return (
         <div className="garden-notes-outer-container">
             <div className="garden-notes-container">
-                <h2 className="garden-notes-heading">General Notes</h2>
+                <h2 className="garden-notes-heading garden-detail-heading-category">General Notes</h2>
                 <IoIosAddCircle
                     className="garden-notes-add-note-btn"
                     onClick={handleAddNote}
@@ -166,7 +166,7 @@ function GardenNotes(props) {
                 </ul>
             </div>
 
-            <h4>
+            <h4 className="garden-detail-heading-category">
                 Layout <FiEdit className="garden-detail-edit-btn" onClick={handleEditLayoutClick} />
             </h4>
             <div className="garden-detail-layout-container">

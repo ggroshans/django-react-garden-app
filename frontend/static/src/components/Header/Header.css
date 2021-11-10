@@ -1,6 +1,6 @@
 .header-container {
     position: relative;
-    background-color: #ffffff;
+    background-color: var(--white);
     border-bottom: 4px solid var(--green);
     height: 15vh;
 }
