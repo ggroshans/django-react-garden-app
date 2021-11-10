@@ -21,7 +21,7 @@
   height: 65px;
   color: white;
   border-radius: 30px;
-
+  border: 1px solid var(--brown);
 }
 
 .flagship-btn:hover {
@@ -29,6 +29,12 @@
   color: var(--brown);
   border: 1px solid var(--brown)
 }
+.flagship-btn:active .flagship-btn:focus, .flagship-btn.focus { 
+  background-color: var(--brown);
+  box-shadow: none;
+}
+
+
 
 
 
