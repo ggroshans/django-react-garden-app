@@ -9,12 +9,12 @@
 }
 
 .layout-heading-container {
-    max-width: 800px;
-    margin: 3rem auto 3rem auto;
+    width: 80%;
+    margin: 3rem auto;
     padding: 1.5rem;
     background: white;
-    border-radius: 5px;
-    border: 3px solid #2E8B57;
+    border-radius: 10px;
+    color: var(--brown);
 }
 
 .layout-heading {

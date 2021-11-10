@@ -142,7 +142,15 @@ function Varieties(props) {
             ) : (
                 <div></div>
             )}
-            <div >
+            <div className="varieties-heading-container">
+                    {/* <h2 className="vegetables-heading">
+                        Find the Most Suitable Vegetables
+                    </h2> */}
+                    <p className="varieties-description">
+                        <strong>In this step</strong>, you will are able to add varieties to your chosen vegetables! To add a variety click on your desired vegetable's plus-sign button. You will be prompted with a textbox. Here you will type in the variety of your choosing and press enter to save. You will see the variety added to the vegetable's dialog box. If you would like to delete a variety, no worries, just click the 'x' button next to the variety! {" "}
+                    </p>
+                    </div>
+            <div className="varieties-main-container">
                 <form action="" className="form-control varieties-form varieties-grid-container">
                     {userGarden.vegetables_details.map((vegetable) => {
                         return (

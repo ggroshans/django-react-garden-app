@@ -17,10 +17,10 @@ function Layout(props) {
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        canvas.width = 450 * 2;
-        canvas.height = 450 * 2;
-        canvas.style.width = `${450}px`;
-        canvas.style.height = `${450}px`;
+        canvas.width = 550 * 2;
+        canvas.height = 650 * 2;
+        canvas.style.width = `${550}px`;
+        canvas.style.height = `${650}px`;
 
         const context = canvas.getContext("2d");
         context.scale(2, 2);
@@ -86,9 +86,9 @@ function Layout(props) {
     return (
         <div className="layout-container">
             <div className="layout-heading-container">
-            <h2 className="layout-heading">
+            {/* <h2 className="layout-heading">
                 Time to Figure out your Layout!
-            </h2>
+            </h2> */}
             <p className="layout-description">
                 <strong>In this step</strong>, you will find the vegetables you have chosen in the table below along with the vegetables best pairings (companions) and worse pairings (adversaries). Use the companion chart to think about how you want to lay out your garden. Then, use the canvas to the right to sketch out the placement of your beds and vegetables.
             </p>
@@ -113,7 +113,7 @@ function Layout(props) {
                         </button>
                         <NavLink to={`/${props.match.params.garden}/summary`}>
                             <button className="btn btn-success flagship-btn" onClick={handleContinueClick}>
-                                Summary
+                                Continue
                             </button>
                         </NavLink>
                     </div>

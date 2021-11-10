@@ -59,17 +59,17 @@ function Companions(props) {
                         : userGarden.vegetables_details.map((vegetable) => {
                               return (
                                   <tr>
-                                      <td>
+                                      <td className="table-vegetable-name">
                                           <strong>{vegetable.name}</strong>
                                       </td>
                                       {vegetable.companions === null ? <td>
                                           None
-                                      </td> : <td className="companion-list">
+                                      </td> : <td id="companion-list">
                                           {vegetable.companions}
                                       </td>}
                                       {vegetable.adversaries === null ? <td>
                                           None
-                                      </td> : <td className="adversary-list">
+                                      </td> : <td id="adversary-list">
                                           {vegetable.adversaries}
                                       </td>}
                                   </tr>

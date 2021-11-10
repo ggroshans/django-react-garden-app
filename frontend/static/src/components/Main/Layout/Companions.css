@@ -1,15 +1,15 @@
 .companions-container {
     max-height: auto;
     width: 50%;
-    border: 1px solid darkgreen;
+
     border-radius: 10px;
 }
 
-.companion-list {
+#companion-list {
     color: darkgreen;
 }
 
-.adversary-list {
+#adversary-list {
     color: tomato;
 }
 
@@ -20,21 +20,32 @@ table {
     padding: 1rem;
     width: 100%;
     max-height: auto;
+    margin-bottom: 3rem;
 }
 
 thead {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--brown);
     text-align: center;
+  
 }
 
 th {
     padding: 1rem;
+    font-family: var(--subheading-font);
+    font-size: 1.35rem;
+    color:var(--brown);
+    font-weight: 900;
+}
+
+.table-vegetable-name {
+    color:var(--brown);
 }
 
 td {
-    border-top: 1px solid black;
-    padding: 1rem 0rem;
+    border-top: 1px solid var(--brown);
+    padding: 1rem 0.5rem;
     min-width: 200px;
     text-align: center;
+    color: var(--brown);
 }
 
