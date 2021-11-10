@@ -18,8 +18,8 @@ function GardenItem(props) {
                 <AiOutlineClose />
             </div>
             <div className="garden-item-text-container">
-                <h3>{props.name}</h3>
-                <p>Created: {props.created_at}</p>
+                <h3 className="garden-item-heading">{props.name.toUpperCase()}</h3>
+                <p className="garden-item-date">{props.created_at}</p>
                 <p
                     onClick={handleGardenItemClick}
                     className="garden-item-more-details"

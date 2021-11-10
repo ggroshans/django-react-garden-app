@@ -5,6 +5,7 @@
 }
 
 .footer-container {
+    border-top: 4px solid var(--green); 
     font-family: var(--body-font);
     letter-spacing: 0.05rem;
 }

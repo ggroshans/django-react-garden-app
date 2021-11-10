@@ -59,7 +59,7 @@
 .vegetables-form {
     display: flex;
     flex-direction: column;
-    background-color: #2E8B57;
+    background-color: var(--green);
     color: white;
     font-weight: 700;
     max-width: 500px;

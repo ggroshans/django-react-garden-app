@@ -48,18 +48,21 @@ function Login(props) {
     }
 
     return (
-        <div className="login-container">
-            <form action="" className="form-control" onSubmit={handleSubmit}>
+        <div className="login-outer-container">
+            <div className="login-inner-container">
+            <form action="" className="form-control login-form" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username" className="form-label login-label">Username:</label>
                     <input className="form-control" type="text" id="username" name="username" value={data.username} placeholder="Enter Username.." onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password" className="form-label login-label">Password:</label>
+                    <label htmlFor="password" className="form-label login-label mt-3">Password:</label>
                     <input className="form-control" type="password" id="password" name="password" value={data.password} placeholder="Enter Password.." onChange={handleChange} />
                 </div>
-                <button className="btn btn-success mt-3">Login</button>
+                <button className="flagship-btn login-btn">Login</button>
             </form>
+            </div>
+
             
         </div>
     )

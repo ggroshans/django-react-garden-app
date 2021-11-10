@@ -72,7 +72,7 @@ export default function Splash(props) {
                             <NavLink to="/registration" className="splash-navlink">
                                 <a
                                     href="#"
-                                    className="splash-btns btn px-5 py-3 mt-3 mx-3 mt-sm-0"
+                                    className="green-btn btn mt-3 mx-3 mt-sm-0"
                                 >
                                     Register
                                 </a>
@@ -80,7 +80,7 @@ export default function Splash(props) {
                                 <NavLink to="/login" className="splash-navlink">
                                 <a
                                     href="#"
-                                    className="splash-btns btn px-5 py-3 mt-3 mt-sm-0"
+                                    className="green-btn btn mt-3 mt-sm-0"
                                 >
                                     Login
                                 </a>

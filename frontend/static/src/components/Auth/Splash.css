@@ -109,6 +109,8 @@
 
 .splash-p {
     color: #bbb;
+    font-family: var(--body-font);
+    font-size: 1.25rem;
 }
 
 .splash-btns {

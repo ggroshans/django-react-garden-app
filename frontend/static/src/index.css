@@ -2,14 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 
 :root {
-  --body-font: 'Cabin', sans-serif;
+  --body-font: 'Lato', sans-serif;
   --subheading-font: 'Lobster Two', cursive;
   --heading-font: 'Lobster', cursive;
   --btn-color: forestgreen;
   --brown: #80461B;
   --green: forestgreen;
+  --subheading-font2: 'Oswald', sans-serif;
   /* --green: #2E8B57; */
 }
 
@@ -17,7 +21,7 @@
   background-color: var(--brown);
   font-family: var(--body-font);
   font-weight: 700;
-  min-width: 175px;
+  width: 175px;
   height: 65px;
   color: white;
   border-radius: 30px;
@@ -35,8 +39,22 @@
 }
 
 
+.green-btn{
+  border-radius: 30px; background-color: var(--green);
+  width: 175px;
+  color: white;
+  font-family: var(--body-font);
+  padding: 1rem 2.5rem;
+  text-align: center;
+  border: 2px solid var(--green);
+  opacity: .75;
+}
 
-
+.green-btn:hover {
+  background-color: white;
+  opacity: .9;
+  color: var(--green);
+}
 
 
 
