@@ -19,12 +19,12 @@
 }
 
 .header-title {
-    font-family: 'Lobster', cursive;
-    font-size: 4rem;
-    letter-spacing: 0.15rem;
+    font-family: var(--subheading-font);
+    font-size: 5rem;
     position: relative;
     top: 5px;
-    color: var(--brown);
+    color: var(--green);
+    font-weight: 500;
 
 }
 
