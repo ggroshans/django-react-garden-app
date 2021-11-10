@@ -9,7 +9,8 @@
   --heading-font: 'Lobster', cursive;
   --btn-color: forestgreen;
   --brown: #6F4E37;
-  --green: #2E8B57;
+  --green: forestgreen;
+  /* --green: #2E8B57; */
 }
 
 .flagship-btn {
@@ -19,7 +20,8 @@
   min-width: 175px;
   height: 65px;
   color: white;
-  border: 1px solid 	beige;
+  border-radius: 30px;
+
 }
 
 .flagship-btn:hover {

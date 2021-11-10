@@ -137,7 +137,7 @@ function Soil(props) {
                                 onClick={handleExpandMap}
                                 aria-controls="example-collapse-text"
                                 aria-expanded={open}
-                                className="btn btn-success"
+                                className="btn btn-success soil-expand-btn"
                             >
                                 {open ? "Collapse Map" : "Find Your Soil Type!"}
                             </Button>
@@ -273,7 +273,7 @@ function Soil(props) {
                     </div>
                     <button
                         id="soil-save-btn"
-                        className="btn btn-success flagship-btn"
+                        className="btn flagship-btn"
                         onClick={handleSaveSoilClick}
                     >
                         Continue
