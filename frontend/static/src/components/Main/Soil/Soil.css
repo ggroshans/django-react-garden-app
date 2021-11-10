@@ -81,16 +81,18 @@
   .esri-ui-corner {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      align-content: flex-start;
       margin-top: 1rem;
   }
-
 
 
 .esri-attribution__sources, .esri-attribution__powered-by {
     display: none;
 }
-
+.esri-locate {
+    height: 56px;
+}
 
 .display-results-container {
     display: flex;

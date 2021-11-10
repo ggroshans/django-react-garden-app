@@ -54,4 +54,9 @@
 .create-garden-btn {
     margin-top: 2rem;
     width: 200px;
+    opacity: 0.7;
+}
+
+.create-garden-btn:hover {
+    opacity: .8
 }

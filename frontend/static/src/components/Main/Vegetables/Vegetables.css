@@ -68,7 +68,7 @@
     box-shadow: 0px 0px 15px 3px #1F941F;
     border: none;
     margin: auto;
-
+    opacity: .9;
 }
 
 .vegetables-checkboxes-container {

@@ -49,6 +49,7 @@ function CreateAGarden(props) {
                         name="name"
                         value={data["name"]}
                         onChange={handleChange}
+                        className="form-control"
                     />
                 </Modal.Body>
                 <Modal.Footer>
