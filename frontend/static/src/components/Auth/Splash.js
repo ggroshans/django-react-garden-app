@@ -69,18 +69,18 @@ export default function Splash(props) {
                                 groundwork.
                             </p>
                             <div className="mt-5">
-                            <NavLink to="/registration">
+                            <NavLink to="/registration" className="splash-navlink">
                                 <a
                                     href="#"
-                                    className="splash-btns btn px-5 py-3 text-white mt-3 mx-3 mt-sm-0"
+                                    className="splash-btns btn px-5 py-3 mt-3 mx-3 mt-sm-0"
                                 >
                                     Register
                                 </a>
                                 </NavLink>
-                                <NavLink to="/login">
+                                <NavLink to="/login" className="splash-navlink">
                                 <a
                                     href="#"
-                                    className="splash-btns btn px-5 py-3 text-white mt-3 mt-sm-0"
+                                    className="splash-btns btn px-5 py-3 mt-3 mt-sm-0"
                                 >
                                     Login
                                 </a>

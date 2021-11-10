@@ -114,4 +114,11 @@
 .splash-btns {
     border-radius: 30px; background-color: var(--green);
     width: 150px;
+    color: white;
+}
+
+.splash-btns:hover {
+    background-color: white;
+    border: 1px solid var(--green);
+    color: var(--green);
 }
