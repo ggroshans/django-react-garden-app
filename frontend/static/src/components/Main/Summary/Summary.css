@@ -15,6 +15,13 @@
     overflow:hidden;
 }
 
+.summary-category-heading {
+    color: var(--brown);
+    font-family: var(--subheading-font);
+    font-weight: 600;
+    margin: 2rem 0rem;
+}
+
 .summary-report-main-heading, .summary-report-date {
     text-align: center;
 }
@@ -22,6 +29,23 @@
 .summary-report-main-heading{
     font-size: 2.25rem;
     font-weight: 600;
+    color: var(--brown);
+}
+
+.summary-report-date{
+    font-style: italic;
+}
+
+.summary-vegetables-heading {
+    margin-left: 6rem;
+}
+
+.summary-description {
+    line-height: 2rem;
+}
+
+.summary-vegetables-p {
+    margin: 0rem 6rem;
 }
 
 .summary-report-container {
@@ -110,19 +134,20 @@ div[role="dialog"] {
     height: 2rem;
 }
 
-.summary-print-grid-div {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    min-height: 400px;
-    font-weight: 500;
+.summary-print-span{
+    display: inline-block;
+    font-weight: 600;
     font-style: italic;
-    font-size: 3rem;
-    text-align: center;
-    font-family: var(--subheading-font);
+    cursor: pointer;
     color: var(--brown);
+    transition: all 2s;
+}
+.summary-print-span:hover {
+    color: black
+}
 
+.summary-layout-container{
+    margin: 3rem 0rem;
 }
 
 .summary-layout-img-container{
@@ -138,3 +163,39 @@ div[role="dialog"] {
     margin: auto;
 }
 
+
+
+.summary-detail-vegetable {
+    border-radius: 10px;
+    padding: 1.25rem;
+    width:375px;
+    height: auto;
+    position: relative;
+    transition: transform 1s;
+    text-align: left;
+}
+
+.summary-detail-vegetable-grid-container {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: flex-start;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+    gap: 1rem;
+    padding: 0rem 1rem;
+    max-width: 1200px;
+    margin: 3rem 3rem 2rem 3rem;
+}
+
+.summary-detail-vegetable {
+    border: 2px solid rgb(220, 243, 220);
+    background-color: rgb(251, 255, 251);
+    border-radius: 10px;
+    padding: 1.25rem;
+    width:325px;
+    height: auto;
+    position: relative;
+    transition: transform 1s;
+    text-align: left;
+}
