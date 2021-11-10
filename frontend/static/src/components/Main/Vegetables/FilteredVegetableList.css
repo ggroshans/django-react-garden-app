@@ -5,8 +5,10 @@
 }
 
 .filtered-vegetables-heading {
-    font-size: 1.75rem;
-    margin: 2rem 0rem 1rem 0rem;
+    font-size: 2rem;
+    margin: 3rem 0rem 2rem 0rem;
+    color: var(--brown);
+    font-family: var(--subheading-font2);
 }
 
 .filtered-vegetables-grid-container {
@@ -24,7 +26,7 @@
 }
 
 .filtered-vegetable {
-    border: 5px solid green;
+    border: 5px solid var(--green);
     background-color: 	white;
     font-weight: 800;
     border-radius: 10px;
@@ -52,8 +54,9 @@
     font-family: var(--body-font);
     position: absolute;
     bottom: 40px;
-    left: 48px;
+    left: 43px;
     border: 1px solid white;
+    background-color: var(--green);
 }
 
 .already-added {

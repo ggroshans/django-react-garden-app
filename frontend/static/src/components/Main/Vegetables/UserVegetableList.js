@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default function UserVegetableList(props) {
     return (
         <div className="user-vegetable-list-container">
-        {props.userVegetables.length === 0 ? "" : <h2 className="user-vegetable-heading">Your Vegetables:</h2>}
+        {props.userVegetables.length === 0 ? "" : <h2 className="user-vegetable-heading">YOUR VEGETABLES:</h2>}
             <div className="user-vegetables-grid-container">
             {props.userVegetables === undefined
                 ? ""

@@ -59,6 +59,7 @@
 .vegetables-form {
     display: flex;
     flex-direction: column;
+    font-family: var(--body-font);
     background-color: var(--green);
     color: white;
     font-weight: 700;
@@ -69,6 +70,7 @@
     border: none;
     margin: auto;
     opacity: .9;
+    font-size: 1.1rem;
 }
 
 .vegetables-checkboxes-container {
@@ -82,7 +84,7 @@
     margin-top: 2rem;
     border: 2px solid #2E8B57;
     background-color: white;
-    color: #2E8B57;
+    color: var(--green);
     width: 200px;
     margin: 1.5rem auto 0rem auto;
 }

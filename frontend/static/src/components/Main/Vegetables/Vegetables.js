@@ -25,6 +25,7 @@ function Vegetables(props) {
     const [userVegetables, setUserVegetables] = useState([]);
     const [open, setOpen] = useState(false);
     const [showForm, setShowForm] = useState(false);
+    const [showArrow, setShowArrow] = useState(false);
     const [widthMax, setWidthMax] = useState(true);
     const filteredVegScroll = useRef();
     const filterFormScroll = useRef();
@@ -131,6 +132,7 @@ function Vegetables(props) {
         }
 
         getVegetableDetails();
+        setShowArrow(true);
 
         queryString = "";
         setTimeout(() => {
@@ -265,7 +267,7 @@ function Vegetables(props) {
                                     />
                                 </div>
 
-                                <div className="form-group">
+                                <div className="form-group mt-2">
                                     <label htmlFor="exposure">
                                         Sun Exposure
                                     </label>
@@ -273,7 +275,7 @@ function Vegetables(props) {
                                         name="exposure"
                                         id="exposure"
                                         onChange={handleChange}
-                                        className="form-control"
+                                        className="form-control mt-2"
                                     >
                                         <option value="">ALL</option>
                                         <option value="BO">
@@ -285,7 +287,7 @@ function Vegetables(props) {
                                 </div>
 
                                 <div className="vegetables-checkboxes-container">
-                                    <div className="form-group">
+                                    <div className="form-group mt-2">
                                         <input
                                             type="checkbox"
                                             id="heat_tolerant"
@@ -298,7 +300,7 @@ function Vegetables(props) {
                                         </label>
                                     </div>
 
-                                    <div className="form-group">
+                                    <div className="form-group mt-2">
                                         <input
                                             type="checkbox"
                                             id="drought_tolerant"
@@ -311,7 +313,7 @@ function Vegetables(props) {
                                         </label>
                                     </div>
                                 </div>
-                                <div className="form-group">
+                                <div className="form-group mt-2">
                                     <label htmlFor="life_cycle">
                                         Life Cycle
                                     </label>
@@ -328,7 +330,7 @@ function Vegetables(props) {
                                     </select>
                                 </div>
 
-                                <div className="form-group">
+                                <div className="form-group mt-2">
                                     <label htmlFor="seasonality">
                                         Seasonality
                                     </label>
@@ -365,6 +367,7 @@ function Vegetables(props) {
                     />
                     <ImArrowUp
                         className="vegetables-arrow-scroll"
+                        id={showArrow ? "" : "hide"}
                         onClick={handleArrowClick}
                     />
                 </div>
