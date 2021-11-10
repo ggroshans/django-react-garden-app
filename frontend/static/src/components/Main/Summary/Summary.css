@@ -19,6 +19,11 @@
     text-align: center;
 }
 
+.summary-report-main-heading{
+    font-size: 2.25rem;
+    font-weight: 600;
+}
+
 .summary-report-container {
     max-width: 850px;
     background-color: white;
@@ -132,3 +137,4 @@ div[role="dialog"] {
     width: 100%;
     margin: auto;
 }
+

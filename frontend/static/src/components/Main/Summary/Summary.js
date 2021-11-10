@@ -9,7 +9,7 @@ import { FiEdit } from "react-icons/fi";
 function Summary(props) {
     const [userGarden, setUserGarden] = useState();
     const [scrollView, setScrollView] = useState(false);
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
     const values = [true];
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
@@ -96,18 +96,23 @@ function Summary(props) {
                             {userGarden.soil_details.recommendations}
                         </p>
                     </div>{" "}
-                    <div className="summary-layout-container">
-                        <h3>Layout</h3>
-                        <div className="summary-layout-img-container">
-                            <img className="summary-layout-img" src={userGarden.layout} />
+                    {show ? (
+                        ""
+                    ) : (
+                        <div className="summary-layout-container">
+                            <h3>Layout</h3>
+                            <div className="summary-layout-img-container">
+                                <img
+                                    className="summary-layout-img"
+                                    src={userGarden.layout}
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="summary-vegetable-container">
-                        
-                    </div>
+                    )}
+                    <div className="summary-vegetable-container"></div>
                     <div className="garden-detail-collapse-container">
                         <div className="garden-detail-vegetable-grid-container">
-                            {userGarden.vegetables_details.map((vegetable) => {
+                            {!show ? userGarden.vegetables_details.map((vegetable) => {
                                 return (
                                     <div className="garden-detail-vegetable">
                                         <FiEdit
@@ -210,181 +215,184 @@ function Summary(props) {
                                         </p>
                                     </div>
                                 );
-                            })}
-                            <div className='garden-detail-vegetable'>
-
-                            {values.map((v, idx) => (
-                            <div
-                                key={idx}
-                                className="me-2 summary-print-grid-div"
-                                onClick={() => handleShow(v)}
-                            >
-                                Click to Print Vegetable Table
-                                {typeof v === "string" &&
-                                    `below ${v.split("-")[0]}`}
-                            </div>
-                        ))}
-                        <Modal
-                            show={show}
-                            fullscreen={fullscreen}
-                            onHide={() => setShow(false)}
-                            id={scrollView ? "scroll" : ""}
-                        >
-                            <Modal.Header closeButton>
-                                <Modal.Title>Your Vegetables</Modal.Title>
-                                <button
-                                    className="flagship-btn summary-print-vegetables"
-                                    onClick={handlePrintClick}
+                            }) : ""}
+                            <div className="garden-detail-vegetable">
+                                {values.map((v, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="me-2 summary-print-grid-div"
+                                        onClick={() => handleShow(v)}
+                                    >
+                                        Click to Print Vegetable Table
+                                        {typeof v === "string" &&
+                                            `below ${v.split("-")[0]}`}
+                                    </div>
+                                ))}
+                                <Modal
+                                    show={show}
+                                    fullscreen={fullscreen}
+                                    onHide={() => setShow(false)}
+                                    id={scrollView ? "scroll" : ""}
                                 >
-                                    Print Your Vegetables
-                                </button>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <div className="summary-vegetable">
-                                    <table className="summary-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Your Vegetable</th>
-                                                <th>Sun Exposure</th>
-                                                <th>Heat Tolerant</th>
-                                                <th>Drought Tolerant</th>
-                                                <th>Life Cycle</th>
-                                                <th>Seasonality</th>
-                                                <th>Varieties</th>
-                                                <th>Companions</th>
-                                                <th>Adversaries</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {userGarden.vegetables_details
-                                                .length === 0
-                                                ? ""
-                                                : userGarden.vegetables_details.map(
-                                                      (vegetable) => {
-                                                          return (
-                                                              <tr>
-                                                                  <td className="summary-td">
-                                                                      <strong>
-                                                                          {
-                                                                              vegetable.name
-                                                                          }
-                                                                      </strong>
-                                                                  </td>
-                                                                  <td className="summary-td">
-                                                                      {vegetable.exposure ===
-                                                                      "BO"
-                                                                          ? "Full Sun And/Or Partial Sun"
-                                                                          : vegetable.exposure ===
-                                                                            "FS"
-                                                                          ? "Full Sun"
-                                                                          : "Partial Sun"}
-                                                                  </td>
-                                                                  <td className="summary-td">
-                                                                      {" "}
-                                                                      {vegetable.heat_tolerant
-                                                                          ? "Yes"
-                                                                          : "No"}
-                                                                  </td>
-                                                                  <td className="summary-td">
-                                                                      {vegetable.drought_tolerant
-                                                                          ? "Yes"
-                                                                          : "No"}
-                                                                  </td>
-                                                                  <td className="summary-td">
-                                                                      {vegetable.seasonality ===
-                                                                      "CS"
-                                                                          ? "Cool-Season"
-                                                                          : "Warm-Season"}
-                                                                  </td>
-                                                                  <td className="summary-td">
-                                                                      {vegetable.life_cycle ===
-                                                                      "AN"
-                                                                          ? "Annual"
-                                                                          : vegetable.life_cycle ===
-                                                                            "BI"
-                                                                          ? "Biennial"
-                                                                          : "Perennial"}
-                                                                  </td>
-                                                                  <td className="summary-td">
-                                                                      <span className="summary-category"></span>{" "}
-                                                                      {userGarden.varieties ===
-                                                                      null
-                                                                          ? "None"
-                                                                          : userGarden
-                                                                                .varieties[
-                                                                                vegetable
-                                                                                    .name
-                                                                            ] ===
-                                                                            undefined
-                                                                          ? "None"
-                                                                          : userGarden.varieties[
-                                                                                vegetable
-                                                                                    .name
-                                                                            ].map(
-                                                                                (
-                                                                                    element
-                                                                                ) => {
-                                                                                    let varietiesPerVegetable =
-                                                                                        [];
-                                                                                    for (const prop in element) {
-                                                                                        varietiesPerVegetable.push(
-                                                                                            prop
-                                                                                        );
-                                                                                    }
-                                                                                    return varietiesPerVegetable.map(
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>
+                                            Your Vegetables
+                                        </Modal.Title>
+                                        <button
+                                            className="flagship-btn summary-print-vegetables"
+                                            onClick={handlePrintClick}
+                                        >
+                                            Print Your Vegetables
+                                        </button>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <div className="summary-vegetable">
+                                            <table className="summary-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Your Vegetable</th>
+                                                        <th>Sun Exposure</th>
+                                                        <th>Heat Tolerant</th>
+                                                        <th>
+                                                            Drought Tolerant
+                                                        </th>
+                                                        <th>Life Cycle</th>
+                                                        <th>Seasonality</th>
+                                                        <th>Varieties</th>
+                                                        <th>Companions</th>
+                                                        <th>Adversaries</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {userGarden
+                                                        .vegetables_details
+                                                        .length === 0
+                                                        ? ""
+                                                        : userGarden.vegetables_details.map(
+                                                              (vegetable) => {
+                                                                  return (
+                                                                      <tr>
+                                                                          <td className="summary-td">
+                                                                              <strong>
+                                                                                  {
+                                                                                      vegetable.name
+                                                                                  }
+                                                                              </strong>
+                                                                          </td>
+                                                                          <td className="summary-td">
+                                                                              {vegetable.exposure ===
+                                                                              "BO"
+                                                                                  ? "Full Sun And/Or Partial Sun"
+                                                                                  : vegetable.exposure ===
+                                                                                    "FS"
+                                                                                  ? "Full Sun"
+                                                                                  : "Partial Sun"}
+                                                                          </td>
+                                                                          <td className="summary-td">
+                                                                              {" "}
+                                                                              {vegetable.heat_tolerant
+                                                                                  ? "Yes"
+                                                                                  : "No"}
+                                                                          </td>
+                                                                          <td className="summary-td">
+                                                                              {vegetable.drought_tolerant
+                                                                                  ? "Yes"
+                                                                                  : "No"}
+                                                                          </td>
+                                                                          <td className="summary-td">
+                                                                              {vegetable.seasonality ===
+                                                                              "CS"
+                                                                                  ? "Cool-Season"
+                                                                                  : "Warm-Season"}
+                                                                          </td>
+                                                                          <td className="summary-td">
+                                                                              {vegetable.life_cycle ===
+                                                                              "AN"
+                                                                                  ? "Annual"
+                                                                                  : vegetable.life_cycle ===
+                                                                                    "BI"
+                                                                                  ? "Biennial"
+                                                                                  : "Perennial"}
+                                                                          </td>
+                                                                          <td className="summary-td">
+                                                                              <span className="summary-category"></span>{" "}
+                                                                              {userGarden.varieties ===
+                                                                              null
+                                                                                  ? "None"
+                                                                                  : userGarden
+                                                                                        .varieties[
+                                                                                        vegetable
+                                                                                            .name
+                                                                                    ] ===
+                                                                                    undefined
+                                                                                  ? "None"
+                                                                                  : userGarden.varieties[
+                                                                                        vegetable
+                                                                                            .name
+                                                                                    ].map(
                                                                                         (
-                                                                                            variety
+                                                                                            element
                                                                                         ) => {
-                                                                                            return (
-                                                                                                <p>
-                                                                                                    {
-                                                                                                        variety
-                                                                                                    }
-                                                                                                </p>
+                                                                                            let varietiesPerVegetable =
+                                                                                                [];
+                                                                                            for (const prop in element) {
+                                                                                                varietiesPerVegetable.push(
+                                                                                                    prop
+                                                                                                );
+                                                                                            }
+                                                                                            return varietiesPerVegetable.map(
+                                                                                                (
+                                                                                                    variety
+                                                                                                ) => {
+                                                                                                    return (
+                                                                                                        <p>
+                                                                                                            {
+                                                                                                                variety
+                                                                                                            }
+                                                                                                        </p>
+                                                                                                    );
+                                                                                                }
                                                                                             );
                                                                                         }
-                                                                                    );
-                                                                                }
-                                                                            )}
-                                                                  </td>
-                                                                  {vegetable.companions ===
-                                                                  null ? (
-                                                                      <td className="summary-td summary-td summary-companions">
-                                                                          None
-                                                                      </td>
-                                                                  ) : (
-                                                                      <td id="companion-list">
-                                                                          {
-                                                                              vegetable.companions
-                                                                          }
-                                                                      </td>
-                                                                  )}
-                                                                  {vegetable.adversaries ===
-                                                                  null ? (
-                                                                      <td className="summary-td">
-                                                                          None
-                                                                      </td>
-                                                                  ) : (
-                                                                      <td
-                                                                          id="adversary-list"
-                                                                          className="summary-td"
-                                                                      >
-                                                                          {
-                                                                              vegetable.adversaries
-                                                                          }
-                                                                      </td>
-                                                                  )}
-                                                              </tr>
-                                                          );
-                                                      }
-                                                  )}
-                                        </tbody>
-                                        <tfoot></tfoot>
-                                    </table>
-                                </div>
-                            </Modal.Body>
-                        </Modal>
-
+                                                                                    )}
+                                                                          </td>
+                                                                          {vegetable.companions ===
+                                                                          null ? (
+                                                                              <td className="summary-td summary-td summary-companions">
+                                                                                  None
+                                                                              </td>
+                                                                          ) : (
+                                                                              <td id="companion-list">
+                                                                                  {
+                                                                                      vegetable.companions
+                                                                                  }
+                                                                              </td>
+                                                                          )}
+                                                                          {vegetable.adversaries ===
+                                                                          null ? (
+                                                                              <td className="summary-td">
+                                                                                  None
+                                                                              </td>
+                                                                          ) : (
+                                                                              <td
+                                                                                  id="adversary-list"
+                                                                                  className="summary-td"
+                                                                              >
+                                                                                  {
+                                                                                      vegetable.adversaries
+                                                                                  }
+                                                                              </td>
+                                                                          )}
+                                                                      </tr>
+                                                                  );
+                                                              }
+                                                          )}
+                                                </tbody>
+                                                <tfoot></tfoot>
+                                            </table>
+                                        </div>
+                                    </Modal.Body>
+                                </Modal>
                             </div>
                         </div>
                     </div>
