@@ -121,57 +121,69 @@ function Varieties(props) {
     console.log("USERGARDEN", userGarden);
 
     return (
-        <div className="varieties-container">
-            {showSuccessAlert ? (
-                <div
-                    class="alert alert-success varieties-save-alert"
-                    role="alert"
-                >
-                    Variety Saved!
-                </div>
-            ) : (
-                <div></div>
-            )}
-            {showDeleteAlert ? (
-                <div
-                    class="alert alert-danger varieties-delete-alert"
-                    role="alert"
-                >
-                    Variety Deleted!
-                </div>
-            ) : (
-                <div></div>
-            )}
-            <div className="varieties-heading-container">
+        <div className="varieties-outer-container">
+            <div className="varieties-inner-container">
+                {showSuccessAlert ? (
+                    <div
+                        class="alert alert-success varieties-save-alert"
+                        role="alert"
+                    >
+                        Variety Saved!
+                    </div>
+                ) : (
+                    <div></div>
+                )}
+                {showDeleteAlert ? (
+                    <div
+                        class="alert alert-danger varieties-delete-alert"
+                        role="alert"
+                    >
+                        Variety Deleted!
+                    </div>
+                ) : (
+                    <div></div>
+                )}
+                <div className="varieties-heading-container">
                     {/* <h2 className="vegetables-heading">
                         Find the Most Suitable Vegetables
                     </h2> */}
                     <p className="varieties-description">
-                        <strong>In this step</strong>, you will are able to add varieties to your chosen vegetables! To add a variety click on your desired vegetable's plus-sign button. You will be prompted with a textbox. Here you will type in the variety of your choosing and press enter to save. You will see the variety added to the vegetable's dialog box. If you would like to delete a variety, no worries, just click the 'x' button next to the variety! {" "}
+                        <strong>In this step</strong>, you will are able to add
+                        varieties to your chosen vegetables! To add a variety
+                        click on your desired vegetable's plus-sign button. You
+                        will be prompted with a textbox. Here you will type in
+                        the variety of your choosing and press enter to save.
+                        You will see the variety added to the vegetable's dialog
+                        box. If you would like to delete a variety, no worries,
+                        just click the 'x' button next to the variety!{" "}
                     </p>
-                    </div>
-            <div className="varieties-main-container">
-                <form action="" className="form-control varieties-form varieties-grid-container">
-                    {userGarden.vegetables_details.map((vegetable) => {
-                        return (
-                            <VarietiesDetail
-                                {...vegetable}
-                                updateVarieties={updateVarieties}
-                                userGarden={userGarden}
-                                setShowSuccessAlert={setShowSuccessAlert}
-                                setShowDeleteAlert={setShowDeleteAlert}
-                                deleteVariety={deleteVariety}
-                            />
-                        );
-                    })}
-                </form>
-            </div>
+                </div>
+                <div className="varieties-main-container">
+                    <form
+                        action=""
+                        className="form-control varieties-form varieties-grid-container"
+                    >
+                        {userGarden.vegetables_details.map((vegetable) => {
+                            return (
+                                <VarietiesDetail
+                                    {...vegetable}
+                                    updateVarieties={updateVarieties}
+                                    userGarden={userGarden}
+                                    setShowSuccessAlert={setShowSuccessAlert}
+                                    setShowDeleteAlert={setShowDeleteAlert}
+                                    deleteVariety={deleteVariety}
+                                />
+                            );
+                        })}
+                    </form>
+                </div>
 
-            <NavLink to={`/${props.match.params.garden}/layout`}>
-                <button className="btn btn-success flagship-btn varieties-continue-btn">
-                    Continue
-                </button>
-            </NavLink>
+                <NavLink to={`/${props.match.params.garden}/layout`}>
+                    <button className="btn flagship-btn varieties-continue-btn">
+                        Continue
+                    </button>
+                </NavLink>
+            </div>
         </div>
     );
 }
