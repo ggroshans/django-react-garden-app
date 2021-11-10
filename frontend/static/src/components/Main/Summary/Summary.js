@@ -217,7 +217,7 @@ function Summary(props) {
                                 );
                             }) : ""}
                             <div className="garden-detail-vegetable">
-                                {values.map((v, idx) => (
+                                {!show ? values.map((v, idx) => (
                                     <div
                                         key={idx}
                                         className="me-2 summary-print-grid-div"
@@ -227,7 +227,7 @@ function Summary(props) {
                                         {typeof v === "string" &&
                                             `below ${v.split("-")[0]}`}
                                     </div>
-                                ))}
+                                )) : ""}
                                 <Modal
                                     show={show}
                                     fullscreen={fullscreen}
