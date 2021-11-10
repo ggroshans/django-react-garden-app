@@ -202,168 +202,184 @@ function Vegetables(props) {
     }
 
     function handleOpenFormClick() {
-        setOpen(!open)
-        setShowForm(!showForm)
-        setWidthMax(!widthMax)
+        setOpen(!open);
+        setShowForm(!showForm);
+        setWidthMax(!widthMax);
     }
 
     return (
-        <div className="vegetables-container">
-            <div className="vegetables-heading-form-flex-container ">
-                <div className="vegetables-heading-container" id={widthMax ? 'max-width' : ''}>
-                    {/* <h2 className="vegetables-heading">
+        <div className="vegetables-outer-container">
+            <div className="vegetables-inner-container">
+                <div className="vegetables-heading-form-flex-container ">
+                    <div
+                        className="vegetables-heading-container"
+                        id={widthMax ? "max-width" : ""}
+                    >
+                        {/* <h2 className="vegetables-heading">
                         Find the Most Suitable Vegetables
                     </h2> */}
-                    <p className="vegetables-description">
-                        <strong>In this step</strong>, you will pick out your
-                        potential vegetables by filtering out for the specifc
-                        needs of your garden. As you are using the filter, try
-                        to visualize the different parts of your garden. For
-                        example, one area might be shady, with poor
-                        accessibility to water, therefore, you would check the
-                        'Drought Tolerant' box and, then check the 'Partial Sun'
-                        from the dropdown. As you visualize the differing needs
-                        of your garden landscape, come back to the form and find
-                        the most suitable veggies!{" "}
-                    </p>
+                        <p className="vegetables-description">
+                            <strong>In this step</strong>, you will pick out
+                            your potential vegetables by filtering out for the
+                            specifc needs of your garden. As you are using the
+                            filter, try to visualize the different parts of your
+                            garden. For example, one area might be shady, with
+                            poor accessibility to water, therefore, you would
+                            check the 'Drought Tolerant' box and, then check the
+                            'Partial Sun' from the dropdown. As you visualize
+                            the differing needs of your garden landscape, come
+                            back to the form and find the most suitable veggies!{" "}
+                        </p>
 
-                    <Button
-                        onClick={handleOpenFormClick}
-                        aria-controls="example-collapse-text"
-                        aria-expanded={open}
-                        className="btn-success vegetables-expand-form-btn"
-                    >
-                        Click to find Veggies!
-                    </Button>
-                </div>
-
-                <div className="vegetables-form-container" id={showForm ? "" : "hide"}>
-                    <Fade in={open}>
-                        <form
-                            action=""
-                            className="form-control vegetables-form"
-                            onSubmit={handleSubmit}
-                            ref={filterFormScroll}
+                        <Button
+                            onClick={handleOpenFormClick}
+                            aria-controls="example-collapse-text"
+                            aria-expanded={open}
+                            className="btn-success vegetables-expand-form-btn"
                         >
-                            <div className="form-group">
-                                <label htmlFor="name">Name (Optional):</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    onChange={handleChange}
-                                    className="form-control"
-                                />
-                            </div>
+                            Click to find Veggies!
+                        </Button>
+                    </div>
 
-                            <div className="form-group">
-                                <label htmlFor="exposure">Sun Exposure</label>
-                                <select
-                                    name="exposure"
-                                    id="exposure"
-                                    onChange={handleChange}
-                                    className="form-control"
-                                >
-                                    <option value="">ALL</option>
-                                    <option value="BO">
-                                        Thrive in Both Full & Partial Sun
-                                    </option>
-                                    <option value="FS">Full Sun</option>
-                                    <option value="PS">Partial Sun</option>
-                                </select>
-                            </div>
-
-                            <div className="vegetables-checkboxes-container">
+                    <div
+                        className="vegetables-form-container"
+                        id={showForm ? "" : "hide"}
+                    >
+                        <Fade in={open}>
+                            <form
+                                action=""
+                                className="form-control vegetables-form"
+                                onSubmit={handleSubmit}
+                                ref={filterFormScroll}
+                            >
                                 <div className="form-group">
-                                    <input
-                                        type="checkbox"
-                                        id="heat_tolerant"
-                                        name="heat_tolerant"
-                                        value="TRUE"
-                                        onChange={handleChange}
-                                    />
-                                    <label htmlFor="heat_tolerant">
-                                        Heat Tolerant
+                                    <label htmlFor="name">
+                                        Name (Optional):
                                     </label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    />
                                 </div>
 
                                 <div className="form-group">
-                                    <input
-                                        type="checkbox"
-                                        id="drought_tolerant"
-                                        name="drought_tolerant"
-                                        value="TRUE"
-                                        onChange={handleChange}
-                                    />
-                                    <label htmlFor="drought_tolerant">
-                                        Drought Tolerant
+                                    <label htmlFor="exposure">
+                                        Sun Exposure
                                     </label>
+                                    <select
+                                        name="exposure"
+                                        id="exposure"
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    >
+                                        <option value="">ALL</option>
+                                        <option value="BO">
+                                            Thrive in Both Full & Partial Sun
+                                        </option>
+                                        <option value="FS">Full Sun</option>
+                                        <option value="PS">Partial Sun</option>
+                                    </select>
                                 </div>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="life_cycle">Life Cycle</label>
-                                <select
-                                    name="life_cycle"
-                                    id="life_cycle"
-                                    onChange={handleChange}
-                                    className="form-control"
-                                >
-                                    <option value="">All</option>
-                                    <option value="AN">Annual</option>
-                                    <option value="BI">Biennial</option>
-                                    <option value="PE">Perennial</option>
-                                </select>
-                            </div>
 
-                            <div className="form-group">
-                                <label htmlFor="seasonality">Seasonality</label>
-                                <select
-                                    name="seasonality"
-                                    id="seasonality"
-                                    onChange={handleChange}
-                                    className="form-control"
-                                >
-                                    <option value="">All</option>
-                                    <option value="CS">Cool Season</option>
-                                    <option value="WS">Warm Season</option>
-                                </select>
-                            </div>
+                                <div className="vegetables-checkboxes-container">
+                                    <div className="form-group">
+                                        <input
+                                            type="checkbox"
+                                            id="heat_tolerant"
+                                            name="heat_tolerant"
+                                            value="TRUE"
+                                            onChange={handleChange}
+                                        />
+                                        <label htmlFor="heat_tolerant">
+                                            Heat Tolerant
+                                        </label>
+                                    </div>
 
-                            <button className="btn btn-success vegetable-form-btn">
-                                Search
-                            </button>
-                        </form>
-                    </Fade>{" "}
+                                    <div className="form-group">
+                                        <input
+                                            type="checkbox"
+                                            id="drought_tolerant"
+                                            name="drought_tolerant"
+                                            value="TRUE"
+                                            onChange={handleChange}
+                                        />
+                                        <label htmlFor="drought_tolerant">
+                                            Drought Tolerant
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="life_cycle">
+                                        Life Cycle
+                                    </label>
+                                    <select
+                                        name="life_cycle"
+                                        id="life_cycle"
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    >
+                                        <option value="">All</option>
+                                        <option value="AN">Annual</option>
+                                        <option value="BI">Biennial</option>
+                                        <option value="PE">Perennial</option>
+                                    </select>
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="seasonality">
+                                        Seasonality
+                                    </label>
+                                    <select
+                                        name="seasonality"
+                                        id="seasonality"
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    >
+                                        <option value="">All</option>
+                                        <option value="CS">Cool Season</option>
+                                        <option value="WS">Warm Season</option>
+                                    </select>
+                                </div>
+
+                                <button className="btn btn-success vegetable-form-btn">
+                                    Search
+                                </button>
+                            </form>
+                        </Fade>{" "}
+                    </div>
                 </div>
-            </div>
-            <div ref={filteredVegScroll}>
-                <FilteredVegetableList
-                    filteredVegetables={filteredVegetables}
-                    userVegetables={userVegetables}
-                    addToUserList={addToUserList}
-                />
-            </div>
-            <div className="vegetables-user-list-container">
-                <UserVegetableList
-                    userVegetables={userVegetables}
-                    removeFromUserList={removeFromUserList}
-                />
-                <ImArrowUp
-                    className="vegetables-arrow-scroll"
-                    onClick={handleArrowClick}
-                />
-            </div>
+                <div ref={filteredVegScroll}>
+                    <FilteredVegetableList
+                        filteredVegetables={filteredVegetables}
+                        userVegetables={userVegetables}
+                        addToUserList={addToUserList}
+                    />
+                </div>
+                <div className="vegetables-user-list-container">
+                    <UserVegetableList
+                        userVegetables={userVegetables}
+                        removeFromUserList={removeFromUserList}
+                    />
+                    <ImArrowUp
+                        className="vegetables-arrow-scroll"
+                        onClick={handleArrowClick}
+                    />
+                </div>
 
-            {userVegetables.length === 0 ? (
-                ""
-            ) : (
-                <button
-                    className="btn flagship-btn vegetables-btn"
-                    onClick={handleSaveVegClick}
-                >
-                    Continue
-                </button>
-            )}
+                {userVegetables.length === 0 ? (
+                    ""
+                ) : (
+                    <button
+                        className="btn flagship-btn vegetables-btn"
+                        onClick={handleSaveVegClick}
+                    >
+                        Continue
+                    </button>
+                )}
+            </div>
         </div>
     );
 }
