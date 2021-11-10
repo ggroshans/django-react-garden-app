@@ -1,8 +1,8 @@
 .companions-container {
     max-height: auto;
-    width: 50%;
-
+    width: 40%;
     border-radius: 10px;
+    margin-right: 5rem;
 }
 
 #companion-list {
