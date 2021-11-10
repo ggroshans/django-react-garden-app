@@ -124,3 +124,9 @@
     border: 1px solid var(--green);
     color: var(--green);
 }
+
+.splash-leaf {
+    position: relative;
+    bottom: 5px;
+    left: 8px;
+}

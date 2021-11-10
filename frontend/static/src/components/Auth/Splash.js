@@ -2,6 +2,7 @@ import React from "react";
 import "./Splash.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { useEffect } from "react";
+import Leaf from "../../images/leaf.png";
 
 export default function Splash(props) {
     useEffect(() => {
@@ -59,7 +60,8 @@ export default function Splash(props) {
                             <h1 className="splash-name mb-4 mt-2 display-4 font-weight-bold">
                                 Welcome to
                                 <span className="splash-headline">
-                                    Flourish
+                                    Flourish 
+                                    <img src={Leaf} alt="green leaf" className="header-leaf splash-leaf" />
                                 </span>
                             </h1>
                             <p className="splash-p">
