@@ -103,9 +103,7 @@ function GardenNotes(props) {
         setIsEditing(true);
     }
 
-    function handleEditLayoutClick() {
-        props.history.push(`/${props.match.params.garden}/layout`);
-    }
+
     
 
     return (
@@ -166,16 +164,7 @@ function GardenNotes(props) {
                 </ul>
             </div>
 
-            <h4 className="garden-detail-heading-category">
-                Layout <FiEdit className="garden-detail-edit-btn" onClick={handleEditLayoutClick} />
-            </h4>
-            <div className="garden-detail-layout-container">
-                {" "}
-                <img
-                    src={props.layout}
-                    className="garden-detail-layout-image"
-                />
-            </div>
+            
         </div>
     );
 }

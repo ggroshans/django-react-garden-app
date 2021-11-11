@@ -200,3 +200,7 @@ div[role="dialog"] {
     transition: transform 1s;
     text-align: left;
 }
+
+.summary-detail-collapse-container {
+
+}

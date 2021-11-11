@@ -99,7 +99,7 @@ function GardenList(props) {
                     className="green-btn create-garden-btn"
                     onClick={handleShow}
                 >
-                    Create a Garden
+                    Create a Garden Plan
                 </button>
                 <Modal show={show} onHide={handleClose}>
                     <CreateAGarden handleClose={handleClose} />

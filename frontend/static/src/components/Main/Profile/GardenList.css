@@ -53,8 +53,10 @@
 
 .create-garden-btn {
     margin-top: 2rem;
-    width: 200px;
+    width: 275px;
+    height: 75px;
     opacity: 0.7;
+    border-radius:30px;
 }
 
 .create-garden-btn:hover {

@@ -127,7 +127,7 @@ function Summary(props) {
                                 : ""}
                         </p>
                     </div>{" "}
-                    <div className="garden-detail-collapse-container">
+                    <div className="summary-detail-collapse-container">
                         <h3 className="summary-category-heading summary-vegetables-heading">
                             Vegetables
                         </h3>

@@ -11,7 +11,9 @@
   --subheading-font: 'Lobster Two', cursive;
   --heading-font: 'Lobster', cursive;
   --btn-color: forestgreen;
-  --brown: #80461B;
+  /* --brown: #80461B; */
+  --brown:#8B4513;
+  --brown2:#A0522D;
   --green: forestgreen;
   --white: #E7E7E9;
   --subheading-font2: 'Oswald', sans-serif;

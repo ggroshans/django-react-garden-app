@@ -1,7 +1,10 @@
+.garden-notes-outer-container{
+  width: 375px;
+}
+
 .garden-notes-container {
   position: relative;
-  margin-top: 2rem;
-  width: 90%;
+  width: 100%;
   background: #fdfd96;
   padding: 2rem 3rem 2rem 2rem;
 }
@@ -11,14 +14,14 @@
 }
 
 .garden-notes-heading {
-  position: relative;
-  bottom: 10px;
+  /* position: relative;
+  bottom: 10px; */
 }
 
 .garden-notes-add-note-btn {
-  position: relative;
+  /* position: relative;
   left: 200px;
-  top: 0px;
+  top: 0px; */
 }
 
   .garden-notes-li {
@@ -34,9 +37,9 @@
   }
 
   .garden-notes-delete-btn {
-    position: absolute;
+    /* position: absolute;
     left: 210px;
-    top: 0px;
+    top: 0px; */
   }
 
   .garden-notes-delete-btn:hover{

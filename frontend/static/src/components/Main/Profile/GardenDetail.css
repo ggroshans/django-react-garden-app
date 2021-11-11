@@ -17,17 +17,21 @@
 }
 
 .garden-detail-background-container {
-    background-color: white;
-    width: 1200px;
+    background-color: transparent;
+    max-width: 1200px;
     margin: 3rem auto;
     border-radius: 15px;
 }
 
 .garden-detail-upper-container {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+    gap: 1rem;
+    padding-top:1rem;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
     align-items: flex-start;
-    align-content: flex-start;
 }
 
 .garden-detail-rename-container {
@@ -59,22 +63,22 @@
 
 .garden-detail-upper-left {
     background-color: var(--white);
-    width: 40%;
+    width: 375px;
     padding: 2rem;
     border-radius: 15px;
 }
 
 .garden-detail-garden-name {
-    color: var(--brown);
+    color: var(--brown2);
+    font-family: var(--subheading-font2);
+    font-size: 3rem;
+    margin-top: 4rem;
 }
 
 .garden-detail-strong-tag {
     color: var(--brown);
 }
 
-.garden-detail-upper-right {
-    width: 40%;
-}
 
 .garden-detail-edit-btn {
     font-size: 0.75rem;
@@ -82,6 +86,8 @@
 
 .garden-detail-date{
     font-style: italic;
+    color: var(--brown2);
+    font-weight: 600;
 }
 
 .garden-detail-soil-heading {
@@ -105,6 +111,7 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
     border-radius: 15px;
+    margin:1rem auto;
 }
 
 .garden-detail-vegetable-grid-container {
@@ -176,7 +183,7 @@
 }
 
 .garden-detail-layout-container {
-    width: 400px;
+    width: 375px;
     height: 400px;
     background-color: white;
     border-radius: 5px;
@@ -193,3 +200,41 @@
     font-weight: 500;
     font-size: 2rem;
 }
+
+.garden-detail-view-summary{
+    padding: 1rem 1rem 0rem 1rem;
+    /* background-color: var(--white); */
+    width: fit-content;
+    margin:auto;
+    border-radius:10px;
+}
+.garden-detail-view-summary-p{
+    font-weight: 600;
+    font-family: var(--body-font);
+    color: var(--brown2);
+    font-size: 1.25rem;
+}
+
+.garden-detail-summary-btn{
+    border:none;
+    background-color:transparent;
+    padding:0;
+    color: var(--green);
+    font-weight: 900;
+    font-style: italic;
+}
+
+.garden-detail-summary-btn:hover{
+    color:brown;
+}
+
+.garden-detail-layout-heading{
+    padding-top: 2rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .garden-detail-collapse-container {
+        width: 375px;
+    }
+  }
