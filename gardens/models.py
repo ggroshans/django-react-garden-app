@@ -49,7 +49,7 @@ class Vegetable (models.Model):
     seasonality = models.CharField(max_length=4, choices=SEASONALITY_CHOICES)
     companions = models.JSONField(null=True, blank=True)
     adversaries = models.JSONField(null=True, blank=True)
-    location = models.JSONField(null=True, blank=True)
+
     
 
     def __str__(self):
@@ -66,6 +66,7 @@ class Garden(models.Model):
     layout = models.ImageField(upload_to="layouts/", null=True)
     varieties = models.JSONField(null=True, blank=True)
     notes = models.JSONField(null=True, blank=True)
-
+    location = models.JSONField(null=True, blank=True)
+    
     def __str__(self):
         return self.name

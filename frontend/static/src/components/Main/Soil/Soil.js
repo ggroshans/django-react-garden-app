@@ -19,6 +19,10 @@ function Soil(props) {
     const [showMap, setShowMap] = useState(false);
     const [maxWidth, setMaxWidth] = useState(true);
     const [showDetails, setShowDetails] = useState(false);
+    const [coordinates, setCoordinates] = useState({
+        latitude: "",
+        longitude: ""
+    })
 
     const soilDiv = useRef();
 
@@ -74,14 +78,18 @@ function Soil(props) {
         }
     }
 
+
     async function handleSaveSoilClick() {
+
+        console.log("COORDINATES", coordinates)
+
         const options = {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 "X-CSRFToken": Cookie.get("csrftoken"),
             },
-            body: JSON.stringify({ soil: soil.id }),
+            body: JSON.stringify({ soil: soil.id, location: coordinates }),
         };
         const response = await fetch(
             `/api/gardens/${props.match.params.garden}/`,
@@ -95,6 +103,7 @@ function Soil(props) {
             props.history.push(`/${data.id}/vegetables/`);
         }
     }
+
 
     function handleExpandMap() {
         setOpen(!open);
@@ -218,6 +227,10 @@ function Soil(props) {
                                                     longitude,
                                                 })
                                             );
+                                            setCoordinates({
+                                                latitude: latitude,
+                                                longitude: longitude
+                                            })
                                             view.hitTest(screenPoint).then(
                                                 (hitTestResult) => {
                                                     soilOrder1 =

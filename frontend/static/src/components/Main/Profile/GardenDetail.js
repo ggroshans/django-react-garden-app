@@ -6,6 +6,7 @@ import "./GardenDetail.css";
 import { Spinner, Button, Collapse, Modal } from "react-bootstrap";
 import { FiEdit } from "react-icons/fi";
 import RichTextEditor from "./GardenNotes";
+import WeatherDashboard from "./WeatherDashboard";
 
 function GardenDetail(props) {
     const [userGarden, setUserGarden] = useState();
@@ -184,7 +185,7 @@ function GardenDetail(props) {
                             <RichTextEditor userGardenID={userGarden.id} />
                         </div>
                         <div className="garden-detail-weather-container">
-
+                            <WeatherDashboard userGarden={userGarden}/>
                         </div>
                     </div>
                     <div className="garden-detail-grid-container-2">

@@ -8,9 +8,15 @@
     color: var(--brown);
 }
 
+.footer-copyright {
+    position: relative;
+    bottom: 30px;
+}
+
 .footer-container {
-    border-top: 4px solid var(--green); 
+    background-color: transparent;
+    color: white;
     font-family: var(--body-font);
     letter-spacing: 0.05rem;
-    height: 5vh;
+    height: 0vh;
 }

@@ -3,8 +3,8 @@
     margin: auto;
     left: 0;
     right: 0;
-    background-color: white;
-    height: 10vh;
+    background-color: transparent;
+    height: 0vh;
 }
 
 .navbar-radio-btn {
@@ -31,4 +31,6 @@
     width: 800px;
     margin: auto;
     border-radius: 0.5rem;
+    position: relative;
+    bottom: 75px;
 }
