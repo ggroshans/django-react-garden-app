@@ -49,6 +49,7 @@ class Vegetable (models.Model):
     seasonality = models.CharField(max_length=4, choices=SEASONALITY_CHOICES)
     companions = models.JSONField(null=True, blank=True)
     adversaries = models.JSONField(null=True, blank=True)
+    location = models.JSONField(null=True, blank=True)
     
 
     def __str__(self):

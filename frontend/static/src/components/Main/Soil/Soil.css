@@ -108,16 +108,17 @@
     width: 50%;
     border-right: 2px solid darkgreen;
     padding: 1.5rem 1.75rem;
-    color: #6F4E37;
+    color: var(--brown);
 }
 
 .display-characteristics-heading, .display-recommendations-heading  {
     margin-bottom: 1.5rem;
+    font-family: var(--subheading-font2);
 }
 
 
 .display-recommendations-container {
-    color: #6F4E37;
+    color: var(--brown);
     width: 50%;
     padding: 1.5rem 1.75rem;
 }

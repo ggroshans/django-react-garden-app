@@ -181,52 +181,40 @@ function GardenDetail(props) {
                     </div>
                     <div className="garden-detail-upper-container">
                         <div className="garden-detail-upper-right">
-                            <RichTextEditor
-                                userGardenID={userGarden.id}
-                                layout={userGarden.layout}
-                            />
+                            <RichTextEditor userGardenID={userGarden.id} />
                         </div>
-                        <div className="garden-detail-layout-container">
-                            {" "}
-                            <h4 className="garden-detail-heading-category garden-detail-layout-heading">
-                                Layout{" "}
-                                <FiEdit
-                                    className="garden-detail-edit-btn"
-                                    onClick={handleEditLayoutClick}
-                                />
-                            </h4>
-                            <img
-                                src={userGarden.layout}
-                                className="garden-detail-layout-image"
-                            />
+                        <div className="garden-detail-weather-container">
+
                         </div>
+                    </div>
+                    <div className="garden-detail-grid-container-2">
 
-                        <div className="garden-detail-upper-left">
-                            <h4 className="garden-detail-soil-heading garden-detail-heading-category">
-                                Soil{" "}
-                                <FiEdit
-                                    className="garden-detail-edit-btn"
-                                    onClick={handleEditSoilClick}
-                                />
-                            </h4>
-                            <p>
-                                <strong className="garden-detail-strong-tag">
-                                    Characteristics:{" "}
-                                </strong>
-                                {userGarden.soil_details === null
-                                    ? "  Soil Type not selected"
-                                    : userGarden.soil_details.characteristics}
-                            </p>
-                            <p>
-                                <strong className="garden-detail-strong-tag">
-                                    Recommendations:{" "}
-                                </strong>
-                                {userGarden.soil_details === null
-                                    ? "  Soil Type not selected"
-                                    : userGarden.soil_details.recommendations}
-                            </p>
+                    <div className="garden-detail-upper-left">
+                        <h4 className="garden-detail-soil-heading garden-detail-heading-category">
+                            Soil{" "}
+                            <FiEdit
+                                className="garden-detail-edit-btn"
+                                onClick={handleEditSoilClick}
+                            />
+                        </h4>
+                        <p>
+                            <strong className="garden-detail-strong-tag">
+                                Characteristics:{" "}
+                            </strong>
+                            {userGarden.soil_details === null
+                                ? "  Soil Type not selected"
+                                : userGarden.soil_details.characteristics}
+                        </p>
+                        <p>
+                            <strong className="garden-detail-strong-tag">
+                                Recommendations:{" "}
+                            </strong>
+                            {userGarden.soil_details === null
+                                ? "  Soil Type not selected"
+                                : userGarden.soil_details.recommendations}
+                        </p>
 
-                            {/* <Button
+                        {/* <Button
                             onClick={() => setOpen(!open)}
                             aria-controls="example-collapse-text"
                             aria-expanded={open}
@@ -234,11 +222,35 @@ function GardenDetail(props) {
                         >
                             Vegetables Card View
                         </Button> */}
+                    </div>
+
+                    <div className="garden-detail-layout-container-flex">
+                        <h4 className="garden-detail-heading-category garden-detail-layout-heading">
+                            Layout{" "}
+                            <FiEdit
+                                className="garden-detail-edit-btn"
+                                onClick={handleEditLayoutClick}
+                            />
+                        </h4>
+                        <div className="garden-detail-layout-container">
+                            {" "}
+                            <div className="garden-detail-image-container">
+                                <img
+                                    src={userGarden.layout}
+                                    className="garden-detail-layout-image"
+                                />
+                            </div>
                         </div>
                     </div>
 
+                    </div>
+                    
+
                     <div className="garden-detail-collapse-container">
-                        <h3 className="garden-detail-heading-category">
+                        <h3
+                            className="garden-detail-heading-category"
+                            id="garden-detail-vegetable-heading"
+                        >
                             Vegetables{" "}
                             <FiEdit
                                 className="garden-detail-vegetable-edit"
@@ -246,15 +258,15 @@ function GardenDetail(props) {
                             />
                         </h3>
                         {values.map((v, idx) => (
-                            <Button
+                            <button
                                 key={idx}
-                                className="me-2 btn btn-success flagship-btn"
+                                className="me-2 btn btn-success flagship-btn mt-4"
                                 onClick={() => handleShow(v)}
                             >
                                 Vegetables Table View
                                 {typeof v === "string" &&
                                     `below ${v.split("-")[0]}`}
-                            </Button>
+                            </button>
                         ))}
                         <div className="garden-detail-vegetable-grid-container">
                             {!show

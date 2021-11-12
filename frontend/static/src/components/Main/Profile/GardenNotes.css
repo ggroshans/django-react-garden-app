@@ -1,11 +1,13 @@
 .garden-notes-outer-container{
   width: 375px;
+
 }
 
 .garden-notes-container {
   position: relative;
   width: 100%;
-  background: #fdfd96;
+  min-height: 550px;
+  background: #FFFAA0;
   padding: 2rem 3rem 2rem 2rem;
 }
 

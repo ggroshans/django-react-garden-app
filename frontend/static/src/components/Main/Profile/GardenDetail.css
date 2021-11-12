@@ -63,9 +63,10 @@
 
 .garden-detail-upper-left {
     background-color: var(--white);
-    width: 375px;
-    padding: 2rem;
+    width: 400px;
+    padding: 1.75rem;
     border-radius: 15px;
+    text-align: left;
 }
 
 .garden-detail-garden-name {
@@ -106,7 +107,7 @@
 }
 
 .garden-detail-collapse-container {
-    background-color: var(--white);
+    background-color: transparent;
     margin: 0rem 2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -183,22 +184,37 @@
 }
 
 .garden-detail-layout-container {
-    width: 375px;
-    height: 400px;
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 500px;
+    background-color: var(--white);
     border-radius: 5px;
+    margin: 2rem auto;
+}
+.garden-detail-image-container{
+    transform: rotate(90deg);
+
+
 }
 
 .garden-detail-layout-image {
-    height: 100%;
-    max-width: 100%;
+    height: 400px;
+    max-width: 675px;
+
+    /* top:100px; */
 }
+
+
 
 .garden-detail-heading-category {
     color: var(--brown);
     font-family: var(--subheading-font2);
     font-weight: 500;
     font-size: 2rem;
+    text-align: left;
 }
 
 .garden-detail-view-summary{
@@ -230,6 +246,15 @@
 
 .garden-detail-layout-heading{
     padding-top: 2rem;
+    padding-left: 2rem;
+}
+
+#garden-detail-vegetable-heading{
+    text-align: center;
+}
+
+.garden-detail-grid-container-2 {
+    display: flex;
 }
 
 

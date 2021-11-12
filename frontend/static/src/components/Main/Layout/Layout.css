@@ -43,7 +43,7 @@
 
 .layout-canvas {
     border: 4px solid var(--brown);
-    background-color: white;
+    background-color: var(--white);
 }
 
 .layout-btn-container {
