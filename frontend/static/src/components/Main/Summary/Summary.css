@@ -52,7 +52,7 @@
 .summary-report-container {
     max-width: 850px;
     background-color: white;
-    margin: 3rem auto;
+    margin: 3rem auto 8rem auto;
     padding: 4rem 0.5rem;
     border-radius: 1rem;
     text-align: left;
@@ -199,8 +199,4 @@ div[role="dialog"] {
     position: relative;
     transition: transform 1s;
     text-align: left;
-}
-
-.summary-detail-collapse-container {
-
 }
