@@ -2,6 +2,7 @@
 
 .filtered-vegetables-list-container{
     width: 30%;
+
 }
 
 .filtered-vegetables-heading {
@@ -22,7 +23,8 @@
     gap: 1rem;
     padding: 0rem 1rem;
     max-width: 1200px;
-    margin: auto;
+    margin: 0rem auto 9rem auto;
+
 }
 
 .filtered-vegetable {
