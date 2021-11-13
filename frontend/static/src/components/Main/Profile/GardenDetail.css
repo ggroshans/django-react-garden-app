@@ -35,7 +35,7 @@
     justify-items: center;
     align-content: center;
     align-items: flex-start;
-    margin: 4rem auto 0rem auto;
+    margin: 2rem auto 0rem auto;
 }
 
 .garden-detail-rename-container {
@@ -281,7 +281,7 @@
     max-width: 450px;
 }
 
-.garden-detail-body-container:after {
+/* .garden-detail-body-container:after {
     content: "";
     border-left: 2px solid var(--brown2);
     height: 900px;
@@ -289,7 +289,7 @@
     top:51%;
     left:50%;
     transform: translateY(-28px)
-}
+} */
 .garden-detail-body-container:before {
     content: "";
     border-right: 2px solid  var(--brown2);

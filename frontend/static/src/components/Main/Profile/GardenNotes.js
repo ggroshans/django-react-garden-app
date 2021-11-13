@@ -155,13 +155,13 @@ function GardenNotes(props) {
             </div>
             {notes.map((note, idx) => (
                 <div className="garden-note-container">
-                <textarea
-                    className="paper"
-                    onChange={(e) => handleChange(e, idx)}
-                    value={note}
-               />
-               <MdOutlineClose className="garden-notes-delete-btn" onClick={handleDeleteClick}/>
-   </div>
+                    <textarea         
+                        className="paper"
+                        onChange={(e) => handleChange(e, idx)}
+                        value={note}
+                />
+                    <MdOutlineClose className="garden-notes-delete-btn" onClick={handleDeleteClick}/>
+                </div>
             ))}
         </div>
     );

@@ -16,22 +16,22 @@
     padding-bottom: 0.25rem;
 }
 
-.splash-sub-heading {
+/* .splash-sub-heading {
     font-size: 1.5rem;
     padding-bottom: 1rem;
-}
+} */
 
-.flourish-span {
+/* .flourish-span {
     font-family: "lobster", cursive;
     color: #1c917d;
     letter-spacing: 1px;
     font-size: 3.5rem;
-}
+} */
 
-.splash-description {
+/* .splash-description {
     font-size:0.95rem;
     line-height: 2rem;
-}
+} */
 
 .splash-list {
     list-style: none;
@@ -46,22 +46,22 @@
 
 
 
-.splash-soil {
+/* .splash-soil {
     color:#26aa95;
     font-weight: 900;
-}
-.splash-vegetables {
+} */
+/* .splash-vegetables {
     color:#229986;
     font-weight: 900;
-}
-.splash-companion {
+} */
+/* .splash-companion {
     color:#1E8877;
     font-weight: 900;
-}
-.splash-layout {
+} */
+/* .splash-layout {
     color:#1A7768;
     font-weight: 900;
-}
+} */
 .splash-summary {
     color:#166659;
     font-weight: 900;
@@ -81,6 +81,10 @@
     padding-top: 2rem;
 
 }
+
+
+
+
 
 
 

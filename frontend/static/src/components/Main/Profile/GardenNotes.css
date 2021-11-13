@@ -14,7 +14,6 @@
 }
 
 .paper {
-
   width: 100%;
   height: 100%;
   padding: 0px 20px;
@@ -25,16 +24,14 @@
   overflow-wrap: break-word;
   border: none;
   overflow: visible;
-}
-
-.garden-note-container {
-  width: 100%;
-  float: left;
-}
-
-.garden-note-container.paper {
   display: block;
 }
+
+
+.garden-note-container {
+  position: relative;
+}
+
 
 
 .garden-notes-save-btn {
@@ -47,6 +44,12 @@
 
 .garden-notes-delete-btn {
 position: absolute;
+top: 2px;
+right: 5px;
+z-index: 2;
+}
 
+.garden-notes-delete-btn:hover {
+  color: tomato;
 }
 

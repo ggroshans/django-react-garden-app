@@ -16,8 +16,6 @@ function Soil(props) {
         recommendations: "",
         soil_order: "",
     });
-    const [showMap, setShowMap] = useState(false);
-    const [maxWidth, setMaxWidth] = useState(true);
     const [showDetails, setShowDetails] = useState(false);
     const [coordinates, setCoordinates] = useState({
         latitude: "",
@@ -104,13 +102,6 @@ function Soil(props) {
         }
     }
 
-
-    function handleExpandMap() {
-        setOpen(!open);
-        setShowMap(!showMap);
-        setMaxWidth(!maxWidth);
-    }
-
     function scrollToSoil() {
         soilDiv.current.scrollIntoView({
             behavior: "smooth",
@@ -129,7 +120,7 @@ function Soil(props) {
                 <div className="soil-heading-map-flex-container">
                     <div
                         className="soil-heading-container"
-                        id={maxWidth ? "max-width" : ""}
+                        // id={maxWidth ? "max-width" : ""}
                     >
                         <div className="soil-heading">
                             {/* <h2 className="soil-heading">Find your Soil Type</h2> */}
@@ -142,22 +133,12 @@ function Soil(props) {
                                 characateristics and recommendations for your
                                 soil will appear below the soil map.
                             </p>
-                            <Button
-                                onClick={handleExpandMap}
-                                aria-controls="example-collapse-text"
-                                aria-expanded={open}
-                                className="btn btn-success soil-expand-btn"
-                            >
-                                {open ? "Collapse Map" : "Find Your Soil Type!"}
-                            </Button>
                         </div>
                     </div>
 
                     <div
                         className="soil-map-container"
-                        id={showMap ? "" : "hide"}
                     >
-                        <Collapse in={open}>
                             <div className="map-view">
                                 <EsriLoaderReact
                                     options={options}
@@ -260,7 +241,6 @@ function Soil(props) {
                                     }}
                                 />
                             </div>
-                        </Collapse>
                     </div>
                 </div>
                 <div

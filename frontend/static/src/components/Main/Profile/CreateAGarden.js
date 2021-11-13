@@ -33,7 +33,7 @@ function CreateAGarden(props) {
             const data = await response.json();
             console.log("GARDEN NAME SUCCESS", data);
 
-            props.history.push(`/${data.id}/soil/`);
+            props.history.push(`/${data.id}/instructions/`);
         }
     }
 

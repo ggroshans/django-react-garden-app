@@ -1,0 +1,135 @@
+.instructions-outer-container {
+    min-height: 85vh;
+    background-color: #FFFFFF;
+    background-image: url("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    color: white;
+    font-family: var(--body-font);
+   }
+   
+   .instructions-inner-container {
+       top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(0, 0,0,.8);
+       min-height: 85vh;
+       overflow: hidden;
+   }
+
+   .instructions-content-container {
+       max-width: 950px;
+       margin: auto;
+   }
+
+   .instructions-main-heading {
+    padding-top: 3rem;
+    font-size: 3.25rem;
+    padding-bottom: 0.25rem;
+
+}
+
+.instructions-flourish-span {
+    font-family: var(--subheading-font);
+    color: var(--green);
+    letter-spacing: 1px;
+    font-size: 3.5rem;
+}
+
+.instructions-sub-heading {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.instructions-description {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size:0.95rem;
+    line-height: 2rem;
+    background-color: var(--white);
+    color: black;
+    opacity: .75;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}
+
+/* .instructions-description-soil,.instructions-description-varieties {
+    color:var(--green);
+    font-weight: 900;
+}
+
+.instructions-description-vegetables, .instructions-description-layout {
+    color:var(--brown2);
+    font-weight: 900;
+} */
+
+.instructions-step-soil,.instructions-step-varieties {
+    color:var(--green);
+    font-weight: 900;
+}
+
+.instructions-step-vegetables, .instructions-step-layout {
+    color:var(--brown2);
+    font-weight: 900;
+}
+
+.instructions-list-step {
+    font-size: 0.85rem;
+}
+
+.instruction-step-list {
+    list-style: none;
+    text-align: left;
+    margin: 0rem auto 3rem auto;
+    background-color: var(--white);
+    color: black;
+    opacity: .75;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}
+
+.instructions-photo-grid {
+    display: grid;
+    width: 700px;
+    height: auto;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    gap: 1rem;
+    margin: 2rem auto;
+    border-radius: 30px;
+}
+
+.instructions-image1 {
+    max-width: 100%;
+    width: 100%;
+    filter: contrast(85%) brightness(85%) sepia(20%);
+    border-radius: 20px;
+}
+.instructions-image2 {
+    max-width: 100%;
+    width: 100%;
+    filter: contrast(85%) brightness(85%) sepia(20%);
+    border-radius: 20px;
+}
+.instructions-image3 {
+    max-width: 100%;
+    width: 100%;
+    grid-row-start:span 2;
+    filter: contrast(85%) brightness(85%) sepia(20%);
+    border-radius: 20px;
+}
+.instructions-image4 {
+    max-width: 100%;
+    width: 100%;
+    filter: contrast(85%) brightness(85%) sepia(20%);
+    border-radius: 20px;
+}
+.instructions-image5 {
+    max-width: 100%;
+    width: 100%;
+    filter: contrast(85%) brightness(85%) sepia(20%);
+    border-radius: 20px;
+}
+
+.instructions-btn {
+    margin-bottom: 8rem;
+}
