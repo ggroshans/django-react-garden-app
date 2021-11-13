@@ -1,3 +1,11 @@
-.weather-container {
-    color: white;
+.weather-outer-container {
+    color: black;
+    overflow: hidden;
+    width: 450px;
+    border-radius: 10px;
+}
+
+.weather-inner-container {
+
+    width:450px;
 }

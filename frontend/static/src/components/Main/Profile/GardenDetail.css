@@ -2,7 +2,7 @@
 .garden-detail-outer-container {
     min-height: 75vh;
     background-color: #FFFFFF;
-    background-image: url("https://images.unsplash.com/photo-1518931169559-527a99b4074d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80");
+    background-image: url("https://images.unsplash.com/photo-1474440692490-2e83ae13ba29?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80");
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -17,21 +17,25 @@
 }
 
 .garden-detail-background-container {
-    background-color: transparent;
+    background-color: white;
     max-width: 1200px;
     margin: 3rem auto;
+    padding-top:1rem;
     border-radius: 15px;
+    opacity: .75;
 }
 
 .garden-detail-upper-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    max-width:1000px;
     gap: 1rem;
     padding-top:1rem;
     justify-content: center;
     justify-items: center;
     align-content: center;
     align-items: flex-start;
+    margin: 4rem auto 0rem auto;
 }
 
 .garden-detail-rename-container {
@@ -61,13 +65,6 @@
     color: white;
 }
 
-.garden-detail-upper-left {
-    background-color: var(--white);
-    width: 400px;
-    padding: 1.75rem;
-    border-radius: 15px;
-    text-align: left;
-}
 
 .garden-detail-garden-name {
     color: var(--brown2);
@@ -89,6 +86,7 @@
     font-style: italic;
     color: var(--brown2);
     font-weight: 600;
+    margin: 0;
 }
 
 .garden-detail-soil-heading {
@@ -108,11 +106,10 @@
 
 .garden-detail-collapse-container {
     background-color: transparent;
-    margin: 0rem 2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
     border-radius: 15px;
-    margin:1rem auto;
+    margin: auto;
 }
 
 .garden-detail-vegetable-grid-container {
@@ -142,7 +139,8 @@
 
 .garden-detail-vegetable {
     border: 2px solid green;
-    background-color: rgb(251, 255, 251);
+    background-color: transparent;
+    color:black;
     border-radius: 10px;
     padding: 1.25rem;
     width:335px;
@@ -188,14 +186,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 500px;
+   max-width: 450px;
     height: 500px;
-    background-color: var(--white);
+    background-color: transparent;
     border-radius: 5px;
-    margin: 2rem auto;
+    margin:auto;
 }
 .garden-detail-image-container{
-    transform: rotate(90deg);
 
 
 }
@@ -210,11 +207,12 @@
 
 
 .garden-detail-heading-category {
-    color: var(--brown);
+    color: var(--green);
     font-family: var(--subheading-font2);
     font-weight: 500;
     font-size: 2rem;
-    text-align: left;
+    text-align: center;
+    opacity:.8;
 }
 
 .garden-detail-view-summary{
@@ -245,19 +243,73 @@
 }
 
 .garden-detail-layout-heading{
-    padding-top: 2rem;
     padding-left: 2rem;
 }
+
 
 #garden-detail-vegetable-heading{
     text-align: center;
 }
 
 .garden-detail-grid-container-2 {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    max-width: 1000px;
+    margin-top: 4rem;
+    justify-content: center;
+    justify-items: center;
+    align-items: flex-start;
+    align-content: center;
+    margin: 3rem auto 0rem auto;
 }
 
 
+.garden-detail-soil-subcontainer{
+    background-color: transparent;
+    width: 450px;
+    padding: 1.75rem;
+    border-radius: 15px;
+    text-align: left;
+    color:black;
+}
+
+.garden-detail-upper-left {
+    width:450px;
+}
+
+.garden-detail-layout-container-flex {
+    max-width: 450px;
+}
+
+.garden-detail-body-container:after {
+    content: "";
+    border-left: 2px solid var(--brown2);
+    height: 900px;
+    position: absolute;
+    top:51%;
+    left:50%;
+    transform: translateY(-28px)
+}
+.garden-detail-body-container:before {
+    content: "";
+    border-right: 2px solid  var(--brown2);
+    height: 900px;
+    position: absolute;
+    top:0%;
+    left:50%;
+    transform:rotate(90deg) translateX(-30px)
+
+}
+
+
+@media only screen and (max-width: 930px) {
+    .garden-detail-body-container:after {
+        border-left: none;
+    }
+    .garden-detail-body-container:before {
+        border-left: none;
+    }
+  }
 @media only screen and (max-width: 600px) {
     .garden-detail-collapse-container {
         width: 375px;

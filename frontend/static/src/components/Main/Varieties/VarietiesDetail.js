@@ -87,10 +87,7 @@ function VarietiesDetail(props) {
     }
 
     function handleKeyPress(e) {
-        console.log('fired')
-        console.log(e.key)
         if (e.key=== 'Enter') {
-            console.log("blur fired")
             handleBlur(e)
         }
     }

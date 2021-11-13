@@ -23,6 +23,10 @@
 --paper-line: #94ACD4;
 }
 
+*{
+  box-sizing: border-box;
+}
+
 .flagship-btn {
   background-color: var(--brown);
   font-family: var(--body-font);
