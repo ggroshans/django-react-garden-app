@@ -23,10 +23,8 @@ function Vegetables(props) {
 
     const [filteredVegetables, setFilteredVegetables] = useState([]);
     const [userVegetables, setUserVegetables] = useState([]);
-    const [open, setOpen] = useState(false);
     const [showForm, setShowForm] = useState(false);
     const [showArrow, setShowArrow] = useState(false);
-    const [widthMax, setWidthMax] = useState(true);
     const filteredVegScroll = useRef();
     const filterFormScroll = useRef();
 
@@ -203,23 +201,13 @@ function Vegetables(props) {
         scrollToForm();
     }
 
-    function handleOpenFormClick() {
-        setOpen(!open);
-        setShowForm(!showForm);
-        setWidthMax(!widthMax);
-    }
-
     return (
         <div className="vegetables-outer-container">
             <div className="vegetables-inner-container">
                 <div className="vegetables-heading-form-flex-container ">
                     <div
                         className="vegetables-heading-container"
-                        id={widthMax ? "max-width" : ""}
                     >
-                        {/* <h2 className="vegetables-heading">
-                        Find the Most Suitable Vegetables
-                    </h2> */}
                         <p className="vegetables-description">
                             <strong>In this step</strong>, you will pick out
                             your potential vegetables by filtering out for the
@@ -233,21 +221,12 @@ function Vegetables(props) {
                             back to the form and find the most suitable veggies!{" "}
                         </p>
 
-                        <Button
-                            onClick={handleOpenFormClick}
-                            aria-controls="example-collapse-text"
-                            aria-expanded={open}
-                            className="btn-success vegetables-expand-form-btn"
-                        >
-                            Click to find Veggies!
-                        </Button>
                     </div>
 
                     <div
                         className="vegetables-form-container"
-                        id={showForm ? "" : "hide"}
                     >
-                        <Fade in={open}>
+
                             <form
                                 action=""
                                 className="form-control vegetables-form"
@@ -287,7 +266,7 @@ function Vegetables(props) {
                                 </div>
 
                                 <div className="vegetables-checkboxes-container">
-                                    <div className="form-group mt-2">
+                                    <div className="form-group mt-2 vegetables-checkbox-group">
                                         <input
                                             type="checkbox"
                                             id="heat_tolerant"
@@ -295,12 +274,12 @@ function Vegetables(props) {
                                             value="TRUE"
                                             onChange={handleChange}
                                         />
-                                        <label htmlFor="heat_tolerant">
+                                        <label htmlFor="heat_tolerant" className="heat-tolerant-label">
                                             Heat Tolerant
                                         </label>
                                     </div>
 
-                                    <div className="form-group mt-2">
+                                    <div className="form-group mt-2 vegetables-checkbox-group ">
                                         <input
                                             type="checkbox"
                                             id="drought_tolerant"
@@ -308,7 +287,7 @@ function Vegetables(props) {
                                             value="TRUE"
                                             onChange={handleChange}
                                         />
-                                        <label htmlFor="drought_tolerant">
+                                        <label htmlFor="drought_tolerant" className="drought-tolerant-label">
                                             Drought Tolerant
                                         </label>
                                     </div>
@@ -350,7 +329,6 @@ function Vegetables(props) {
                                     Search
                                 </button>
                             </form>
-                        </Fade>{" "}
                     </div>
                 </div>
                 <div ref={filteredVegScroll}>

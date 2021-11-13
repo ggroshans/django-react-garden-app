@@ -120,6 +120,18 @@
     border: 1px solid var(--brown)
 }
 
+.vegetables-checkbox-group{
+    width: 200px;
+}
+
+.heat-tolerant-label {
+    margin-left: 0.25rem;
+}
+
+.drought-tolerant-label {
+    margin-left: 0.25rem;
+}
+
 #hide {
     display: none;
 }
