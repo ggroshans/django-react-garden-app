@@ -9,20 +9,34 @@ function Companions(props) {
     const [userVegetables, setUserVegetables] = useState();
     let [queryString, setQueryString] = useState("");
     // const [queryVegetable, setQueryVegetable] = useState();
-    const firstRender = useRef(true)
+    const firstRender1 = useRef(true)
+    const firstRender2 = useRef(true)
 
     useEffect(() => {
         getGardenDetails();
     }, []);
 
     useEffect(() => {
-        if (firstRender.current) {
-            firstRender.current = false;
+        if (firstRender1.current) {
+            firstRender1.current = false;
         } else {
             getVegetableDetails();
+            
         }
 
     }, [queryString]);
+
+    useEffect( ()=> {
+        if (firstRender2.current) {
+            firstRender2.current = false;
+        } else {
+            addNewVegetableToGarden();
+        }
+    },[userVegetables])
+
+    function grabPKvalues(vegetables) {
+        return vegetables.map(vegetable => vegetable.id)
+        }
 
     async function getGardenDetails() {
         const options = {
@@ -70,8 +84,31 @@ function Companions(props) {
         let val = e.target.value
         setQueryString(val.trim());
         console.log(queryString);
-        console.log(firstRender)
     }
+
+    async function addNewVegetableToGarden() {
+        let pkValues = grabPKvalues(userVegetables);
+
+        const options = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookie.get("csrftoken"),
+            },
+            body: JSON.stringify({ vegetables: pkValues }),
+        };
+        const response = await fetch(
+            `/api/gardens/${props.match.params.garden}/`,
+            options
+        );
+        if (response.ok === false) {
+            console.log("VEG PATCH FAILED", response);
+        } else {
+            const data = await response.json();
+            console.log('success yes', data)
+        }
+    }
+
 
     if (!userVegetables) {
         return (
