@@ -16,7 +16,6 @@ function CreateAGarden(props) {
     }
 
     async function handleCreateGarden(e) {
-        e.preventDefault();
 
         const options = {
             method: "POST",
@@ -37,6 +36,13 @@ function CreateAGarden(props) {
         }
     }
 
+
+    function handleKeyPress(e) {
+        if(e.key=='Enter'){
+            handleCreateGarden();
+        } 
+      }
+
     return (
         <div className="get-started-container">
             <Modal.Header closeButton>
@@ -50,6 +56,7 @@ function CreateAGarden(props) {
                         value={data["name"]}
                         onChange={handleChange}
                         className="form-control"
+                        onKeyPress={handleKeyPress}
                     />
                 </Modal.Body>
                 <Modal.Footer>
@@ -60,6 +67,7 @@ function CreateAGarden(props) {
                         variant="btn btn-success"
                         type="submit"
                         onClick={handleCreateGarden}
+                        
                     >
                         Save Changes
                     </Button>

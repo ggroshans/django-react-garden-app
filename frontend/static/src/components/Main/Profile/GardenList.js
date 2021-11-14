@@ -85,7 +85,12 @@ function GardenList(props) {
             console.log("GARDEN LIST SUCCESS", data);
         }
     }
-    console.log(props.isAuth);
+    
+
+    function handleKeyPress(e) {
+        if(e.key=='Enter'){
+        } 
+      }
 
     if (!props.isAuth) {
         props.history.push("/");
