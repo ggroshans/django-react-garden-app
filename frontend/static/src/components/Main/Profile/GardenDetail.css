@@ -19,7 +19,7 @@
 .garden-detail-background-container {
     background-color: white;
     max-width: 950px;
-    margin: 3rem auto;
+    margin: 3rem auto 4rem auto;
     padding-top:1rem;
     border-radius: 15px;
     opacity: .75;
@@ -70,7 +70,7 @@
     color: var(--brown2);
     font-family: var(--subheading-font2);
     font-size: 3rem;
-    margin-top: 4rem;
+    margin-top: 1rem;
 }
 
 .garden-detail-strong-tag {
@@ -106,7 +106,6 @@
 
 .garden-detail-collapse-container {
     background-color: transparent;
-    padding-top: 2rem;
     padding-bottom: 2rem;
     border-radius: 15px;
     margin: auto;
@@ -275,6 +274,7 @@
 
 .garden-detail-upper-left {
     width:450px;
+    margin-left: 35px;
 }
 
 .garden-detail-layout-container-flex {
@@ -295,7 +295,7 @@
     border-right: 2px solid  var(--brown2);
     height: 900px;
     position: absolute;
-    top:0%;
+    top:-5%;
     left:50%;
     transform:rotate(90deg) translateX(-30px)
 
