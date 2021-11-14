@@ -53,3 +53,17 @@
     margin-bottom: 10rem;
 }
 
+.companion-layout-container {
+    max-height: auto;
+    width: 40%;
+    border-radius: 10px;
+    margin-right: 5rem;
+    margin-bottom: 6rem;
+}
+
+.layout-subheading {
+    font-size: 2rem;
+    margin: 3rem 0rem 2rem 0rem;
+    color: var(--brown);
+    font-family: var(--subheading-font2);
+}

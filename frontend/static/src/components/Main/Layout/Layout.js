@@ -93,16 +93,23 @@ function Layout(props) {
                         <strong>In this step</strong>, you will find the
                         vegetables you have chosen in the table below along with
                         the vegetables best pairings (companions) and worse
-                        pairings (adversaries). If you would like to add a companion plant, just click on the name and you will add it to your list of vegetables! Use the companion chart to think
-                        about how you want to lay out your garden. Then, use the
-                        canvas to the right to sketch out the placement of your
-                        beds and vegetables.
+                        pairings (adversaries). If you would like to add a
+                        companion plant, just click on the name and you will add
+                        it to your list of vegetables! Use the companion chart
+                        to think about how you want to lay out your garden.
+                        Then, use the canvas to the right to sketch out the
+                        placement of your beds and vegetables.
                     </p>
                 </div>
 
                 <div className="layout-flex-container">
-                    <Companions />
+                    <div className="companion-layout-container">
+                        <h2 className="layout-subheading">PAIR PLANTING</h2>
+                        <Companions />
+                    </div>
+
                     <div className="canvas-container">
+                        <h2 className="layout-subheading">SKETCH</h2>
                         <canvas
                             onMouseDown={startDrawing}
                             onMouseUp={finishDrawing}
