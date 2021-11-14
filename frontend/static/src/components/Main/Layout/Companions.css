@@ -3,10 +3,20 @@
     width: 40%;
     border-radius: 10px;
     margin-right: 5rem;
+    margin-bottom: 6rem;
 }
 
 #companion-list {
     color: darkgreen;
+}
+
+.companion-vegetable-btn {
+    border: none;
+    background-color: transparent;
+    color: green;
+}
+.companion-vegetable-btn:hover {
+    color: yellowgreen;
 }
 
 #adversary-list {

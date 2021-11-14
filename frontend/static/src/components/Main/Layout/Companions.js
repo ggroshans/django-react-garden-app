@@ -75,15 +75,25 @@ function Companions(props) {
         } else {
             const data = await response.json();
             console.log("SUCCESS QUERY", data);
-            let updatedGarden = [...userVegetables, data[0]]
-            setUserVegetables(updatedGarden)
+
+            let duplicate = false;
+            userVegetables.forEach(vegetableObj => {
+                if (vegetableObj.name === data[0].name) {
+                    duplicate = true;
+                } 
+
+            })
+            if (!duplicate) {
+                let updatedGarden = [...userVegetables, data[0]]
+                setUserVegetables(updatedGarden)
+            }
+
         }
     }
 
     function handleAddCompanion(e) {
         let val = e.target.value
         setQueryString(val.trim());
-        console.log(queryString);
     }
 
     async function addNewVegetableToGarden() {
@@ -154,8 +164,9 @@ function Companions(props) {
                                                               onClick={
                                                                   handleAddCompanion
                                                               }
+                                                              className="companion-vegetable-btn"
                                                           >
-                                                              {companion}
+                                                              {companion + ", "}
                                                           </button>
                                                       );
                                                   })}
