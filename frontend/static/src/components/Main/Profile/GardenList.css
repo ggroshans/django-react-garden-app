@@ -11,7 +11,7 @@
 }
 
 .garden-list-inner-container {
-    top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(0, 0,0,.8);
+    top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(0, 0,0,.75);
     min-height: 75vh;
     overflow: hidden;
 }
@@ -47,18 +47,24 @@
     font-family: var(--subheading-font2);
     font-weight: 600;
     margin-top: 5rem;
-    margin-bottom: 3rem;
+
     color: var(--brown);
 }
 
 .create-garden-btn {
     margin-top: 2rem;
-    width: 275px;
+    width: 255px;
     height: 75px;
     opacity: 0.7;
-    border-radius:30px;
+    border-radius:200px;
 }
 
 .create-garden-btn:hover {
     opacity: .8
+}
+
+.garden-list-details-heading {
+    margin-bottom: 3rem;
+    color: var(--brown2);
+    font-style: italic;
 }

@@ -5,50 +5,34 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid var(--green);
     width: 350px;
     height: 225px;
     color: white;
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 12px;
-    opacity: 0.55;
-    margin-bottom: 3rem;
-}
-
-.garden-item-container::after {
-    content: "";
-    background-color: var(--green);
-    background-size: 95%;
-    border-radius: 10px;
-    opacity: 0.75;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -2;  
-}
-/* 
-.garden-item-container:hover {
-    background-color: rgb(0, 65, 0);
-} */
-
-.garden-item-container:hover {
     opacity: 0.7;
+    margin-bottom: 3rem;
+    background-color: var(--green);
+}
+
+.garden-item-container:hover {
+    opacity: 0.9;
     cursor: pointer;
 }
 
 .garden-item-btn-container {
     position: absolute;
     font-size: 1.25rem;
-    right: 6px;
-    top: 0px;
+    right: 25px;
+    top: 20px;
 }
 
 .garden-item-heading {
     font-family: var(--subheading-font2);
-    font-size: 1.75rem;
+    font-size: 2rem;
+    position: relative;
+    top: 10px;
 }
 
 .garden-item-btn-container:hover {
@@ -66,6 +50,7 @@
 .garden-item-date {
     font-style: italic;
     margin-top: 1rem;
+    font-weight: 600;
 }
 
 
@@ -75,10 +60,12 @@
     align-items: center;
     flex-direction: column;
     background-size: cover;
-    width: 85%;
-    height: 175px;
+    width: 90%;
+    height: 190px;
     border-radius: 12px;
+    padding: 2rem;
     background-color:var(--brown);
+    background-image: url('https://www.worldatlas.com/r/w1200/upload/c2/42/c3/soil-composition-shutterstock.jpg');
 }
 
 

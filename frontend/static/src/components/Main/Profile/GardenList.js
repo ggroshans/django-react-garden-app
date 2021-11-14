@@ -106,10 +106,12 @@ function GardenList(props) {
                 </Modal>
                 {userGardenList.length === 0 ? (
                     ""
-                ) : (
+                ) : (<>
                     <h3 className="garden-list-subheading">
                         YOUR PAST GARDENS:
                     </h3>
+                    <p className="garden-list-details-heading">(Click a garden for more details!)</p>
+                    </>
                 )}
                 <div className="garden-list-grid-container">
                     {userGardenList.map((element) => {

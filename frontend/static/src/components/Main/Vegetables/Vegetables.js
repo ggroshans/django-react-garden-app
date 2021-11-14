@@ -23,7 +23,6 @@ function Vegetables(props) {
 
     const [filteredVegetables, setFilteredVegetables] = useState([]);
     const [userVegetables, setUserVegetables] = useState([]);
-    const [showForm, setShowForm] = useState(false);
     const [showArrow, setShowArrow] = useState(false);
     const filteredVegScroll = useRef();
     const filterFormScroll = useRef();
@@ -136,6 +135,17 @@ function Vegetables(props) {
         setTimeout(() => {
             scrollToFiltered();
         }, 300);
+
+        // setFilterData({
+        //     name: "",
+        //     exposure: "",
+        //     heat_tolerant: "",
+        //     drought_tolerant:"" ,
+        //     life_cycle: "",
+        //     seasonality: "",
+        // });
+
+        console.log("FD", filterData)
     }
 
     function addToUserList(id) {
@@ -243,6 +253,7 @@ function Vegetables(props) {
                                         name="name"
                                         onChange={handleChange}
                                         className="form-control"
+                                        value={filterData.name}
                                     />
                                 </div>
 
@@ -255,6 +266,7 @@ function Vegetables(props) {
                                         id="exposure"
                                         onChange={handleChange}
                                         className="form-control mt-2"
+                                        value={filterData.exposure}
                                     >
                                         <option value="">ALL</option>
                                         <option value="BO">
@@ -284,7 +296,7 @@ function Vegetables(props) {
                                             type="checkbox"
                                             id="drought_tolerant"
                                             name="drought_tolerant"
-                                            value="TRUE"
+                                            value={filterData.drought_tolerant}
                                             onChange={handleChange}
                                         />
                                         <label htmlFor="drought_tolerant" className="drought-tolerant-label">
@@ -301,6 +313,7 @@ function Vegetables(props) {
                                         id="life_cycle"
                                         onChange={handleChange}
                                         className="form-control"
+                                        value={filterData.life_cycle}
                                     >
                                         <option value="">All</option>
                                         <option value="AN">Annual</option>
@@ -318,6 +331,7 @@ function Vegetables(props) {
                                         id="seasonality"
                                         onChange={handleChange}
                                         className="form-control"
+                                        value={filterData.seasonality}
                                     >
                                         <option value="">All</option>
                                         <option value="CS">Cool Season</option>

@@ -13,7 +13,7 @@ function GardenItem(props) {
     }
 
     return (
-        <div className="garden-item-container">
+        <div className="garden-item-container" onClick={handleGardenItemClick}>
             <div className="garden-item-btn-container" onClick={handleClick}>
                 <AiOutlineClose />
             </div>
@@ -21,10 +21,9 @@ function GardenItem(props) {
                 <h3 className="garden-item-heading">{props.name.toUpperCase()}</h3>
                 <p className="garden-item-date">{props.created_at}</p>
                 <p
-                    onClick={handleGardenItemClick}
+                    
                     className="garden-item-more-details"
                 >
-                    Click for more details
                 </p>
             </div>
         </div>
