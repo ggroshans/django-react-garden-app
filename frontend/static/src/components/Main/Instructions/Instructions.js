@@ -83,11 +83,7 @@ function Instructions(props) {
                             <span className="instructions-step-varieties splash-lobster-font">
                                 3) Seed Varieties:
                             </span>{" "}
-                            Vegetables often do better if they are planted
-                            alongside other plants; however, there can also be
-                            plants you do not want to plant together. We help
-                            find the best companion plants for your chosen
-                            vegetables.
+                            Documenting the seed varieties for your vegetables is arguably one of the most important aspects for year after year improvement. We allow you to archive infinite varieties for each vegetable so you can add note about which varieties flourished and which you should avoid in the future.
                         </li>
                         <li className="instructions-list-step">
                             {" "}
@@ -96,10 +92,7 @@ function Instructions(props) {
                                 4) Physical Layout:
                             </span>{" "}
                             Drafting the visual layout of your garden can be
-                            highly beneficial for garden preparation. We allow
-                            you to sketch an outline of your garden beds, while
-                            providing an area for you to jot down important
-                            notes.
+                            highly beneficial for garden preparation. We provide you a chart of best possible plant pairings and ones you should avoid. Using this this information, you can draft a blueprint of your garden.
                         </li>
                         {/* <li className="instructions-list-step">
                     {" "}
