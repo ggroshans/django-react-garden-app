@@ -1,22 +1,27 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
 import Cookie from "js-cookie";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { withRouter } from "react-router";
 import "./Companions.css";
-import Button from "@restart/ui/esm/Button";
 
 function Companions(props) {
-    const [userGarden, setUserGarden] = useState();
-    let [queryString, setQueryString] = useState();
-    const [queryVegetable, setQueryVegetable] = useState();
+    const [userVegetables, setUserVegetables] = useState();
+    let [queryString, setQueryString] = useState("");
+    // const [queryVegetable, setQueryVegetable] = useState();
+    const firstRender = useRef(true)
 
     useEffect(() => {
         getGardenDetails();
     }, []);
 
     useEffect(() => {
-        getVegetableDetails();
+        if (firstRender.current) {
+            firstRender.current = false;
+        } else {
+            getVegetableDetails();
+        }
+
     }, [queryString]);
 
     async function getGardenDetails() {
@@ -36,7 +41,7 @@ function Companions(props) {
         } else {
             const data = await response.json();
             console.log("GET DETAILS SUCCESS", data);
-            setUserGarden(data);
+            setUserVegetables(data.vegetables_details);
         }
     }
 
@@ -56,7 +61,8 @@ function Companions(props) {
         } else {
             const data = await response.json();
             console.log("SUCCESS QUERY", data);
-            console.log(queryVegetable)
+            let updatedGarden = [...userVegetables, data[0]]
+            setUserVegetables(updatedGarden)
         }
     }
 
@@ -64,9 +70,10 @@ function Companions(props) {
         let val = e.target.value
         setQueryString(val.trim());
         console.log(queryString);
+        console.log(firstRender)
     }
 
-    if (!userGarden) {
+    if (!userVegetables) {
         return (
             <Spinner
                 animation="border"
@@ -74,6 +81,8 @@ function Companions(props) {
                 className="garden-detail-spinner"
             />
         );
+    } else {
+        console.log(userVegetables)
     }
 
     return (
@@ -87,9 +96,9 @@ function Companions(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {userGarden.vegetables_details.length === 0
+                    {userVegetables.length === 0
                         ? ""
-                        : userGarden.vegetables_details.map((vegetable) => {
+                        : userVegetables.map((vegetable) => {
                               return (
                                   <tr>
                                       <td className="table-vegetable-name">
