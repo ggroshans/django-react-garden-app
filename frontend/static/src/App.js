@@ -37,17 +37,12 @@ function App() {
         checkAuth()
     }, []);
 
-    let navBar;
-    if (isAuth && showNav) {
-        navBar = <NavBar />;
-    } else {
-        navBar = ""
-    }
+
 
 
     return (
         <div className="App">
-            <Header isAuth={isAuth} setIsAuth={setIsAuth} showHeader={showHeader}/>
+            <Header isAuth={isAuth} setIsAuth={setIsAuth} showHeader={showHeader} showNav={showNav}/>
             <Switch>
                 <Route path="/login">
                     <Login setIsAuth={setIsAuth} isAuth={isAuth} setShowHeader={setShowHeader}/>
@@ -90,7 +85,7 @@ function App() {
                 <Route></Route>
                 <Route></Route>
             </Switch>
-            {navBar}
+
             <Footer />
         </div>
     );

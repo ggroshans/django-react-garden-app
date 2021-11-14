@@ -27,10 +27,7 @@
 }
 
 .nav-btn-group {
-    border: 1px solid var(--btn-color);
     width: 800px;
     margin: auto;
-    border-radius: 0.5rem;
-    position: relative;
-    bottom: 75px;
+
 }

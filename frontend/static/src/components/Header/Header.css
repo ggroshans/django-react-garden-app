@@ -1,8 +1,8 @@
 .header-container {
     position: relative;
     background-color: var(--white);
-    border-bottom: 4px solid var(--green);
-    height: 15vh;
+    border-bottom: 5px solid var(--green);
+    height: 20vh;
 }
 
 .logo-container {

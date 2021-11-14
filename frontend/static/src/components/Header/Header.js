@@ -6,10 +6,12 @@ import Cookie from "js-cookie";
 import { useEffect, useState } from "react";
 import Farmer from "../../images/farmer.png";
 import { Button, Collapse, Spinner } from "react-bootstrap";
+import NavBar from "../NavBar/NavBar";
 
 function Header(props) {
     const [username, setUsername] = useState();
     const [open, setOpen] = useState(false);
+    const [showNav, setShowNav] = useState(false);
 
 
     useEffect(() => {
@@ -72,6 +74,13 @@ function Header(props) {
         return "";
     }
 
+    let navBar;
+    if (props.isAuth && props.showNav) {
+        navBar = <NavBar />;
+    } else {
+        navBar = ""
+    }
+
 
     return (
         <div className="header-container">
@@ -118,6 +127,7 @@ function Header(props) {
             :
                 " "
             }
+            {navBar}
         </div>
     );
 }
