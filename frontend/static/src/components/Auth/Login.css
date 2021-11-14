@@ -33,7 +33,7 @@
     padding: 2rem 3rem;
     text-align: left;
     border: 2px solid var(--green);
-    box-shadow: 0px 0px 70px 20px rgb(0, 71, 0);
+    box-shadow: 0px 0px 70px 10px rgb(0, 71, 0);
     opacity: 0.95;
     width: 300px;
     position: relative;
@@ -45,6 +45,23 @@
 .login-btn {
     width: 200px;
     height: 45px;
-    margin-top: 2rem;
+    margin-top: 1rem;
     border-radius: 5px;
+}
+
+.login-reroute-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+}
+
+.login-reroute-btn:hover {
+    color: var(--brown);
+}
+
+.login-reroute-text {
+    font-size: 0.85rem;
+    margin: auto;
 }
