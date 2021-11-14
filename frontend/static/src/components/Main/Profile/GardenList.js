@@ -87,10 +87,6 @@ function GardenList(props) {
     }
     
 
-    function handleKeyPress(e) {
-        if(e.key=='Enter'){
-        } 
-      }
 
     if (!props.isAuth) {
         props.history.push("/");

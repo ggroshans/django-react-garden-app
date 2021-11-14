@@ -11,6 +11,7 @@ function GardenItem(props) {
     function handleClick() {
         props.removeGardenFromList(props.id);
     }
+    
 
     return (
         <div className="garden-item-container" >
