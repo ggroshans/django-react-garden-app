@@ -11,7 +11,7 @@ import { IoIosAdd} from "react-icons/io";
 import { MdOutlineClose} from "react-icons/md";
 
 function GardenNotes(props) {
-    const [notes, setNotes] = useState([" "]);
+    const [notes, setNotes] = useState([" ", " ", " "]);
 
     useEffect(() => {
         fetchNotes();

@@ -93,7 +93,7 @@ function Layout(props) {
                         <strong>In this step</strong>, you will find the
                         vegetables you have chosen in the table below along with
                         the vegetables best pairings (companions) and worse
-                        pairings (adversaries). Use the companion chart to think
+                        pairings (adversaries). If you would like to add a companion plant, just click on the name and you will add it to your list of vegetables! Use the companion chart to think
                         about how you want to lay out your garden. Then, use the
                         canvas to the right to sketch out the placement of your
                         beds and vegetables.
