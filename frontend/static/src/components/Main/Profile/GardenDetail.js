@@ -134,7 +134,7 @@ function GardenDetail(props) {
                     <div className="garden-detail-upper-body-container"></div>
                     {isEditing ? (
                         <div>
-                            <h4>Update Garden Name:</h4>
+                            <h4 className="garden-detail-rename-heading">Update Garden Name:</h4>
                             <div className="garden-detail-rename-container">
                                 <input
                                     type="text"

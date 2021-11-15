@@ -41,6 +41,8 @@
 .garden-detail-rename-container {
     display: flex;
     justify-content: center;
+    position: relative;
+    left: 50px;
 }
 
 .garden-detail-rename-input {
@@ -50,6 +52,12 @@
 .garden-detail-rename-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    background-color: var(--green);
+    opacity: 0.9;
+}
+
+.garden-detail-rename-btn:hover {
+    opacity: 1;
 }
 
 .garden-detail-close-rename-btn {
@@ -59,6 +67,11 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     width: 25px;
+    opacity: 0.9;
+}
+
+.garden-detail-close-rename-btn:hover {
+    opacity: 1;
 }
 
 .garden-detail-close-rename-btn:hover{
@@ -71,6 +84,8 @@
     font-family: var(--subheading-font2);
     font-size: 3rem;
     margin-top: 1rem;
+    position: relative;
+    left: 15px;
 }
 
 .garden-detail-strong-tag {
@@ -326,6 +341,12 @@
     left:50%;
     transform:rotate(90deg) translateX(-30px)
 
+}
+
+.garden-detail-rename-heading{
+    color: var(--brown);
+    font-weight: 600;
+    font-family: var(--subheading-font2);
 }
 
 
