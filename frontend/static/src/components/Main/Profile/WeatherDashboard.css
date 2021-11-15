@@ -51,27 +51,32 @@
     font-size: 4rem;
     padding-left: 1rem;
     margin: 0;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .weather-dew-point-heading, .weather-humidity-heading {
     margin-bottom: 0rem;
-    font-weight: 600;
+ 
 }
 
 .weather-dew-point-temp, .weather-humidity {
     margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
 }
 
 .weather-feelslike-heading, .weather-uvi-heading {
     display: inline-block;
     width: 100%;
     margin: 0 auto;
-    font-weight: 600;
+
 
 }
 
 .weather-feels-like-temp, .weather-uvi {
     margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
 }
 
 .weather-desc-container {
