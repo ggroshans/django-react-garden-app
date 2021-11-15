@@ -66,6 +66,7 @@
     padding: 2rem;
     background-color:var(--brown);
     background-image: url('https://www.worldatlas.com/r/w1200/upload/c2/42/c3/soil-composition-shutterstock.jpg');
+    background-blend-mode: darken, soft-light, color-dodge;
 }
 
 

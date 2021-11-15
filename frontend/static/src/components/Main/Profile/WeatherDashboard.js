@@ -6,14 +6,15 @@ import { Spinner } from "react-bootstrap";
 
 function WeatherDashboard(props) {
     const [weatherData, setWeatherData] = useState();
-    const [randomPage, setRandomPage] = useState();
+
     let sunrise;
     let sunset;
     let random;
 
     useEffect(() => {
-        getWeatherDetails();
-        // getWikiDetails();
+        if(props.userGarden.location !== null) {
+            getWeatherDetails();
+        }
     }, []);
 
     async function getWeatherDetails() {
@@ -34,22 +35,9 @@ function WeatherDashboard(props) {
         }
     }
 
-    // async function getWikiDetails() {
-    //     const response = await fetch(
-    //         `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=categorymembers&cmtitle=Category%3APhysics&cmlimit=20`
-    //     );
-    //     if (response.ok === false) {
-    //         console.log("failed", response);
-    //     } else {
-    //         const data = await response.json();
-    //         console.log("SUCCESS", data);
-    //         let pageNumbers = data.query.categorymembers.map(pageObj => {
-    //             return pageObj.pageid
-    //         })
-    //         let index= Math.floor(Math.random() * arr.length);
-    //         setRandomPage(pageNumbers[index])
-    //     }
-    // }
+    if(props.userGarden.location === null){
+        return "Location Not Saved"
+    }
 
     if (!weatherData) {
         return (
@@ -137,7 +125,7 @@ function WeatherDashboard(props) {
                     </div>
                     <div>{/* Sunrise: {sunrise} */}</div>
 
-                    {/* {wikiData ? <a href={`https://en.wikipedia.org/w/index.php?curid=${random}`}></a> : ""} */}
+                    
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import Leaf from "../../images/leaf.png";
 import { Redirect, withRouter } from "react-router-dom";
-import Cookie from "js-cookie";
+import Cookie, { set } from "js-cookie";
 import { useEffect, useState } from "react";
 import Farmer from "../../images/farmer.png";
 import { Button, Collapse, Spinner } from "react-bootstrap";
@@ -12,14 +12,24 @@ function Header(props) {
     const [username, setUsername] = useState();
     const [open, setOpen] = useState(false);
     const [showNav, setShowNav] = useState(false);
+    const [wikiData, setWikiData] = useState();
 
+    const [randomPage, setRandomPage] = useState();
+
+    useEffect(() => {
+        getWikiData();
+    }, []);
+
+    useEffect(() => {
+        // randomWikiPage(wikiData);
+    }, [wikiData]);
 
     useEffect(() => {
         grabUserName();
     }, [username, props]);
 
     async function grabUserName() {
-        console.log("1111fired")
+        console.log("1111fired");
         const options = {
             method: "GET",
             headers: {
@@ -34,7 +44,9 @@ function Header(props) {
             const data = await response.json();
             Cookie.set("Authorization", `Token ${data.key}`);
 
-            let username = data.username.charAt(0).toUpperCase() + data.username.slice(1).toLowerCase();
+            let username =
+                data.username.charAt(0).toUpperCase() +
+                data.username.slice(1).toLowerCase();
             setUsername(username);
         }
     }
@@ -66,8 +78,57 @@ function Header(props) {
         }
     }
 
+    async function getWikiData() {
+        let pageNumbers;
+        const response1 = await fetch(
+            `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=categorymembers&cmtitle=Category%3ABotany&cmlimit=200`
+        );
+        if (response1.ok === false) {
+            console.log("failed", response1);
+        } else {
+            const data = await response1.json();
+            console.log("SUCCESS", data);
+            pageNumbers = data.query.categorymembers.map((pageObj) => {
+                return pageObj.pageid;
+            });
+        }
+
+        const response2 = await fetch(
+            `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=categorymembers&cmtitle=Category%3ASoil&cmlimit=200`
+        );
+        if (response2.ok === false) {
+            console.log("failed", response2);
+        } else {
+            const data = await response2.json();
+            console.log("SUCCESS", data);
+            data.query.categorymembers.forEach((pageObj) => {
+                return pageNumbers.push(pageObj.pageid);
+            });
+
+            if (wikiData) {
+                setWikiData([...wikiData, pageNumbers]);
+            } else {
+                setWikiData(pageNumbers);
+            }
+        }
+    }
+
+    // function randomWikiPage(arr) {
+    //     let index= Math.floor(Math.random() * arr.length);
+    //     console.log(index)
+    //     // let random = Number(randomPage[index])
+    //     // setRandomPage(random)
+    // }
+
+    function handleWikiClick() {
+        let index = Math.floor(Math.random() * wikiData.length);
+        console.log(index);
+        let random = Number(wikiData[index]);
+        window.location.href=`https://en.wikipedia.org/w/index.php?curid=${random}`
+    }
+
     function handleBannerClick() {
-        props.history.push('/gardenlist');
+        props.history.push("/gardenlist");
     }
 
     if (!props.showHeader) {
@@ -78,17 +139,22 @@ function Header(props) {
     if (props.isAuth && props.showNav) {
         navBar = <NavBar />;
     } else {
-        navBar = ""
+        navBar = "";
     }
 
+    console.log(wikiData);
 
     return (
         <div className="header-container">
-            <div className="logo-container" id={props.showNav ? "" : "header-center"} onClick={handleBannerClick}>
+            <div
+                className="logo-container"
+                id={props.showNav ? "" : "header-center"}
+                onClick={handleBannerClick}
+            >
                 <h1 className="header-title">Flourish</h1>
                 <img src={Leaf} alt="green leaf" className="header-leaf" />
             </div>
-            {(props.isAuth && username) ?
+            {props.isAuth && username ? (
                 <>
                     <div
                         onClick={() => setOpen(!open)}
@@ -115,6 +181,8 @@ function Header(props) {
                             >
                                 Profile
                             </button>
+                            {/* {randomPage ? <a href={`https://en.wikipedia.org/w/index.php?curid=${randomPage}`}>WIKI</a> : ""} */}
+                            <button className="header-user-wiki-btn" onClick={handleWikiClick}>Learn</button>
                             <button
                                 className="header-user-logout-btn"
                                 onClick={handleLogoutClick}
@@ -124,9 +192,9 @@ function Header(props) {
                         </div>
                     </Collapse>
                 </>
-            :
+            ) : (
                 " "
-            }
+            )}
             {navBar}
         </div>
     );
