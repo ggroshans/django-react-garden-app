@@ -84,7 +84,7 @@ function Header(props) {
 
     return (
         <div className="header-container">
-            <div className="logo-container" onClick={handleBannerClick}>
+            <div className="logo-container" id={props.showNav ? "" : "header-center"} onClick={handleBannerClick}>
                 <h1 className="header-title">Flourish</h1>
                 <img src={Leaf} alt="green leaf" className="header-leaf" />
             </div>

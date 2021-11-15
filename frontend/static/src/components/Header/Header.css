@@ -94,3 +94,7 @@
         text-decoration: underline;
         color: green;
     }
+
+#header-center {
+    height: 20vh;
+}
