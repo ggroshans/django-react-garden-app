@@ -26,8 +26,7 @@ function NavBar(props) {
         <div className="navbar-container">
             <div className="nav-btn-group">
                     {radios.map((radio, index) => (
-                        <NavLink to={`/${paramValue}/${radio.value}/`} className="navbar-navlink" activeClassName="active"
-                                className="nav-btn navbar-radio-btn"
+                        <NavLink to={`/${paramValue}/${radio.value}/`} className="navbar-link" activeClassName="active"
                                 key={uuidv4()}
                                 id={`radio-${index}`}
                                 type="radio"
