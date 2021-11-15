@@ -76,61 +76,69 @@ function WeatherDashboard(props) {
                 Current Weather
             </h2>
             <div className="weather-inner-container">
-                <div>
-                    <p className="weather-current-temp">
-                        {weatherData.current.temp.toFixed(0)}&#176;
-                    </p>
-                </div>
-                <div className="weather-dew-feelslike-flex-container">
-                    <div className="weather-dew-flex-container">
-                        <p className="weather-dew-point-heading">Dew Point:</p>{" "}
-                        <p className="weather-dew-point-temp">
-                            {weatherData.current.dew_point.toFixed(0)}&#176;
+                <div className="weather-content-container">
+                    <div>
+                        <p className="weather-current-temp">
+                            {weatherData.current.temp.toFixed(0)}&#176;
                         </p>
                     </div>
-                    <div className="weather-feelslike-flex-container">
-                        <p className="weather-feelslike-heading">Feels like:</p>{" "}
-                        <p className="weather-feels-like-temp">
-                            {weatherData.current.feels_like.toFixed(0)}&#176;
-                        </p>
+                    <div className="weather-dew-feelslike-flex-container">
+                        <div className="weather-dew-flex-container">
+                            <p className="weather-dew-point-heading">
+                                Dew Point:
+                            </p>{" "}
+                            <p className="weather-dew-point-temp">
+                                {weatherData.current.dew_point.toFixed(0)}&#176;
+                            </p>
+                        </div>
+                        <div className="weather-feelslike-flex-container">
+                            <p className="weather-feelslike-heading">
+                                Feels like:
+                            </p>{" "}
+                            <p className="weather-feels-like-temp">
+                                {weatherData.current.feels_like.toFixed(0)}
+                                &#176;
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-
-                <div className="weather-humidity-uvi-flex-container">
-                    <div className="weather-humidity-flex-container">
-                        <p className="weather-humidity-heading">Humidity:</p>{" "}
-                        <p className="weather-humidity">
-                            {weatherData.current.humidity.toFixed(0)}%
-                        </p>
+                    <div className="weather-humidity-uvi-flex-container">
+                        <div className="weather-humidity-flex-container">
+                            <p className="weather-humidity-heading">
+                                Humidity:
+                            </p>{" "}
+                            <p className="weather-humidity">
+                                {weatherData.current.humidity.toFixed(0)}%
+                            </p>
+                        </div>
+                        <div className="weather-uvi-flex-container">
+                            <p className="weather-uvi-heading">UVI:</p>{" "}
+                            <p className="weather-uvi">
+                                {weatherData.current.uvi.toFixed(0)}
+                            </p>
+                        </div>
                     </div>
-                    <div className="weather-uvi-flex-container">
-                        <p className="weather-uvi-heading">UVI:</p>{" "}
-                        <p className="weather-uvi">
-                            {weatherData.current.uvi.toFixed(0)}
-                        </p>
+
+                    <div className="weather-desc-container">
+                        {weatherData.current.weather.map((weather) => {
+                            return (
+                                <>
+                                    <img
+                                        className="weather-icon"
+                                        src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+                                    />
+                                    <p className="weather-desc">
+                                        {" "}
+                                        {toTitleCase(weather.description)}
+                                    </p>
+                                </>
+                            );
+                        })}
                     </div>
-                </div>
+                    <div>{/* Sunrise: {sunrise} */}</div>
 
-                <div className="weather-desc-container">
-                    {weatherData.current.weather.map((weather) => {
-                        return (
-                            <>
-                                <img
-                                    className="weather-icon"
-                                    src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
-                                />
-                                <p className="weather-desc">
-                                    {" "}
-                                    {toTitleCase(weather.description)}
-                                </p>
-                            </>
-                        );
-                    })}
+                    {/* {wikiData ? <a href={`https://en.wikipedia.org/w/index.php?curid=${random}`}></a> : ""} */}
                 </div>
-                <div>{/* Sunrise: {sunrise} */}</div>
-
-                {/* {wikiData ? <a href={`https://en.wikipedia.org/w/index.php?curid=${random}`}></a> : ""} */}
             </div>
         </div>
     );

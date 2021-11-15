@@ -48,8 +48,8 @@
     margin-right: 0.5rem;
     position: relative;
     top: 5px;
-    font-weight: 500;
-    font-family: var(--subheading-font2);
+    font-weight: 600;
+    font-family: var(--body-font);
     color: var(--brown)
 }
 
