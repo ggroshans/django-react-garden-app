@@ -1,11 +1,97 @@
 .weather-outer-container {
     color: black;
     overflow: hidden;
-    width: 450px;
+    width: 350px;
     border-radius: 10px;
 }
 
-.weather-inner-container {
+.weather-dew-feelslike-flex-container, .weather-humidity-uvi-flex-container{
+    display: flex;
+    justify-content: center;
+}
 
-    width:450px;
+.weather-humidity-uvi-flex-container{
+    position: relative;
+    right: 8px;
+    margin-top: 0.75rem;
+}
+
+.weather-dew-flex-container, .weather-humidity-flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-feelslike-flex-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+}
+
+.weather-uvi-flex-container {
+    margin-left: 3.45rem;
+}
+
+.weather-heading {
+    padding-bottom: 0.25rem;
+    margin-bottom: 0rem;
+
+
+}
+
+.weather-heading:after {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* This will center the border. */
+    width: 60%; /* Change this to whatever width you want. */
+    padding-top: 8px; /* This creates some space between the element and the border. */
+    border-bottom: 2px solid lightgrey; /* This creates the border. Replace black with whatever color you want. */
+}
+
+.weather-current-temp{
+    font-size: 4rem;
+    padding-left: 1rem;
+    margin: 0;
+}
+
+.weather-dew-point-heading, .weather-humidity-heading {
+    margin-bottom: 0rem;
+    font-weight: 600;
+}
+
+.weather-dew-point-temp, .weather-humidity {
+    margin: 0;
+}
+
+.weather-feelslike-heading, .weather-uvi-heading {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    font-weight: 600;
+
+}
+
+.weather-feels-like-temp, .weather-uvi {
+    margin: 0;
+}
+
+.weather-desc-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.weather-desc-container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.weather-desc {
+    padding-right: 1rem;
+    margin: 0;
+}
+
+.weather-icon {
+    width: 50px;
 }

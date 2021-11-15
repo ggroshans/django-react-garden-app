@@ -4,6 +4,7 @@
   box-shadow: 10px 10px 40px rgba(black, .15);
   border-radius: 0 0 10px 10px;
   overflow: hidden;
+
 }
 
 .top {
@@ -11,6 +12,10 @@
   height: 50px;
   background: #333;
   border-radius: 5px 5px 0 0;
+  text-align: right;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  font-size: 1.25rem;
 }
 
 .paper {
@@ -53,3 +58,15 @@ z-index: 2;
   color: tomato;
 }
 
+.garden-notes-heading {
+  padding-bottom: 1.5rem;
+}
+
+.garden-notes-heading:after {
+  content: ""; /* This is necessary for the pseudo element to work. */ 
+  display: block; /* This will put the pseudo element on its own line. */
+  margin: 0 auto; /* This will center the border. */
+  width: 20%; /* Change this to whatever width you want. */
+  padding-top: 8px; /* This creates some space between the element and the border. */
+  border-bottom: 2px solid lightgrey; /* This creates the border. Replace black with whatever color you want. */
+}

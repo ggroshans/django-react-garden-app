@@ -63,7 +63,7 @@ function Login(props) {
                     <label htmlFor="password" className="form-label login-label mt-3">Password:</label>
                     <input className="form-control" type="password" id="password" name="password" value={data.password} placeholder="Enter Password.." onChange={handleChange} />
                 </div>
-                <p className="login-reroute-text">New to Flourish? <button className="login-reroute-btn" onClick={handleReRoute}>SIGN UP</button></p>
+                <p className="login-reroute-text">New to Flourish? <button type="button" className="login-reroute-btn" onClick={handleReRoute}>SIGN UP</button></p>
                 <button className="flagship-btn login-btn">Login</button>
             </form>
             </div>

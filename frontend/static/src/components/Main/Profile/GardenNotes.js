@@ -143,6 +143,7 @@ function GardenNotes(props) {
 
     return (
         <div className="notepad">
+        <h2 className="garden-detail-heading-category garden-notes-heading">Notes</h2>
             <div className="top">
                 <IoIosAdd
                     className="garden-notes-add-btn"

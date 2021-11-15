@@ -45,7 +45,7 @@
     margin-bottom: 2rem;
     font-size:0.95rem;
     line-height: 2rem;
-    background-color: var(--white);
+    background-color: white;
     color: black;
     opacity: .75;
     padding: 1rem 2rem;
@@ -73,14 +73,15 @@
 }
 
 .instructions-list-step {
-    font-size: 0.85rem;
+    font-size: .9rem;
+    line-height: 1.75rem;
 }
 
 .instruction-step-list {
     list-style: none;
     text-align: left;
     margin: 0rem auto 3rem auto;
-    background-color: var(--white);
+    background-color: white;
     color: black;
     opacity: .75;
     padding: 1rem 2rem;

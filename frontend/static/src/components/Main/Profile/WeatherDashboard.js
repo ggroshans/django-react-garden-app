@@ -64,29 +64,69 @@ function WeatherDashboard(props) {
         sunset = new Date(weatherData.current.sunset * 1000);
         // random = randomPage()
     }
+    function toTitleCase(str) {
+        return str.replace(/\w\S*/g, function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+    }
 
     return (
         <div className="weather-outer-container">
-                        <h2 className="garden-detail-heading-category">Today's Weather</h2>
+            <h2 className="garden-detail-heading-category weather-heading">
+                Current Weather
+            </h2>
             <div className="weather-inner-container">
-
-                <p>
-                    Current Temperature: {weatherData.current.temp.toFixed(0)}{" "}
-                    degrees
-                </p>
-                <p>
-                    Feels like: {weatherData.current.feels_like.toFixed(0)}{" "}
-                </p>
                 <div>
-                    Dew Point: {weatherData.current.dew_point}
+                    <p className="weather-current-temp">
+                        {weatherData.current.temp.toFixed(0)}&#176;
+                    </p>
                 </div>
-                <div>
-                    Forecast: 
-                    {weatherData.current.weather.map(weather=> {
-                        return (<><p>{weather.main} with {weather.description}</p></>
-                        )
+                <div className="weather-dew-feelslike-flex-container">
+                    <div className="weather-dew-flex-container">
+                        <p className="weather-dew-point-heading">Dew Point:</p>{" "}
+                        <p className="weather-dew-point-temp">
+                            {weatherData.current.dew_point.toFixed(0)}&#176;
+                        </p>
+                    </div>
+                    <div className="weather-feelslike-flex-container">
+                        <p className="weather-feelslike-heading">Feels like:</p>{" "}
+                        <p className="weather-feels-like-temp">
+                            {weatherData.current.feels_like.toFixed(0)}&#176;
+                        </p>
+                    </div>
+                </div>
+
+
+                <div className="weather-humidity-uvi-flex-container">
+                    <div className="weather-humidity-flex-container">
+                        <p className="weather-humidity-heading">Humidity:</p>{" "}
+                        <p className="weather-humidity">
+                            {weatherData.current.humidity.toFixed(0)}%
+                        </p>
+                    </div>
+                    <div className="weather-uvi-flex-container">
+                        <p className="weather-uvi-heading">UVI:</p>{" "}
+                        <p className="weather-uvi">
+                            {weatherData.current.uvi.toFixed(0)}
+                        </p>
+                    </div>
+                </div>
+
+                <div className="weather-desc-container">
+                    {weatherData.current.weather.map((weather) => {
+                        return (
+                            <>
+                                <img
+                                    className="weather-icon"
+                                    src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+                                />
+                                <p className="weather-desc">
+                                    {" "}
+                                    {toTitleCase(weather.description)}
+                                </p>
+                            </>
+                        );
                     })}
-                    
                 </div>
                 <div>{/* Sunrise: {sunrise} */}</div>
 

@@ -64,3 +64,7 @@
 .already-added {
     background-color:lightgray;
 }
+
+.filtered-vegetables-no-results{
+    color: var(--brown2);
+}

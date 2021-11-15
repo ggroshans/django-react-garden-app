@@ -104,7 +104,7 @@ function Layout(props) {
 
                 <div className="layout-flex-container">
                     <div className="companion-layout-container">
-                        <h2 className="layout-subheading">PAIR PLANTING</h2>
+                        <h2 className="layout-subheading">PLANT PAIRING</h2>
                         <Companions />
                     </div>
 

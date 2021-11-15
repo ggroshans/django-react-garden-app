@@ -81,3 +81,7 @@ div.modal-title {
 div.modal-footer {
     background-color: rgb(224, 216, 204);
 }
+
+.garden-list-content-container{
+    background-color: transparent;
+}

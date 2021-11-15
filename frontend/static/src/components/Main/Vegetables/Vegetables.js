@@ -27,6 +27,8 @@ function Vegetables(props) {
     const filteredVegScroll = useRef();
     const filterFormScroll = useRef();
 
+    // const [showNoResultsAlert, setNoResultsAlert] = useState(false)
+
     useEffect(() => {
         getUsersVegetableList();
     }, []);
@@ -34,6 +36,10 @@ function Vegetables(props) {
     useEffect(() => {
         props.setShowNav(true);
     }, []);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     async function getUsersVegetableList() {
         const options = {
@@ -68,6 +74,12 @@ function Vegetables(props) {
             console.log("failed", response);
         } else {
             const data = await response.json();
+            if (data.length === 0) {
+                // setNoResultsAlert(true);
+                // setTimeout(()=> {
+                //     setNoResultsAlert(false)
+                // }, 1000)
+            }
             setFilteredVegetables(data);
         }
     }
@@ -350,6 +362,7 @@ function Vegetables(props) {
                         filteredVegetables={filteredVegetables}
                         userVegetables={userVegetables}
                         addToUserList={addToUserList}
+                        // showNoResultsAlert={showNoResultsAlert}
                     />
                 </div>
                 <div className="vegetables-user-list-container">
