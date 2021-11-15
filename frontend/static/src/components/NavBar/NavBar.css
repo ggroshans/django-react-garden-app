@@ -9,9 +9,12 @@
 
 .navbar-radio-btn {
     width: 200px;
-    color: var(--btn-color);
+    color: var(--green);
     font-weight: 600;
     border: none;
+    border-radius: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .nav-btn:hover {
@@ -23,11 +26,18 @@
 }
 .btn-check:checked+.btn-outline-success {
     background-color: var(--btn-color);
-    border-color: var(--btn-color);
+
 }
 
 .nav-btn-group {
     width: 800px;
     margin: auto;
 
+}
+
+.active {
+    background-color: var(--green);
+    color: var(--white);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }

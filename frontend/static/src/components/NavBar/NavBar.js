@@ -1,6 +1,5 @@
 import "./NavBar.css";
 import React from "react";
-import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import { NavLink, withRouter } from "react-router-dom";
@@ -26,10 +25,8 @@ function NavBar(props) {
     return (
         <div className="navbar-container">
             <div className="nav-btn-group">
-                <ButtonGroup>
                     {radios.map((radio, index) => (
-                        <NavLink to={`/${paramValue}/${radio.value}/`} className="navbar-navlink">
-                            <ToggleButton
+                        <NavLink to={`/${paramValue}/${radio.value}/`} className="navbar-navlink" activeClassName="active"
                                 className="nav-btn navbar-radio-btn"
                                 key={uuidv4()}
                                 id={`radio-${index}`}
@@ -41,10 +38,8 @@ function NavBar(props) {
                                 onChange={(e) => handleChange(e)}
                             >
                                 {radio.name}
-                            </ToggleButton>
                         </NavLink>
                     ))}
-                </ButtonGroup>
             </div>
         </div>
     )
