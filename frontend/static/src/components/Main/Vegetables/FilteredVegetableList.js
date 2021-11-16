@@ -40,10 +40,10 @@ export default function FilteredVegetableList(props) {
 
                               return (
                                   <div
-                                      className="filtered-vegetable already-added"
+                                      className="filtered-vegetable already-added-container"
                                       key={uuidv4()}
                                   >
-                                      <p className="filtered-vegetable-name">
+                                      <p className="filtered-vegetable-name already-added-heading">
                                           {vegetable.name}
                                       </p>
                                   </div>

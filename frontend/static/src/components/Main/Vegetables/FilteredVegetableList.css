@@ -40,7 +40,7 @@
 }
 
 .filtered-vegetable:hover {
-    opacity: .75;
+    opacity: .9;
     transform: translateY(8px);
 }
 
@@ -61,8 +61,13 @@
     background-color: var(--green);
 }
 
-.already-added {
-    background-color:lightgray;
+.already-added-container {
+    background-color:rgb(150, 150, 150);
+
+    border: 5px solid white;
+}
+.already-added-heading {
+    color: white;
 }
 
 .filtered-vegetables-no-results{
