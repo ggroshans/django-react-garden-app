@@ -134,7 +134,7 @@ function GardenDetail(props) {
     return (
         <div className="garden-detail-outer-container">
             <div className="garden-detail-inner-container">
-                <div className="garden-detail-background-container">
+                <div className="garden-detail-background-container" id={show ? "hide" : ""}>
                     <div className="garden-detail-upper-body-container"></div>
                     {isEditing ? (
                         <div>
