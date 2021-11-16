@@ -59,3 +59,8 @@ td {
     color: var(--brown);
 }
 
+.companions-save-alert {
+    position: fixed;
+    bottom: 50px;
+    left: 25px;
+}

@@ -8,9 +8,10 @@ import "./Companions.css";
 function Companions(props) {
     const [userVegetables, setUserVegetables] = useState();
     let [queryString, setQueryString] = useState("");
+    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
     // const [queryVegetable, setQueryVegetable] = useState();
-    const firstRender1 = useRef(true)
-    const firstRender2 = useRef(true)
+    const firstRender1 = useRef(true);
+    const firstRender2 = useRef(true);
 
     useEffect(() => {
         getGardenDetails();
@@ -21,22 +22,20 @@ function Companions(props) {
             firstRender1.current = false;
         } else {
             getVegetableDetails();
-            
         }
-
     }, [queryString]);
 
-    useEffect( ()=> {
+    useEffect(() => {
         if (firstRender2.current) {
             firstRender2.current = false;
         } else {
             addNewVegetableToGarden();
         }
-    },[userVegetables])
+    }, [userVegetables]);
 
     function grabPKvalues(vegetables) {
-        return vegetables.map(vegetable => vegetable.id)
-        }
+        return vegetables.map((vegetable) => vegetable.id);
+    }
 
     async function getGardenDetails() {
         const options = {
@@ -60,7 +59,6 @@ function Companions(props) {
     }
 
     async function getVegetableDetails() {
-
         queryString = `name=${queryString}`;
         const options = {
             method: "GET",
@@ -77,23 +75,26 @@ function Companions(props) {
             console.log("SUCCESS QUERY", data);
 
             let duplicate = false;
-            userVegetables.forEach(vegetableObj => {
+            userVegetables.forEach((vegetableObj) => {
                 if (vegetableObj.name === data[0].name) {
                     duplicate = true;
-                } 
-
-            })
+                }
+            });
             if (!duplicate) {
-                let updatedGarden = [...userVegetables, data[0]]
-                setUserVegetables(updatedGarden)
+                let updatedGarden = [...userVegetables, data[0]];
+                setUserVegetables(updatedGarden);
             }
-
         }
     }
 
     function handleAddCompanion(e) {
-        let val = e.target.value
+        let val = e.target.value;
         setQueryString(val.trim());
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+        setShowSuccessAlert(true);
+        setTimeout(() => {
+            setShowSuccessAlert(false);
+        }, 800);
     }
 
     async function addNewVegetableToGarden() {
@@ -115,10 +116,9 @@ function Companions(props) {
             console.log("VEG PATCH FAILED", response);
         } else {
             const data = await response.json();
-            console.log('success yes', data)
+            console.log("success yes", data);
         }
     }
-
 
     if (!userVegetables) {
         return (
@@ -129,11 +129,21 @@ function Companions(props) {
             />
         );
     } else {
-        console.log(userVegetables)
+        console.log(userVegetables);
     }
 
     return (
         <div className="companions-container">
+            {showSuccessAlert ? (
+                <div
+                    class="alert alert-success companions-save-alert"
+                    role="alert"
+                >
+                    Variety Saved!
+                </div>
+            ) : (
+                <div></div>
+            )}
             <table>
                 <thead>
                     <tr>
