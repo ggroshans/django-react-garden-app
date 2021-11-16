@@ -49,7 +49,6 @@ function GardenDetail(props) {
             setUserGarden(data);
         }
     }
-    console.log(userGarden);
 
     function handleEditVegetablesClick() {
         props.history.push(`/${props.match.params.garden}/vegetables/`);
@@ -116,6 +115,11 @@ function GardenDetail(props) {
     function handleEditLayoutClick() {
         props.history.push(`/${props.match.params.garden}/layout`);
     }
+
+    function handleEditVarietiesClick() {
+        props.history.push(`/${props.match.params.garden}/varieties`);
+    }
+
 
     if (!userGarden) {
         return (
@@ -344,7 +348,10 @@ function GardenDetail(props) {
                                                   </p>
                                                   <p>
                                                       <span className="garden-detail-category">
-                                                          Varieties:
+                                                      <FiEdit
+                                        className="garden-detail-edit-btn"
+                                        onClick={handleEditVarietiesClick}
+                                    /> Varieties :
                                                       </span>{" "}
                                                       {userGarden.varieties ===
                                                       null
