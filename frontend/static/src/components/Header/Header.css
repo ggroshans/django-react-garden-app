@@ -92,7 +92,7 @@
     }
 
 
-    .header-user-profile-btn:hover, .header-user-logout-btn:hover {
+    .header-user-profile-btn:hover, .header-user-logout-btn:hover, .header-user-wiki-btn:hover {
         text-decoration: underline;
         color: green;
     }

@@ -26,7 +26,6 @@ function GardenList(props) {
     }, [username, props]);
 
     async function grabUserName() {
-        console.log("1111fired");
         const options = {
             method: "GET",
             headers: {
@@ -48,6 +47,7 @@ function GardenList(props) {
         }
     }
 
+
     async function grabUserGardenList() {
         const options = {
             method: "GET",
@@ -62,10 +62,14 @@ function GardenList(props) {
         } else {
             const data = await response.json();
             console.log("GARDEN LIST SUCCESS", data);
+            console.log("BEFORE", data)
+            data.sort((a,b) => b.created_at-a.created_at)
+            console.log("AFTER", data)
             setUserGardenList(data);
         }
     }
 
+    
     async function removeGardenFromList(id) {
         let index = userGardenList.findIndex((garden) => garden.id === id);
         let updatedGardenList = [...userGardenList];
