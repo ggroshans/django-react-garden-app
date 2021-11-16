@@ -122,7 +122,7 @@ function GardenList(props) {
                                 YOUR PAST GARDENS:
                             </h3>
                             <p className="garden-list-details-heading">
-                                (Click a garden for more details!)
+                                (Click a garden to review or update!)
                             </p>
                         </>
                     )}

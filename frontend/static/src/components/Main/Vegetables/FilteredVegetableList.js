@@ -8,6 +8,11 @@ import { useState } from 'react';
 
 
 export default function FilteredVegetableList(props) {
+
+    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+
+
     return (
         <div className="filtered-vegetables-container">
             {props.showNoResultsAlert ? <div
@@ -32,7 +37,7 @@ export default function FilteredVegetableList(props) {
                                   (element) => element.name === vegetable.name
                               )
                           ) {
-                              console.log("true");
+
                               return (
                                   <div
                                       className="filtered-vegetable already-added"
@@ -44,7 +49,7 @@ export default function FilteredVegetableList(props) {
                                   </div>
                               );
                           } else {
-                              console.log("false");
+
                               return (
                                   <div
                                       className="filtered-vegetable"

@@ -51,14 +51,14 @@
 
 .varieties-save-alert{
     position: absolute;
-    bottom: -100px;
+    top: 0px;
     width: 100%;
     text-align: center;
 }
 
 .varieties-delete-alert{
     position: absolute;
-    bottom: -100px;
+    top: 0px;
     width: 100%;
     text-align: center;
 }

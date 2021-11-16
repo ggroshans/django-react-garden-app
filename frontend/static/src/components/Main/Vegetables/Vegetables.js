@@ -9,6 +9,10 @@ import { Button, Collapse, Fade } from "react-bootstrap";
 import { ImArrowUp } from "react-icons/im";
 
 function Vegetables(props) {
+
+    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+
     let queryString = "";
     let pkValues = [];
 
@@ -166,6 +170,7 @@ function Vegetables(props) {
         let updatedFilteredVegetables = [...filteredVegetables];
         let userVeggieToAdd = updatedFilteredVegetables.splice(index, 1);
         setUserVegetables([...userVegetables, userVeggieToAdd[0]]);
+        setShowSuccessAlert(true);
     }
 
     function removeFromUserList(id) {
@@ -363,6 +368,7 @@ function Vegetables(props) {
                         userVegetables={userVegetables}
                         addToUserList={addToUserList}
                         // showNoResultsAlert={showNoResultsAlert}
+                        showSuccessAlert={showSuccessAlert}
                     />
                 </div>
                 <div className="vegetables-user-list-container">
@@ -376,17 +382,13 @@ function Vegetables(props) {
                         onClick={handleArrowClick}
                     />
                 </div>
-
-                {userVegetables.length === 0 ? (
-                    ""
-                ) : (
                     <button
                         className="btn flagship-btn vegetables-btn"
                         onClick={handleSaveVegClick}
                     >
-                        Continue
+                        Save & Continue
                     </button>
-                )}
+
             </div>
         </div>
     );

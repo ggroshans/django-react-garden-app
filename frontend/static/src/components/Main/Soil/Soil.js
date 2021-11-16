@@ -269,7 +269,7 @@ function Soil(props) {
                         className="btn flagship-btn"
                         onClick={handleSaveSoilClick}
                     >
-                        Continue
+                        Save & Continue
                     </button>
                 </div>
             </div>
