@@ -76,31 +76,31 @@ function Summary(props) {
         props.history.push(`/${props.match.params.garden}/vegetables/`);
     }
 
-    // function downloadLayoutImage() {
-    //     let a = document.createElement("a");
-    //     a.href = userGarden.layout;
-    //     a.download = `${userGarden.name}_layout.png`;
-    //     document.body.appendChild(a);
-    //     a.click();
-    //     document.body.removeChild(a);
-    // }
+    function downloadLayoutImage() {
+        let a = document.createElement("a");
+        a.href = userGarden.layout;
+        a.download = `${userGarden.name}_layout.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
 
-    // const download = () => {
-    //     var element = document.createElement("a");
-    //     var file = new Blob(
-    //       [
-    //         `${userGarden.layout}`
-    //       ],
-    //       { type: "image/*" }
-    //     );
-    //     element.href = URL.createObjectURL(file);
-    //     element.download = "image.jpg";
-    //     element.click();
-    //   };
+    const download = () => {
+        var element = document.createElement("a");
+        var file = new Blob(
+          [
+            `${userGarden.layout}`
+          ],
+          { type: "image/*" }
+        );
+        element.href = URL.createObjectURL(file);
+        element.download = "image.jpg";
+        element.click();
+      };
 
-    //   const downloadImage = () => {
-    //     saveAs(userGarden.layout, `${userGarden.name}_layout.jpg`) // Put your image url here.
-    //   }
+      const downloadImage = () => {
+        saveAs(userGarden.layout, `${userGarden.name}_layout.jpg`) // Put your image url here.
+      }
 
     return (
         <div className="summary-outer-container">
@@ -447,7 +447,7 @@ function Summary(props) {
                                         You have sketched the following layout
                                         of your garden below. If you would like
                                         to download the sketch you drew,
-                                        {/* <a
+                                        <a
                                             href={userGarden.layout}
                                             download
                                             onClick={() => download()}
@@ -457,7 +457,7 @@ function Summary(props) {
                                     
                                     <button onClick={() => downloadImage()}>
                                         Download!
-                                    </button> */}
+                                    </button>
                                     </p>
                                     <div className="summary-layout-img-container">
                                         <img

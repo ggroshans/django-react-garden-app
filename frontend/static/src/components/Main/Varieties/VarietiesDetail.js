@@ -13,6 +13,9 @@ function VarietiesDetail(props) {
     const [previousVarietyList, setPreviousVarietyList] = useState([]);
     const [showInput, setShowInput] = useState(false);
 
+    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+
     useEffect(() => {
         findPreviousSavedVarieties();
     }, []);
@@ -33,9 +36,9 @@ function VarietiesDetail(props) {
             props.updateVarieties(updatedVariety);
             setVariety("");
             setPreviousVarietyList((prevState) => [...prevState, variety]);
-            props.setShowSuccessAlert(true)
+            setShowSuccessAlert(true)
             setTimeout(() =>
-            props.setShowSuccessAlert(false), 1500)
+            setShowSuccessAlert(false), 1500)
         }
 
 
@@ -81,9 +84,9 @@ function VarietiesDetail(props) {
         console.log("UP", updatedState)
         setPreviousVarietyList(prevState => updatedState)
 
-        props.setShowDeleteAlert(true)
+        setShowDeleteAlert(true)
             setTimeout(() =>
-            props.setShowDeleteAlert(false), 1500)
+            setShowDeleteAlert(false), 1500)
     }
 
     function handleKeyPress(e) {
@@ -131,6 +134,26 @@ function VarietiesDetail(props) {
                     onKeyPress={(e) => handleKeyPress(e)}
                 /> : ""}
             </div>
+            {showSuccessAlert ? (
+                    <div
+                        class="alert alert-success varieties-save-alert"
+                        role="alert"
+                    >
+                        Variety Saved!
+                    </div>
+                ) : (
+                    <div></div>
+                )}
+                {showDeleteAlert ? (
+                    <div
+                        class="alert alert-danger varieties-delete-alert"
+                        role="alert"
+                    >
+                        Variety Deleted!
+                    </div>
+                ) : (
+                    <div></div>
+                )}
         </div>
     );
 }

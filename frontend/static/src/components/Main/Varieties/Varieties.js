@@ -9,8 +9,7 @@ import "./Varieties.css";
 
 function Varieties(props) {
     const [userGarden, setUserGarden] = useState();
-    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-    const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+
 
     useEffect(() => {
         grabUserGarden();
@@ -123,26 +122,7 @@ function Varieties(props) {
     return (
         <div className="varieties-outer-container">
             <div className="varieties-inner-container">
-                {showSuccessAlert ? (
-                    <div
-                        class="alert alert-success varieties-save-alert"
-                        role="alert"
-                    >
-                        Variety Saved!
-                    </div>
-                ) : (
-                    <div></div>
-                )}
-                {showDeleteAlert ? (
-                    <div
-                        class="alert alert-danger varieties-delete-alert"
-                        role="alert"
-                    >
-                        Variety Deleted!
-                    </div>
-                ) : (
-                    <div></div>
-                )}
+
                 <div className="varieties-heading-container">
                     {/* <h2 className="vegetables-heading">
                         Find the Most Suitable Vegetables
@@ -169,8 +149,6 @@ function Varieties(props) {
                                     {...vegetable}
                                     updateVarieties={updateVarieties}
                                     userGarden={userGarden}
-                                    setShowSuccessAlert={setShowSuccessAlert}
-                                    setShowDeleteAlert={setShowDeleteAlert}
                                     deleteVariety={deleteVariety}
                                 />
                             );
@@ -184,6 +162,7 @@ function Varieties(props) {
                     </button>
                 </NavLink>
             </div>
+
         </div>
     );
 }
