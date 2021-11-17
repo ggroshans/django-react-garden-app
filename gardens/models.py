@@ -60,7 +60,7 @@ class Vegetable (models.Model):
 class Garden(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=25)
-    created_at = models.DateField(auto_now_add=True, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     soil = models.ForeignKey(Soil, on_delete=models.CASCADE, null=True)
     vegetables = models.ManyToManyField(Vegetable, related_name="vegetables", blank=True)
     layout = models.ImageField(upload_to="layouts/", null=True)
