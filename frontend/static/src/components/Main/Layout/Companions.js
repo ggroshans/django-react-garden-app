@@ -145,26 +145,26 @@ function Companions(props) {
                 <div></div>
             )}
             <table>
-                <thead>
-                    <tr>
-                        <th>Your Vegetable</th>
-                        <th>Companions</th>
-                        <th>Adversaries</th>
+                <thead className="companions-thead">
+                    <tr className="companions-tr">
+                        <th className="companions-th">Your Vegetable</th>
+                        <th className="companions-th">Companions</th>
+                        <th className="companions-th">Adversaries</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="companions-tbody">
                     {userVegetables.length === 0
                         ? ""
                         : userVegetables.map((vegetable) => {
                               return (
-                                  <tr>
-                                      <td className="table-vegetable-name">
+                                  <tr className="companions-tr">
+                                      <td className="companions-td">
                                           <strong>{vegetable.name}</strong>
                                       </td>
                                       {vegetable.companions === null ? (
                                           <td>None</td>
                                       ) : (
-                                          <td id="companion-list">
+                                          <td id="companion-list" className="companions-td">
                                               {vegetable.companions
                                                   .split(",")
                                                   .map((companion) => {
@@ -183,9 +183,9 @@ function Companions(props) {
                                           </td>
                                       )}
                                       {vegetable.adversaries === null ? (
-                                          <td>None</td>
+                                          <td className="companions-td">None</td>
                                       ) : (
-                                          <td id="adversary-list">
+                                          <td id="adversary-list" className="companions-td">
                                               {vegetable.adversaries}
                                           </td>
                                       )}
