@@ -120,6 +120,13 @@ function GardenDetail(props) {
         props.history.push(`/${props.match.params.garden}/varieties`);
     }
 
+    function formatDate(date) {
+        const splitDate = date.split("T")[0].split('-')
+        const year = splitDate.shift();
+        splitDate.push(year)
+        return splitDate.join("-")
+    }
+
 
     if (!userGarden) {
         return (
@@ -130,6 +137,7 @@ function GardenDetail(props) {
             />
         );
     }
+
 
     return (
         <div className="garden-detail-outer-container">
@@ -170,7 +178,7 @@ function GardenDetail(props) {
                         </h3>
                     )}
                     <p className="garden-detail-date">
-                        Created: {userGarden.created_at}
+                        Created: {formatDate(userGarden.created_at)}
                     </p>
                     <div className="garden-detail-body-container">
                         <div className="garden-detail-view-summary">

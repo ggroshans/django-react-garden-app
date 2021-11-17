@@ -76,6 +76,13 @@ function Summary(props) {
         props.history.push(`/${props.match.params.garden}/vegetables/`);
     }
 
+    function formatDate(date) {
+        const splitDate = date.split("T")[0].split('-')
+        const year = splitDate.shift();
+        splitDate.push(year)
+        return splitDate.join("-")
+    }
+
     function downloadLayoutImage() {
         let a = document.createElement("a");
         a.href = userGarden.layout;
@@ -110,7 +117,7 @@ function Summary(props) {
                         Garden Preparation Report
                     </h2>
                     <p className="summary-report-date">
-                        {userGarden.created_at}
+                        {formatDate(userGarden.created_at)}
                     </p>
                     <div className="summary-soil-container">
                         <h3 className="summary-category-heading">Soil</h3>
