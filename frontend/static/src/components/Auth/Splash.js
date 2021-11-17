@@ -53,10 +53,7 @@ export default function Splash(props) {
             <div className="splash1 position-relative w-100">
                 <div className="splash2 position-absolute text-white d-flex flex-column align-items-start justify-content-center">
                     <div className="container">
-                        <div class="col-md-6">
-                            {/* <span className="splash-subheading text-uppercase">
-                                Plan, organize, cultivate
-                            </span> */}
+                        <div class="splash-content-container col-md-6">
                             <h1 className="splash-name mb-4 mt-2 display-4 font-weight-bold">
                                 Welcome to
                                 <span className="splash-headline">
@@ -70,7 +67,7 @@ export default function Splash(props) {
                                 you to cut down the time it takes to lay the
                                 groundwork.
                             </p>
-                            <div className="mt-5">
+                            <div className="splash-btn-container">
                             <NavLink to="/registration" className="splash-navlink">
                                 <a
                                     href="#"

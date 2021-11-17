@@ -109,6 +109,10 @@
     color: var(--green);
     font-family: var(--subheading-font);
     font-size: 8rem;
+    width: 470px;
+    margin: auto;
+    position: relative;
+    left: 25px;
 }
 
 .splash-p {
@@ -134,3 +138,22 @@
     bottom: 5px;
     left: 8px;
 }
+
+.splash-btn-container {
+    width: 400px;
+    margin: auto;
+    position: relative;
+    top: 25px;
+}
+
+.splash-content-container {
+    position: relative;
+    bottom: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+    .splash-headline {
+        position: static;
+
+    }
+  }
