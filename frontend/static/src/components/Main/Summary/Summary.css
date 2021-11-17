@@ -200,3 +200,13 @@ div[role="dialog"] {
     transition: transform 1s;
     text-align: left;
 }
+
+.layout-download-image {
+    text-decoration: none;
+    color: var(--green);
+    font-weight: 600;
+}
+
+.layout-download-image:hover {
+    color: var(--brown2);
+}

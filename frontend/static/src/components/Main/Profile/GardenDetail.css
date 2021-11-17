@@ -349,6 +349,11 @@
     font-family: var(--subheading-font2);
 }
 
+.garden-detail-layout-desc {
+    text-align: left;
+    width: 92%;
+}
+
 
 @media only screen and (max-width: 930px) {
     .garden-detail-body-container:after {

@@ -66,7 +66,7 @@ function GardenList(props) {
             data.sort((a,b) => b.created_at-a.created_at)
             console.log("AFTER", data)
             data.sort((elem1, elem2) => {
-                return elem1.created_at.split(".")[0].replace("T", "").replace(":", "").replace("-", "").replace("-", "").replace(":", "") - elem2.created_at.split(".")[0].replace("T", "").replace(":", "").replace("-", "").replace("-", "").replace(":", "");
+                return elem2.created_at.split(".")[0].replace("T", "").replace(":", "").replace("-", "").replace("-", "").replace(":", "") - elem1.created_at.split(".")[0].replace("T", "").replace(":", "").replace("-", "").replace("-", "").replace(":", "");
             })
             setUserGardenList(data);
         }

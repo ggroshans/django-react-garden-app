@@ -81,7 +81,7 @@ function Header(props) {
     async function getWikiData() {
         let pageNumbers;
         const response1 = await fetch(
-            `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=categorymembers&cmtitle=Category%3ABotany&cmlimit=200`
+            `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=categorymembers&cmtitle=Category%3ABotany&cmlimit=100`
         );
         if (response1.ok === false) {
             console.log("failed", response1);
@@ -94,7 +94,7 @@ function Header(props) {
         }
 
         const response2 = await fetch(
-            `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=categorymembers&cmtitle=Category%3ASoil&cmlimit=200`
+            `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=categorymembers&cmtitle=Category%3ASoil&cmlimit=100`
         );
         if (response2.ok === false) {
             console.log("failed", response2);

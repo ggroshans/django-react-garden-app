@@ -77,10 +77,10 @@ function Summary(props) {
     }
 
     function formatDate(date) {
-        const splitDate = date.split("T")[0].split('-')
+        const splitDate = date.split("T")[0].split("-");
         const year = splitDate.shift();
-        splitDate.push(year)
-        return splitDate.join("-")
+        splitDate.push(year);
+        return splitDate.join("-");
     }
 
     function downloadLayoutImage() {
@@ -94,20 +94,15 @@ function Summary(props) {
 
     const download = () => {
         var element = document.createElement("a");
-        var file = new Blob(
-          [
-            `${userGarden.layout}`
-          ],
-          { type: "image/*" }
-        );
+        var file = new Blob([`${userGarden.layout}`], { type: "image/*" });
         element.href = URL.createObjectURL(file);
         element.download = "image.jpg";
         element.click();
-      };
+    };
 
-      const downloadImage = () => {
-        saveAs(userGarden.layout, `${userGarden.name}_layout.jpg`) // Put your image url here.
-      }
+    const downloadImage = () => {
+        saveAs(userGarden.layout, `${userGarden.name}_layout.jpg`); // Put your image url here.
+    };
 
     return (
         <div className="summary-outer-container">
@@ -453,24 +448,16 @@ function Summary(props) {
                                     <p>
                                         You have sketched the following layout
                                         of your garden below. If you would like
-                                        to download the sketch you drew,
-                                        <a
-                                            href={userGarden.layout}
-                                            download
-                                            onClick={() => download()}
-                                        >
-                                            Hello
-                                        </a>
-                                        <a
-                                            href={userGarden.layout}
-                                            download
-                                        >
-                                            Hello2s
-                                        </a>
-                                    
-                                    <button onClick={() => downloadImage()}>
-                                        Download!
-                                    </button>
+                                        to download the sketch you drew, download it {" "}
+                                        <span>
+                                            <a
+                                                href={userGarden.layout}
+                                                download
+                                                className="layout-download-image"
+                                            >
+                                                here!
+                                            </a>{" "}
+                                        </span>
                                     </p>
                                     <div className="summary-layout-img-container">
                                         <img

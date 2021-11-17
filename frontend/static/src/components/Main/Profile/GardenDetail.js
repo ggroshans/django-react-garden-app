@@ -251,7 +251,20 @@ function GardenDetail(props) {
                                     />
                                 </h4>
                                 <div className="garden-detail-layout-container">
-                                    {" "}
+                                <p className="garden-detail-layout-desc">
+                                {"   "}You have sketched the following layout
+                                        of your garden below. If you would like
+                                        to download the sketch you drew, download it {" "}
+                                        <span>
+                                            <a
+                                                href={userGarden.layout}
+                                                download
+                                                className="layout-download-image"
+                                            >
+                                                here!
+                                            </a>{" "}
+                                        </span>
+                                    </p>
                                     <div className="garden-detail-image-container">
                                         <img
                                             src={userGarden.layout}
