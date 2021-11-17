@@ -80,6 +80,7 @@
     border: 1px solid green;
     padding: 0.5rem;
     border-radius: 5px;
+    z-index: 3;
 
 }
     

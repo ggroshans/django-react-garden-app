@@ -181,7 +181,6 @@ function Header(props) {
                             >
                                 Profile
                             </button>
-                            {/* {randomPage ? <a href={`https://en.wikipedia.org/w/index.php?curid=${randomPage}`}>WIKI</a> : ""} */}
                             <button className="header-user-wiki-btn" onClick={handleWikiClick}>Learn</button>
                             <button
                                 className="header-user-logout-btn"
