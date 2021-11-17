@@ -5,7 +5,7 @@ import Cookie, { remove } from "js-cookie";
 import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import "./GardenList.css";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 
 function GardenList(props) {
     const [userGardenList, setUserGardenList] = useState([]);
@@ -71,6 +71,10 @@ function GardenList(props) {
             setUserGardenList(data);
         }
     }
+
+    if (props.isAuth === false) {
+        return <Redirect to="/" />
+     }
 
     
     async function removeGardenFromList(id) {

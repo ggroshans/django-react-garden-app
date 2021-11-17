@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 import { useEffect, useState } from "react";
 import Cookie from "js-cookie";
 import "./GardenDetail.css";
@@ -126,6 +126,10 @@ function GardenDetail(props) {
         splitDate.push(year)
         return splitDate.join("-")
     }
+
+    if (props.isAuth === false) {
+        return <Redirect to="/" />
+     }
 
 
     if (!userGarden) {

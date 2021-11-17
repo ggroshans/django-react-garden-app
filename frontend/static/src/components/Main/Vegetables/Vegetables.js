@@ -4,7 +4,7 @@ import Cookie from "js-cookie";
 import { useState, useEffect, useRef } from "react";
 import FilteredVegetableList from "./FilteredVegetableList";
 import UserVegetableList from "./UserVegetableList";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 import { Button, Collapse, Fade } from "react-bootstrap";
 import { ImArrowUp } from "react-icons/im";
 
@@ -227,6 +227,10 @@ function Vegetables(props) {
     function handleArrowClick() {
         scrollToForm();
     }
+
+    if (props.isAuth === false) {
+        return <Redirect to="/" />
+     }
 
     return (
         <div className="vegetables-outer-container">

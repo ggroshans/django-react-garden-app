@@ -1,7 +1,7 @@
 import React from "react";
 import Companions from "./Companions";
 import { useRef, useEffect, useState } from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter, Redirect } from "react-router-dom";
 import "./Layout.css";
 import Cookie from "js-cookie";
 
@@ -81,6 +81,10 @@ function Layout(props) {
     function handleContinueClick() {
         props.history.push("/summary");
     }
+
+    if (props.isAuth === false) {
+        return <Redirect to="/" />
+     }
 
     return (
         <div className="layout-outer-container">

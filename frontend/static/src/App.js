@@ -51,7 +51,7 @@ function App() {
                     <Registration setIsAuth={setIsAuth} isAuth={isAuth} setShowHeader={setShowHeader}/>
                 </Route>
                 <Route path="/gardenlist/:garden">
-                    <GardenDetail setShowNav={setShowNav}/>
+                    <GardenDetail setShowNav={setShowNav}  isAuth={isAuth}/>
                 </Route>
                 <Route path="/gardenlist">
                     <GardenList isAuth={isAuth} setShowNav={setShowNav} setShowHeader={setShowHeader}/>
@@ -60,22 +60,22 @@ function App() {
                     <CreateAGarden/>
                 </Route>
                 <Route path="/:garden/soil">
-                    <Soil setShowNav={setShowNav}/>
+                    <Soil setShowNav={setShowNav} isAuth={isAuth}/>
                 </Route>
                 <Route path="/:garden/instructions">
-                    <Instructions setShowNav={setShowNav}/>
+                    <Instructions setShowNav={setShowNav} isAuth={isAuth}/>
                 </Route>
                 <Route path="/:garden/vegetables">
-                    <Vegetables setShowNav={setShowNav}/>
+                    <Vegetables setShowNav={setShowNav} isAuth={isAuth}/>
                 </Route>
                 <Route path="/:garden/varieties">
-                    <Varieties setShowNav={setShowNav}/>
+                    <Varieties setShowNav={setShowNav} isAuth={isAuth}/>
                 </Route>
                 <Route path="/:garden/layout">
-                    <Layout setShowNav={setShowNav}/>
+                    <Layout setShowNav={setShowNav} isAuth={isAuth}/>
                 </Route>
                 <Route path="/:garden/summary">
-                    <Summary setShowNav={setShowNav}/>
+                    <Summary setShowNav={setShowNav} isAuth={isAuth}/>
                 </Route>
 
                 <Route path="/">

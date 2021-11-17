@@ -114,6 +114,10 @@ function Soil(props) {
         setLoaded(true);
     });
 
+    if (props.isAuth === false) {
+        return <Redirect to="/" />
+     }
+
     return (
         <div className="soil-outer-container">
             <div className="soil-inner-container">

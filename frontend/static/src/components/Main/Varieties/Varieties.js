@@ -2,7 +2,7 @@ import React from "react";
 import Cookie from "js-cookie";
 import { useState, useEffect } from "react";
 import { Spinner } from "react-bootstrap";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 import VarietiesDetail from "./VarietiesDetail";
 import { NavLink } from "react-router-dom";
 import "./Varieties.css";
@@ -117,7 +117,9 @@ function Varieties(props) {
         );
     }
 
-    console.log("USERGARDEN", userGarden);
+    if (props.isAuth === false) {
+        return <Redirect to="/" />
+     }
 
     return (
         <div className="varieties-outer-container">

@@ -5,12 +5,16 @@ import Image2 from "../../../images/gardening2.jpeg";
 import Image3 from "../../../images/gardening3.jpeg";
 import Image5 from "../../../images/gardening4.jpeg";
 import Image4 from "../../../images/gardening5.jpeg";
-import { withRouter, NavLink } from "react-router-dom";
+import { withRouter, NavLink, Redirect } from "react-router-dom";
 
 function Instructions(props) {
 
     props.setShowNav(false);
 
+
+    if (props.isAuth === false) {
+        return <Redirect to="/" />
+     }
 
     return (
         <div className="instructions-outer-container">

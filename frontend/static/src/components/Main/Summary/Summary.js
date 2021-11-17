@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "./Summary.css";
 import Cookie from "js-cookie";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 import { Spinner, Modal, Button, Collapse } from "react-bootstrap";
 import { FiEdit } from "react-icons/fi";
 import { saveAs } from "file-saver";
@@ -83,26 +83,9 @@ function Summary(props) {
         return splitDate.join("-");
     }
 
-    function downloadLayoutImage() {
-        let a = document.createElement("a");
-        a.href = userGarden.layout;
-        a.download = `${userGarden.name}_layout.png`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    }
-
-    const download = () => {
-        var element = document.createElement("a");
-        var file = new Blob([`${userGarden.layout}`], { type: "image/*" });
-        element.href = URL.createObjectURL(file);
-        element.download = "image.jpg";
-        element.click();
-    };
-
-    const downloadImage = () => {
-        saveAs(userGarden.layout, `${userGarden.name}_layout.jpg`); // Put your image url here.
-    };
+    if (props.isAuth === false) {
+        return <Redirect to="/" />
+     }
 
     return (
         <div className="summary-outer-container">
