@@ -124,7 +124,7 @@ function Header(props) {
         let index = Math.floor(Math.random() * wikiData.length);
         console.log(index);
         let random = Number(wikiData[index]);
-        window.location.href=`https://en.wikipedia.org/w/index.php?curid=${random}`
+        window.open(`https://en.wikipedia.org/w/index.php?curid=${random}`, "_blank")
     }
 
     function handleBannerClick() {
