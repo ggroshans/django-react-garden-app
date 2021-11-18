@@ -7,12 +7,8 @@ import { Spinner } from "react-bootstrap";
 function WeatherDashboard(props) {
     const [weatherData, setWeatherData] = useState();
 
-    let sunrise;
-    let sunset;
-    let random;
-
     useEffect(() => {
-        if(props.userGarden.location !== null) {
+        if (props.userGarden.location !== null) {
             getWeatherDetails();
         }
     }, []);
@@ -35,8 +31,8 @@ function WeatherDashboard(props) {
         }
     }
 
-    if(props.userGarden.location === null){
-        return "Location Not Saved"
+    if (props.userGarden.location === null) {
+        return "Location Not Saved";
     }
 
     if (!weatherData) {
@@ -47,11 +43,8 @@ function WeatherDashboard(props) {
                 className="garden-detail-spinner"
             />
         );
-    } else {
-        sunrise = new Date(weatherData.current.sunrise * 1000);
-        sunset = new Date(weatherData.current.sunset * 1000);
-        // random = randomPage()
-    }
+    } 
+
     function toTitleCase(str) {
         return str.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -123,9 +116,40 @@ function WeatherDashboard(props) {
                             );
                         })}
                     </div>
-                    <div>{/* Sunrise: {sunrise} */}</div>
-
-                    
+                    <h3 className="weather-three-day-heading">Three Day Forecast</h3>
+                    <div className="weather-three-day-container">
+                        
+                        {weatherData.daily.slice(1, 4).map((weatherDay) => {
+                            return (
+                                <div className="weather-day-container">
+                                    <p className="weather-day-p">
+                                        <span className="weather-day-temp-span">
+                                        {weatherDay.temp.max.toFixed(
+                                            0
+                                        )}
+                                        &#176;/
+                                        </span>
+                                        <span className="weather-day-temp-span">
+                                        {weatherDay.temp.min.toFixed(
+                                            0
+                                        )}
+                                        &#176;
+                                        </span> 
+                                    </p>
+                                    <p className="weather-day-desc">
+                                        {toTitleCase(
+                                            weatherDay.weather[0]
+                                                .description
+                                        )}
+                                    </p>
+                                    <img
+                                        className="weather-icon"
+                                        src={`http://openweathermap.org/img/wn/${weatherDay.weather[0].icon}@2x.png`}
+                                    />
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </div>
