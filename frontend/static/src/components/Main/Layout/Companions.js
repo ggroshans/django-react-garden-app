@@ -90,8 +90,14 @@ function Companions(props) {
     function handleAddCompanion(e) {
         let val = e.target.value;
         setQueryString(val.trim());
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+
         setShowSuccessAlert(true);
+        setTimeout( () => {
+            let companionTable = document.querySelector(".companion-layout-container");
+            window.scrollTo({ top: companionTable.scrollHeight, behavior: 'smooth' })
+        }, 200)
+
+
         setTimeout(() => {
             setShowSuccessAlert(false);
         }, 800);
