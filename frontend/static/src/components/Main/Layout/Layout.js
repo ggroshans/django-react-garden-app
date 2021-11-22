@@ -16,17 +16,21 @@ function Layout(props) {
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        canvas.width = 550 * 2;
-        canvas.height = 650 * 2;
-        canvas.style.width = `${550}px`;
-        canvas.style.height = `${650}px`;
 
-        const context = canvas.getContext("2d");
-        context.scale(2, 2);
-        context.lineCap = "round";
-        context.strokeStyle = "black";
-        context.lineWidth = 5;
-        contextRef.current = context;
+        setTimeout( () => {
+            canvas.width = 550 * 2;
+            canvas.height = 650 * 2;
+            canvas.style.width = `${550}px`;
+            canvas.style.height = `${650}px`;
+    
+            const context = canvas.getContext("2d");
+            context.scale(2, 2);
+            context.lineCap = "round";
+            context.strokeStyle = "black";
+            context.lineWidth = 5;
+            contextRef.current = context;
+        }, 500)
+
     }, []);
 
     function startDrawing({ nativeEvent }) {
