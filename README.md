@@ -1,5 +1,8 @@
 # 🪴 Flourish - A Full-Stack Garden Planning App
 
+> [!WARNING]
+> **This repository has been archived and is no longer maintained.** The last update was in November 2021. The code is provided as-is for portfolio and archival purposes. Dependencies are likely outdated and may contain security vulnerabilities.
+
 Flourish is a comprehensive, full-stack web application designed to help users plan, organize, and improve their gardens. By integrating a Django backend with a React frontend, this application provides a seamless user experience for managing every aspect of a personal garden, from soil analysis to vegetable selection and layout design.
 
 ## 🎯 Project Goal
